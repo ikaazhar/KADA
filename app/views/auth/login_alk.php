@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($user) {
         $_SESSION['user_id'] = $user['user_id'];
         $_SESSION['role'] = 'alk';
-        header('Location: dashboard.php');
+        header('Location: index.php');
         exit;
     } else {
         $error = "Invalid ALK number or password.";
