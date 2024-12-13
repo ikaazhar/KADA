@@ -140,6 +140,7 @@ class UserController extends Controller
         header('Location: /login');  // Redirect to the login page after successful registration
     }
 
+    
     public function logout()
     {
         session_start();
