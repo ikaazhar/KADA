@@ -12,7 +12,7 @@ class Model
     {
         try {
             $this->db = new PDO(
-                "mysql:host=127.0.0.1:3307;dbname=pdo_crud;charset=utf8mb4", // Update this with your actual DB credentials
+                "mysql:host=127.0.0.1:3307;dbname=kada;charset=utf8mb4", // Update this with your actual DB credentials
                 "root", // Your database username
                 "",     // Your database password
                 [
