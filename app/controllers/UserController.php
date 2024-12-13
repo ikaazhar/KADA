@@ -59,7 +59,7 @@ class UserController extends Controller
         $this->view('auth/login_ahli');
     }
     
-    
+
     public function loginForStaff()
     {
         $this->view('auth/login_staff');
@@ -140,7 +140,6 @@ class UserController extends Controller
         header('Location: /login');  // Redirect to the login page after successful registration
     }
 
-    
     public function logout()
     {
         session_start();

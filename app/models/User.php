@@ -87,5 +87,5 @@ class User extends Model
         $stmt->execute();
         return $stmt->fetch();
     }
-    
+
 }
