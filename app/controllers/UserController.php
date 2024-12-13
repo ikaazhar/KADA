@@ -59,6 +59,7 @@ class UserController extends Controller
         $this->view('auth/login_ahli');
     }
     
+    
     public function loginForStaff()
     {
         $this->view('auth/login_staff');
