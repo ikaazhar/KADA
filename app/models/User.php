@@ -51,12 +51,11 @@ class User extends Model
     public function make($data)
     {
         // Assuming your 'account' table has 'name', 'email', and 'password' columns
-        $stmt = $this->getConnection()->prepare("INSERT INTO account (name, email, password) VALUES (:name, :email, :password)"); 
+        $stmt = $this->getConnection()->prepare("INSERT INTO account (member_ID, password) VALUES (:member_ID, :password)"); 
 
         // Execute the query with the provided data
         $stmt->execute([ 
-            ':name' => $data['name'], 
-            ':email' => $data['email'],
+            ':member_ID' => $data['member_ID'], 
             ':password' => password_hash($data['password'], PASSWORD_BCRYPT), // Hash the password for security
         ]);
 
@@ -65,12 +64,29 @@ class User extends Model
     }
 
 
-    public function findByEmail($email)
+    public function findByMemberID($member_ID)
     {
-        $stmt = $this->getConnection()->prepare("SELECT * FROM account WHERE email = :email");
-        $stmt->bindParam(':email', $email, \PDO::PARAM_STR);
+        $stmt = $this->getConnection()->prepare("SELECT * FROM member_account WHERE member_ID = :member_ID");
+        $stmt->bindParam(':member_ID', $member_ID, \PDO::PARAM_STR);
         $stmt->execute();
         return $stmt->fetch();
     }
 
+    public function findByStaffID($staff_ID)
+    {
+        $stmt = $this->getConnection()->prepare("SELECT * FROM staff_account WHERE staff_ID = :staff_ID");
+        $stmt->bindParam(':staff_ID', $staff_ID, \PDO::PARAM_STR);
+        $stmt->execute();
+        return $stmt->fetch();
+    }
+
+    public function findByALKID($alk_ID)
+    {
+        $stmt = $this->getConnection()->prepare("SELECT * FROM alk_account WHERE alk_ID = :alk_ID");
+        $stmt->bindParam(':alk_ID', $alk_ID, \PDO::PARAM_STR);
+        $stmt->execute();
+        return $stmt->fetch();
+    }
+
+    
 }
