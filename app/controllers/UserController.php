@@ -24,7 +24,7 @@ class UserController extends Controller
 
     public function create()
     {
-        $this->view('users/create');
+        $this->view('users/member_form');
     }
 
     public function store()
