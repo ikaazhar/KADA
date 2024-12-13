@@ -22,9 +22,9 @@ class UserController extends Controller
          $this->view('users/index', compact('users'));
     }
 
-    public function create()
+    public function buttonpage()
     {
-        $this->view('users/member_form');
+        $this->view('auth/buttonpage');
     }
 
     public function store()
@@ -42,39 +42,29 @@ class UserController extends Controller
         $this->view('users/edit', compact('user'));
     }
 
-    public function update($id)
+    public function register()
     {
-        $this->user->update($id, $_POST);
-        header('Location: /');
-    }
-
-    public function delete($id)
-    {
-        $this->user->delete($id);
-        header('Location: /');
+        $this->view('auth/register');
     }
 
     public function loginForMember()
     {
         $this->view('auth/login_ahli');
+        $this->user->loginMember();
     }
-    
 
     public function loginForStaff()
     {
         $this->view('auth/login_staff');
+        $this->user->loginStaff();
     }
 
     public function loginForALK()
     {
         $this->view('auth/login_alk');
+        $this->user->loginALK();
     }
 
-    public function registerForm()
-    {
-        $this->view('auth/register');
-    }
-    
     public function loginMember()
     {
         $member_ID = $_POST['member_ID'];
@@ -128,18 +118,38 @@ class UserController extends Controller
             echo "<a href='/login' style='color: blue; text-decoration: underline;'>Back to Login</a>";
         }
     }
-    
-    public function register()
+
+    public function create()
     {
-        $data = [
-            'nonmember_ID' => $_POST['nonmember_ID'],
-            'password' => $_POST['password'],  // Ensure the password is included in the POST data
-        ];
-    
-        $this->user->make($data);  // Call the modified make method to store the account
-        header('Location: /login');  // Redirect to the login page after successful registration
+        $this->view('users/create');
     }
 
+    public function store()
+    {
+        $this->user->create($_POST);
+        header('Location: /');
+    }
+
+    public function edit($id)
+    {
+        // Fetch the user data using the ID
+        $user = $this->user->find($id);
+
+        // Pass the user data to the 'users/edit' view
+        $this->view('users/edit', compact('user'));
+    }
+
+    public function update($id)
+    {
+        $this->user->update($id, $_POST);
+        header('Location: /');
+    }
+
+    public function delete($id)
+    {
+        $this->user->delete($id);
+        header('Location: /');
+    }
     
     public function logout()
     {

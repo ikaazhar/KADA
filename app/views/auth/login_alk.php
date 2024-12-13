@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <?php endif; ?>
             <div class="mb-3">
                 <label for="alk_number" class="form-label">Nombor ALK:</label>
-                <input type="text" name="alk_number" id="alk_number" class="form-control" required>
+                <input type="text" name="alk_ID" id="alk_ID" class="form-control" required>
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Kata Laluan:</label>

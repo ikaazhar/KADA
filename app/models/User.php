@@ -12,6 +12,30 @@ class User extends Model
 
     }
 
+    public function findByMemberID($member_ID)
+    {
+        $stmt = $this->getConnection()->prepare("SELECT * FROM member_account WHERE member_ID = :member_ID");
+        $stmt->bindParam(':member_ID', $member_ID, \PDO::PARAM_STR);
+        $stmt->execute();
+        return $stmt->fetch();
+    }
+
+    public function findByStaffID($staff_ID)
+    {
+        $stmt = $this->getConnection()->prepare("SELECT * FROM staff_account WHERE staff_ID = :staff_ID");
+        $stmt->bindParam(':staff_ID', $staff_ID, \PDO::PARAM_STR);
+        $stmt->execute();
+        return $stmt->fetch();
+    }
+
+    public function findByALKID($alk_ID)
+    {
+        $stmt = $this->getConnection()->prepare("SELECT * FROM alk_account WHERE alk_ID = :alk_ID");
+        $stmt->bindParam(':alk_ID', $alk_ID, \PDO::PARAM_STR);
+        $stmt->execute();
+        return $stmt->fetch();
+    }
+
     public function find($id)
     {
         $stmt = $this->getConnection()->prepare("SELECT * FROM applicant WHERE id = :id"); // Use prepare() for SQL statements with variables
@@ -92,31 +116,4 @@ class User extends Model
         // Return the statement object to check execution if needed
         return $stmt;
     }
-
-
-    public function findByMemberID($member_ID)
-    {
-        $stmt = $this->getConnection()->prepare("SELECT * FROM member_account WHERE member_ID = :member_ID");
-        $stmt->bindParam(':member_ID', $member_ID, \PDO::PARAM_STR);
-        $stmt->execute();
-        return $stmt->fetch();
-    }
-
-    public function findByStaffID($staff_ID)
-    {
-        $stmt = $this->getConnection()->prepare("SELECT * FROM staff_account WHERE staff_ID = :staff_ID");
-        $stmt->bindParam(':staff_ID', $staff_ID, \PDO::PARAM_STR);
-        $stmt->execute();
-        return $stmt->fetch();
-    }
-
-    public function findByALKID($alk_ID)
-    {
-        $stmt = $this->getConnection()->prepare("SELECT * FROM alk_account WHERE alk_ID = :alk_ID");
-        $stmt->bindParam(':alk_ID', $alk_ID, \PDO::PARAM_STR);
-        $stmt->execute();
-        return $stmt->fetch();
-    }
-
-    
 }
