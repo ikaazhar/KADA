@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <?php endif; ?>
             <div class="mb-3">
                 <label for="ahli_number" class="form-label">Nombor Ahli:</label>
-                <input type="text" name="ahli_number" id="ahli_number" class="form-control" required>
+                <input type="text" name="member_ID" id="member_ID" class="form-control" required>
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Kata Laluan:</label>
