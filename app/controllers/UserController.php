@@ -54,22 +54,68 @@ class UserController extends Controller
         header('Location: /');
     }
 
-    public function loginForm()
+    public function loginForMember()
     {
-        $this->view('auth/login');
+        $this->view('auth/login_ahli');
     }
     
+    public function loginForStaff()
+    {
+        $this->view('auth/login_staff');
+    }
+
+    public function loginForALK()
+    {
+        $this->view('auth/login_alk');
+    }
+
     public function registerForm()
     {
         $this->view('auth/register');
     }
     
-    public function login()
+    public function loginMember()
     {
-        $email = $_POST['email'];
+        $member_ID = $_POST['member_ID'];
         $password = $_POST['password'];
     
-        $user = $this->user->findByEmail($email);
+        $user = $this->user->findByMemberID($member_ID);
+    
+        if ($user && password_verify($password, $user['password'])) {
+            session_start();
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['user_name'] = $user['name'];
+            header('Location: /');
+        } else {
+            echo "<h3 style='color: red;'>Invalid email or password. Please try again.</h3>";
+            echo "<a href='/login' style='color: blue; text-decoration: underline;'>Back to Login</a>";
+        }
+    }
+
+    public function loginStaff()
+    {
+        $staff_ID = $_POST['staff_ID'];
+        $password = $_POST['password'];
+    
+        $user = $this->user->findByStaffID($staff_ID);
+    
+        if ($user && password_verify($password, $user['password'])) {
+            session_start();
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['user_name'] = $user['name'];
+            header('Location: /');
+        } else {
+            echo "<h3 style='color: red;'>Invalid email or password. Please try again.</h3>";
+            echo "<a href='/login' style='color: blue; text-decoration: underline;'>Back to Login</a>";
+        }
+    }
+
+    public function loginALK()
+    {
+        $alk_ID = $_POST['alk_ID'];
+        $password = $_POST['password'];
+    
+        $user = $this->user->findByALKID($alk_ID);
     
         if ($user && password_verify($password, $user['password'])) {
             session_start();
@@ -85,8 +131,7 @@ class UserController extends Controller
     public function register()
     {
         $data = [
-            'name' => $_POST['name'],
-            'email' => $_POST['email'],
+            'nonmember_ID' => $_POST['nonmember_ID'],
             'password' => $_POST['password'],  // Ensure the password is included in the POST data
         ];
     
