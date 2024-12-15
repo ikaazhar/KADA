@@ -1,29 +1,3 @@
-<?php
-require_once 'app/core/Autoload.php';
-
-use App\Core\Controller;
-
-session_start();
-$controller = new Controller();
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $staff_number = $_POST['staff_number'];
-    $password = $_POST['password'];
-
-    // Authenticate Staff user
-    $user = $controller->authenticate('staff', $staff_number, $password);
-
-    if ($user) {
-        $_SESSION['user_id'] = $user['user_id'];
-        $_SESSION['role'] = 'staff';
-        header('Location: index.php');
-        exit;
-    } else {
-        $error = "Invalid Staff number or password.";
-    }
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body class="bg-light">
     <div class="container py-5">
         <h1 class="mb-4">Login STAFF</h1>
-        <form method="POST" class="border p-4 bg-white shadow-sm rounded">
+        <form action="loginStaff" method="POST" class="border p-4 bg-white shadow-sm rounded">
             <?php if (isset($error)): ?>
                 <div class="alert alert-danger"><?= $error ?></div>
             <?php endif; ?>
