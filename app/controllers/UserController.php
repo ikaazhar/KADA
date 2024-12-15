@@ -27,6 +27,7 @@ class UserController extends Controller
         $this->view('auth/buttonpage');
     }
 
+
     // public function store()
     // {
     //     $this->user->create($_POST);
@@ -41,31 +42,42 @@ class UserController extends Controller
     //     // Pass the user data to the 'users/edit' view
     //     $this->view('users/edit', compact('user'));
     // }
+    //public function store()
+    //{
+       // $this->user->create($_POST);
+       // header('Location: /');
+    //}
+
+    //public function edit($id)
+    //{
+        // Fetch the user data using the ID
+       // $user = $this->user->find($id);
+
+        // Pass the user data to the 'users/edit' view
+        //$this->view('users/edit', compact('user'));
+   // }
 
     public function register()
     {
         $this->view('auth/register');
     }
 
-    public function loginForMember()
+    public function loginMember()
     {
         $this->view('auth/login_ahli');
-        $this->user->loginMember();
     }
 
-    public function loginForStaff()
+    public function loginStaff()
     {
         $this->view('auth/login_staff');
-        $this->user->loginStaff();
     }
 
-    public function loginForALK()
+    public function loginALK()
     {
         $this->view('auth/login_alk');
-        $this->user->loginALK();
     }
 
-    public function loginMember()
+    public function authenticateMember()
     {
         $member_ID = $_POST['member_ID'];
         $password = $_POST['password'];
@@ -83,7 +95,7 @@ class UserController extends Controller
         }
     }
 
-    public function loginStaff()
+    public function authenticateStaff()
     {
         $staff_ID = $_POST['staff_ID'];
         $password = $_POST['password'];
@@ -101,7 +113,7 @@ class UserController extends Controller
         }
     }
 
-    public function loginALK()
+    public function authenticateALK()
     {
         $alk_ID = $_POST['alk_ID'];
         $password = $_POST['password'];

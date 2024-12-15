@@ -34,12 +34,18 @@ if ($uri === '' && $method === 'GET') {
     $controller->buttonpage();
 } elseif ($uri === 'register' && $method === 'POST') {
     $controller->register();
-} elseif ($uri === 'login_ahli' && $method === 'POST') {
-    $controller->loginForMember();
-} elseif ($uri === 'login_staff' && $method === 'POST') {
-    $controller->loginForStaff();
-} elseif ($uri === 'login_alk' && $method === 'POST') {
-    $controller->loginForALK();
+} elseif ($uri === 'loginMember' && $method === 'POST') {
+    $controller->loginMember();
+} elseif ($uri === 'loginStaff' && $method === 'POST') {
+    $controller->loginStaff();
+} elseif ($uri === 'loginALK' && $method === 'POST') {
+    $controller->loginALK();
+} elseif ($uri === 'authenticateMember' && $method === 'POST') {
+    $controller->authenticateMember();
+} elseif ($uri === 'authenticateStaff' && $method === 'POST') {
+    $controller->authenticateStaff();
+} elseif ($uri === 'authenticateALK' && $method === 'POST') {
+    $controller->authenticateALK();
 } elseif ($uri === 'logout' && $method === 'GET') {
     $controller->logout();
 } elseif ($uri === 'back' && $method === 'GET') {

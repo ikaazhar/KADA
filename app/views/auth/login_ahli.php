@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +9,7 @@
 <body class="bg-light">
     <div class="container py-5">
         <h1 class="mb-4">Login Ahli</h1>
-        <form action="/loginMember" method="POST" class="border p-4 bg-white shadow-sm rounded">
+        <form action="/authenticateMember" method="POST" class="border p-4 bg-white shadow-sm rounded">
             <?php if (isset($error)): ?>
                 <div class="alert alert-danger"><?= $error ?></div>
             <?php endif; ?>
