@@ -30,7 +30,7 @@
 
     <!-- Add Family Details Form -->
     <h2>Add Family Details</h2>
-    <form action="/store-family-details" method="POST">
+    <form action="/storeFamilyDetails" method="POST">
         <input type="hidden" name="applicant_id" value="<?= htmlspecialchars($applicant_id) ?>">
         <label for="name">Name:</label>
         <input type="text" name="name" id="name" required><br>
