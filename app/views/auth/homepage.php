@@ -8,7 +8,7 @@
 
         <nav class="navbar navbar-expand-md fixed-top navbar-light bg-warning">
             <div class="container-xxl">
-                <a href="homepage.php" class="navbar-brand">
+                <a href="/homepage" class="navbar-brand">
                     <span class="fw-bold text-dark">
                         Koperasi Kakitangan KADA         
                     </span>

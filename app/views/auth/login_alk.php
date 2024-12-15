@@ -6,7 +6,29 @@
     <title>Login ALK</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body class="bg-light">
+    <body class="bg-light">
+        <nav class="navbar navbar-expand-md fixed-top navbar-light bg-warning">
+            <div class="container-xxl">
+                <a href="/homepage" class="navbar-brand">
+                    <span class="fw-bold text-dark">
+                        Koperasi Kakitangan KADA         
+                    </span>
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-end align-center" id="main-nav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="register.php"> Daftar Sekarang&nbsp;&nbsp;&nbsp;&nbsp; </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
     <div class="container py-5">
         <h1 class="mb-4">Login ALK</h1>
         <form action="/authenticateALK" method="POST" class="border p-4 bg-white shadow-sm rounded">
