@@ -167,6 +167,11 @@ class UserController extends Controller
         header('Location: /');
     }
     
+    public function homepageMember()
+    {
+        $this->view('auth/homepage_ahli');
+    }
+
     public function logout()
     {
         session_start();

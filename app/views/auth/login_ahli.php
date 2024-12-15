@@ -42,7 +42,7 @@
                 <label for="password" class="form-label">Kata Laluan:</label>
                 <input type="password" name="password" id="password" class="form-control" required>
             </div>
-            <button type="submit" class="btn btn-primary">Log Masuk</button>
+            <a href="/homepageMmeber" class="btn btn-primary mb-2">Log Masuk</a>
         </form>
     </div>
 </body>
