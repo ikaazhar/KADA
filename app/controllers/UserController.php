@@ -27,6 +27,7 @@ class UserController extends Controller
         $this->view('auth/buttonpage');
     }
 
+
     // public function store()
     // {
     //     $this->user->create($_POST);
@@ -41,6 +42,20 @@ class UserController extends Controller
     //     // Pass the user data to the 'users/edit' view
     //     $this->view('users/edit', compact('user'));
     // }
+    //public function store()
+    //{
+       // $this->user->create($_POST);
+       // header('Location: /');
+    //}
+
+    //public function edit($id)
+    //{
+        // Fetch the user data using the ID
+       // $user = $this->user->find($id);
+
+        // Pass the user data to the 'users/edit' view
+        //$this->view('users/edit', compact('user'));
+   // }
 
     public function register()
     {
