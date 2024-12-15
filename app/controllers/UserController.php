@@ -27,6 +27,10 @@ class UserController extends Controller
         $this->view('auth/buttonpage');
     }
 
+    public function homepage()
+    {
+        $this->view('auth/homepage');
+    }
 
     // public function store()
     // {
