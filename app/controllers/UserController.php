@@ -145,6 +145,18 @@ class UserController extends Controller
         header('Location: /');
     }
 
+    //utk form family detail
+    public function createFamilyDetails()
+    {
+        $this->view('users/family_details');
+    }
+
+    public function storeFamilyDetails()
+    {
+        $this->user->createFamilyDetails($_POST);
+        header('Location: /');
+    }
+
     public function edit($id)
     {
         // Fetch the user data using the ID

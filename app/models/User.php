@@ -82,6 +82,27 @@ class User extends Model
         return $stmt;
     }
 
+    public function createFamilyDetails($data)
+    {
+        $stmt = $this->getConnection()->prepare(
+            "INSERT INTO Family_Details (
+                applicant_id, name, relationship, id_number
+            ) VALUES (
+                :applicant_id, :name, :relationship, :id_number
+            )"
+        );
+    
+        $stmt->execute([
+            ':applicant_id' => $data['applicant_id'],
+            ':name' => $data['name'],
+            ':relationship' => $data['relationship'],
+            ':id_number' => $data['id_number']
+        ]);
+    
+        return $stmt;
+    }
+
+
     public function update($id, $data)
     {
         $stmt = $this->getConnection()->prepare("UPDATE applicant SET name = :name, email = :email WHERE id = :id"); // Use prepare() for SQL statements with variables
