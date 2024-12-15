@@ -36,13 +36,13 @@
             <?php endif; ?>
             <div class="mb-3">
                 <label for="ahli_number" class="form-label">Nombor Ahli:</label>
-                <input type="text" name="member_ID" id="member_ID" class="form-control" required>
+                <input type="text" name="member_id" id="member_id" class="form-control" required>
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Kata Laluan:</label>
                 <input type="password" name="password" id="password" class="form-control" required>
             </div>
-            <a href="/homepageMmeber" class="btn btn-primary mb-2">Log Masuk</a>
+            <button type="submit" class="btn btn-primary">Log Masuk</button>
         </form>
     </div>
 </body>

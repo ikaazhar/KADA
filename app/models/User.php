@@ -12,11 +12,10 @@ class User extends Model
 
     }
 
-    public function findByMemberID($member_ID)
+    public function findByMemberID($member_id)
     {
-        $stmt = $this->getConnection()->prepare("SELECT * FROM member_account WHERE member_ID = :member_ID");
-        $stmt->bindParam(':member_ID', $member_ID, \PDO::PARAM_STR);
-        $stmt->execute();
+        $stmt = $this->getConnection()->prepare("SELECT * FROM member_account WHERE member_id = :member_id");
+        $stmt->execute([':member_id' => $member_id]);
         return $stmt->fetch();
     }
 

@@ -36,10 +36,10 @@
                             <a class="nav-link text-dark" href=""> Semak Penyata&nbsp;&nbsp;&nbsp;&nbsp; </a>
                         </li>
                         <li class="nav-item d-md-none">
-                            <a class="nav-link text-dark" href="/logout"> Logout </a>
+                            <a href="/logout" class="nav-link text-dark"> Logout </a>
                         </li>
                         <li class="nav-item m-2 d-none d-md-inline">
-                            <a class="btn btn-sm btn-info text-dark" href="/logout"> Logout </a>
+                            <a href="/logout" class="btn btn-sm btn-info text-dark"> Logout </a>
                         </li>
                     </ul>
                 </div>

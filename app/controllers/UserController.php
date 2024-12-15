@@ -83,16 +83,15 @@ class UserController extends Controller
 
     public function authenticateMember()
     {
-        $member_ID = $_POST['member_ID'];
+        $member_id = $_POST['member_id'];
         $password = $_POST['password'];
     
-        $user = $this->user->findByMemberID($member_ID);
+        $user = $this->user->findByMemberID($member_id);
     
-        if ($user && password_verify($password, $user['password'])) {
+        if ($user && $password === $user['password']) {
             session_start();
             $_SESSION['user_id'] = $user['id'];
-            $_SESSION['user_name'] = $user['name'];
-            header('Location: /');
+            header('Location: /homepageMember');
         } else {
             echo "<h3 style='color: red;'>Invalid email or password. Please try again.</h3>";
             echo "<a href='/login' style='color: blue; text-decoration: underline;'>Back to Login</a>";
@@ -169,14 +168,14 @@ class UserController extends Controller
     
     public function homepageMember()
     {
-        $this->view('auth/homepage_ahli');
+        $this->view('menu/homepage_ahli');
     }
 
     public function logout()
     {
         session_start();
         session_destroy();
-        header('Location: /login');
+        header('Location: /homepage');
     }
     
 }

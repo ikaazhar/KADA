@@ -78,7 +78,7 @@ if ($uri === '' && $method === 'GET') {
     } else {
         $controller->homepage();
     }
-} elseif ($uri === 'homepageMember' && $method === 'POST') {
+} elseif ($uri === 'homepageMember' && $method === 'GET') {
     if (isAuthenticated()) {
         $controller->homepageMember();
     } else {
