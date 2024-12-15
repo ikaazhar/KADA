@@ -122,6 +122,14 @@
         <div class="text-center">
             <button type="submit" class="btn btn-primary">Simpan Maklumat</button>
         </div>
+
+        <br>
+
+        <li class="nav-item m-2 d-none d-md-inline">
+                            <a class="btn btn-sm btn-info text-dark" href="/family_details"> Seterusnya </a>
+                        </li>
+
+        
     </form>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
