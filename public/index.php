@@ -28,16 +28,18 @@ if ($uri === '' && $method === 'GET') {
     if (isAuthenticated()) {
         $controller->index();
     } else {
-        header('Location: /login');
+        header('Location: /buttonpage');
     }
-} elseif ($uri === 'login' && $method === 'GET') {
-    $controller->loginForm();
-} elseif ($uri === 'login' && $method === 'POST') {
-    $controller->login();
-} elseif ($uri === 'register' && $method === 'GET') {
-    $controller->registerForm();
+} elseif ($uri === 'buttonpage' && $method === 'GET') {
+    $controller->buttonpage();
 } elseif ($uri === 'register' && $method === 'POST') {
     $controller->register();
+} elseif ($uri === 'login_ahli' && $method === 'POST') {
+    $controller->loginForMember();
+} elseif ($uri === 'login_staff' && $method === 'POST') {
+    $controller->loginForStaff();
+} elseif ($uri === 'login_alk' && $method === 'POST') {
+    $controller->loginForALK();
 } elseif ($uri === 'logout' && $method === 'GET') {
     $controller->logout();
 } elseif ($uri === 'back' && $method === 'GET') {
