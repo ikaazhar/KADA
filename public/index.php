@@ -30,6 +30,8 @@ if ($uri === '' && $method === 'GET') {
     } else {
         header('Location: /buttonpage');
     }
+} elseif ($uri === 'homepage' && $method === 'GET') {
+    $controller->homepage();
 } elseif ($uri === 'buttonpage' && $method === 'GET') {
     $controller->buttonpage();
 } elseif ($uri === 'register' && $method === 'POST') {
@@ -54,31 +56,31 @@ if ($uri === '' && $method === 'GET') {
     if (isAuthenticated()) {
         $controller->create();
     } else {
-        header('Location: /login');
+        $controller->homepage();
     }
 } elseif ($uri === 'store' && $method === 'POST') {
     if (isAuthenticated()) {
         $controller->store();
     } else {
-        header('Location: /login');
+        $controller->homepage();
     }
 } elseif (preg_match('/edit\/(\d+)/', $uri, $matches) && $method === 'GET') {
     if (isAuthenticated()) {
         $controller->edit($matches[1]);
     } else {
-        header('Location: /login');
+        $controller->homepage();
     }
 } elseif (preg_match('/update\/(\d+)/', $uri, $matches) && $method === 'POST') {
     if (isAuthenticated()) {
         $controller->update($matches[1]);
     } else {
-        header('Location: /login');
+        $controller->homepage();
     }
 } elseif (preg_match('/delete\/(\d+)/', $uri, $matches) && $method === 'POST') {
     if (isAuthenticated()) {
         $controller->delete($matches[1]);
     } else {
-        header('Location: /login');
+        $controller->homepage();
     }
 } 
 else {
