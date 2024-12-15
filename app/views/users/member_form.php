@@ -126,7 +126,7 @@
         <br>
 
         <li class="nav-item m-2 d-none d-md-inline">
-                            <a class="btn btn-sm btn-info text-dark" href="/family_details"> Seterusnya </a>
+                            <a class="btn btn-sm btn-info text-dark" href="/createFamilyDetails"> Seterusnya </a>
                         </li>
 
         

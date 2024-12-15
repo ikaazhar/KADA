@@ -85,7 +85,7 @@ class User extends Model
     public function createFamilyDetails($data)
     {
         $stmt = $this->getConnection()->prepare(
-            "INSERT INTO Family_Details (
+            "INSERT INTO family_details (
                 applicant_id, name, relationship, id_number
             ) VALUES (
                 :applicant_id, :name, :relationship, :id_number
