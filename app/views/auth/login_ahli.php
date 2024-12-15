@@ -1,30 +1,3 @@
-<?php
-// Start session
-session_start();
-
-// Include database connection
-require_once 'database.php';
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $ahli_number = $_POST['ahli_number'];
-    $password = $_POST['password'];
-
-    // Validate credentials
-    $stmt = $db->prepare("SELECT * FROM users WHERE role = 'ahli' AND user_id = ? AND password = ?");
-    $stmt->execute([$ahli_number, $password]);
-    $user = $stmt->fetch();
-
-    if ($user) {
-        // Store user info in session
-        $_SESSION['user_id'] = $user['user_id'];
-        $_SESSION['role'] = $user['role'];
-        header('Location: index.php'); // Redirect to index
-        exit;
-    } else {
-        $error = "Invalid Ahli number or password.";
-    }
-}
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -37,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body class="bg-light">
     <div class="container py-5">
         <h1 class="mb-4">Login Ahli</h1>
-        <form method="POST" class="border p-4 bg-white shadow-sm rounded">
+        <form action="/loginMember" method="POST" class="border p-4 bg-white shadow-sm rounded">
             <?php if (isset($error)): ?>
                 <div class="alert alert-danger"><?= $error ?></div>
             <?php endif; ?>
