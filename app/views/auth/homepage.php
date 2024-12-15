@@ -21,13 +21,13 @@
                 <div class="collapse navbar-collapse justify-content-end align-center" id="main-nav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="register.php"> Daftar Sekarang&nbsp;&nbsp;&nbsp;&nbsp; </a>
+                            <a class="nav-link text-dark" href="/create/"> Daftar Sekarang&nbsp;&nbsp;&nbsp;&nbsp; </a>
                         </li>
                         <li class="nav-item d-md-none">
-                            <a class="nav-link text-dark" href="login.php"> Login </a>
+                            <a class="nav-link text-dark" href="/buttonpage"> Login </a>
                         </li>
                         <li class="nav-item m-2 d-none d-md-inline">
-                            <a class="btn btn-sm btn-info text-dark" href="login.php"> Login </a>
+                            <a class="btn btn-sm btn-info text-dark" href="/buttonpage"> Login </a>
                         </li>
                     </ul>
                 </div>

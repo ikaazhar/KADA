@@ -9,9 +9,9 @@
 <body class="bg-light">
     <div class="container py-5 text-center">
         <h1 class="mb-4">Select Your Login Role</h1>
-        <a href="login_ahli.php" class="btn btn-primary mb-2">Ahli Koperasi</a>
-        <a href="login_staff.php" class="btn btn-primary mb-2">Staff</a>
-        <a href="login_alk.php" class="btn btn-primary">ALK</a>
+        <a href="/loginMember" class="btn btn-primary mb-2">Ahli Koperasi</a>
+        <a href="/loginStaff" class="btn btn-primary mb-2">Staff</a>
+        <a href="/loginALK" class="btn btn-primary">ALK</a>
     </div>
 </body>
 </html>

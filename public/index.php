@@ -28,7 +28,7 @@ if ($uri === '' && $method === 'GET') {
     if (isAuthenticated()) {
         $controller->index();
     } else {
-        header('Location: /buttonpage');
+        header('Location: /homepage');
     }
 } elseif ($uri === 'homepage' && $method === 'GET') {
     $controller->homepage();
@@ -36,11 +36,11 @@ if ($uri === '' && $method === 'GET') {
     $controller->buttonpage();
 } elseif ($uri === 'register' && $method === 'POST') {
     $controller->register();
-} elseif ($uri === 'loginMember' && $method === 'POST') {
+} elseif ($uri === 'loginMember' && $method === 'GET') {
     $controller->loginMember();
-} elseif ($uri === 'loginStaff' && $method === 'POST') {
+} elseif ($uri === 'loginStaff' && $method === 'GET') {
     $controller->loginStaff();
-} elseif ($uri === 'loginALK' && $method === 'POST') {
+} elseif ($uri === 'loginALK' && $method === 'GET') {
     $controller->loginALK();
 } elseif ($uri === 'authenticateMember' && $method === 'POST') {
     $controller->authenticateMember();
@@ -53,11 +53,7 @@ if ($uri === '' && $method === 'GET') {
 } elseif ($uri === 'back' && $method === 'GET') {
     $controller->index();
 } elseif ($uri === 'create' && $method === 'GET') {
-    if (isAuthenticated()) {
-        $controller->create();
-    } else {
-        $controller->homepage();
-    }
+    $controller->create();
 } elseif ($uri === 'store' && $method === 'POST') {
     if (isAuthenticated()) {
         $controller->store();
