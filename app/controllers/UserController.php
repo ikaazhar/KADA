@@ -47,25 +47,22 @@ class UserController extends Controller
         $this->view('auth/register');
     }
 
-    public function loginForMember()
+    public function loginMember()
     {
         $this->view('auth/login_ahli');
-        $this->user->loginMember();
     }
 
-    public function loginForStaff()
+    public function loginStaff()
     {
         $this->view('auth/login_staff');
-        $this->user->loginStaff();
     }
 
-    public function loginForALK()
+    public function loginALK()
     {
         $this->view('auth/login_alk');
-        $this->user->loginALK();
     }
 
-    public function loginMember()
+    public function authenticateMember()
     {
         $member_ID = $_POST['member_ID'];
         $password = $_POST['password'];
@@ -83,7 +80,7 @@ class UserController extends Controller
         }
     }
 
-    public function loginStaff()
+    public function authenticateStaff()
     {
         $staff_ID = $_POST['staff_ID'];
         $password = $_POST['password'];
@@ -101,7 +98,7 @@ class UserController extends Controller
         }
     }
 
-    public function loginALK()
+    public function authenticateALK()
     {
         $alk_ID = $_POST['alk_ID'];
         $password = $_POST['password'];
