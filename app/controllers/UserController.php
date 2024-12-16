@@ -183,6 +183,11 @@ class UserController extends Controller
         $this->view('menu/homepage_ahli');
     }
 
+    public function viewInvoice()
+    {
+        $this->view('menu/getinvoice');
+    }
+
     public function logout()
     {
         session_start();
@@ -191,3 +196,5 @@ class UserController extends Controller
     }
     
 }
+
+

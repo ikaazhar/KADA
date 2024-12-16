@@ -89,6 +89,16 @@ if ($uri === '' && $method === 'GET') {
         $controller->homepage();
     }
 } 
+
+elseif ($uri === 'viewInvoice' && $method === 'GET') {
+    if (isAuthenticated()) {
+        $controller->viewInvoice();
+    } else {
+        $controller->homepage();
+    }
+} 
+
+
 else {
     http_response_code(404);
     echo "Page not found.";
