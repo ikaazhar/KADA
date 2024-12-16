@@ -33,7 +33,7 @@
                             <a class="nav-link text-dark" href=""> Baki Pinjaman&nbsp;&nbsp;&nbsp;&nbsp; </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href=""> Semak Penyata&nbsp;&nbsp;&nbsp;&nbsp; </a>
+                            <a class="nav-link text-dark" href="/viewInvoice"> Semak Penyata&nbsp;&nbsp;&nbsp;&nbsp; </a>
                         </li>
                         <li class="nav-item d-md-none">
                             <a href="/logout" class="nav-link text-dark"> Logout </a>
