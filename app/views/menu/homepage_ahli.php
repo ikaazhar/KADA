@@ -51,7 +51,7 @@
         <a href="" class="btn btn-primary mb-2">Semak Kelulusan Pinjaman</a>
         <a href="" class="btn btn-primary">Semak Simpanan</a>
         <a href="" class="btn btn-primary mb-2">Baki Pinjaman</a>
-        <a href="" class="btn btn-primary mb-2">Semak Penyata</a>
+        <a href="/viewInvoice" class="btn btn-primary mb-2">Semak Penyata</a>
     </div>
 </body>
 </html>
