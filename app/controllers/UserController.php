@@ -154,7 +154,7 @@ class UserController extends Controller
     public function storeFamilyDetails()
     {
         $this->user->createFamilyDetails($_POST);
-        header('Location: /homepage');
+        header('Location: /');
     }
 
     public function edit($id)
