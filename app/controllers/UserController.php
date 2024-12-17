@@ -139,22 +139,30 @@ class UserController extends Controller
         $this->view('users/member_form');
     }
 
-    public function store()
-    {
-        $this->user->create($_POST);
-        header('Location: /');
+    public function store() {
+        $stmt = $this->user->create($_POST);
+        $applicantId = $this->user->getLastInsertedId(); // Retrieve the last inserted ID
+        header("Location: /createFamilyDetails?applicant_id=$applicantId");
+        exit;
     }
 
     //utk form family detail
     public function createFamilyDetails()
     {
-        $this->view('users/family_details');
+        $applicantId = $_GET['applicant_id'] ?? null;
+        if (!$applicantId) {
+            die('Applicant ID is required');
+        }
+        $this->view('users/family_details', ['applicant_id' => $applicantId]);
     }
-
-    public function storeFamilyDetails()
-    {
+    
+    public function storeFamilyDetails() {
+        if (empty($_POST['applicant_id'])) {
+            die('Applicant ID is required');
+        }
         $this->user->createFamilyDetails($_POST);
-        header('Location: /');
+        header('Location: /homepage');
+        exit;
     }
 
     public function edit($id)

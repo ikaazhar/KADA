@@ -126,8 +126,8 @@
         <br>
 
         <li class="nav-item m-2 d-none d-md-inline">
-                            <a class="btn btn-sm btn-info text-dark" href="/createFamilyDetails"> Seterusnya </a>
-                        </li>
+            <a class="btn btn-sm btn-info text-dark" href="/createFamilyDetails?applicant_id=<?= htmlspecialchars($applicant_id) ?>">Seterusnya</a>
+        </li>
 
         
     </form>
