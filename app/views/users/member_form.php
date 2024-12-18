@@ -25,15 +25,17 @@
             <div class="col-md-4">
                 <label for="marital_status" class="form-label">Taraf Perkahwinan</label>
                 <select class="form-select" id="marital_status" name="marital_status" required>
-                    <option value="Single">Bujang</option>
-                    <option value="Married">Berkahwin</option>
+                    <option value="Bujang">Bujang</option>
+                    <option value="Berkahwin">Berkahwin</option>
+                    <option value="Duda">Duda</option>
+                    <option value="Janda">Janda</option>
                 </select>
             </div>
             <div class="col-md-4">
                 <label for="gender" class="form-label">Jantina</label>
                 <select class="form-select" id="gender" name="gender" required>
-                    <option value="Male">Lelaki</option>
-                    <option value="Female">Perempuan</option>
+                    <option value="Lelaki">Lelaki</option>
+                    <option value="Perempuan">Perempuan</option>
                 </select>
             </div>
             <div class="col-md-4">
