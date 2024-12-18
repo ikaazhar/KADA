@@ -27,11 +27,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($familyDetails as $family): ?>
+                            <?php foreach ($familyDetails as $user): ?>
                                 <tr>
-                                    <td><?= htmlspecialchars($family['name']) ?></td>
-                                    <td><?= htmlspecialchars($family['relationship']) ?></td>
-                                    <td><?= htmlspecialchars($family['id_number']) ?></td>
+                                    <td><?= htmlspecialchars($user['name']) ?></td>
+                                    <td><?= htmlspecialchars($user['relationship']) ?></td>
+                                    <td><?= htmlspecialchars($user['id_number']) ?></td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
@@ -61,15 +61,10 @@
                         <input type="text" name="relationship" id="relationship" class="form-control" required>
                     </div>
 
-<<<<<<< HEAD
-        <label for="id_number">No K/P:</label>
-        <input type="text" name="id_number" id="id_number" required><br>
-=======
                     <div class="mb-3">
-                        <label for="id_number" class="form-label">ID Number</label>
-                        <input type="text" name="id_number" id="id_number" class="form-control" required>
+                        <label for="id_number">No K/P:</label>
+                        <input type="text" name="id_number" id="id_number" required><br>
                     </div>
->>>>>>> 39e40ea715cca90b1754ecca4e73e1c41571ae86
 
                     <button type="submit" class="btn btn-success">Save Details</button>
                 </form>
