@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Penyata Kewangan</title>
+    <title>Maklumat Simpanan Ahli</title>
     <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <h1 class="text-center">PENGESAHAN PENYATA KEWANGAN AHLI KOPERASI KAKITANGAN KADA KELANTAN BERHAD</h1>
-    
+
+    <h1 class="text-center">PENYATA KEWANGAN AHLI KOPERASI KAKITANGAN KADA KELANTAN</h1>
+
     <div class="container">
         <div class="card">
             <div class="card-body">
@@ -21,84 +22,48 @@
     </div>
 
     <div class="container mt-5">
-        <!-- Card for Maklumat Saham Ahli -->
+        <!-- Card for Maklumat Simpanan Ahli -->
         <div class="card">
-            <div class="card-header bg-secondary text-white text-center">
-                <h5>Maklumat Saham Ahli</h5>
-            </div>
             <div class="card-body">
                 <table class="table table-bordered table-hover text-center">
                     <thead class="table-dark">
                         <tr>
-                            <th>Kategori</th>
-                            <th>Jumlah (RM) </th>
+                            <th rowspan="2">Syer Majikan <br>(RM)</th>
+                            <th rowspan="2">Syer Pekerja <br>(RM)</th>
+                            <th rowspan="2">Jumlah <br>(RM)</th>
+                            <th colspan="3">Baki Simpanan</th>
+                        </tr>
+
+                        <tr class="table-dark">
+                            <th>Akaun 1 (RM)</th>
+                            <th>Akaun 2 (RM)</th>
+                            <th>Akaun 3 (RM)</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Modal Syer</td>
-                            <td>500.00</td>
-                        </tr>
-                        <tr>
-                            <td>Modal Yuran</td>
-                            <td>100.00</td>
-                        </tr>
-                        <tr>
-                            <td>Simpanan Tetap</td>
-                            <td>1500.00</td>
-                        </tr>
-                        <tr>
-                            <td>Tabung Anggota</td>
-                            <td>200.00</td>
-                        </tr>
-                        <tr>
-                            <td>Simpanan Anggota</td>
-                            <td>1200.00</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-            
-    <div class="container mt-5">
-        <!-- Card for Maklumat Pinjaman Ahli -->
-        <div class="card">
-            <div class="card-header bg-secondary text-white text-center">
-                <h5>Maklumat Pinjaman Ahli</h5>
-            </div>
-            <div class="card-body">
-                <table class="table table-bordered table-hover text-center">
-                    <thead class="table-dark">
-                        <tr>
-                            <th>Kategori</th>
-                            <th>Jumlah (RM) </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Al-Bai</td>
                             <td>5000.00</td>
-                        </tr>
-                        <tr>
-                            <td>Al-Innah</td>
+                            <td>2000.00</td>
+                            <td>7000.00</td>
+                            <td>1000.00</td>
+                            <td>2000.00</td>
                             <td>3000.00</td>
                         </tr>
                         <tr>
-                            <td>Baikpulih Kenderaan</td>
+                            <td>4000.00</td>
                             <td>1500.00</td>
+                            <td>5500.00</td>
+                            <td>1200.00</td>
+                            <td>1500.00</td>
+                            <td>1800.00</td>
                         </tr>
                         <tr>
-                            <td>Road Tax / Insurans</td>
-                            <td>600.00</td>
-                        </tr>
-                        <tr>
-                            <td>Khas</td>
-                            <td>2000.00</td>
-                        </tr>
-                        <tr>
-                            <td>Al-Qadrud Hassan</td>
-                            <td>1000.00</td>
+                            <td>6000.00</td>
+                            <td>2500.00</td>
+                            <td>8500.00</td>
+                            <td>1500.00</td>
+                            <td>2500.00</td>
+                            <td>3500.00</td>
                         </tr>
                     </tbody>
                 </table>
@@ -107,6 +72,6 @@
     </div>
 
     <!-- Bootstrap 5 JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
