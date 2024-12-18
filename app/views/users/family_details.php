@@ -14,7 +14,7 @@
             <tr>
                 <th>Name</th>
                 <th>Relationship</th>
-                <th>ID Number</th>
+                <th>No K/P</th>
             </tr>
             <?php foreach ($familyDetails as $family): ?>
                 <tr>
@@ -38,7 +38,7 @@
         <label for="relationship">Relationship:</label>
         <input type="text" name="relationship" id="relationship" required><br>
 
-        <label for="id_number">ID Number:</label>
+        <label for="id_number">No K/P:</label>
         <input type="text" name="id_number" id="id_number" required><br>
 
         <button type="submit">Save Details</button>

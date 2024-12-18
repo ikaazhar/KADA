@@ -161,7 +161,8 @@ class UserController extends Controller
             die('Applicant ID is required');
         }
         $this->user->createFamilyDetails($_POST);
-        header('Location: /homepage');
+        $applicantId = $this->user->getLastInsertedId(); // Retrieve the last inserted ID
+        header("Location: /createFamilyDetails?applicant_id=$applicantId");
         exit;
     }
 
