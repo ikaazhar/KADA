@@ -102,6 +102,32 @@ class User extends Model
         return $stmt;
     }
 
+    public function createYuran($data)
+    {
+        $stmt = $this->getConnection()->prepare(
+            "INSERT INTO yuran (
+                applicant_id, yuran_masuk, modal_syer, modal_yuran, wang_deposit,
+                sumbangan_kebajikan, simpanan_tetap, lain_lain, file_upload
+            ) VALUES (
+                :applicant_id, :yuran_masuk, :modal_syer, :modal_yuran, :wang_deposit,
+                :sumbangan_kebajikan, :simpanan_tetap, :lain_lain, :file_upload
+            )"
+        );
+
+        $stmt->execute([
+            ':applicant_id' => $data['applicant_id'],
+            ':yuran_masuk' => $data['yuran_masuk'],
+            ':modal_syer' => $data['modal_syer'],
+            ':modal_yuran' => $data['modal_yuran'],
+            ':wang_deposit' => $data['wang_deposit'],
+            ':sumbangan_kebajikan' => $data['sumbangan_kebajikan'],
+            ':simpanan_tetap' => $data['simpanan_tetap'],
+            ':lain_lain' => $data['lain_lain'],
+            ':file_upload' => $data['file_upload']
+        ]);
+
+        return $stmt;
+    }
 
     public function update($id, $data)
     {
