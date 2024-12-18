@@ -197,6 +197,11 @@ class UserController extends Controller
         $this->view('menu/invoice');
     }
 
+    public function loanInfo()
+    {
+        $this->view('menu/loan_info');
+    }
+
     public function logout()
     {
         session_start();
