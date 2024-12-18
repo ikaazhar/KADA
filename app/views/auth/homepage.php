@@ -4,8 +4,7 @@
     <title> KADA Homepage </title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     </head>
-    <body style="font-family:comic sans ms; background-color: lavender;">
-
+    <body>
         <nav class="navbar navbar-expand-md fixed-top navbar-light bg-warning">
             <div class="container-xxl">
                 <a href="/homepage" class="navbar-brand">
@@ -35,7 +34,6 @@
         </nav>
 
         <br><br><br><h2 class="fw-bold" style="text-align:center;"> Koperasi Kakitangan KADA </h2>
-
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     </body>

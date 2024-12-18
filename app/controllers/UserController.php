@@ -185,7 +185,7 @@ class UserController extends Controller
 
     public function viewInvoice()
     {
-        $this->view('menu/getinvoice');
+        $this->view('menu/invoice');
     }
 
     public function logout()
