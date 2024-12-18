@@ -4,7 +4,7 @@
     <title> KADA Homepage </title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     </head>
-    <body style="font-family:comic sans ms; background-color: lavender;">
+    <body>
 
         <nav class="navbar navbar-expand-md fixed-top navbar-light bg-warning">
             <div class="container-xxl">
