@@ -12,6 +12,14 @@ class User extends Model
 
     }
 
+    public function getFamilyDetails($applicantId) 
+    {
+        $stmt = $this->getConnection()->prepare("SELECT * FROM family_details WHERE applicant_id = :applicant_id");
+        $stmt->execute([':applicant_id' => $applicantId]);
+        return $stmt->fetchAll(); // Fetch all records
+    }
+
+
     public function findByMemberID($member_id)
     {
         $stmt = $this->getConnection()->prepare("SELECT * FROM member_account WHERE member_id = :member_id");
