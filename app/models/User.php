@@ -136,4 +136,9 @@ class User extends Model
         // Return the statement object to check execution if needed
         return $stmt;
     }
+
+    public function getLastInsertedId() {
+        return $this->getConnection()->lastInsertId();
+    }
+    
 }

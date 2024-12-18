@@ -21,7 +21,7 @@ use App\Controllers\UserController;
 $controller = new UserController();
 
 // Basic routing logic
-$uri = trim($_SERVER['REQUEST_URI'], '/');
+$uri = explode('?', trim($_SERVER['REQUEST_URI'], '/'))[0];
 $method = $_SERVER['REQUEST_METHOD'];
 
 if ($uri === '' && $method === 'GET') {
@@ -59,11 +59,7 @@ if ($uri === '' && $method === 'GET') {
 } elseif ($uri === 'storeFamilyDetails' && $method === 'POST') {
     $controller->storeFamilyDetails();
 } elseif ($uri === 'store' && $method === 'POST') {
-    if (isAuthenticated()) {
-        $controller->store();
-    } else {
-        $controller->homepage();
-    }
+    $controller->store();
 } elseif (preg_match('/edit\/(\d+)/', $uri, $matches) && $method === 'GET') {
     if (isAuthenticated()) {
         $controller->edit($matches[1]);
