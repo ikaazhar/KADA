@@ -157,6 +157,17 @@ class UserController extends Controller
         header('Location: /homepage');
     }
 
+    public function createYuran()
+    {
+        $this->view('users/yuran');
+    }
+
+    public function storeYuran()
+    {
+        $this->user->createYuran($_POST);
+        header('Location: /homepage_ahli');
+    }
+
     public function edit($id)
     {
         // Fetch the user data using the ID
