@@ -96,6 +96,12 @@ if ($uri === '' && $method === 'GET') {
     } else {
         $controller->homepage();
     }
+} elseif ($uri === 'viewSaving' && $method === 'GET') {
+    if (isAuthenticated()) {
+        $controller->viewSaving();
+    } else {
+        $controller->homepage();
+    }
 } 
 else {
     http_response_code(404);

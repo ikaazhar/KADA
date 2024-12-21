@@ -205,6 +205,11 @@ class UserController extends Controller
         $this->view('menu/invoice');
     }
 
+    public function viewSaving()
+    {
+        $this->view('menu/saving');
+    }
+
     public function loanInfo()
     {
         $this->view('menu/loan_info');
