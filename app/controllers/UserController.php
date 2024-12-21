@@ -153,18 +153,26 @@ class UserController extends Controller
         if (!$applicantId) {
             die('Applicant ID is required');
         }
-        $this->view('users/family_details', ['applicant_id' => $applicantId]);
+
+        $familyDetails = $this->user->getFamilyDetails($applicantId);
+        $this->view('users/family_details', ['applicant_id' => $applicantId, 'familyDetails' => $familyDetails]);
     }
+
     
-    public function storeFamilyDetails() {
+    public function storeFamilyDetails()
+    {
         if (empty($_POST['applicant_id'])) {
             die('Applicant ID is required');
         }
+    
         $this->user->createFamilyDetails($_POST);
-        $applicantId = $this->user->getLastInsertedId(); // Retrieve the last inserted ID
+    
+        // Redirect to show the family details for the specific applicant_id
+        $applicantId = $_POST['applicant_id'];
         header("Location: /createFamilyDetails?applicant_id=$applicantId");
         exit;
     }
+    
 
     public function edit($id)
     {
