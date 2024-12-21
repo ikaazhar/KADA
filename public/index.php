@@ -84,17 +84,19 @@ if ($uri === '' && $method === 'GET') {
     } else {
         $controller->homepage();
     }
-} 
-
-elseif ($uri === 'viewInvoice' && $method === 'GET') {
+} elseif ($uri === 'viewInvoice' && $method === 'GET') {
     if (isAuthenticated()) {
         $controller->viewInvoice();
     } else {
         $controller->homepage();
     }
+} elseif ($uri === 'loanInfo' && $method === 'GET') {
+    if (isAuthenticated()) {
+        $controller->loanInfo();
+    } else {
+        $controller->homepage();
+    }
 } 
-
-
 else {
     http_response_code(404);
     echo "Page not found.";
