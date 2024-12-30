@@ -58,6 +58,13 @@ if ($uri === '' && $method === 'GET') {
     $controller->createFamilyDetails();
 } elseif ($uri === 'storeFamilyDetails' && $method === 'POST') {
     $controller->storeFamilyDetails();
+<<<<<<< Updated upstream
+=======
+} elseif ($uri === 'createYuran' && $method === 'GET') {
+    $controller->createYuran();
+} elseif ($uri === 'storeYuran' && $method === 'GET') {
+    $controller->storeYuran();
+>>>>>>> Stashed changes
 } elseif ($uri === 'store' && $method === 'POST') {
     $controller->store();
 } elseif (preg_match('/edit\/(\d+)/', $uri, $matches) && $method === 'GET') {
