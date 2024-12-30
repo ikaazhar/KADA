@@ -58,6 +58,10 @@ if ($uri === '' && $method === 'GET') {
     $controller->createFamilyDetails();
 } elseif ($uri === 'storeFamilyDetails' && $method === 'POST') {
     $controller->storeFamilyDetails();
+} elseif ($uri === 'createYuran' && $method === 'GET') {
+    $controller->createYuran();
+} elseif ($uri === 'storeYuran' && $method === 'GET') {
+    $controller->storeYuran();
 } elseif ($uri === 'store' && $method === 'POST') {
     if (isAuthenticated()) {
         $controller->store();

@@ -106,28 +106,40 @@ class User extends Model
     {
         $stmt = $this->getConnection()->prepare(
             "INSERT INTO yuran (
-                applicant_id, yuran_masuk, modal_syer, modal_yuran, wang_deposit,
-                sumbangan_kebajikan, simpanan_tetap, lain_lain, file_upload
+                applicant_id, yuran_masuk, yuran_masuk_value, modal_syer, modal_syer_value,
+                modal_yuran, modal_yuran_value, wang_deposit, wang_deposit_value,
+                sumbangan_kebajikan, sumbangan_kebajikan_value, simpanan_tetap, simpanan_tetap_value,
+                lain_lain, lain_lain_value, slip_gaji
             ) VALUES (
-                :applicant_id, :yuran_masuk, :modal_syer, :modal_yuran, :wang_deposit,
-                :sumbangan_kebajikan, :simpanan_tetap, :lain_lain, :file_upload
+                :applicant_id, :yuran_masuk, :yuran_masuk_value, :modal_syer, :modal_syer_value,
+                :modal_yuran, :modal_yuran_value, :wang_deposit, :wang_deposit_value,
+                :sumbangan_kebajikan, :sumbangan_kebajikan_value, :simpanan_tetap, :simpanan_tetap_value,
+                :lain_lain, :lain_lain_value, :slip_gaji
             )"
         );
 
         $stmt->execute([
             ':applicant_id' => $data['applicant_id'],
             ':yuran_masuk' => $data['yuran_masuk'],
+            ':yuran_masuk_value' => $data['yuran_masuk_value'] ?? null,
             ':modal_syer' => $data['modal_syer'],
+            ':modal_syer_value' => $data['modal_syer_value'] ?? null,
             ':modal_yuran' => $data['modal_yuran'],
+            ':modal_yuran_value' => $data['modal_yuran_value'] ?? null,
             ':wang_deposit' => $data['wang_deposit'],
+            ':wang_deposit_value' => $data['wang_deposit_value'] ?? null,
             ':sumbangan_kebajikan' => $data['sumbangan_kebajikan'],
+            ':sumbangan_kebajikan_value' => $data['sumbangan_kebajikan_value'] ?? null,
             ':simpanan_tetap' => $data['simpanan_tetap'],
+            ':simpanan_tetap_value' => $data['simpanan_tetap_value'] ?? null,
             ':lain_lain' => $data['lain_lain'],
-            ':file_upload' => $data['file_upload']
+            ':lain_lain_value' => $data['lain_lain_value'] ?? null,
+            ':slip_gaji' => $data['slip_gaji']
         ]);
 
         return $stmt;
     }
+
 
     public function update($id, $data)
     {
