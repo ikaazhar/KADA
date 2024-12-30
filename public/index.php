@@ -58,7 +58,9 @@ if ($uri === '' && $method === 'GET') {
     $controller->createFamilyDetails();
 } elseif ($uri === 'storeFamilyDetails' && $method === 'POST') {
     $controller->storeFamilyDetails();
-} elseif ($uri === 'createYuran' && $method === 'GET') {
+}
+//ni aq dh update router 
+elseif ($uri === 'createYuran' && $method === 'GET') {
     $controller->createYuran();
 } elseif ($uri === 'storeYuran' && $method === 'GET') {
     $controller->storeYuran();

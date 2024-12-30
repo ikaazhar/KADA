@@ -157,6 +157,8 @@ class UserController extends Controller
         header('Location: /homepage');
     }
 
+
+    //aq dh tukar mcm yg kau suruh tpi yg storeYuran tu aq x sure betul ke x sbb x nampak sgt 
     public function createYuran()
     {
         $applicantId = $_GET['applicant_id'] ?? null;

@@ -102,6 +102,9 @@ class User extends Model
         return $stmt;
     }
 
+    
+
+    //aq dh tukar code ikut database yg aq bagi dlm group 
     public function createYuran($data)
     {
         $stmt = $this->getConnection()->prepare(
@@ -139,6 +142,7 @@ class User extends Model
 
         return $stmt;
     }
+
 
 
     public function update($id, $data)
