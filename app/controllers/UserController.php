@@ -174,6 +174,39 @@ class UserController extends Controller
     }
     
 
+
+    //aq dh tukar mcm yg kau suruh tpi yg storeYuran tu aq x sure betul ke x sbb x nampak sgt 
+    public function createYuran()
+    {
+        $applicantId = $_GET['applicant_id'] ?? null;
+        if (!$applicantId) {
+            die('Applicant ID is required');
+        }
+
+        $yuran = $this->user->getYuran($applicantId);
+        $this->view('users/yuran', ['applicant_id' => $applicantId, 'yuran' => $yuran]);
+    }
+
+    public function storeYuran()
+    {
+        if (empty($_POST['applicant_id'])) {
+            die('Applicant ID is required');
+        }
+    
+        $this->user->createYuran($_POST);
+    }
+
+    //public function createYuran()
+    //{
+    //    $this->view('users/yuran');
+    //}
+
+    //public function storeYuran()
+    //{
+    //    $this->user->createYuran($_POST);
+    //    header('Location: /homepage_ahli');
+    //}
+
     public function edit($id)
     {
         // Fetch the user data using the ID
