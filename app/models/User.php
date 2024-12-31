@@ -149,4 +149,17 @@ class User extends Model
         return $this->getConnection()->lastInsertId();
     }
     
+    public function findLoanStatus($LoanApplicantID) 
+    {
+        $stmt = $this->getConnection()->prepare("SELECT * FROM Approved_loan WHERE LoanApplicantID = LoanApplicantID");
+        $stmt->execute([':LoanApplicantID' => $LoanApplicantID]);
+        return $stmt->fetch();
+    }
+
+    public function checkLoanBalance($MonthlyInstallment) 
+    {
+        $stmt = $this->getConnection()->prepare("SELECT * FROM loan WHERE MonthlyInstallment = MonthlyInstallment");
+        $stmt->execute([':MonthlyInstallment' => $MonthlyInstallment]);
+        return $stmt->fetch();
+    }
 }

@@ -222,6 +222,25 @@ class UserController extends Controller
         header('Location: /homepage');
     }
     
+    public function loanStatus() 
+    {
+        $LoanApplicantID = $_GET['LoanApplicantID'];
+
+        $user = $this->user->findLoanStatus($LoanApplicantID);
+
+        if($user && $LoanApplicantID === $user['LoanApplicantID']) {
+            $this->view('menu/loan_success');
+        } else {
+            $this->view('menu/loan_disapproved');
+        }
+    }
+
+    public function loanBalance()
+    {
+        $MonthlyInstallment = $_GET['MonthlyInstallment'];
+        $user = $this->user->checkLoanBalance($MonthlyInstallment);
+        $this->view('menu/loan_balance');
+    }
 }
 
 
