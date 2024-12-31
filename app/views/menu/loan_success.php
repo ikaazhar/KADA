@@ -45,12 +45,25 @@
             </div>
         </nav>
 
-        <div class="container py-5 text-center"></div>
-        <a href="" class="btn btn-primary mb-2">Mohon Pinjaman</a>
-        <a href="" class="btn btn-primary mb-2">Semak Kelulusan Pinjaman</a>
-        <a href="/viewSaving" class="btn btn-primary">Semak Simpanan</a>
-        <a href="" class="btn btn-primary mb-2">Baki Pinjaman</a>
-        <a href="/viewInvoice" class="btn btn-primary mb-2">Semak Penyata</a>
-    </div>
-</body>
+        <br><br><br><h2 class="fw-bold" style="text-align:center;"> Semak Kelulusan Pinjaman </h2>
+        <br><br><h4 class="fw-bold" style="text-align:center;"> Permohonan Anda Berjaya! </h4>
+        
+        <div class="container">
+            <div class="card">
+                <div class="card-body">
+                    <p class="card-text"><strong>Nama: </strong></p>
+                    <p class="card-text"><strong>No. Kad Pengenalan: </strong></p>
+                    <p class="card-text"><strong>Nama Bank: </strong></p>
+                    <p class="card-text"><strong>No. Akaun Bank: </strong></p>
+                    <p class="card-text"><strong>No. EFT: </strong></p>
+                    <p class="card-text"><strong>Tarikh ke Bank: </strong></p>
+                    <p class="card-text"><strong>Jumlah: </strong></p>
+                    <p class="card-text"><strong>No. Invois: </strong></p>
+                    <p class="card-text"><strong>Jenis Pinjaman: </strong></p>
+                </div>
+            </div>
+        </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    </body>
 </html>

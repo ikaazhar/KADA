@@ -102,6 +102,18 @@ if ($uri === '' && $method === 'GET') {
     } else {
         $controller->homepage();
     }
+} elseif ($uri === 'loanStatus' && $method === 'GET') {
+    if (isAuthenticated()) {
+        $controller->loanStatus();
+    } else {
+        $controller->homepage();
+    }
+} elseif ($uri === 'loanBalance' && $method === 'GET') {
+    if (isAuthenticated()) {
+        $controller->loanBalance();
+    } else {
+        $controller->homepage();
+    }
 } 
 else {
     http_response_code(404);
