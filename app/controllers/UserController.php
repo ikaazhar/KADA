@@ -172,7 +172,28 @@ class UserController extends Controller
         header("Location: /createFamilyDetails?applicant_id=$applicantId");
         exit;
     }
+
+    //utk yuran
+    public function createYuran()
+    {
+        $applicantId = $_GET['applicant_id'] ?? null;
+        if (!$applicantId) {
+            die('Applicant ID is required');
+        }
+
+        $yuran = $this->user->getYuran($applicantId);
+        $this->view('users/yuran', ['applicant_id' => $applicantId, 'yuran' => $yuran]);
+    }
+
+    public function storeYuran()
+    {
+        if (empty($_POST['applicant_id'])) {
+            die('Applicant ID is required');
+        }
     
+        $this->user->createYuran($_POST);
+    }
+
 
     public function edit($id)
     {
