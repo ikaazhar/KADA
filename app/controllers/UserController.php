@@ -173,6 +173,18 @@ class UserController extends Controller
         exit;
     }
     
+    //ukt MembershipForm
+    public function createMembershipForm()
+    {
+        $this->view('users/MembershipForm');
+    }
+
+    public function storeMembershipForm() {
+        $stmt = $this->user->create($_POST);
+        $applicantId = $this->user->getLastInsertedId(); // Retrieve the last inserted ID
+        header("Location: /createFamilyDetails?applicant_id=$applicantId");
+        exit;
+    }
 
     public function edit($id)
     {

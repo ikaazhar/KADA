@@ -60,6 +60,10 @@ if ($uri === '' && $method === 'GET') {
     $controller->createFamilyDetails();
 } elseif ($uri === 'storeFamilyDetails' && $method === 'POST') {
     $controller->storeFamilyDetails();
+} elseif ($uri === 'createMembershipForm' && $method === 'GET') {
+    $controller->createMember();
+} elseif ($uri === 'storeMembershipForm' && $method === 'POST') {
+    $controller->storeMember();
 } elseif ($uri === 'store' && $method === 'POST') {
     $controller->store();
 } elseif (preg_match('/edit\/(\d+)/', $uri, $matches) && $method === 'GET') {

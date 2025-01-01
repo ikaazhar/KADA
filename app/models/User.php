@@ -95,6 +95,7 @@ class User extends Model
         return $stmt;
     }
 
+
     public function createFamilyDetails($data)
     {
         $stmt = $this->getConnection()->prepare(
@@ -112,6 +113,61 @@ class User extends Model
             ':id_number' => $data['id_number']
         ]);
     
+        return $stmt;
+    }
+
+    public function createMembershipForm($data)
+    {
+        $stmt = $this->getConnection()->prepare(
+            "INSERT INTO Member_Application (
+                name, id_number, marital_status, gender, religion, ethnicity, home_address, postcode, state, 
+                membership_number, pf_number, position_grade, office_address, office_postcode, city, 
+                phone_office, phone_mobile, phone_home, monthly_salary, family_name, family_relationship, 
+                family_id_number, yuran_masuk_value, modal_syer_value, modal_yuran_value, wang_deposit_value, 
+                sumbangan_kebajikan_value, simpanan_tetap_value, lain_lain_value, slip_gaji, approval
+            ) VALUES (
+                :name, :id_number, :marital_status, :gender, :religion, :ethnicity, :home_address, :postcode, :state, 
+                :membership_number, :pf_number, :position_grade, :office_address, :office_postcode, :city, 
+                :phone_office, :phone_mobile, :phone_home, :monthly_salary, :family_name, :family_relationship, 
+                :family_id_number, :yuran_masuk_value, :modal_syer_value, :modal_yuran_value, :wang_deposit_value, 
+                :sumbangan_kebajikan_value, :simpan_tetap_value, :lain_lain_value, :slip_gaji, :approval
+            )"
+        );
+
+        $stmt->execute([
+            ':name' => $data['name'],
+            ':id_number' => $data['id_number'],
+            ':marital_status' => $data['marital_status'],
+            ':gender' => $data['gender'],
+            ':religion' => $data['religion'],
+            ':ethnicity' => $data['ethnicity'],
+            ':home_address' => $data['home_address'],
+            ':postcode' => $data['postcode'],
+            ':state' => $data['state'],
+            ':membership_number' => $data['membership_number'],
+            ':pf_number' => $data['pf_number'],
+            ':position_grade' => $data['position_grade'],
+            ':office_address' => $data['office_address'],
+            ':office_postcode' => $data['office_postcode'],
+            ':city' => $data['city'],
+            ':phone_office' => $data['phone_office'],
+            ':phone_mobile' => $data['phone_mobile'],
+            ':phone_home' => $data['phone_home'],
+            ':monthly_salary' => $data['monthly_salary'],
+            ':family_name' => $data['family_name'],
+            ':family_relationship' => $data['family_relationship'],
+            ':family_id_number' => $data['family_id_number'],
+            ':yuran_masuk_value' => $data['yuran_masuk_value'],
+            ':modal_syer_value' => $data['modal_syer_value'],
+            ':modal_yuran_value' => $data['modal_yuran_value'],
+            ':wang_deposit_value' => $data['wang_deposit_value'],
+            ':sumbangan_kebajikan_value' => $data['sumbangan_kebajikan_value'],
+            ':simpan_tetap_value' => $data['simpan_tetap_value'],
+            ':lain_lain_value' => $data['lain_lain_value'],
+            ':slip_gaji' => $data['slip_gaji'],
+            ':approval' => $data['approval'] ?? 'Pending' // Default to 'Pending' if not provided
+        ]);
+
         return $stmt;
     }
 
