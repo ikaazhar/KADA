@@ -88,9 +88,9 @@ class UserController extends Controller
     
         $user = $this->user->findByMemberID($member_id);
     
-        if ($user && $password === $user['password']) {
+        if ($user && password_verify($password, $user['password'])) {
             session_start();
-            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['user_id'] = $user['member_id'];
             header('Location: /homepageMember');
         } else {
             echo "<h3 style='color: red;'>Invalid email or password. Please try again.</h3>";
@@ -213,6 +213,19 @@ class UserController extends Controller
     public function loanInfo()
     {
         $this->view('menu/loan_info');
+    }
+
+    public function createMember()
+    {
+        // Example data you might collect from a form or API request
+        $data = [
+            'password' => '1234', // The raw password to be hashed and stored
+        ];
+        $memberId = $this->user->createMemberAcc($data);
+
+        if (!$memberId) {
+            die('member ID is required');
+        }
     }
 
     public function logout()
