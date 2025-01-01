@@ -34,6 +34,10 @@
         </nav>
 
         <br><br><br><h2 class="fw-bold" style="text-align:center;"> Koperasi Kakitangan KADA </h2>
+        <!--untuk add member baru dalam table member-->
+        <li class="nav-item m-2 d-none d-md-inline">
+            <a class="btn btn-sm btn-info text-dark" href="/createMember"> Add Member </a>
+        </li>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     </body>

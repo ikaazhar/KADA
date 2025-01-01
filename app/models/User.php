@@ -22,8 +22,13 @@ class User extends Model
 
     public function findByMemberID($member_id)
     {
-        $stmt = $this->getConnection()->prepare("SELECT * FROM member_account WHERE member_id = :member_id");
-        $stmt->execute([':member_id' => $member_id]);
+       // $stmt = $this->getConnection()->prepare("SELECT * FROM member_account WHERE member_id = :member_id");
+       // $stmt->execute([':member_id' => $member_id]);
+       // return $stmt->fetch();
+
+        $stmt = $this->getConnection()->prepare("SELECT * FROM memberlogin WHERE member_id = :member_id");
+        $stmt->bindParam(':member_id', $member_id, \PDO::PARAM_STR);
+        $stmt->execute();
         return $stmt->fetch();
     }
 
@@ -145,8 +150,23 @@ class User extends Model
         return $stmt;
     }
 
-    public function getLastInsertedId() {
+    public function getLastInsertedId() 
+    {
         return $this->getConnection()->lastInsertId();
     }
-    
+
+    public function createMemberAcc($data)
+    {
+        // Prepare the SQL query for inserting into MemberLogin table
+        $stmt = $this->getConnection()->prepare("INSERT INTO MemberLogin (password) VALUES (:password)");
+
+        // Execute the query with the hashed password
+        $stmt->execute([
+            ':password' => password_hash($data['password'], PASSWORD_BCRYPT), // Hash the password for security
+        ]);
+
+        // Optionally, return the ID of the newly inserted row
+        return $this->getConnection()->lastInsertId();
+    }
+
 }
