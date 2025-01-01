@@ -21,44 +21,36 @@
                         <tr>
                             <th>Perkara</th>
                             <th>RM</th>
-                            <th>Setuju</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>Yuran Masuk</td>
                             <td><input type="number" step="0.01" name="yuran_masuk_value" class="form-control"></td>
-                            <td><input type="text" name="yuran_masuk" class="form-control" placeholder="Ya/Tidak"></td>
                         </tr>
                         <tr>
                             <td>Modal Syer</td>
                             <td><input type="number" step="0.01" name="modal_syer_value" class="form-control"></td>
-                            <td><input type="text" name="modal_syer" class="form-control" placeholder="Ya/Tidak"></td>
                         </tr>
                         <tr>
                             <td>Modal Yuran</td>
                             <td><input type="number" step="0.01" name="modal_yuran_value" class="form-control"></td>
-                            <td><input type="text" name="modal_yuran" class="form-control" placeholder="Ya/Tidak"></td>
                         </tr>
                         <tr>
                             <td>Wang Deposit Anggota</td>
                             <td><input type="number" step="0.01" name="wang_deposit_value" class="form-control"></td>
-                            <td><input type="text" name="wang_deposit" class="form-control" placeholder="Ya/Tidak"></td>
                         </tr>
                         <tr>
                             <td>Sumbangan Tabung Kebajikan (Al-Abrar)</td>
                             <td><input type="number" step="0.01" name="sumbangan_kebajikan_value" class="form-control"></td>
-                            <td><input type="text" name="sumbangan_kebajikan" class="form-control" placeholder="Ya/Tidak"></td>
                         </tr>
                         <tr>
                             <td>Simpanan Tetap</td>
                             <td><input type="number" step="0.01" name="simpanan_tetap_value" class="form-control"></td>
-                            <td><input type="text" name="simpanan_tetap" class="form-control" placeholder="Ya/Tidak"></td>
                         </tr>
                         <tr>
                             <td>Lain-lain</td>
                             <td><input type="number" step="0.01" name="lain_lain_value" class="form-control"></td>
-                            <td><input type="text" name="lain_lain" class="form-control" placeholder="Ya/Tidak"></td>
                         </tr>
                     </tbody>
                 </table>
