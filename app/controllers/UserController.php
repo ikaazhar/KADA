@@ -203,18 +203,21 @@ class UserController extends Controller
         header('Location: /homepage');
     }
 
-    //public function showSavings() {
+    public function showSavings() {
         // Assuming session holds logged-in member ID
-        //$memberId = $_SESSION['member_id']; 
-    
-        // Use User model instead of UserModel
-        //$userModel = new User();
-        //$data['savings'] = $userModel->getSavingsByMemberId($memberId);
-    
-        //$this->view('savings/saving', $data);
-        //}
-    
-    
+        $memberId = $_SESSION['member_id']; 
+
+        // Use User model to fetch member's details
+        $userModel = new User();
+        $memberDetails = $userModel->getMemberDetails($memberId);  // Fetch member details
+
+        // Fetch savings data (as before)
+        $data['savings'] = $userModel->getSavingsByMemberId($memberId);
+        $data['memberDetails'] = $memberDetails; // Add member details to the data array
+
+        // Pass data to the view
+        $this->view('savings/saving', $data);
+    }
     
 }
 
