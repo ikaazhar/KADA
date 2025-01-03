@@ -141,4 +141,13 @@ class User extends Model
         return $this->getConnection()->lastInsertId();
     }
     
+    //public function getSavingsByMemberId($memberId) {
+        //$sql = "SELECT * FROM saving_syer WHERE Member_id = :memberId";
+        //$stmt = $this->db->prepare($sql);
+        //$stmt->bindParam(':memberId', $memberId, PDO::PARAM_STR);
+        //$stmt->execute();
+        //return $stmt->fetch(PDO::FETCH_ASSOC);
+    //}
+    
+    
 }

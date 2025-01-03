@@ -202,6 +202,19 @@ class UserController extends Controller
         session_destroy();
         header('Location: /homepage');
     }
+
+    //public function showSavings() {
+        // Assuming session holds logged-in member ID
+        //$memberId = $_SESSION['member_id']; 
+    
+        // Use User model instead of UserModel
+        //$userModel = new User();
+        //$data['savings'] = $userModel->getSavingsByMemberId($memberId);
+    
+        //$this->view('savings/saving', $data);
+        //}
+    
+    
     
 }
 
