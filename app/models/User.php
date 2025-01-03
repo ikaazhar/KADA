@@ -141,4 +141,24 @@ class User extends Model
         return $this->getConnection()->lastInsertId();
     }
     
+    // Method to get member details by member ID
+    public function getMemberDetails($memberId) {
+        // Query to fetch member details
+        $sql = "SELECT * FROM member_application WHERE applicant_id = :memberId";
+        
+        // Prepare and execute the query
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([':memberId' => $memberId]);
+
+        // Fetch and return the results
+        return $stmt;
+    }
+
+    // Method to get savings by member ID (as before)
+    public function getSavingsByMemberId($memberId) {
+        $sql = "SELECT * FROM saving_syer WHERE Member_id = :memberId";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([':memberId' => $memberId]);
+        return $stmt;
+    }
 }
