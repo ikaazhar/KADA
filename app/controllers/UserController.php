@@ -197,22 +197,27 @@ class UserController extends Controller
     
     public function homepageMember()
     {
-        $this->view('menu/homepage_ahli');
+        $this->view('menu_member/homepage_ahli');
     }
 
     public function viewInvoice()
     {
-        $this->view('menu/invoice');
+        $this->view('menu_member/invoice');
     }
 
     public function viewSaving()
     {
-        $this->view('menu/saving');
+        $this->view('menu_member/saving');
     }
 
     public function loanInfo()
     {
-        $this->view('menu/loan_info');
+        $this->view('menu_member/loan_info');
+    }
+
+    public function viewLoanForm()
+    {
+        $this->view('menu_member/loan_application');
     }
 
     public function createMember()
@@ -227,6 +232,19 @@ class UserController extends Controller
             die('member ID is required');
         }
     }
+
+    public function downloadLoanTemplate()
+    {
+        $filePath = realpath(__DIR__ . '/../assets/KADA_loan_template.pdf');
+
+        if (file_exists($filePath)) {
+            header('Content-Type: application/pdf');
+            header('Content-Disposition: attachment; filename="loan_template.pdf"');
+            readfile($filePath);
+        } else {
+            echo "File not found.";
+        }
+    }    
 
     public function logout()
     {

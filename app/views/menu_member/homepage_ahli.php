@@ -20,7 +20,7 @@
                 <div class="collapse navbar-collapse justify-content-end align-center" id="main-nav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="register.php"> Mohon Pinjaman&nbsp;&nbsp;&nbsp;&nbsp; </a>
+                            <a class="nav-link text-dark" href="/viewLoanForm"> Mohon Pinjaman&nbsp;&nbsp;&nbsp;&nbsp; </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" href=""> Semak Kelulusan Pinjaman&nbsp;&nbsp;&nbsp;&nbsp; </a>
@@ -46,7 +46,7 @@
         </nav>
 
         <div class="container py-5 text-center"></div>
-        <a href="" class="btn btn-primary mb-2">Mohon Pinjaman</a>
+        <a href="/viewLoanForm" class="btn btn-primary mb-2">Mohon Pinjaman</a>
         <a href="" class="btn btn-primary mb-2">Semak Kelulusan Pinjaman</a>
         <a href="/viewSaving" class="btn btn-primary">Semak Simpanan</a>
         <a href="" class="btn btn-primary mb-2">Baki Pinjaman</a>
