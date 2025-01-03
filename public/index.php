@@ -104,6 +104,18 @@ if ($uri === '' && $method === 'GET') {
     } else {
         $controller->homepage();
     }
+} elseif ($uri === 'viewLoanForm' && $method === 'GET') {
+    if (isAuthenticated()) {
+        $controller->viewLoanForm();
+    } else {
+        $controller->homepage();
+    }
+} elseif ($uri === 'download_loan_template' && $method === 'GET') {
+    if (isAuthenticated()) {
+        $controller->downloadLoanTemplate();
+    } else {
+        $controller->homepage();
+    }
 } 
 else {
     http_response_code(404);
