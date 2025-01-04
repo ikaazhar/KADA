@@ -116,7 +116,7 @@
         <h1 class="text-center mb-4">Loan Application</h1>
         <div class="card shadow">
             <div class="card-body">
-                <form action="/loanApply" method="post" enctype="multipart/form-data">
+                <form action="/submitLoanApp" method="post" enctype="multipart/form-data">
                     <!-- Loan Type -->
                     <div class="mb-3">
                         <label for="loan_type" class="form-label">Loan Type</label>
