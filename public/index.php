@@ -116,7 +116,13 @@ if ($uri === '' && $method === 'GET') {
     } else {
         $controller->homepage();
     }
-} 
+} elseif ($uri === 'submitLoanApp' && $method === 'POST') {
+    if (isAuthenticated()) {
+        $controller->submitLoanApplication($_POST);
+    } else {
+        $controller->homepage();
+    }
+}
 else {
     http_response_code(404);
     echo "Page not found.";
