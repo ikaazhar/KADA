@@ -20,7 +20,7 @@
                 <div class="collapse navbar-collapse justify-content-end align-center" id="main-nav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="/viewLoanForm"> Mohon Pinjaman&nbsp;&nbsp;&nbsp;&nbsp; </a>
+                            <a class="nav-link text-dark" href="register.php"> Mohon Pinjaman&nbsp;&nbsp;&nbsp;&nbsp; </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" href="/loanStatus"> Semak Kelulusan Pinjaman&nbsp;&nbsp;&nbsp;&nbsp; </a>
@@ -45,12 +45,35 @@
             </div>
         </nav>
 
-        <div class="container py-5 text-center"></div>
-        <a href="/viewLoanForm" class="btn btn-primary mb-2">Mohon Pinjaman</a>
-        <a href="/loanStatus" class="btn btn-primary">Semak Kelulusan Pinjaman</a>
-        <a href="/viewSaving" class="btn btn-primary">Semak Simpanan</a>
-        <a href="/loanBalance" class="btn btn-primary mb-2">Baki Pinjaman</a>
-        <a href="/viewInvoice" class="btn btn-primary mb-2">Semak Penyata</a>
-    </div>
-</body>
+        <br><br><br><h2 class="fw-bold" style="text-align:center;"> Baki Pinjaman </h2>
+        <br><br><h3 class="fw-bold" style="text-align:center; color:red;"> RM  </h3>
+
+        <div class="container">
+            <div class="card">
+                <div class="card-body">
+                    <p class="card-text"><strong>Jenis Pinjaman: </strong></p>
+                    <table class="table table-bordered table-striped text-center">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Bulan</th>
+                                <th>Bayaran</th>
+                                <th>No. Rujukan</th>
+                                <th>Kaedah Pembayaran</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>1</th>
+                                <td>2</td>
+                                <td>3</td>
+                                <td>4</td>
+                            </tr>
+                        </tbody>      
+                    </table> 
+                </div>
+            </div>
+        </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    </body>
 </html>

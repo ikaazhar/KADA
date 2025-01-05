@@ -168,5 +168,26 @@ class User extends Model
         // Optionally, return the ID of the newly inserted row
         return $this->getConnection()->lastInsertId();
     }
+    public function findLoanStatus($member_id) 
+    {
+        $stmt = $this->getConnection()->prepare("SELECT member_id, approval FROM loan_application WHERE member_id = :member_id");
+        $stmt->execute([':member_id' => $member_id]);
+        return $stmt->fetch();
+    }
+
+    public function findLoanDetails($member_id)
+    {
+        $stmt = $this->getConnection()->prepare("SELECT * FROM loan_application WHERE member_id = :member_id");
+        $stmt->execute([':member_id' => $member_id]);
+        return $stmt->fetch();
+    }
+
+
+    public function checkLoanBalance($MonthlyInstallment) 
+    {
+        $stmt = $this->getConnection()->prepare("SELECT member_id, approval FROM loan WHERE MonthlyInstallment = MonthlyInstallment");
+        $stmt->execute([':MonthlyInstallment' => $MonthlyInstallment]);
+        return $stmt->fetch();
+    }
 
 }
