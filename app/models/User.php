@@ -190,4 +190,29 @@ class User extends Model
         return $stmt->fetch();
     }
 
+    public function saveLoanApplication($data)
+    {
+        // SQL query for inserting loan application data
+        $sql = "INSERT INTO loan_application 
+                (member_id, LoanType, OtherLoanType, LoanAmount, RepaymentPeriodMonths, MonthlyInstallment, dokument_pengesahan, UploadedFilePath, UploadedAt)
+                VALUES 
+                (:member_id, :loan_type, :other_loan_type, :loan_amount, :repayment_period_months, :monthly_installment, :dokument_pengesahan, :uploaded_file_path, :uploaded_at)";
+        
+        // Prepare and execute the statement
+        $stmt = $this->db->prepare($sql);
+
+        return $stmt->execute([
+            ':member_id' => $data['member_id'],
+            ':loan_type' => $data['loan_type'],
+            ':other_loan_type' => $data['other_loan_type'],
+            ':loan_amount' => $data['loan_amount'],
+            ':repayment_period_months' => $data['repayment_period_months'],
+            ':monthly_installment' => $data['monthly_installment'],
+            ':dokument_pengesahan' => $data['dokument_pengesahan'],
+            ':uploaded_file_path' => $data['uploaded_file_path'],
+            ':uploaded_at' => $data['uploaded_at']
+        ]);
+    }
+
+
 }

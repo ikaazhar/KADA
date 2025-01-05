@@ -244,7 +244,57 @@ class UserController extends Controller
         } else {
             echo "File not found.";
         }
-    }    
+    }
+    
+    public function submitLoanApplication($request)
+    {
+        // Check if a file is uploaded
+        if (isset($_FILES['uploaded_file_path']) && $_FILES['uploaded_file_path']['error'] === UPLOAD_ERR_OK) {
+            // Access the uploaded file details
+            $uploadedFile = $_FILES['uploaded_file_path'];
+            $uploadDir = __DIR__ . '/../../public/uploads/';
+            $uploadedFilePath = $uploadDir . basename($uploadedFile['name']);
+    
+            // Create the upload directory if it doesn't exist
+            if (!is_dir($uploadDir)) {
+                mkdir($uploadDir, 0777, true);
+            }
+    
+            // Move the uploaded file to the upload directory
+            if (move_uploaded_file($uploadedFile['tmp_name'], $uploadedFilePath)) {
+                // Prepare loan application data
+                $loanData = [
+                    'member_id' => $_SESSION['user_id'], // Assume the user is logged in and their ID is stored in the session
+                    'loan_type' => $request['loan_type'],
+                    'other_loan_type' => $request['loan_type'] === 'Lain-Lain' ? $request['other_loan_type'] : null,
+                    'loan_amount' => $request['loan_amount'],
+                    'repayment_period_months' => $request['repayment_period_months'],
+                    'monthly_installment' => $request['monthly_installment'],
+                    'dokument_pengesahan' => false, // Default to false for now
+                    'uploaded_file_path' => '/uploads/' . basename($uploadedFile['name']),
+                    'uploaded_at' => date('Y-m-d H:i:s'),
+                ];
+    
+                // Save loan application
+                if ($this->user->saveLoanApplication($loanData)) {
+                    // Redirect to success page
+                    //header('Location: /loanSuccess');
+                    $this->view('menu_member/loanAppSuccess');
+                    exit;
+                } else {
+                    // Handle error in saving the application
+                    echo "Error saving application.";
+                }
+            } else {
+                // Handle file upload error
+                echo "Error uploading file.";
+            }
+        } else {
+            // Handle no file uploaded or upload error
+            echo "No file uploaded or an error occurred.";
+        }
+    }
+    
 
     public function loanStatus() 
     {
