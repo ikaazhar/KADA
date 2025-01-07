@@ -269,6 +269,63 @@ class User extends Model
         ]);
     }
     
+    public function findLoanStatus($member_id) 
+    {
+        $stmt = $this->getConnection()->prepare("SELECT member_id, approval FROM loan_application WHERE member_id = :member_id");
+        $stmt->execute([':member_id' => $member_id]);
+        return $stmt->fetch();
+    }
 
+    public function findLoanDetails($member_id)
+    {
+        $stmt = $this->getConnection()->prepare("SELECT * FROM loan_application WHERE member_id = :member_id");
+        $stmt->execute([':member_id' => $member_id]);
+        return $stmt->fetch();
+    }
+
+
+    public function checkLoanBalance($member_id) 
+    {
+        $stmt = $this->getConnection()->prepare("
+                SELECT 
+                    la.LoanAmount,
+                    IFNULL(SUM(t.PaymentAmount), 0) AS TotalPayments,
+                    (la.LoanAmount - IFNULL(SUM(t.PaymentAmount), 0)) AS OutstandingAmount,
+                    la.RepaymentPeriodMonths,
+                    la.MonthlyInstallment,
+                    la.LoanType
+                FROM 
+                    loan_application la
+                LEFT JOIN 
+                    transaction t
+                ON 
+                    la.member_id = t.member_id
+                WHERE 
+                    la.member_id = :member_id
+                AND 
+                    la.approval = 'Approved'
+                GROUP BY 
+                    la.member_id, la.LoanAmount;
+        ");
+        $stmt->execute([':member_id' => $member_id]);
+        return $stmt->fetch();
+    }
+
+    public function getTransactionDetails($member_id)
+    {
+        $stmt = $this->getConnection()->prepare("
+            SELECT 
+                t.PaymentDate,
+                t.PaymentAmount,
+                t.PaymentReference,
+                t.PaymentMethod
+            FROM 
+                transaction t
+            WHERE 
+                t.member_id = :member_id;
+        ");
+        $stmt->execute([':member_id' => $member_id]);
+        return $stmt->fetchAll();
+    }
 
 }
