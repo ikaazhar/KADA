@@ -20,7 +20,7 @@
                 <div class="collapse navbar-collapse justify-content-end align-center" id="main-nav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="/create/"> Daftar Sekarang&nbsp;&nbsp;&nbsp;&nbsp; </a>
+                            <a class="nav-link text-dark" href="/createMembershipForm/"> Daftar Sekarang&nbsp;&nbsp;&nbsp;&nbsp; </a>
                         </li>
                         <li class="nav-item d-md-none">
                             <a class="nav-link text-dark" href="/buttonpage"> Login </a>

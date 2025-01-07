@@ -147,32 +147,66 @@ class UserController extends Controller
     }
 
     //utk form family detail
-    public function createFamilyDetails()
-    {
-        $applicantId = $_GET['applicant_id'] ?? null;
-        if (!$applicantId) {
-            die('Applicant ID is required');
-        }
+    //public function createFamilyDetails()
+    //{
+    //    $applicantId = $_GET['applicant_id'] ?? null;
+    //    if (!$applicantId) {
+    //        die('Applicant ID is required');
+    //    }
 
-        $familyDetails = $this->user->getFamilyDetails($applicantId);
-        $this->view('users/family_details', ['applicant_id' => $applicantId, 'familyDetails' => $familyDetails]);
+    //    $familyDetails = $this->user->getFamilyDetails($applicantId);
+    //    $this->view('users/family_details', ['applicant_id' => $applicantId, 'familyDetails' => $familyDetails]);
+    //}
+
+    //
+    //public function storeFamilyDetails()
+    //{
+    //    if (empty($_POST['applicant_id'])) {
+    //        die('Applicant ID is required');
+    //    }
+    //
+    //    $this->user->createFamilyDetails($_POST);
+    //
+    //    // Redirect to show the family details for the specific applicant_id
+    //    $applicantId = $_POST['applicant_id'];
+    //    header("Location: /createFamilyDetails?applicant_id=$applicantId");
+    //    exit;
+    //}
+
+    
+    public function createMembershipForm()
+    {
+        $this->view('users/MembershipForm');
     }
 
-    
-    public function storeFamilyDetails()
+    public function storeMembershipForm()
     {
-        if (empty($_POST['applicant_id'])) {
-            die('Applicant ID is required');
+        try {
+            // Save the form details
+            $stmt = $this->user->createMembershipForm($_POST);
+
+            // Retrieve the last inserted ID (if needed for confirmation or further processing)
+            $applicantId = $this->user->getLastInsertedId();
+
+            // Display success message
+            $message = "Form has been submitted successfully!";
+            $this->view('users/SuccessPage', ['message' => $message, 'applicant_id' => $applicantId]);
+
+        } catch (Exception $e) {
+            // Handle errors and display an error message
+            $error = "There was an error submitting the form. Please try again.";
+            $this->view('users/ErrorPage', ['error' => $error]);
         }
-    
-        $this->user->createFamilyDetails($_POST);
-    
-        // Redirect to show the family details for the specific applicant_id
-        $applicantId = $_POST['applicant_id'];
-        header("Location: /createFamilyDetails?applicant_id=$applicantId");
-        exit;
     }
-    
+
+
+    //public function storeMembershipForm() {
+    //    $stmt = $this->user->createMembershipForm($_POST);
+    //    $applicantId = $this->user->getLastInsertedId(); // Retrieve the last inserted ID
+    //    header("Location: /createFamilyDetails?applicant_id=$applicantId");
+    //    exit;
+    //}
+
 
     public function edit($id)
     {
