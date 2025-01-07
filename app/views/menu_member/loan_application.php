@@ -155,6 +155,18 @@
                         <label for="monthly_installment" class="form-label">Monthly Installment</label>
                         <input type="number" step="0.01" class="form-control" name="monthly_installment" id="monthly_installment" placeholder="Enter monthly installment" required>
                     </div>
+                    
+                    <!-- Bank Name -->
+                    <div class="mb-3">
+                        <label for="bank_name" class="form-label">Bank Name</label>
+                        <input type="text" class="form-control" name="bank_name" id="bank_name" placeholder="Enter bank name" required>
+                    </div>
+
+                    <!-- Account Number -->
+                    <div class="mb-3">
+                        <label for="account_number" class="form-label">Account Number</label>
+                        <input type="text" class="form-control" name="account_number" id="account_number" placeholder="Enter account number" required>
+                    </div>
 
                     <!-- Download Loan Document Template -->
                     <div class="mb-3">

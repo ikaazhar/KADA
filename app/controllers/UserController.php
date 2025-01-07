@@ -263,28 +263,29 @@ class UserController extends Controller
             // Move the uploaded file to the upload directory
             if (move_uploaded_file($uploadedFile['tmp_name'], $uploadedFilePath)) {
                 // Prepare loan application data
+                // Prepare loan application data
                 $loanData = [
-                    'member_id' => $_SESSION['user_id'], // Assume the user is logged in and their ID is stored in the session
+                    'member_id' => $_SESSION['user_id'], 
                     'loan_type' => $request['loan_type'],
                     'other_loan_type' => $request['loan_type'] === 'Lain-Lain' ? $request['other_loan_type'] : null,
                     'loan_amount' => $request['loan_amount'],
                     'repayment_period_months' => $request['repayment_period_months'],
                     'monthly_installment' => $request['monthly_installment'],
-                    'dokument_pengesahan' => false, // Default to false for now
+                    'dokument_pengesahan' => false,
                     'uploaded_file_path' => '/uploads/' . basename($uploadedFile['name']),
                     'uploaded_at' => date('Y-m-d H:i:s'),
+                    'bank_name' => $request['bank_name'],
+                    'account_number' => $request['account_number'],
                 ];
-    
+
                 // Save loan application
                 if ($this->user->saveLoanApplication($loanData)) {
-                    // Redirect to success page
-                    //header('Location: /loanSuccess');
                     $this->view('menu_member/loanAppSuccess');
                     exit;
                 } else {
-                    // Handle error in saving the application
                     echo "Error saving application.";
                 }
+
             } else {
                 // Handle file upload error
                 echo "Error uploading file.";

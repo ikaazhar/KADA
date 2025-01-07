@@ -173,13 +173,13 @@ class User extends Model
     {
         // SQL query for inserting loan application data
         $sql = "INSERT INTO loan_application 
-                (member_id, LoanType, OtherLoanType, LoanAmount, RepaymentPeriodMonths, MonthlyInstallment, dokument_pengesahan, UploadedFilePath, UploadedAt)
+                (member_id, LoanType, OtherLoanType, LoanAmount, RepaymentPeriodMonths, MonthlyInstallment, dokument_pengesahan, UploadedFilePath, UploadedAt, BankName, AccountNumber)
                 VALUES 
-                (:member_id, :loan_type, :other_loan_type, :loan_amount, :repayment_period_months, :monthly_installment, :dokument_pengesahan, :uploaded_file_path, :uploaded_at)";
+                (:member_id, :loan_type, :other_loan_type, :loan_amount, :repayment_period_months, :monthly_installment, :dokument_pengesahan, :uploaded_file_path, :uploaded_at, :bank_name, :account_number)";
         
         // Prepare and execute the statement
         $stmt = $this->db->prepare($sql);
-
+    
         return $stmt->execute([
             ':member_id' => $data['member_id'],
             ':loan_type' => $data['loan_type'],
@@ -189,9 +189,12 @@ class User extends Model
             ':monthly_installment' => $data['monthly_installment'],
             ':dokument_pengesahan' => $data['dokument_pengesahan'],
             ':uploaded_file_path' => $data['uploaded_file_path'],
-            ':uploaded_at' => $data['uploaded_at']
+            ':uploaded_at' => $data['uploaded_at'],
+            ':bank_name' => $data['bank_name'],
+            ':account_number' => $data['account_number'],
         ]);
     }
+    
 
 
 }
