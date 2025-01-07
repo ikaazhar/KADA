@@ -58,10 +58,10 @@ if ($uri === '' && $method === 'GET') {
     $controller->createFamilyDetails();
 } elseif ($uri === 'storeFamilyDetails' && $method === 'POST') {
     $controller->storeFamilyDetails();
-} elseif ($uri === 'createYuran' && $method === 'GET') {
-    $controller->createYuran();
-} elseif ($uri === 'storeYuran' && $method === 'GET') {
-    $controller->storeYuran();
+} elseif ($uri === 'createMembershipForm' && $method === 'GET') {
+    $controller->createMembershipForm();
+} elseif ($uri === 'storeMembershipForm' && $method === 'POST') {
+    $controller->storeMembershipForm(); 
 }  elseif ($uri === 'store' && $method === 'POST') {
     $controller->store();
 } elseif (preg_match('/edit\/(\d+)/', $uri, $matches) && $method === 'GET') {
