@@ -268,6 +268,26 @@ class User extends Model
             ':account_number' => $data['account_number'],
         ]);
     }
+
+    public function getMemberDetails($memberId) {
+        // Query to fetch member details
+        $sql = "SELECT * FROM member_application WHERE applicant_id = :memberId";
+        
+        // Prepare and execute the query
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([':memberId' => $memberId]);
+    
+        // Fetch and return the results
+        return $stmt->fetch(\PDO::FETCH_ASSOC);
+    }
+    
+    // Method to get savings by member ID (as before)
+    public function getSavingsByMemberId($memberId) {
+        $sql = "SELECT * FROM saving_syer WHERE Member_id = :memberId";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([':memberId' => $memberId]);
+        return $stmt;
+    }
     
 
 
