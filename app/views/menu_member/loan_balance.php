@@ -46,28 +46,33 @@
         </nav>
 
         <br><br><br><h2 class="fw-bold" style="text-align:center;"> Baki Pinjaman </h2>
-        <br><br><h3 class="fw-bold" style="text-align:center; color:red;"> RM  </h3>
+        <br><br><h3 class="fw-bold" style="text-align:center; color:red;">RM <?= htmlspecialchars($loanDetails['OutstandingAmount']) ?></h3>
 
         <div class="container">
             <div class="card">
                 <div class="card-body">
-                    <p class="card-text"><strong>Jenis Pinjaman: </strong></p>
+                    <p class="card-text"><strong>Jenis Pinjaman: </strong><?= htmlspecialchars($loanDetails['LoanType']) ?></p>
+                    <p class="card-text"><strong>Ansuran Bulanan: </strong>RM <?= htmlspecialchars($loanDetails['MonthlyInstallment']) ?></p>
                     <table class="table table-bordered table-striped text-center">
                         <thead class="table-dark">
                             <tr>
-                                <th>Bulan</th>
+                                <th>Tarikh</th>
                                 <th>Bayaran</th>
                                 <th>No. Rujukan</th>
                                 <th>Kaedah Pembayaran</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th>1</th>
-                                <td>2</td>
-                                <td>3</td>
-                                <td>4</td>
-                            </tr>
+                            <?php if (!empty($transactionDetails)) : ?>
+                                <?php foreach ($transactionDetails as $transaction) : ?>
+                                    <tr>
+                                        <th><?= htmlspecialchars($transaction['PaymentDate']) ?></th>
+                                        <td>RM <?= htmlspecialchars($transaction['PaymentAmount']) ?></td>
+                                        <td><?= htmlspecialchars($transaction['PaymentReference']) ?></td>
+                                        <td><?= htmlspecialchars($transaction['PaymentMethod']) ?></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
                         </tbody>      
                     </table> 
                 </div>

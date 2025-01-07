@@ -55,6 +55,8 @@
                         <div class="card-body">
                             <h4 class="fw-bold text-success text-center">Permohonan Anda Berjaya!</h4>
                             <p class="card-text"><strong>No. ID Member: </strong><?= htmlspecialchars($applicantDetails['member_id']) ?></p>
+                            <p class="card-text"><strong>Nama Bank: </strong><?= htmlspecialchars($applicantDetails['BankName']) ?></p>
+                            <p class="card-text"><strong>No. Akaun Bank: </strong><?= htmlspecialchars($applicantDetails['AccountNumber']) ?></p>
                             <p class="card-text"><strong>Jenis Pinjaman: </strong><?= htmlspecialchars($applicantDetails['LoanType']) ?></p>
                             <p class="card-text"><strong>Jumlah Pinjaman: </strong><?= htmlspecialchars($applicantDetails['LoanAmount']) ?></p>
                             <p class="card-text"><strong>Tempoh Pembayaran Pinjaman: </strong><?= htmlspecialchars($applicantDetails['RepaymentPeriodMonths']) ?></p>

@@ -308,15 +308,20 @@ class UserController extends Controller
         }
 
         if ($loanApplication && $member_id == $loanApplication['member_id']) {
-            $this->view('menu_member/loan_success', ['loanApplication' => $loanApplication, 'applicantDetails' => $applicantDetails]);
+            $this->view('menu_member/loan_status', ['loanApplication' => $loanApplication, 'applicantDetails' => $applicantDetails]);
         }
     }
 
     public function loanBalance()
     {
-        $MonthlyInstallment = $_GET['MonthlyInstallment'];
-        $user = $this->user->checkLoanBalance($MonthlyInstallment);
-        $this->view('menu/loan_balance');
+        $member_id = $_SESSION['user_id'];
+        
+        $loanDetails = $this->user->checkLoanBalance($member_id);
+        $transactionDetails = $this->user->getTransactionDetails($member_id);
+        $this->view('menu_member/loan_balance', [
+            'loanDetails' => $loanDetails,
+            'transactionDetails' => $transactionDetails
+        ]);
     }
 
     public function logout()
