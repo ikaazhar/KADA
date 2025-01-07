@@ -173,7 +173,7 @@ class UserController extends Controller
     //    exit;
     //}
 
-    
+    //ni yg aq tukar
     public function createMembershipForm()
     {
         $this->view('users/MembershipForm');
