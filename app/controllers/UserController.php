@@ -348,7 +348,34 @@ class UserController extends Controller
         }
     }
     
+    public function loanStatus() 
+    {
+        $member_id = $_SESSION['user_id'];
 
+        $loanApplication = $this->user->findLoanStatus($member_id);
+
+        $applicantDetails = null;
+        if ($loanApplication && $loanApplication['approval'] === 'Approved') {
+            $applicantDetails = $this->user->findLoanDetails($member_id);
+        }
+
+        if ($loanApplication && $member_id == $loanApplication['member_id']) {
+            $this->view('menu_member/loan_status', ['loanApplication' => $loanApplication, 'applicantDetails' => $applicantDetails]);
+        }
+    }
+
+    public function loanBalance()
+    {
+        $member_id = $_SESSION['user_id'];
+        
+        $loanDetails = $this->user->checkLoanBalance($member_id);
+        $transactionDetails = $this->user->getTransactionDetails($member_id);
+        $this->view('menu_member/loan_balance', [
+            'loanDetails' => $loanDetails,
+            'transactionDetails' => $transactionDetails
+        ]);
+    }
+    
     public function logout()
     {
         session_start();
