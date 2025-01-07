@@ -32,10 +32,10 @@ class User extends Model
         return $stmt->fetch();
     }
 
-    public function findByStaffID($staff_ID)
+    public function findByStaffID($admin_id)
     {
-        $stmt = $this->getConnection()->prepare("SELECT * FROM staff_account WHERE staff_ID = :staff_ID");
-        $stmt->bindParam(':staff_ID', $staff_ID, \PDO::PARAM_STR);
+        $stmt = $this->getConnection()->prepare("SELECT * FROM adminlogin WHERE admin_id = :admin_id");
+        $stmt->bindParam(':admin_id', $admin_id, \PDO::PARAM_STR);
         $stmt->execute();
         return $stmt->fetch();
     }
@@ -219,6 +219,20 @@ class User extends Model
     {
         // Prepare the SQL query for inserting into MemberLogin table
         $stmt = $this->getConnection()->prepare("INSERT INTO MemberLogin (password) VALUES (:password)");
+
+        // Execute the query with the hashed password
+        $stmt->execute([
+            ':password' => password_hash($data['password'], PASSWORD_BCRYPT), // Hash the password for security
+        ]);
+
+        // Optionally, return the ID of the newly inserted row
+        return $this->getConnection()->lastInsertId();
+    }
+
+    public function createAdminAcc($data)
+    {
+        // Prepare the SQL query for inserting into MemberLogin table
+        $stmt = $this->getConnection()->prepare("INSERT INTO AdminLogin (password) VALUES (:password)");
 
         // Execute the query with the hashed password
         $stmt->execute([

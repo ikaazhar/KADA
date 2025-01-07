@@ -44,6 +44,8 @@ if ($uri === '' && $method === 'GET') {
     $controller->loginALK();
 } elseif ($uri === 'createMember' && $method === 'GET') {
     $controller->createMember();
+} elseif ($uri === 'createAdmin' && $method === 'GET') {
+    $controller->createAdmin();
 } elseif ($uri === 'authenticateMember' && $method === 'POST') {
     $controller->authenticateMember();
 } elseif ($uri === 'authenticateStaff' && $method === 'POST') {
@@ -56,10 +58,6 @@ if ($uri === '' && $method === 'GET') {
     $controller->index();
 } elseif ($uri === 'create' && $method === 'GET') {
     $controller->create();
-} elseif ($uri === 'createFamilyDetails' && $method === 'GET') {
-    $controller->createFamilyDetails();
-} elseif ($uri === 'storeFamilyDetails' && $method === 'POST') {
-    $controller->storeFamilyDetails();
 } elseif ($uri === 'createMembershipForm' && $method === 'GET') {
     $controller->createMembershipForm();
 } elseif ($uri === 'storeMembershipForm' && $method === 'POST') {
@@ -87,6 +85,12 @@ if ($uri === '' && $method === 'GET') {
 } elseif ($uri === 'homepageMember' && $method === 'GET') {
     if (isAuthenticated()) {
         $controller->homepageMember();
+    } else {
+        $controller->homepage();
+    }
+} elseif ($uri === 'homepageAdmin' && $method === 'GET') {
+    if (isAuthenticated()) {
+        $controller->homepageAdmin();
     } else {
         $controller->homepage();
     }

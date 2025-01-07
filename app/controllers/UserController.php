@@ -100,16 +100,16 @@ class UserController extends Controller
 
     public function authenticateStaff()
     {
-        $staff_ID = $_POST['staff_ID'];
+        $admin_ID = $_POST['admin_id'];
         $password = $_POST['password'];
     
-        $user = $this->user->findByStaffID($staff_ID);
+        $user = $this->user->findByStaffID($admin_ID);
     
         if ($user && password_verify($password, $user['password'])) {
             session_start();
-            $_SESSION['user_id'] = $user['id'];
-            $_SESSION['user_name'] = $user['name'];
-            header('Location: /');
+            $_SESSION['user_id'] = $user['admin_id'];
+            //$_SESSION['user_name'] = $user['name'];
+            header('Location: /homepageAdmin');
         } else {
             echo "<h3 style='color: red;'>Invalid email or password. Please try again.</h3>";
             echo "<a href='/login' style='color: blue; text-decoration: underline;'>Back to Login</a>";
@@ -234,6 +234,11 @@ class UserController extends Controller
         $this->view('menu_member/homepage_ahli');
     }
 
+    public function homepageAdmin()
+    {
+        $this->view('menu_admin/homepage_admin');
+    }
+
     public function viewInvoice()
     {
         $this->view('menu_member/invoice');
@@ -261,6 +266,19 @@ class UserController extends Controller
             'password' => '1234', // The raw password to be hashed and stored
         ];
         $memberId = $this->user->createMemberAcc($data);
+
+        if (!$memberId) {
+            die('member ID is required');
+        }
+    }
+
+    public function createAdmin()
+    {
+        // Example data you might collect from a form or API request
+        $data = [
+            'password' => '1234', // The raw password to be hashed and stored
+        ];
+        $memberId = $this->user->createAdminAcc($data);
 
         if (!$memberId) {
             die('member ID is required');

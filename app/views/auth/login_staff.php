@@ -37,7 +37,7 @@
             <?php endif; ?>
             <div class="mb-3">
                 <label for="staff_number" class="form-label">Nombor STAFF:</label>
-                <input type="text" name="staff_ID" id="staff_ID" class="form-control" required>
+                <input type="text" name="admin_id" id="admin_id" class="form-control" required>
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Kata Laluan:</label>
