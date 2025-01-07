@@ -270,5 +270,25 @@ class User extends Model
     }
     
 
+    public function getMemberDetails($memberId) {
+        // Query to fetch member details
+        $sql = "SELECT * FROM member_application WHERE applicant_id = :memberId";
+        
+        // Prepare and execute the query
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([':memberId' => $memberId]);
+    
+        // Fetch and return the results
+        return $stmt->fetch(\PDO::FETCH_ASSOC);
+    }
+    
+    // Method to get invoice by member ID (as before)
+    public function getInvoiceByMemberId($memberId) {
+        $sql = "SELECT * FROM member_transaction WHERE Member_id = :memberId";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([':memberId' => $memberId]);
+        return $stmt;
+    }
+
 
 }
