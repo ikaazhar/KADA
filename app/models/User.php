@@ -284,7 +284,7 @@ class User extends Model
     
     // Method to get invoice by member ID (as before)
     public function getInvoiceByMemberId($memberId) {
-        $sql = "SELECT * FROM member_transaction WHERE Member_id = :memberId";
+        $sql = "SELECT * FROM member_transaction WHERE member_id = :memberId";
         $stmt = $this->db->prepare($sql);
         $stmt->execute([':memberId' => $memberId]);
         return $stmt;

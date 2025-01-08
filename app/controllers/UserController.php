@@ -358,7 +358,7 @@ class UserController extends Controller
     
     public function showInvoice() {
         // Assuming session holds logged-in member ID
-        $memberId = $_SESSION['member_id']; 
+        $memberId = $_SESSION['user_id']; 
 
         // Use User model to fetch member's details
         $userModel = new User();
@@ -369,7 +369,7 @@ class UserController extends Controller
         $data['memberDetails'] = $memberDetails; // Add member details to the data array
 
         // Pass data to the view
-        $this->view('invoice/invoice', $data);
+        $this->view('menu_member/invoice', $data);
     }
 }
 
