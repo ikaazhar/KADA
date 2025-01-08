@@ -46,6 +46,7 @@
         </nav>
 
         <br><br><br><h2 class="fw-bold" style="text-align:center;"> Baki Pinjaman </h2>
+        <?php if ($loanDetails): ?>
         <br><br><h3 class="fw-bold" style="text-align:center; color:red;">RM <?= htmlspecialchars($loanDetails['OutstandingAmount']) ?></h3>
 
         <div class="container">
@@ -78,6 +79,9 @@
                 </div>
             </div>
         </div>
+    <?php else: ?>
+    <br><br><h3 class="fw-bold text-center text-danger">Permohonan pinjaman anda belum diluluskan.</h3>
+    <?php endif; ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     </body>
