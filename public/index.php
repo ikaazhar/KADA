@@ -108,7 +108,7 @@ if ($uri === '' && $method === 'GET') {
     }
 } elseif ($uri === 'viewSaving' && $method === 'GET') {
     if (isAuthenticated()) {
-        $controller->viewSaving();
+        $controller->showSavings();
     } else {
         $controller->homepage();
     }

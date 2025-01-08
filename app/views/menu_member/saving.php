@@ -49,7 +49,7 @@
                                     <td><?= $saving['Syer_majikan']; ?></td>
                                     <td><?= $saving['Syer_pekerja']; ?></td>
                                     <td><?= $saving['Jumlah']; ?></td>
-                                    <td><?= $saving['Akaun_1']; ?></td>
+                                    <td><?= $saving['member_saving']; ?></td>
                                     <td><?= $saving['Akaun_2']; ?></td>
                                     <td><?= $saving['Akaun_3']; ?></td>
                                 </tr>
