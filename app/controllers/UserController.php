@@ -369,11 +369,11 @@ class UserController extends Controller
         $member_id = $_SESSION['user_id'];
         
         $loanDetails = $this->user->checkLoanBalance($member_id);
-        $transactionDetails = $this->user->getTransactionDetails($member_id);
-        $this->view('menu_member/loan_balance', [
-            'loanDetails' => $loanDetails,
-            'transactionDetails' => $transactionDetails
-        ]);
+        $transactionDetails = [];
+        if ($loanDetails) {
+            $transactionDetails = $this->user->getTransactionDetails($member_id);
+        }
+        $this->view('menu_member/loan_balance', ['loanDetails' => $loanDetails, 'transactionDetails' => $transactionDetails]);
     }
     
     public function logout()
