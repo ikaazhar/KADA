@@ -243,6 +243,20 @@ class User extends Model
         return $this->getConnection()->lastInsertId();
     }
 
+    public function createALKAcc($data)
+    {
+        // Prepare the SQL query for inserting into MemberLogin table
+        $stmt = $this->getConnection()->prepare("INSERT INTO ALKLogin (password) VALUES (:password)");
+
+        // Execute the query with the hashed password
+        $stmt->execute([
+            ':password' => password_hash($data['password'], PASSWORD_BCRYPT), // Hash the password for security
+        ]);
+
+        // Optionally, return the ID of the newly inserted row
+        return $this->getConnection()->lastInsertId();
+    }
+
     public function saveLoanApplication($data)
     {
         // SQL query for inserting loan application data
