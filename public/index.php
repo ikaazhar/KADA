@@ -145,6 +145,27 @@ if ($uri === '' && $method === 'GET') {
         $controller->homepage();
     }
 }
+elseif ($uri === 'listPendingForm' && $method === 'GET') {
+    if (isAuthenticated()) {
+        $controller->listPendingApplications();
+    } else {
+        $controller->homepage();
+    }
+}
+elseif ($uri === 'updateLoanStatus' && $method === 'POST') {
+    if (isAuthenticated()) {
+        $controller->updateLoanStatus();
+    } else {
+        $controller->homepage();
+    }
+}
+elseif ($uri === 'viewLoanApplication' && $method === 'GET') {
+    if (isAuthenticated()) {
+        $controller->viewLoanApplication($_GET['loan_id']);
+    } else {
+        $controller->homepage();
+    }
+}
 else {
     http_response_code(404);
     echo "Page not found.";

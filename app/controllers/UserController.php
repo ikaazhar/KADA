@@ -118,16 +118,16 @@ class UserController extends Controller
 
     public function authenticateALK()
     {
-        $alk_ID = $_POST['alk_ID'];
+        $ALK_id = $_POST['ALK_id'];
         $password = $_POST['password'];
     
-        $user = $this->user->findByALKID($alk_ID);
+        $user = $this->user->findByALKID($ALK_id);
     
         if ($user && password_verify($password, $user['password'])) {
             session_start();
-            $_SESSION['user_id'] = $user['id'];
-            $_SESSION['user_name'] = $user['name'];
-            header('Location: /');
+            $_SESSION['user_id'] = $user['ALK_id'];
+            //$_SESSION['user_name'] = $user['name'];
+            header('Location: /homepageAdmin');
         } else {
             echo "<h3 style='color: red;'>Invalid email or password. Please try again.</h3>";
             echo "<a href='/login' style='color: blue; text-decoration: underline;'>Back to Login</a>";
@@ -387,6 +387,28 @@ class UserController extends Controller
             $transactionDetails = $this->user->getTransactionDetails($member_id);
         }
         $this->view('menu_member/loan_balance', ['loanDetails' => $loanDetails, 'transactionDetails' => $transactionDetails]);
+    }
+
+    public function listPendingApplications() {
+        $users = $this->user->getPendingApplications();
+        $this->view('menu_admin/viewLoanList', compact('users'));
+    }
+
+    // Update loan application status
+    public function updateLoanStatus() {
+        if (isset($_POST['loan_id'], $_POST['new_status'])) {
+            $loanId = $_POST['loan_id'];
+            $newStatus = $_POST['new_status'];
+            $this->user->updateLoanStatus($loanId, $newStatus);
+        }
+        // Redirect back to the list view
+        header("Location: /listPendingForm");
+    }
+
+    // View detailed application
+    public function viewLoanApplication($loanId) {
+        $users = $this->user->getLoanApplicationById($loanId);
+        $this->view('menu_admin/viewLoanForm', compact('users'));
     }
     
     public function logout()
