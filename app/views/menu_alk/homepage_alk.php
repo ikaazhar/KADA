@@ -20,7 +20,7 @@
                 <div class="collapse navbar-collapse justify-content-end align-center" id="main-nav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="/listPendingForm"> Semak Dokumen Permohonan Pinjaman&nbsp;&nbsp;&nbsp;&nbsp; </a>
+                            <a class="nav-link text-dark" href="/viewLoanForm"> Semak Dokumen Permohonan Pinjaman&nbsp;&nbsp;&nbsp;&nbsp; </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" href=""> Semak Dokumen Permohonan Ahli&nbsp;&nbsp;&nbsp;&nbsp; </a>

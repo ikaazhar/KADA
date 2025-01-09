@@ -96,6 +96,12 @@ if ($uri === '' && $method === 'GET') {
     } else {
         $controller->homepage();
     }
+} elseif ($uri === 'homepageALK' && $method === 'GET') {
+    if (isAuthenticated()) {
+        $controller->homepageALK();
+    } else {
+        $controller->homepage();
+    }
 } elseif ($uri === 'viewInvoice' && $method === 'GET') {
     if (isAuthenticated()) {
         $controller->viewInvoice();
