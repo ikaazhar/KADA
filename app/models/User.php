@@ -40,10 +40,10 @@ class User extends Model
         return $stmt->fetch();
     }
 
-    public function findByALKID($alk_ID)
+    public function findByALKID($ALK_id)
     {
-        $stmt = $this->getConnection()->prepare("SELECT * FROM alk_account WHERE alk_ID = :alk_ID");
-        $stmt->bindParam(':alk_ID', $alk_ID, \PDO::PARAM_STR);
+        $stmt = $this->getConnection()->prepare("SELECT * FROM alklogin WHERE ALK_id = :ALK_id");
+        $stmt->bindParam(':ALK_id', $ALK_id, \PDO::PARAM_STR);
         $stmt->execute();
         return $stmt->fetch();
     }
@@ -340,6 +340,28 @@ class User extends Model
         ");
         $stmt->execute([':member_id' => $member_id]);
         return $stmt->fetchAll();
+    }
+
+    public function getPendingApplications() {
+        $stmt = $this->db->prepare("SELECT LoanID, approval FROM loan_application WHERE approval = 'Pending'");
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+
+    // Update loan status
+    public function updateLoanStatus($loanId, $newStatus) {
+        $stmt = $this->db->prepare("UPDATE loan_application SET approval = :status WHERE LoanID = :loan_id");
+        $stmt->bindParam(':status', $newStatus);
+        $stmt->bindParam(':loan_id', $loanId);
+        $stmt->execute();
+    }
+
+    // Get loan application details by ID
+    public function getLoanApplicationById($loanId) {
+        $stmt = $this->db->prepare("SELECT * FROM loan_application WHERE LoanID = :loan_id");
+        $stmt->bindParam(':loan_id', $loanId);
+        $stmt->execute();
+        return $stmt->fetch();
     }
 
 }

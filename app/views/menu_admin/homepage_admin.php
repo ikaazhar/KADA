@@ -46,7 +46,7 @@
         </nav>
 
         <div class="container py-5 text-center"></div>
-        <a href="/viewLoanForm" class="btn btn-primary mb-2">Semak Dokumen Permohonan Pinjaman</a>
+        <a href="/listPendingForm" class="btn btn-primary mb-2">Semak Dokumen Permohonan Pinjaman</a>
         <a href="" class="btn btn-primary mb-2">Semak Dokumen Permohonan Ahli</a>
         <a href="/viewSaving" class="btn btn-primary">Rekod Kewangan Tahunan</a>
         <a href="" class="btn btn-primary mb-2">Laporan Koperasi</a>

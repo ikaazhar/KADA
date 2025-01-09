@@ -36,8 +36,8 @@
                 <div class="alert alert-danger"><?= $error ?></div>
             <?php endif; ?>
             <div class="mb-3">
-                <label for="alk_number" class="form-label">Nombor ALK:</label>
-                <input type="text" name="alk_ID" id="alk_ID" class="form-control" required>
+                <label for="ALK_id" class="form-label">Nombor ALK:</label>
+                <input type="text" name="ALK_id" id="ALK_id" class="form-control" required>
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Kata Laluan:</label>
