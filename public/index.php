@@ -46,6 +46,8 @@ if ($uri === '' && $method === 'GET') {
     $controller->createMember();
 } elseif ($uri === 'createAdmin' && $method === 'GET') {
     $controller->createAdmin();
+} elseif ($uri === 'createALK' && $method === 'GET') {
+    $controller->createALK();
 } elseif ($uri === 'authenticateMember' && $method === 'POST') {
     $controller->authenticateMember();
 } elseif ($uri === 'authenticateStaff' && $method === 'POST') {

@@ -285,6 +285,19 @@ class UserController extends Controller
         }
     }
 
+    public function createALK()
+    {
+        // Example data you might collect from a form or API request
+        $data = [
+            'password' => '1234', // The raw password to be hashed and stored
+        ];
+        $memberId = $this->user->createALKAcc($data);
+
+        if (!$memberId) {
+            die('member ID is required');
+        }
+    }
+
     public function downloadLoanTemplate()
     {
         $filePath = realpath(__DIR__ . '/../assets/KADA_loan_template.pdf');
