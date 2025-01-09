@@ -127,7 +127,7 @@ class UserController extends Controller
             session_start();
             $_SESSION['user_id'] = $user['ALK_id'];
             //$_SESSION['user_name'] = $user['name'];
-            header('Location: /homepageAdmin');
+            header('Location: /homepageALK');
         } else {
             echo "<h3 style='color: red;'>Invalid email or password. Please try again.</h3>";
             echo "<a href='/login' style='color: blue; text-decoration: underline;'>Back to Login</a>";
@@ -237,6 +237,11 @@ class UserController extends Controller
     public function homepageAdmin()
     {
         $this->view('menu_admin/homepage_admin');
+    }
+
+    public function homepageALK()
+    {
+        $this->view('menu_alk/homepage_alk');
     }
 
     public function viewInvoice()
