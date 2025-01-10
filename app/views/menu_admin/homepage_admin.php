@@ -23,7 +23,7 @@
                             <a class="nav-link text-dark" href="/listPendingForm"> Semak Dokumen Permohonan Pinjaman&nbsp;&nbsp;&nbsp;&nbsp; </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href=""> Semak Dokumen Permohonan Ahli&nbsp;&nbsp;&nbsp;&nbsp; </a>
+                            <a class="nav-link text-dark" href="/reviewMembershipForm"> Semak Dokumen Permohonan Ahli&nbsp;&nbsp;&nbsp;&nbsp; </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" href="/viewSaving"> Rekod Kewangan Tahunan&nbsp;&nbsp;&nbsp;&nbsp; </a>
@@ -47,7 +47,7 @@
 
         <div class="container py-5 text-center"></div>
         <a href="/listPendingForm" class="btn btn-primary mb-2">Semak Dokumen Permohonan Pinjaman</a>
-        <a href="" class="btn btn-primary mb-2">Semak Dokumen Permohonan Ahli</a>
+        <a href="/reviewMembershipForm" class="btn btn-primary mb-2">Semak Dokumen Permohonan Ahli</a>
         <a href="/viewSaving" class="btn btn-primary">Rekod Kewangan Tahunan</a>
         <a href="" class="btn btn-primary mb-2">Laporan Koperasi</a>
         <a href="/viewInvoice" class="btn btn-primary mb-2">ETC</a>

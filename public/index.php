@@ -171,6 +171,24 @@ elseif ($uri === 'viewLoanApplication' && $method === 'GET') {
     } else {
         $controller->homepage();
     }
+} elseif ($uri === 'reviewMembershipForm' && $method === 'GET') {
+    if (isAuthenticated()) {
+        $controller->reviewMembershipForm();
+    } else {
+        $controller->homepage();
+    }
+} elseif ($uri === 'storeMembershipFormStatus' && $method === 'POST') {
+    if (isAuthenticated()) {
+        $controller->storeMembershipFormStatus($_POST);
+    } else {
+        $controller->homepage();
+    }
+} elseif ($uri === 'viewMembershipForm' && $method === 'GET') {
+    if (isAuthenticated()) {
+        $controller->viewMembershipForm();
+    } else {
+        $controller->homepage();
+    }
 }
 else {
     http_response_code(404);

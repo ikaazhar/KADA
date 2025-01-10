@@ -364,4 +364,17 @@ class User extends Model
         return $stmt->fetch();
     }
 
+    public function getMembershipFormList() 
+    {
+        $stmt = $this->getConnection()->prepare("SELECT * FROM member_application");
+        $stmt->execute();
+        return $stmt->fetch();
+    }
+
+    public function reviewMembershipForm($data) 
+    {
+        $stmt = $this->getConnection()->prepare("UPDATE member_application SET approval = :approval WHERE id_number = :id_number");
+        $stmt->execute([':approval' => $data['approval'], ':id_number' =>  $data['id_number']]);
+        return $stmt->fetch();
+    }
 }
