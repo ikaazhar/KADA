@@ -83,10 +83,10 @@ class UserController extends Controller
 
     public function authenticateMember()
     {
-        $member_id = $_POST['member_id'];
+        $id_number = $_POST['id_number'];
         $password = $_POST['password'];
     
-        $user = $this->user->findByMemberID($member_id);
+        $user = $this->user->findByMemberID($id_number);
     
         if ($user && password_verify($password, $user['password'])) {
             session_start();
