@@ -416,6 +416,24 @@ class UserController extends Controller
         $this->view('menu_admin/viewLoanForm', compact('users'));
     }
     
+    public function reviewMembershipForm()
+    {
+        $viewMembershipFormList = $this->user->getMembershipFormList();
+        $this->view('menu_admin/review_member_application', ['viewMembershipFormList' => $viewMembershipFormList]);
+    }
+
+    public function storeMembershipFormStatus($data) {
+        $stmt = $this->user->reviewMembershipForm($data);
+        $this->view('menu_admin/kemaskini_success');
+
+    }
+
+    public function viewMembershipForm()
+    {
+        $memberDetails = $this->user->getMembershipFormList();
+        $this->view('menu_admin/edit_member_application', ['memberDetails' => $memberDetails]);
+    }
+
     public function logout()
     {
         session_start();
