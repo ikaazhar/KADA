@@ -42,24 +42,28 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- Loop through the savings data and display each row -->
-                        <?php if ($savings): ?>
-                            <?php foreach ($savings as $saving): ?>
-                                <tr>
-                                    <td><?= $saving['Syer_majikan']; ?></td>
-                                    <td><?= $saving['Syer_pekerja']; ?></td>
-                                    <td><?= $saving['Jumlah']; ?></td>
-                                    <td><?= $saving['member_saving']; ?></td>
-                                    <td><?= $saving['Akaun_2']; ?></td>
-                                    <td><?= $saving['Akaun_3']; ?></td>
-                                </tr>
-                            <?php endforeach; ?>
-                        <?php else: ?>
-                            <tr>
-                                <td colspan="6">No savings data found.</td>
-                            </tr>
-                        <?php endif; ?>
+                       <?php if ($savings): ?>
+                       <?php foreach ($savings as $saving): ?>
+                       <?php
+                       // Calculate the total for the current row
+                       $totalJumlah = $saving['akaun_1'] + $saving['akaun_2'] + $saving['akaun_3'];
+                       ?>
+                    <tr>
+                       <td><?= $saving['Syer_majikan']; ?></td>
+                       <td><?= $saving['Syer_pekerja']; ?></td>
+                       <td><?= number_format($totalJumlah, 2); ?></td>
+                       <td><?= number_format($saving['akaun_1'], 2); ?></td>
+                       <td><?= number_format($saving['akaun_2'], 2); ?></td>
+                       <td><?= number_format($saving['akaun_3'], 2); ?></td>
+                    </tr>
+                       <?php endforeach; ?>
+                       <?php else: ?>
+                    <tr>
+                      <td colspan="6">No savings data found.</td>
+                    </tr>
+                       <?php endif; ?>
                     </tbody>
+
                 </table>
             </div>
         </div>
