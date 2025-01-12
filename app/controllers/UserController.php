@@ -417,6 +417,22 @@ class UserController extends Controller
         session_destroy();
         header('Location: /homepage');
     }
+
+    public function showSavings() {
+        // Assuming session holds logged-in member ID
+        $memberId = $_SESSION['user_id']; 
+
+        // Use User model to fetch member's details
+        $userModel = new User();
+        $memberDetails = $userModel->getMemberDetails($memberId);  // Fetch member details
+
+        // Fetch savings data (as before)
+        $data['savings'] = $userModel->getSavingsByMemberId($memberId);
+        $data['memberDetails'] = $memberDetails; // Add member details to the data array
+
+        // Pass data to the view
+        $this->view('menu_member/saving', $data);
+    }
     
 }
 
