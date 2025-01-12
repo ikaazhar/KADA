@@ -5,12 +5,6 @@ use App\Core\Model;
 
 class User extends Model
 {
-    public function all() 
-    {
-        $stmt = $this->getConnection()->query("SELECT * FROM applicant"); // Use query() for SELECT statements
-        return $stmt->fetchAll(); // Use fetchAll() to get all records
-
-    }
 
     public function getFamilyDetails($applicantId) 
     {
@@ -397,5 +391,11 @@ class User extends Model
         $stmt = $this->getConnection()->prepare("UPDATE member_application SET approval = :approval WHERE id_number = :id_number");
         $stmt->execute([':approval' => $data['approval'], ':id_number' =>  $data['id_number']]);
         return $stmt->fetch();
+    }
+  
+    public function getReviewedLoanApp() {
+        $stmt = $this->db->prepare("SELECT LoanID, approval FROM loan_application WHERE approval = 'Reviewed'");
+        $stmt->execute();
+        return $stmt->fetchAll();
     }
 }

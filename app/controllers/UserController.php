@@ -13,15 +13,6 @@ class UserController extends Controller
         $this->user = new User();
     }
 
-    public function index()
-    {
-         // Fetch all users from the database
-         $users = $this->user->all();
-
-         // Pass the data to the 'users/index' view
-         $this->view('users/index', compact('users'));
-    }
-
     public function buttonpage()
     {
         $this->view('auth/buttonpage');
@@ -31,35 +22,6 @@ class UserController extends Controller
     {
         $this->view('auth/homepage');
     }
-
-    // public function store()
-    // {
-    //     $this->user->create($_POST);
-    //     header('Location: /');
-    // }
-
-    // public function edit($id)
-    // {
-    //     // Fetch the user data using the ID
-    //     $user = $this->user->find($id);
-
-    //     // Pass the user data to the 'users/edit' view
-    //     $this->view('users/edit', compact('user'));
-    // }
-    //public function store()
-    //{
-       // $this->user->create($_POST);
-       // header('Location: /');
-    //}
-
-    //public function edit($id)
-    //{
-        // Fetch the user data using the ID
-       // $user = $this->user->find($id);
-
-        // Pass the user data to the 'users/edit' view
-        //$this->view('users/edit', compact('user'));
-   // }
 
     public function register()
     {
@@ -433,7 +395,7 @@ class UserController extends Controller
         $memberDetails = $this->user->getMembershipFormList();
         $this->view('menu_admin/edit_member_application', ['memberDetails' => $memberDetails]);
     }
-
+  
     public function approveMembershipForm()
     {
         $viewMembershipFormList = $this->user->getMembershipFormListALK();
@@ -449,6 +411,21 @@ class UserController extends Controller
     {
         $memberDetails = $this->user->getMembershipFormListALK();
         $this->view('menu_admin/edit_member_application', ['memberDetails' => $memberDetails]);
+    }
+  
+    public function listReviewedLoanApp() {
+        $users = $this->user->getReviewedLoanApp();
+        $this->view('menu_alk/viewReviewedLoan', compact('users'));
+    }
+
+    public function LoanApproval() {
+        if (isset($_POST['loan_id'], $_POST['new_status'])) {
+            $loanId = $_POST['loan_id'];
+            $newStatus = $_POST['new_status'];
+            $this->user->updateLoanStatus($loanId, $newStatus);
+        }
+        // Redirect back to the list view
+        header("Location: /listReviewedLoan");
     }
 
     public function logout()
