@@ -289,6 +289,26 @@ class User extends Model
         return $stmt;
     }
     
+    // Fetch invoice details (transactions) based on member ID
+    public function getInvoiceDetails($memberId) {
+        $query = "SELECT 
+                    t.TransactionID, 
+                    t.TransactionDate, 
+                    t.TransactionMonth, 
+                    s.Syer_majikan, 
+                    s.Syer_pekerja, 
+                    (s.Syer_majikan + s.Syer_pekerja) AS total_amount, 
+                    t.account_no
+                  FROM Member_Transaction t
+                  INNER JOIN saving_syer s ON t.account_no = s.account_no
+                  WHERE t.MemberID = :memberId
+                  ORDER BY t.TransactionDate";
 
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':memberId', $memberId, \PDO::PARAM_INT);
+        $stmt->execute();
+
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
 
 }
