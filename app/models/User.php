@@ -397,4 +397,11 @@ class User extends Model
         $stmt->execute([':memberId' => $memberId]);
         return $stmt;
     }
+
+    public function getInvoiceDetails($memberId) {
+        $sql = "SELECT * FROM member_transaction WHERE MemberID = :memberId";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([':memberId' => $memberId]);
+        return $stmt;
+    }
 }

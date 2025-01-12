@@ -26,7 +26,7 @@
                             <a class="nav-link text-dark" href="/loanStatus"> Semak Kelulusan Pinjaman&nbsp;&nbsp;&nbsp;&nbsp; </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="/viewSaving"> Semak Simpanan&nbsp;&nbsp;&nbsp;&nbsp; </a>
+                            <a class="nav-link text-dark" href="/showSaving"> Semak Simpanan&nbsp;&nbsp;&nbsp;&nbsp; </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" href="/loanBalance"> Baki Pinjaman&nbsp;&nbsp;&nbsp;&nbsp; </a>
@@ -48,7 +48,7 @@
         <div class="container py-5 text-center"></div>
         <a href="/viewLoanForm" class="btn btn-primary mb-2">Mohon Pinjaman</a>
         <a href="/loanStatus" class="btn btn-primary mb-2">Semak Kelulusan Pinjaman</a>
-        <a href="/viewSaving" class="btn btn-primary">Semak Simpanan</a>
+        <a href="/showSaving" class="btn btn-primary">Semak Simpanan</a>
         <a href="/loanBalance" class="btn btn-primary mb-2">Baki Pinjaman</a>
         <a href="/viewInvoice" class="btn btn-primary mb-2">Semak Penyata</a>
     </div>
