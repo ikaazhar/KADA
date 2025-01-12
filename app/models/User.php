@@ -398,4 +398,36 @@ class User extends Model
         $stmt->execute();
         return $stmt->fetchAll();
     }
+
+    public function updateMemberLogin()
+    {
+        $stmt = $this->db->prepare("SELECT applicant_id, email FROM member_application WHERE approval = 'Approved'");
+        $stmt->execute();
+        $approvedApplicantS = $stmt->fetchAll();
+
+        $stmtInsert = $this->getConnection()->prepare("INSERT INTO MemberLogin (applicant_id) VALUES (:applicant_id)");
+
+        foreach ($approvedApplicantS as $applicant)
+        {
+            $stmtInsert ->execute([
+                ':applicant_id' => $applicant['applicant_id'],
+            ]);
+
+            $this ->sendCreateMemberEmail($applicant['applicant_id'], $applicant['email']);
+        }
+
+        return count($approvedApplicantS);
+
+    }
+
+    private function sendCreateMemberEmail($email, $applicant_id)
+    {
+        //Define email details
+        $subject = "Create member account ";
+        $message = "Your application is approved";
+        $headers = "From: no-reply@yourdomain.com";
+
+        //send the email 
+        mail($email, $subject, $message, $headers);
+    }
 }
