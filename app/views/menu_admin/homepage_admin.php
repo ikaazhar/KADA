@@ -29,10 +29,10 @@
                             <a class="nav-link text-dark" href="/viewSaving"> Rekod Kewangan Tahunan&nbsp;&nbsp;&nbsp;&nbsp; </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href=""> Laporan Koperasi&nbsp;&nbsp;&nbsp;&nbsp; </a>
+                            <a class="nav-link text-dark" href="/viewInvoice"> Laporan Koperasi&nbsp;&nbsp;&nbsp;&nbsp; </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="/viewInvoice"> ETC&nbsp;&nbsp;&nbsp;&nbsp; </a>
+                            <a class="nav-link text-dark" href="/approveMembershipForm"> Approve Membership Form (ALK)&nbsp;&nbsp;&nbsp;&nbsp; </a>
                         </li>
                         <li class="nav-item d-md-none">
                             <a href="/logout" class="nav-link text-dark"> Logout </a>
@@ -49,8 +49,8 @@
         <a href="/listPendingForm" class="btn btn-primary mb-2">Semak Dokumen Permohonan Pinjaman</a>
         <a href="/reviewMembershipForm" class="btn btn-primary mb-2">Semak Dokumen Permohonan Ahli</a>
         <a href="/viewSaving" class="btn btn-primary">Rekod Kewangan Tahunan</a>
-        <a href="" class="btn btn-primary mb-2">Laporan Koperasi</a>
-        <a href="/viewInvoice" class="btn btn-primary mb-2">ETC</a>
+        <a href="/viewInvoice" class="btn btn-primary mb-2">Laporan Koperasi</a>
+        <a href="/approveMembershipForm" class="btn btn-primary mb-2">Approve Membership Form (ALK)</a>
     </div>
 </body>
 </html>

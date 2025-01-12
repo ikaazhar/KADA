@@ -381,12 +381,12 @@ class UserController extends Controller
     public function reviewMembershipForm()
     {
         $viewMembershipFormList = $this->user->getMembershipFormList();
-        $this->view('menu_admin/review_member_application', ['viewMembershipFormList' => $viewMembershipFormList]);
+        $this->view('menu_admin/review_member_application', compact('viewMembershipFormList'));
     }
 
     public function storeMembershipFormStatus($data) {
         $stmt = $this->user->reviewMembershipForm($data);
-        $this->view('menu_admin/kemaskini_success');
+        $this->view('menu_admin/kemaskini_success_staff');
 
     }
 
@@ -395,7 +395,24 @@ class UserController extends Controller
         $memberDetails = $this->user->getMembershipFormList();
         $this->view('menu_admin/edit_member_application', ['memberDetails' => $memberDetails]);
     }
+  
+    public function approveMembershipForm()
+    {
+        $viewMembershipFormList = $this->user->getMembershipFormListALK();
+        $this->view('menu_admin/approve_member_application', compact('viewMembershipFormList'));
+    }
 
+    public function updateMembershipFormStatusALK($data) {
+        $stmt = $this->user->approveMembershipFormALK($data);
+        $this->view('menu_admin/kemaskini_success_ALK');
+    }
+
+    public function viewMembershipFormALK()
+    {
+        $memberDetails = $this->user->getMembershipFormListALK();
+        $this->view('menu_admin/edit_member_application', ['memberDetails' => $memberDetails]);
+    }
+  
     public function listReviewedLoanApp() {
         $users = $this->user->getReviewedLoanApp();
         $this->view('menu_alk/viewReviewedLoan', compact('users'));

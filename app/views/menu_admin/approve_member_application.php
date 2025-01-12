@@ -60,14 +60,14 @@
                 <tr>
                     <td><?= htmlspecialchars($form['name']) ?></td>
                     <td><?= htmlspecialchars($form['id_number']) ?></td>
-                    <td><a href="/viewMembershipForm">Dokumen_Permohonan_Ahli_<?= htmlspecialchars($form['name']) ?></a></td>
+                    <td><a href="/viewMembershipFormALK">Dokumen_Permohonan_Ahli_<?= htmlspecialchars($form['name']) ?></a></td>
                     <td>
-                    <form action="/storeMembershipFormStatus" method="POST">
+                    <form action="/updateMembershipFormStatusALK" method="POST">
                         <label for="approval" class="form-label"></label>
                         <input type="hidden" name="id_number" value="<?= $form['id_number'] ?>">
                         <select class="form-select" id="approval" name="approval" required>
-                            <option value="Pending" <?= $form['approval'] === 'Pending' ? 'selected' : '' ?>>Pending</option>
                             <option value="Reviewed" <?= $form['approval'] === 'Reviewed' ? 'selected' : '' ?>>Reviewed</option>
+                            <option value="Approved" <?= $form['approval'] === 'Approved' ? 'selected' : '' ?>>Approved</option>
                             <option value="Disapproved" <?= $form['approval'] === 'Disapproved' ? 'selected' : '' ?>>Disapproved</option>
                         </select>
                         </td>

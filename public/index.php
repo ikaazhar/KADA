@@ -178,6 +178,18 @@ if ($uri === 'homepage' && $method === 'GET') {
     } else {
         $controller->homepage();
     }
+} elseif ($uri === 'approveMembershipForm' && $method === 'GET') {
+    if (isAuthenticated()) {
+        $controller->approveMembershipForm();
+    } else {
+        $controller->homepage();
+    }
+} elseif ($uri === 'updateMembershipFormStatusALK' && $method === 'POST') {
+    if (isAuthenticated()) {
+        $controller->updateMembershipFormStatusALK($_POST);
+    } else {
+        $controller->homepage();
+    }
 } elseif ($uri === 'listReviewedLoan' && $method === 'GET') {
     if (isAuthenticated()) {
         $controller->listReviewedLoanApp();

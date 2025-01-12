@@ -360,9 +360,9 @@ class User extends Model
 
     public function getMembershipFormList() 
     {
-        $stmt = $this->getConnection()->prepare("SELECT * FROM member_application");
+        $stmt = $this->getConnection()->prepare("SELECT name, id_number, applicant_id, approval FROM member_application WHERE approval = 'Pending'");
         $stmt->execute();
-        return $stmt->fetch();
+        return $stmt->fetchAll();
     }
 
     public function reviewMembershipForm($data) 
@@ -372,6 +372,27 @@ class User extends Model
         return $stmt->fetch();
     }
 
+    public function approveMembershipForm($data) 
+    {
+        $stmt = $this->getConnection()->prepare("UPDATE member_application SET approval = :approval WHERE id_number = :id_number");
+        $stmt->execute([':approval' => $data['approval'], ':id_number' =>  $data['id_number']]);
+        return $stmt->fetch();
+    }
+
+    public function getMembershipFormListALK() 
+    {
+        $stmt = $this->getConnection()->prepare("SELECT name, id_number, applicant_id, approval FROM member_application WHERE approval = 'Reviewed'");
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+
+    public function approveMembershipFormALK($data) 
+    {
+        $stmt = $this->getConnection()->prepare("UPDATE member_application SET approval = :approval WHERE id_number = :id_number");
+        $stmt->execute([':approval' => $data['approval'], ':id_number' =>  $data['id_number']]);
+        return $stmt->fetch();
+    }
+  
     public function getReviewedLoanApp() {
         $stmt = $this->db->prepare("SELECT LoanID, approval FROM loan_application WHERE approval = 'Reviewed'");
         $stmt->execute();
