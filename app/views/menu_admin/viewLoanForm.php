@@ -18,8 +18,20 @@
                     <input type="text" class="form-control" id="loan_type" value="<?= $users['LoanType'] ?>" readonly>
                 </div>
                 <div class="mb-3">
+                    <label for="loan_type" class="form-label">Other Loan Type</label>
+                    <input type="text" class="form-control" id="other_loan_type" value="<?= $users['OtherLoanType'] !== null ? $users['OtherLoanType'] : 'Tiada' ?>" readonly>
+                </div>
+                <div class="mb-3">
                     <label for="loan_amount" class="form-label">Loan Amount</label>
                     <input type="text" class="form-control" id="loan_amount" value="<?= $users['LoanAmount'] ?>" readonly>
+                </div>
+                <div class="mb-3">
+                    <label for="loan_type" class="form-label">Repayment Period (Months):</label>
+                    <input type="text" class="form-control" id="payment_period" value="<?= $users['RepaymentPeriodMonths'] ?>" readonly>
+                </div>
+                <div class="mb-3">
+                    <label for="loan_type" class="form-label">Monthly Installment:</label>
+                    <input type="text" class="form-control" id="monthly_installment" value="<?= $users['MonthlyInstallment'] ?>" readonly>
                 </div>
                 <!-- Uploaded File -->
                 <div class="mb-3">
@@ -31,6 +43,14 @@
                     <?php endif; ?>
                 </div>
                 <!-- More details as required -->
+                <div class="mb-3">
+                    <label for="loan_type" class="form-label">Bank Name:</label>
+                    <input type="text" class="form-control" id="bank_name" value="<?= $users['BankName'] ?>" readonly>
+                </div>
+                <div class="mb-3">
+                    <label for="loan_type" class="form-label">Account Number:</label>
+                    <input type="text" class="form-control" id="acc_num" value="<?= $users['AccountNumber'] ?>" readonly>
+                </div>
             </form>
         </div>
     </div>

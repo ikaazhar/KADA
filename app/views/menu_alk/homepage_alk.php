@@ -20,10 +20,10 @@
                 <div class="collapse navbar-collapse justify-content-end align-center" id="main-nav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="/viewLoanForm"> Semak Dokumen Permohonan Pinjaman&nbsp;&nbsp;&nbsp;&nbsp; </a>
+                            <a class="nav-link text-dark" href="/listReviewedLoan"> Pengesahan Permohonan Pinjaman&nbsp;&nbsp;&nbsp;&nbsp; </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href=""> Semak Dokumen Permohonan Ahli&nbsp;&nbsp;&nbsp;&nbsp; </a>
+                            <a class="nav-link text-dark" href="">Pengesahan Permohonan Ahli&nbsp;&nbsp;&nbsp;&nbsp; </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" href="/viewSaving"> Rekod Kewangan Tahunan&nbsp;&nbsp;&nbsp;&nbsp; </a>
@@ -46,8 +46,8 @@
         </nav>
 
         <div class="container py-5 text-center"></div>
-        <a href="/listPendingForm" class="btn btn-primary mb-2">Semak Dokumen Permohonan Pinjaman</a>
-        <a href="" class="btn btn-primary mb-2">Semak Dokumen Permohonan Ahli</a>
+        <a href="/listReviewedLoan" class="btn btn-primary mb-2">Pengesahan Permohonan Pinjaman</a>
+        <a href="" class="btn btn-primary mb-2">Pengesahan Permohonan Ahli</a>
         <a href="/viewSaving" class="btn btn-primary">Rekod Kewangan Tahunan</a>
         <a href="" class="btn btn-primary mb-2">Laporan Koperasi</a>
         <a href="/viewInvoice" class="btn btn-primary mb-2">ETC</a>

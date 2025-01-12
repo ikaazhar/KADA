@@ -24,13 +24,7 @@ $controller = new UserController();
 $uri = explode('?', trim($_SERVER['REQUEST_URI'], '/'))[0];
 $method = $_SERVER['REQUEST_METHOD'];
 
-if ($uri === '' && $method === 'GET') {
-    if (isAuthenticated()) {
-        $controller->index();
-    } else {
-        header('Location: /homepage');
-    }
-} elseif ($uri === 'homepage' && $method === 'GET') {
+if ($uri === 'homepage' && $method === 'GET') {
     $controller->homepage();
 } elseif ($uri === 'buttonpage' && $method === 'GET') {
     $controller->buttonpage();
@@ -56,8 +50,6 @@ if ($uri === '' && $method === 'GET') {
     $controller->authenticateALK();
 } elseif ($uri === 'logout' && $method === 'GET') {
     $controller->logout();
-} elseif ($uri === 'back' && $method === 'GET') {
-    $controller->index();
 } elseif ($uri === 'create' && $method === 'GET') {
     $controller->create();
 } elseif ($uri === 'createMembershipForm' && $method === 'GET') {
@@ -150,22 +142,19 @@ if ($uri === '' && $method === 'GET') {
     } else {
         $controller->homepage();
     }
-}
-elseif ($uri === 'listPendingForm' && $method === 'GET') {
+} elseif ($uri === 'listPendingForm' && $method === 'GET') {
     if (isAuthenticated()) {
         $controller->listPendingApplications();
     } else {
         $controller->homepage();
     }
-}
-elseif ($uri === 'updateLoanStatus' && $method === 'POST') {
+} elseif ($uri === 'updateLoanStatus' && $method === 'POST') {
     if (isAuthenticated()) {
         $controller->updateLoanStatus();
     } else {
         $controller->homepage();
     }
-}
-elseif ($uri === 'viewLoanApplication' && $method === 'GET') {
+} elseif ($uri === 'viewLoanApplication' && $method === 'GET') {
     if (isAuthenticated()) {
         $controller->viewLoanApplication($_GET['loan_id']);
     } else {
@@ -189,8 +178,19 @@ elseif ($uri === 'viewLoanApplication' && $method === 'GET') {
     } else {
         $controller->homepage();
     }
-}
-else {
+} elseif ($uri === 'listReviewedLoan' && $method === 'GET') {
+    if (isAuthenticated()) {
+        $controller->listReviewedLoanApp();
+    } else {
+        $controller->homepage();
+    }
+} elseif ($uri === 'updateLoanApproval' && $method === 'POST') {
+    if (isAuthenticated()) {
+        $controller->LoanApproval();
+    } else {
+        $controller->homepage();
+    }
+} else {
     http_response_code(404);
     echo "Page not found.";
 }
