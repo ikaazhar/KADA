@@ -24,7 +24,9 @@ $controller = new UserController();
 $uri = explode('?', trim($_SERVER['REQUEST_URI'], '/'))[0];
 $method = $_SERVER['REQUEST_METHOD'];
 
-if ($uri === 'homepage' && $method === 'GET') {
+if ($uri === '' && $method === 'GET') {
+    $controller->homepage();
+} elseif ($uri === 'homepage' && $method === 'GET') {
     $controller->homepage();
 } elseif ($uri === 'buttonpage' && $method === 'GET') {
     $controller->buttonpage();
