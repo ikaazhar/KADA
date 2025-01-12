@@ -189,6 +189,18 @@ elseif ($uri === 'viewLoanApplication' && $method === 'GET') {
     } else {
         $controller->homepage();
     }
+} elseif ($uri === 'approveMembershipForm' && $method === 'GET') {
+    if (isAuthenticated()) {
+        $controller->approveMembershipForm();
+    } else {
+        $controller->homepage();
+    }
+} elseif ($uri === 'updateMembershipFormStatusALK' && $method === 'POST') {
+    if (isAuthenticated()) {
+        $controller->updateMembershipFormStatusALK($_POST);
+    } else {
+        $controller->homepage();
+    }
 }
 else {
     http_response_code(404);
