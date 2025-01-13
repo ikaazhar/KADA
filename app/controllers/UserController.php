@@ -466,7 +466,30 @@ class UserController extends Controller
         // Pass data to the view
         $this->view('menu_member/invoice', $data);
     }
-    
+
+    public function showReportOption()
+    {
+        $this->view('menu_admin/homepage_admin_report');
+    }
+
+    //public function showReportOption()
+    //{
+    //    // Load the calendar view
+    //    require_once 'views/calendar.php';
+    //}
+//
+    //public function fetchApprovedMembers()
+    //{
+    //    if (isset($_POST['year']) && isset($_POST['month'])) {
+    //        $year = intval($_POST['year']);
+    //        $month = intval($_POST['month']);
+//
+    //        $members = $this->memberApplication->getApprovedMembersByDate($year, $month);
+//
+    //        // Load the results view and pass data
+    //        require_once 'views/members_list.php';
+    //    } else {
+    //        echo 'Invalid request!';
+    //    }
+    //}
 }
-
-

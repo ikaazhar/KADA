@@ -425,4 +425,15 @@ class User extends Model
         $stmt->execute([':memberId' => $memberId]);
         return $stmt;
     }
+
+    public function getApprovedMembersByDate($year, $month)
+    {
+        $query = "SELECT * FROM Member_application WHERE YEAR(created_at) = :year AND MONTH(created_at) = :month";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':year', $year, PDO::PARAM_INT);
+        $stmt->bindParam(':month', $month, PDO::PARAM_INT);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
