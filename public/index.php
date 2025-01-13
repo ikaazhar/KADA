@@ -22,6 +22,7 @@ $controller = new UserController();
 
 // Basic routing logic
 $uri = explode('?', trim($_SERVER['REQUEST_URI'], '/'))[0];
+$action = isset($_GET['action']) ? $_GET['action'] : 'calendar';
 $method = $_SERVER['REQUEST_METHOD'];
 
 if ($uri === '' && $method === 'GET') {
@@ -201,6 +202,12 @@ if ($uri === '' && $method === 'GET') {
 } elseif ($uri === 'updateLoanApproval' && $method === 'POST') {
     if (isAuthenticated()) {
         $controller->LoanApproval();
+    } else {
+        $controller->homepage();
+    }
+} elseif ($action == 'calendar') {
+    if (isAuthenticated()) {
+        $controller->calendar();
     } else {
         $controller->homepage();
     }

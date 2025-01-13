@@ -334,14 +334,25 @@ class UserController extends Controller
 
         $loanApplication = $this->user->findLoanStatus($member_id);
 
-        $applicantDetails = null;
-        if ($loanApplication && $loanApplication['approval'] === 'Approved') {
-            $applicantDetails = $this->user->findLoanDetails($member_id);
+        $applicantDetails = [];
+        if (!empty($loanApplication)) {
+            foreach ($loanApplication as $LoanID) {
+                // Check approval status for each application
+                    $details = $this->user->findLoanDetails($LoanID['LoanID']);
+                
+                    if (!empty($details)) {
+                        $applicantDetails[] = $details[0]; // Only take the first result (assuming LoanID is unique)
+                    } else {
+                        $applicantDetails[] = null; // Store null if no details found
+                    }        
+            }
         }
-
-        if ($loanApplication && $member_id == $loanApplication['member_id']) {
-            $this->view('menu_member/loan_status', ['loanApplication' => $loanApplication, 'applicantDetails' => $applicantDetails]);
-        }
+    
+        // Pass all loan applications and their details to the view
+        $this->view('menu_member/loan_status', [
+            'loanApplication' => $loanApplication,
+            'applicantDetails' => $applicantDetails,
+        ]);
     }
 
     public function loanBalance()
@@ -350,9 +361,17 @@ class UserController extends Controller
         
         $loanDetails = $this->user->checkLoanBalance($member_id);
         $transactionDetails = [];
-        if ($loanDetails) {
-            $transactionDetails = $this->user->getTransactionDetails($member_id);
+
+        if (!empty($loanDetails)) {
+            foreach ($loanDetails as $loan) {
+                // Check approval status for each application
+                    $balance = $this->user->getTransactionDetails($loan['LoanID']);
+            
+                    $transactionDetails[$loan['LoanID']] = $balance; // Store null if no details found
+                
+            }
         }
+
         $this->view('menu_member/loan_balance', ['loanDetails' => $loanDetails, 'transactionDetails' => $transactionDetails]);
     }
 
@@ -451,6 +470,28 @@ class UserController extends Controller
         // Redirect back to the list view
         header("Location: /listReviewedLoan");
     }
+
+    public function calendar()
+    {
+        // Get the month and year from the URL parameters (defaults to current month and year)
+        $month = isset($_GET['month']) ? (int)$_GET['month'] : date('m');
+        $year = isset($_GET['year']) ? (int)$_GET['year'] : date('Y');
+        
+        // Get the calendar data from the model
+        $calendar = $this->user->generateCalendar($month, $year);
+        
+        // Get the month name for the view
+        $monthName = date('F', mktime(0, 0, 0, $month, 10));
+
+        // Pass the data to the view
+        $this->view('menu_alk/annual_report', [
+            'calendar' => $calendar,
+            'monthName' => $monthName,
+            'currentMonth' => $month,
+            'currentYear' => $year
+        ]);
+    }
+
 
     public function logout()
     {
