@@ -425,4 +425,19 @@ class User extends Model
         $stmt->execute([':memberId' => $memberId]);
         return $stmt;
     }
+
+    public function createMemberInfo($data)
+    {
+        // Prepare the SQL query for inserting into Member_Info
+        $stmt = $this->getConnection()->prepare(
+            "INSERT INTO Member_Info (member_id, id_number) VALUES (:member_id, :id_number)"
+        );
+
+        // Execute the query with the provided data
+        return $stmt->execute([
+            ':member_id' => $data['member_id'],
+            ':id_number' => $data['id_number']
+        ]);
+    }
+
 }

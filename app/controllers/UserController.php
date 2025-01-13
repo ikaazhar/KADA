@@ -402,10 +402,34 @@ class UserController extends Controller
         $this->view('menu_admin/approve_member_application', compact('viewMembershipFormList'));
     }
 
-    public function updateMembershipFormStatusALK($data) {
+    public function updateMembershipFormStatusALK($data)
+    {
+        // Update the approval status in the Member_Application table
         $stmt = $this->user->approveMembershipFormALK($data);
+
+        // If the status is approved, create a MemberLogin entry
+        if ($data['approval'] === 'Approved') {
+            $password = 'default_password'; // You can replace this with a generated password or collect it from the applicant
+            $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+
+            // Create a new MemberLogin entry
+            $memberId = $this->user->createMemberAcc(['password' => $hashedPassword]);
+
+            if ($memberId) {
+                // Insert the new row into Member_Info
+                $this->user->createMemberInfo([
+                    'member_id' => $memberId,
+                    'id_number' => $data['id_number']
+                ]);
+            } else {
+                die('Error creating MemberLogin entry');
+            }
+        }
+
+        // Redirect to a success page or display a success message
         $this->view('menu_admin/kemaskini_success_ALK');
     }
+
 
     public function viewMembershipFormALK()
     {
