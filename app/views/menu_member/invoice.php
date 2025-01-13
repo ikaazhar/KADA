@@ -28,29 +28,30 @@
                             <th rowspan="2"> Transaksi </th>
                             <th rowspan="2"> Tarikh </th>
                             <th rowspan="2"> Bulan Ceruman </th>
-                            <th rowspan="2">Syer Majikan <br>(RM)</th>
-                            <th rowspan="2">Syer Pekerja <br>(RM)</th>
-                            <th rowspan="2">Jumlah <br>(RM)</th>
-                            <th colspan="3">Baki Simpanan</th>
-                        </tr>
-                        <tr class="table-dark">
-                            <th>Akaun 1 (RM)</th>
-                            <th>Akaun 2 (RM)</th>
-                            <th>Akaun 3 (RM)</th>
+                            <th rowspan="2"> Catatan</th>
+                            <th rowspan="2"> No.Akaun </th>
                         </tr>
                     </thead>
+
                     <tbody>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
+                       <?php if ($invoice): ?>
+                       <?php foreach ($invoice as $invoices): ?>
+                       
+                    <tr>
+                       <td><?= $invoices['TransactionID']; ?></td>
+                       <td><?= $invoices['TransactionDate']; ?></td>
+                       <td><?= $invoices['TransactionMonth']; ?></td>
+                       <td><?= $invoices['Remarks']; ?></td>
+                       <td><?= $invoices['account_no']; ?></td>
+                    </tr>
+                       <?php endforeach; ?>
+                       <?php else: ?>
+                    <tr>
+                      <td colspan="5">No savings data found.</td>
+                    </tr>
+                       <?php endif; ?>
+                    </tbody>
+                        
         </div>
         </div>
     </div>

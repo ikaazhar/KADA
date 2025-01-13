@@ -14,13 +14,14 @@
     <div class="container">
         <div class="card">
             <div class="card-body">
-                <p class="card-text"><strong>Nama: </strong>Mohd Roslan b Ismail </p>
-                <p class="card-text"><strong>No. IC: </strong>740807-03-5479</p>
-                <p class="card-text"><strong>No. Ahli: </strong>1579</p>
+                <!-- Dynamically populated member details -->
+                <p class="card-text"><strong>Nama: </strong><?php echo $data['memberDetails']['name']; ?></p>
+                <p class="card-text"><strong>No. IC: </strong><?php echo $data['memberDetails']['id_number']; ?></p>
+                <p class="card-text"><strong>No. Ahli: </strong><?php echo $data['memberDetails']['membership_number']; ?></p>
             </div>
         </div>
     </div>
-
+    
     <div class="container mt-5">
         <!-- Card for Maklumat Simpanan Ahli -->
         <div class="card">
@@ -41,31 +42,28 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>5000.00</td>
-                            <td>2000.00</td>
-                            <td>7000.00</td>
-                            <td>1000.00</td>
-                            <td>2000.00</td>
-                            <td>3000.00</td>
-                        </tr>
-                        <tr>
-                            <td>4000.00</td>
-                            <td>1500.00</td>
-                            <td>5500.00</td>
-                            <td>1200.00</td>
-                            <td>1500.00</td>
-                            <td>1800.00</td>
-                        </tr>
-                        <tr>
-                            <td>6000.00</td>
-                            <td>2500.00</td>
-                            <td>8500.00</td>
-                            <td>1500.00</td>
-                            <td>2500.00</td>
-                            <td>3500.00</td>
-                        </tr>
+                       <?php if ($savings): ?>
+                       <?php foreach ($savings as $saving): ?>
+                       <?php
+                       // Calculate the total for the current row
+                       $totalJumlah = $saving['akaun_1'] + $saving['akaun_2'] + $saving['akaun_3'];
+                       ?>
+                    <tr>
+                       <td><?= $saving['Syer_majikan']; ?></td>
+                       <td><?= $saving['Syer_pekerja']; ?></td>
+                       <td><?= number_format($totalJumlah, 2); ?></td>
+                       <td><?= number_format($saving['akaun_1'], 2); ?></td>
+                       <td><?= number_format($saving['akaun_2'], 2); ?></td>
+                       <td><?= number_format($saving['akaun_3'], 2); ?></td>
+                    </tr>
+                       <?php endforeach; ?>
+                       <?php else: ?>
+                    <tr>
+                      <td colspan="6">No savings data found.</td>
+                    </tr>
+                       <?php endif; ?>
                     </tbody>
+
                 </table>
             </div>
         </div>

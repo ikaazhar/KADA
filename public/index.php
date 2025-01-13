@@ -99,7 +99,7 @@ if ($uri === '' && $method === 'GET') {
     }
 } elseif ($uri === 'viewInvoice' && $method === 'GET') {
     if (isAuthenticated()) {
-        $controller->viewInvoice();
+        $controller->showInvoice();
     } else {
         $controller->homepage();
     }
@@ -211,7 +211,13 @@ if ($uri === '' && $method === 'GET') {
     } else {
         $controller->homepage();
     }
-} else {
+} elseif ($uri === 'showSaving' && $method === 'GET') {
+    if (isAuthenticated()) {
+        $controller->showSavings();
+    } else {
+        $controller->homepage();
+    }
+}else {
     http_response_code(404);
     echo "Page not found.";
 }

@@ -399,7 +399,7 @@ class User extends Model
         $stmt->execute();
         return $stmt->fetchAll();
     }
-
+  
     public function generateCalendar($month, $year)
     {
         // Get the number of days in the given month
@@ -423,5 +423,32 @@ class User extends Model
 
         // Return the full calendar
         return $calendar;
+      
+    public function getMemberDetails($memberId) {
+        // Query to fetch member details
+        $sql = "SELECT * FROM member_application WHERE applicant_id = :memberId";
+        
+        // Prepare and execute the query
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([':memberId' => $memberId]);
+    
+        // Fetch and return the results
+        return $stmt->fetch(\PDO::FETCH_ASSOC);
+    }
+    
+    // Method to get savings by member ID (as before)
+    public function getSavingsByMemberId($memberId) {
+        $sql = "SELECT * FROM saving_syer WHERE Member_id = :memberId";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([':memberId' => $memberId]);
+        return $stmt;
+    }
+
+    public function getInvoiceDetails($memberId) {
+        $sql = "SELECT * FROM member_transaction WHERE MemberID = :memberId";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([':memberId' => $memberId]);
+        return $stmt;
+
     }
 }
