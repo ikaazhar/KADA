@@ -425,4 +425,5 @@ class User extends Model
         $stmt->execute([':memberId' => $memberId]);
         return $stmt;
     }
+
 }

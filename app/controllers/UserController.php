@@ -226,6 +226,7 @@ class UserController extends Controller
         $this->view('menu_member/loan_application');
     }
 
+    
     public function createMember()
     {
         // Example data you might collect from a form or API request
@@ -406,7 +407,7 @@ class UserController extends Controller
         $stmt = $this->user->approveMembershipFormALK($data);
         $this->view('menu_admin/kemaskini_success_ALK');
     }
-
+        
     public function viewMembershipFormALK()
     {
         $memberDetails = $this->user->getMembershipFormListALK();
@@ -466,6 +467,9 @@ class UserController extends Controller
         // Pass data to the view
         $this->view('menu_member/invoice', $data);
     }
+
+    //dptkan applicant_id yg baru approved
+    //simpan dlm satu variable 
     
 }
 
