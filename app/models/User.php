@@ -567,6 +567,20 @@ class User extends Model
     $stmt = $this->getConnection()->prepare("SELECT name, id_number, applicant_id, approval FROM member_application");
         $stmt->execute();
        return $stmt->fetchAll();
+
+    public function getMemberIDByIdNumber($IdNum) {
+        $stmt = $this->db->prepare("SELECT member_id FROM Member_Info WHERE id_number = :id_number");
+        $stmt->bindParam(':id_number', $IdNum);
+        $stmt->execute();
+        return $stmt->fetchColumn();
+    }
+
+    public function getAccountDetails($memberId) {
+        $stmt = $this->db->prepare("SELECT * FROM MemberLogin WHERE member_id = :member_id");
+        $stmt->bindParam(':member_id', $memberId);
+        $stmt->execute();
+        return $stmt->fetch();
+
     }
 
 }
