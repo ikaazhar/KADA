@@ -536,4 +536,37 @@ class User extends Model
     return $stmt->fetch();
     }
 
+    public function getApplicationsByDate($year, $month, $day = null)
+    {
+        $sql = "SELECT name, id_number, approval, created_at 
+                FROM member_application 
+                WHERE MONTH(created_at) = :month AND YEAR(created_at) = :year";
+    
+    //    // If a specific day is selected, add it to the query
+       if ($day !== null) {
+            $sql .= " AND DAY(created_at) <= :day";
+        }
+    
+        $stmt = $this->getConnection()->prepare($sql);
+    
+    //    // Bind parameters
+       $params = [
+            ':month' => $month,
+            ':year' => $year,
+        ];
+        if ($day !== null) {
+            $params[':day'] = $day;
+       }
+    
+        $stmt->execute($params);
+        return $stmt->fetchAll();
+    }
+
+    public function getMembershipListReport() 
+    {
+    $stmt = $this->getConnection()->prepare("SELECT name, id_number, applicant_id, approval FROM member_application");
+        $stmt->execute();
+       return $stmt->fetchAll();
+    }
+
 }

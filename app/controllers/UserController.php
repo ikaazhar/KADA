@@ -501,6 +501,8 @@ class UserController extends Controller
     // Fetch reports
     $monthlyReport = $this->user->getMonthlySyerReport($month, $year, $selectedDay);
     $annualReport = $this->user->getAnnualSyerReport($year);
+    $viewMembershipListReport = $this->user->getMembershipListReport();
+    $applications = $this->user->getApplicationsByDate($year, $month, $selectedDay);
 
     // Pass the data to the view
     $this->view('menu_alk/annual_report', [
@@ -510,10 +512,10 @@ class UserController extends Controller
         'currentYear' => $year,
         'selectedDay' => $selectedDay,
         'monthlyReport' => $monthlyReport,
-        'annualReport' => $annualReport
+        'annualReport' => $annualReport,
+        'applications' => $applications
     ]);
     }
-
 
     public function logout()
     {

@@ -84,6 +84,37 @@
             <p>Syer Majikan: RM <?= isset($annualReport['total_syer_majikan']) ? $annualReport['total_syer_majikan'] : '0' ?></p>
             <p>Syer Pekerja: RM <?= isset($annualReport['total_syer_pekerja']) ? $annualReport['total_syer_pekerja'] : '0' ?></p>
             </div>
+
+<!-- Applications List -->
+<h2 class="text-center mt-5">Applications for <?= htmlspecialchars($monthName) ?> <?= htmlspecialchars($selectedDay ?? '') ?> <?= htmlspecialchars($currentYear) ?></h2>
+            
+            <table class="table table-bordered table-striped text-center mt-3">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th>ID Number</th>
+                        <th>Approval Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php if (!empty($applications)): ?>
+                        <?php foreach ($applications as $application): ?>
+                            <tr>
+                                <td><?= htmlspecialchars($application['name']) ?></td>
+                                <td><?= htmlspecialchars($application['id_number']) ?></td>
+                                <td><?= htmlspecialchars($application['approval']) ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <tr>
+                            <td colspan="4" class="text-center">No applications found for this date.</td>
+                        </tr>
+                    <?php endif; ?>
+                </tbody>
+            </table>
+                    
+        </div>
+
     </div>
             <!-- Back to Main Menu -->
             <a href="/homepageAdmin" class="btn btn-primary">Back to Main Menu</a>
