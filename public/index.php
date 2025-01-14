@@ -177,7 +177,7 @@ if ($uri === '' && $method === 'GET') {
     }
 } elseif ($uri === 'viewMembershipForm' && $method === 'GET') {
     if (isAuthenticated()) {
-        $controller->viewMembershipForm();
+        $controller->viewMembershipForm($_GET['id_number']);
     } else {
         $controller->homepage();
     }

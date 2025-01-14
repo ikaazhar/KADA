@@ -409,10 +409,10 @@ class UserController extends Controller
 
     }
 
-    public function viewMembershipForm()
+    public function viewMembershipForm($id_number)
     {
-        $memberDetails = $this->user->getMembershipFormList();
-        $this->view('menu_admin/edit_member_application', ['memberDetails' => $memberDetails]);
+        $memberDetails = $this->user->getMemberAppForm($id_number);
+        $this->view('menu_admin/viewMemberForm', compact('memberDetails'));
     }
   
     public function approveMembershipForm()

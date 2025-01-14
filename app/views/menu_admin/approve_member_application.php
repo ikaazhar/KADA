@@ -60,7 +60,7 @@
                 <tr>
                     <td><?= htmlspecialchars($form['name']) ?></td>
                     <td><?= htmlspecialchars($form['id_number']) ?></td>
-                    <td><a href="/viewMembershipFormALK">Dokumen_Permohonan_Ahli_<?= htmlspecialchars($form['name']) ?></a></td>
+                    <td><a href="/viewMembershipForm?id_number=<?= $form['id_number'] ?>">Dokumen_Permohonan_Ahli_<?= htmlspecialchars($form['name']) ?></a></td>
                     <td>
                     <form action="/updateMembershipFormStatusALK" method="POST">
                         <label for="approval" class="form-label"></label>

@@ -359,6 +359,13 @@ class User extends Model
         return $stmt->fetch();
     }
 
+    public function getMemberAppForm($IdNum) {
+        $stmt = $this->db->prepare("SELECT * FROM member_application WHERE id_number = :id_number");
+        $stmt->bindParam(':id_number', $IdNum);
+        $stmt->execute();
+        return $stmt->fetch();
+    }
+
     public function getMembershipFormList() 
     {
         $stmt = $this->getConnection()->prepare("SELECT name, id_number, applicant_id, approval FROM member_application WHERE approval = 'Pending'");
@@ -423,6 +430,7 @@ class User extends Model
 
         // Return the full calendar
         return $calendar;
+    }
       
     public function getMemberDetails($memberId) {
         // Query to fetch member details
