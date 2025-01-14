@@ -48,10 +48,7 @@
         <div class="container py-5 text-center"></div>
         <a href="/listPendingForm" class="btn btn-primary mb-2">Semak Dokumen Permohonan Pinjaman</a>
         <a href="/reviewMembershipForm" class="btn btn-primary mb-2">Semak Dokumen Permohonan Ahli</a>
-        <a href="/viewSaving" class="btn btn-primary">Rekod Kewangan Tahunan</a>
-        <a href="/viewInvoice" class="btn btn-primary mb-2">Laporan Koperasi</a>
-        <a href="/calendar" class="btn btn-primary mb-2">Annual Report (ALK)</a>
-        <a class="nav-link text-dark" href="/approveMembershipForm">Pengesahan Permohonan Ahli</a>
+        <a href="/calendar" class="btn btn-primary mb-2">Annual Report</a>
     </div>
 </body>
 </html>
