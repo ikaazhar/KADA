@@ -446,14 +446,21 @@ class User extends Model
     
     // Method to get savings by member ID (as before)
     public function getSavingsByMemberId($memberId) {
-        $sql = "SELECT * FROM saving_syer WHERE Member_id = :memberId";
+        $sql = "SELECT * FROM membersavings WHERE Member_id = :memberId";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([':memberId' => $memberId]);
+        return $stmt;
+    }
+
+    public function getShareByMemberId($memberId) {
+        $sql = "SELECT * FROM membersyer WHERE Member_id = :memberId";
         $stmt = $this->db->prepare($sql);
         $stmt->execute([':memberId' => $memberId]);
         return $stmt;
     }
 
     public function getInvoiceDetails($memberId) {
-        $sql = "SELECT * FROM member_transaction WHERE MemberID = :memberId";
+        $sql = "SELECT * FROM transaction WHERE member_id = :memberId";
         $stmt = $this->db->prepare($sql);
         $stmt->execute([':memberId' => $memberId]);
         return $stmt;

@@ -519,15 +519,15 @@ class UserController extends Controller
         $memberId = $_SESSION['user_id']; 
 
         // Use User model to fetch member's details
-        $userModel = new User();
-        $memberDetails = $userModel->getMemberDetails($memberId);  // Fetch member details
+        $infoID = $this->user->getIdNumberByMemberId($memberId); // Fetch member details
 
         // Fetch savings data (as before)
-        $data['savings'] = $userModel->getSavingsByMemberId($memberId);
-        $data['memberDetails'] = $memberDetails; // Add member details to the data array
+        $savings = $this->user->getSavingsByMemberId($memberId); 
+        $share = $this->user->getShareByMemberId($memberId);
+        $memberDetails = $this->user->getMemberDetailsByIdNumber($infoID); 
 
         // Pass data to the view
-        $this->view('menu_member/saving', $data);
+        $this->view('menu_member/saving', compact('memberDetails', 'savings', 'share'));
     }
 
     public function showInvoice() {
@@ -535,15 +535,16 @@ class UserController extends Controller
         $memberId = $_SESSION['user_id']; 
 
         // Use User model to fetch member's details
-        $userModel = new User();
-        $memberDetails = $userModel->getMemberDetails($memberId);  // Fetch member details
+        $infoID = $this->user->getIdNumberByMemberId($memberId); // Fetch member details
 
         // Fetch savings data (as before)
-        $data['invoice'] = $userModel->getInvoiceDetails($memberId);
-        $data['memberDetails'] = $memberDetails; // Add member details to the data array
+        $memberDetails = $this->user->getMemberDetailsByIdNumber($infoID);
+
+        // Fetch savings data (as before)
+        $invoice = $this->user->getInvoiceDetails($memberId);
 
         // Pass data to the view
-        $this->view('menu_member/invoice', $data);
+        $this->view('menu_member/invoice', compact('memberDetails', 'invoice'));
     }
     
 }
