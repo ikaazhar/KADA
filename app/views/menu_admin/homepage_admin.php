@@ -51,6 +51,7 @@
         <a href="/viewSaving" class="btn btn-primary">Rekod Kewangan Tahunan</a>
         <a href="/viewInvoice" class="btn btn-primary mb-2">Laporan Koperasi</a>
         <a href="/calendar" class="btn btn-primary mb-2">Annual Report (ALK)</a>
+        <a class="nav-link text-dark" href="/approveMembershipForm">Pengesahan Permohonan Ahli</a>
     </div>
 </body>
 </html>

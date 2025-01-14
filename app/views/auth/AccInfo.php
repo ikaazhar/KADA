@@ -12,8 +12,8 @@
         <?php if ($accountDetails): ?>
             <p class="mt-4">Member ID: <strong><?= htmlspecialchars($accountDetails['member_id']); ?></strong></p>
             <p>Password: <strong>1234<strong></p>
-        <?php else: ?>
-            <p class="text-danger mt-4">No account found for the provided ID number.</p>
+            <?php elseif ($message): ?>
+            <p class="text-danger mt-4"><?= htmlspecialchars($message); ?></p>
         <?php endif; ?>
         <a href="/homepage" class="btn btn-secondary mt-3">Back</a>
     </div>
