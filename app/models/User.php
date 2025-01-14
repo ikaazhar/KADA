@@ -423,6 +423,7 @@ class User extends Model
 
         // Return the full calendar
         return $calendar;
+    }
       
     public function getMemberDetails($memberId) {
         // Query to fetch member details
@@ -451,4 +452,66 @@ class User extends Model
         return $stmt;
 
     }
+
+    public function getMonthlyReport($month, $year, $upToDay = null)
+    {
+    // Logic to fetch and return the monthly report up to the specified day
+    // Replace with your actual database query or logic
+    $report = [];
+    for ($day = 1; $day <= ($upToDay ?? cal_days_in_month(CAL_GREGORIAN, $month, $year)); $day++) {
+        $report[] = "Report for $day $month $year";
+    }
+    return $report;
+    }
+
+    public function getAnnualReport($year)
+    {
+    // Logic to fetch and return the annual report
+    // Replace with your actual database query or logic
+    $report = [];
+    for ($month = 1; $month <= 12; $month++) {
+        $report[] = "Summary for $month $year";
+    }
+    return $report;
+    }
+
+    public function getMonthlySyerReport($month, $year, $upToDay)
+    {
+    // Add the upToDay condition only if $upToDay is provided
+    $upToDayCondition = $upToDay ? "AND DAY(created_at) <= :upToDay" : "";
+    
+    $query = "SELECT 
+                  SUM(Syer_majikan) AS total_syer_majikan, 
+                  SUM(Syer_pekerja) AS total_syer_pekerja
+              FROM membersyer
+              WHERE MONTH(created_at) = :month 
+              AND YEAR(created_at) = :year
+              $upToDayCondition";
+
+    $stmt = $this->db->prepare($query);
+    $stmt->bindValue(':month', $month);
+    $stmt->bindValue(':year', $year);
+
+    if ($upToDay) {
+        $stmt->bindValue(':upToDay', $upToDay);
+    }
+
+    $stmt->execute();
+    return $stmt->fetch();
+    }
+
+    public function getAnnualSyerReport($year)
+    {
+    $query = "SELECT 
+                  SUM(Syer_majikan) AS total_syer_majikan, 
+                  SUM(Syer_pekerja) AS total_syer_pekerja
+              FROM membersyer
+              WHERE YEAR(created_at) = :year";
+
+    $stmt = $this->db->prepare($query);
+    $stmt->bindValue(':year', $year);
+    $stmt->execute();
+    return $stmt->fetch();
+    }
+
 }

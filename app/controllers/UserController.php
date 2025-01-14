@@ -418,12 +418,12 @@ class UserController extends Controller
     public function approveMembershipForm()
     {
         $viewMembershipFormList = $this->user->getMembershipFormListALK();
-        $this->view('menu_admin/approve_member_application', compact('viewMembershipFormList'));
+        $this->view('menu_alk/approve_member_application', compact('viewMembershipFormList'));
     }
 
     public function updateMembershipFormStatusALK($data) {
         $stmt = $this->user->approveMembershipFormALK($data);
-        $this->view('menu_admin/kemaskini_success_ALK');
+        $this->view('menu_alk/kemaskini_success_ALK');
     }
 
     public function viewMembershipFormALK()
@@ -449,31 +449,31 @@ class UserController extends Controller
 
     public function calendar()
     {
-        // Get the month and year from the URL parameters (defaults to current month and year)
-        $month = isset($_GET['month']) ? (int)$_GET['month'] : date('m');
-        $year = isset($_GET['year']) ? (int)$_GET['year'] : date('Y');
-        
-        // Get the calendar data from the model
-        $calendar = $this->user->generateCalendar($month, $year);
-        
-        // Get the month name for the view
-        $monthName = date('F', mktime(0, 0, 0, $month, 10));
+    // Get the month and year from the URL parameters (defaults to current month and year)
+    $month = isset($_GET['month']) ? (int)$_GET['month'] : date('m');
+    $year = isset($_GET['year']) ? (int)$_GET['year'] : date('Y');
+    $selectedDay = isset($_GET['day']) ? (int)$_GET['day'] : null;
 
-        // Pass the data to the view
-        $this->view('menu_alk/annual_report', [
-            'calendar' => $calendar,
-            'monthName' => $monthName,
-            'currentMonth' => $month,
-            'currentYear' => $year
-        ]);
-    }
+    // Get the calendar data from the model
+    $calendar = $this->user->generateCalendar($month, $year);
 
+    // Get the month name for the view
+    $monthName = date('F', mktime(0, 0, 0, $month, 10));
 
-    public function logout()
-    {
-        session_start();
-        session_destroy();
-        header('Location: /homepage');
+    // Fetch reports
+    $monthlyReport = $this->user->getMonthlySyerReport($month, $year, $selectedDay);
+    $annualReport = $this->user->getAnnualSyerReport($year);
+
+    // Pass the data to the view
+    $this->view('menu_alk/annual_report', [
+        'calendar' => $calendar,
+        'monthName' => $monthName,
+        'currentMonth' => $month,
+        'currentYear' => $year,
+        'selectedDay' => $selectedDay,
+        'monthlyReport' => $monthlyReport,
+        'annualReport' => $annualReport
+    ]);
     }
 
     public function showSavings() {
@@ -507,7 +507,13 @@ class UserController extends Controller
         // Pass data to the view
         $this->view('menu_member/invoice', $data);
     }
-    
+
+    public function logout()
+    {
+        session_start();
+        session_destroy();
+        header('Location: /homepage');
+    }
 }
 
 
