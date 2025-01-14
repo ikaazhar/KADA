@@ -93,6 +93,9 @@
                         <a class="btn btn-info d-inline-block mx-1" href="/createMembershipForm/">Daftar Sekarang</a>
                     </li>
                     <li class="nav-item">
+                        <a class="btn btn-info d-inline-block mx-1" href="/checkAcc">Semak Permohonan</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="btn btn-info d-inline-block mx-1" href="/buttonpage">Login</a>
                     </li>
                 </ul>

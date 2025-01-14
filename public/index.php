@@ -59,8 +59,12 @@ if ($uri === '' && $method === 'GET') {
     $controller->createMembershipForm();
 } elseif ($uri === 'storeMembershipForm' && $method === 'POST') {
     $controller->storeMembershipForm(); 
-}  elseif ($uri === 'store' && $method === 'POST') {
+} elseif ($uri === 'store' && $method === 'POST') {
     $controller->store();
+} elseif ($uri === 'checkAcc' && $method === 'GET') {
+    $controller->showCheckAccountForm();
+} elseif ($uri === 'getAccInfo' && $method === 'POST') {
+    $controller->checkAccount();
 } elseif (preg_match('/edit\/(\d+)/', $uri, $matches) && $method === 'GET') {
     if (isAuthenticated()) {
         $controller->edit($matches[1]);
