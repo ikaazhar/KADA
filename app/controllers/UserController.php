@@ -546,6 +546,10 @@ class UserController extends Controller
         // Pass data to the view
         $this->view('menu_member/invoice', compact('memberDetails', 'invoice'));
     }
+
+    public function showCheckAccountForm() {
+        $this->view('auth/checkAccount');
+    }
     
 }
 

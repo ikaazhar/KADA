@@ -61,6 +61,8 @@ if ($uri === '' && $method === 'GET') {
     $controller->storeMembershipForm(); 
 }  elseif ($uri === 'store' && $method === 'POST') {
     $controller->store();
+} elseif ($uri === 'checkAcc' && $method === 'GET') {
+    $controller->showCheckAccountForm();
 } elseif (preg_match('/edit\/(\d+)/', $uri, $matches) && $method === 'GET') {
     if (isAuthenticated()) {
         $controller->edit($matches[1]);
