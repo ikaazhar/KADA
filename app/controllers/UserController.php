@@ -577,6 +577,20 @@ class UserController extends Controller
 
         $this->view('auth/AccInfo', compact('accountDetails'));
     }
+
+    public function showProfile() {
+        // Assuming session holds logged-in member ID
+        $memberId = $_SESSION['user_id']; 
+
+        // Use User model to fetch member's details
+        $infoID = $this->user->getIdNumberByMemberId($memberId); // Fetch member details
+
+        // Fetch savings data (as before)
+        $memberDetails = $this->user->getMemberDetailsByIdNumber($infoID);
+
+        // Pass data to the view
+        $this->view('menu_member/viewPersonalInfo', compact('memberDetails'));
+    }
     
 }
 

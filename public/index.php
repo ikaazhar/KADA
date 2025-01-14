@@ -215,9 +215,9 @@ if ($uri === '' && $method === 'GET') {
     } else {
         $controller->homepage();
     }
-} elseif ($uri === 'calendarWithApplications' && $method === 'GET') {
+} elseif ($uri == 'showProfile'&& $method === 'GET') {
     if (isAuthenticated()) {
-        $controller->calendarWithApplications();
+        $controller->showProfile();
     } else {
         $controller->homepage();
     }
