@@ -215,6 +215,12 @@ if ($uri === '' && $method === 'GET') {
     } else {
         $controller->homepage();
     }
+} elseif ($uri == 'showProfile'&& $method === 'GET') {
+    if (isAuthenticated()) {
+        $controller->showProfile();
+    } else {
+        $controller->homepage();
+    }
 } elseif ($action == 'calendar') {
      if (isAuthenticated()) {
          $controller->calendar();
@@ -225,3 +231,4 @@ if ($uri === '' && $method === 'GET') {
     http_response_code(404);
     echo "Page not found.";
 }
+
