@@ -393,9 +393,23 @@ class UserController extends Controller
 
     // View detailed application
     public function viewLoanApplication($loanId) {
-        $users = $this->user->getLoanApplicationById($loanId);
-        $this->view('menu_admin/viewLoanForm', compact('users'));
+        // Fetch loan application details
+        $loanDetails = $this->user->getLoanApplicationById($loanId);
+        
+        if ($loanDetails) {
+            // Fetch the member's ID number using member_id
+            $idNumber = $this->user->getIdNumberByMemberId($loanDetails['member_id']);
+            
+            // Fetch member details from member_application if idNumber exists
+            $memberDetails = $idNumber ? $this->user->getMemberDetailsByIdNumber($idNumber) : null;
+    
+            $this->view('menu_admin/viewLoanForm', compact('loanDetails', 'memberDetails'));
+        } else {
+            // Handle case when loan details are not found
+            header("Location: /listPendingForm");
+        }
     }
+    
     
     public function reviewMembershipForm()
     {
@@ -428,11 +442,11 @@ class UserController extends Controller
 
         // If the status is approved, create a MemberLogin entry
         if ($data['approval'] === 'Approved') {
-            $password = 'default_password'; // You can replace this with a generated password or collect it from the applicant
-            $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
-            // Create a new MemberLogin entry
-            $memberId = $this->user->createMemberAcc(['password' => $hashedPassword]);
+            $newAcc = [
+                'password' => '1234', // The raw password to be hashed and stored
+            ];
+            $memberId = $this->user->createMemberAcc($newAcc);
 
             if ($memberId) {
                 // Insert the new row into Member_Info
