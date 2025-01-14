@@ -106,9 +106,9 @@
         <!-- Member Details Card -->
         <div class="card">
             <div class="card-body">
-                <p class="card-text"><strong>Nama: </strong></p>
-                <p class="card-text"><strong>No. IC: </strong></p>
-                <p class="card-text"><strong>No. Ahli: </strong></p>
+            <p class="card-text"><strong>Nama: </strong><?php echo $data['memberDetails']['name']; ?></p>
+                <p class="card-text"><strong>No. IC: </strong><?php echo $data['memberDetails']['id_number']; ?></p>
+                <p class="card-text"><strong>No. Ahli: </strong><?php echo $data['memberDetails']['membership_number']; ?></p>
             </div>
         </div>
 
@@ -120,9 +120,9 @@
                         <tr>
                             <th rowspan="2"> Transaksi </th>
                             <th rowspan="2"> Tarikh </th>
-                            <th rowspan="2"> Bulan Caruman </th>
+                            <th rowspan="2"> Jumlah (RM) </th>
                             <th rowspan="2"> Catatan</th>
-                            <th rowspan="2"> No. Akaun </th>
+                            <th rowspan="2"> Cara Bayaran</th>
                         </tr>
                     </thead>
 
@@ -130,11 +130,11 @@
                         <?php if ($invoice): ?>
                             <?php foreach ($invoice as $invoices): ?>
                                 <tr>
-                                    <td><?= $invoices['TransactionID']; ?></td>
-                                    <td><?= $invoices['TransactionDate']; ?></td>
-                                    <td><?= $invoices['TransactionMonth']; ?></td>
-                                    <td><?= $invoices['Remarks']; ?></td>
-                                    <td><?= $invoices['account_no']; ?></td>
+                                    <td><?= $invoices['TransactionD']; ?></td>
+                                    <td><?= $invoices['PaymentDate']; ?></td>
+                                    <td><?= $invoices['PaymentAmount']; ?></td>
+                                    <td><?= $invoices['PaymentReference']; ?></td>
+                                    <td><?= $invoices['PaymentMethod']; ?></td>
                                 </tr>
                             <?php endforeach; ?>
                         <?php else: ?>

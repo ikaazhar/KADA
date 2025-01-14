@@ -9,7 +9,7 @@
 </head>
 <body>
 
-    <h1 class="text-center">PENYATA KEWANGAN AHLI KOPERASI KAKITANGAN KADA KELANTAN</h1>
+    <h1 class="text-center">SIMPANAN DAN SYER PERIBADI</h1>
 
     <div class="container">
         <div class="card">
@@ -24,37 +24,60 @@
     
     <div class="container mt-5">
         <!-- Card for Maklumat Simpanan Ahli -->
+        <br><h1 class="text-center mb-4">Simpanan Peribadi Ahli</h1>
         <div class="card">
             <div class="card-body">
                 <table class="table table-bordered table-hover text-center">
                     <thead class="table-dark">
                         <tr>
-                            <th rowspan="2">Syer Majikan <br>(RM)</th>
-                            <th rowspan="2">Syer Pekerja <br>(RM)</th>
-                            <th rowspan="2">Jumlah <br>(RM)</th>
-                            <th colspan="3">Baki Simpanan</th>
+                            <th rowspan="2">Nombor akaun </th>
+                            <th rowspan="2">Baki Simpanan <br>(RM)</th>
+                            <th colspan="3">Tarikh Kemaskini</th>
                         </tr>
 
-                        <tr class="table-dark">
-                            <th>Akaun 1 (RM)</th>
-                            <th>Akaun 2 (RM)</th>
-                            <th>Akaun 3 (RM)</th>
-                        </tr>
                     </thead>
                     <tbody>
                        <?php if ($savings): ?>
                        <?php foreach ($savings as $saving): ?>
-                       <?php
-                       // Calculate the total for the current row
-                       $totalJumlah = $saving['akaun_1'] + $saving['akaun_2'] + $saving['akaun_3'];
-                       ?>
+                    
                     <tr>
-                       <td><?= $saving['Syer_majikan']; ?></td>
-                       <td><?= $saving['Syer_pekerja']; ?></td>
-                       <td><?= number_format($totalJumlah, 2); ?></td>
-                       <td><?= number_format($saving['akaun_1'], 2); ?></td>
-                       <td><?= number_format($saving['akaun_2'], 2); ?></td>
-                       <td><?= number_format($saving['akaun_3'], 2); ?></td>
+                       <td><?= $saving['account_no']; ?></td>
+                       <td><?= number_format($saving['balance'], 2); ?></td>
+                       <td><?= $saving['created_at']; ?></td>
+                    </tr>
+                       <?php endforeach; ?>
+                       <?php else: ?>
+                    <tr>
+                      <td colspan="6">No savings data found.</td>
+                    </tr>
+                       <?php endif; ?>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <!-- Card for Maklumat Simpanan Ahli -->
+        <br><h1 class="text-center mb-4">Syer Ahli</h1>
+        <div class="card">
+            <div class="card-body">
+                <table class="table table-bordered table-hover text-center">
+                    <thead class="table-dark">
+                        <tr>
+                            <th rowspan="2"> Syer Majikan </th>
+                            <th rowspan="2">Syer Pekerja</th>
+                        </tr>
+
+                    </thead>
+                    <tbody>
+                       <?php if ($share): ?>
+                       <?php foreach ($share as $shares): ?>
+                    
+                    <tr>
+                       <td><?= number_format($shares['Syer_majikan'], 2); ?></td>
+                       <td><?= number_format($shares['Syer_pekerja'], 2); ?></td>
                     </tr>
                        <?php endforeach; ?>
                        <?php else: ?>
