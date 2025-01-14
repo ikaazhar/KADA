@@ -34,32 +34,48 @@
         </nav>
 
 
-    <!-- Main Content -->
-    <div class="container py-5 text-center">
-        <h1>Selamat Datang ke Koperasi KADA</h1>
-        <p class="lead" style="font-size: 30px;">Akses pelbagai perkhidmatan koperasi dengan mudah</p>
+   <!-- Main Content -->
+<div class="container py-5 text-center">
+    <h1 class="display-4 mb-3" style="font-family: 'Times New Roman', Times, serif; font-size: 60px; font-weight: bold;">Selamat Datang ke Koperasi KADA</h1>
+    <p class="lead mb-5"  style="font-family: 'Times New Roman', Times, serif; font-size: 20px;">Akses pelbagai perkhidmatan koperasi dengan mudah</p>
 
-        <!-- Button Container with Flexbox -->
-        <div class="button-container">
-            <a href="/viewLoanForm" class="btn btn-primary mb-2">
-                <span class="btn-text">Mohon Pinjaman</span>
+    <!-- Button Container with Grid System -->
+    <div class="row justify-content-center">
+        <div class="col-md-4 mb-3">
+            <a href="/viewLoanForm" class="btn btn-primary w-100" style="width: 500px; height: 200px; font-family: 'Times New Roman', Times, serif; font-size: 40px; text-transform: uppercase; text-align: center; box-shadow: 0 6px 12px rgba(168, 138, 80, 0.712); 
+            border-radius: 40px; background-color: #c8781cce; border-color: #a6801767;">
+                Mohon Pinjaman
             </a>
-            <a href="/loanStatus" class="btn btn-primary mb-2">
-                <span class="btn-text">Semak Kelulusan Pinjaman</span>
+
+        </div>
+        <div class="col-md-4 mb-3">
+            <a href="/loanStatus" class="btn btn-primary w-100" style="width: 500px; height: 200px; font-family: 'Times New Roman', Times, serif; font-size: 40px; text-transform: uppercase; text-align: center; box-shadow: 0 6px 12px rgba(168, 138, 80, 0.712); 
+            border-radius: 40px; background-color: #c8781cce; border-color: #a6801767;">
+                Semak Kelulusan Pinjaman
             </a>
-            <a href="/showSaving" class="btn btn-primary mb-2">
-                <span class="btn-text">Semak Simpanan</span>
+        </div>
+        <div class="col-md-4 mb-3">
+            <a href="/showSaving" class="btn btn-primary w-100" style="width: 500px; height: 200px; font-family: 'Times New Roman', Times, serif; font-size: 40px; text-transform: uppercase; text-align: center; box-shadow: 0 6px 12px rgba(168, 138, 80, 0.712); 
+            border-radius: 40px; background-color: #c8781cce; border-color: #a6801767;">
+                Semak Simpanan
             </a>
-            <a href="/loanBalance" class="btn btn-primary mb-2">
-                <span class="btn-text">Baki Pinjaman</span>
+        </div>
+        <div class="col-md-4 mb-3">
+            <a href="/loanBalance" class="btn btn-primary w-100" style="width: 500px; height: 200px; font-family: 'Times New Roman', Times, serif; font-size: 40px; text-transform: uppercase; text-align: center; box-shadow: 0 6px 12px rgba(168, 138, 80, 0.712); 
+            border-radius: 40px; background-color: #c8781cce; border-color: #a6801767;">
+                Baki Pinjaman
             </a>
-            <a href="/viewInvoice" class="btn btn-primary mb-2">
-                <span class="btn-text">Semak Penyata</span>
+        </div>
+        <div class="col-md-4 mb-3">
+            <a href="/viewInvoice" class="btn btn-primary w-100" style="width: 500px; height: 200px; font-family: 'Times New Roman', Times, serif; font-size: 40px; text-transform: uppercase; text-align: center; box-shadow: 0 6px 12px rgba(168, 138, 80, 0.712); 
+            border-radius: 40px; background-color: #c8781cce; border-color: #a6801767;">
+                Semak Penyata
             </a>
         </div>
     </div>
+</div>
 
-    <!-- Bootstrap Script -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-pzjw8f+ua7Kw1TIq0h4F63Gp6R26F6VZmO3y1v7jcF/fyFkjAC7ZGfbfl0B7/W5U" crossorigin="anonymous"></script>
+<!-- Bootstrap Script -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-pzjw8f+ua7Kw1TIq0h4F63Gp6R26F6VZmO3y1v7jcF/fyFkjAC7ZGfbfl0B7/W5U" crossorigin="anonymous"></script>
 </body>
 </html>
