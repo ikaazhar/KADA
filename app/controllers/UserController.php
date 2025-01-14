@@ -492,6 +492,37 @@ class UserController extends Controller
         ]);
     }
 
+    public function calendarWithApplications()
+    {
+        $viewMembershipListReport = $this->user->getMembershipListReport();
+        
+        // Get the month, year, and optionally the day from URL parameters
+        $month = isset($_GET['month']) ? (int)$_GET['month'] : date('m');
+        $year = isset($_GET['year']) ? (int)$_GET['year'] : date('Y');
+        $day = isset($_GET['day']) ? (int)$_GET['day'] : null;
+
+        // Generate the calendar for the given month and year
+        $calendar = $this->user->generateCalendar($month, $year);
+
+        // Fetch applications based on the selected date, month, and year
+        $applications = $this->user->getApplicationsByDate($year, $month, $day);
+
+        //// Fetch applications reviewed by admin and approved by ALK for the selected month and year
+        //$applications = $this->user->getApprovedApplicationsByMonthYear($month, $year);
+
+        // Get the month name for the view
+        $monthName = date('F', mktime(0, 0, 0, $month, 10));
+
+        // Pass the data to the view
+        $this->view('menu_admin/laporanKoperasi_Staff', [
+            'calendar' => $calendar,
+            'applications' => $applications,
+            'monthName' => $monthName,
+            'currentMonth' => $month,
+            'currentYear' => $year,
+            'selectedDay' => $day,
+        ]);
+    }
 
     public function logout()
     {

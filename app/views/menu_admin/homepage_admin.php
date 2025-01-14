@@ -49,7 +49,8 @@
         <a href="/listPendingForm" class="btn btn-primary mb-2">Semak Dokumen Permohonan Pinjaman</a>
         <a href="/reviewMembershipForm" class="btn btn-primary mb-2">Semak Dokumen Permohonan Ahli</a>
         <a href="/viewSaving" class="btn btn-primary">Rekod Kewangan Tahunan</a>
-        <a href="/viewInvoice" class="btn btn-primary mb-2">Laporan Koperasi</a>
+        <a href="/viewInvoice" class="btn btn-primary mb-2">Invoice</a>
+        <a href="/calendarWithApplications" class="btn btn-primary mb-2">Laporan Koperasi (STAFF)</a>
         <a href="/calendar" class="btn btn-primary mb-2">Annual Report (ALK)</a>
     </div>
 </body>
