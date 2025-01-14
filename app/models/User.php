@@ -474,4 +474,20 @@ class User extends Model
         ]);
     }
 
+    // Fetch id_number from member_info table using member_id
+    public function getIdNumberByMemberId($memberId) {
+        $stmt = $this->db->prepare("SELECT id_number FROM Member_Info WHERE member_id = :member_id");
+        $stmt->bindParam(':member_id', $memberId);
+        $stmt->execute();
+        return $stmt->fetchColumn();
+    }
+
+    // Fetch member details from member_application using id_number
+    public function getMemberDetailsByIdNumber($idNumber) {
+        $stmt = $this->db->prepare("SELECT * FROM member_application WHERE id_number = :id_number");
+        $stmt->bindParam(':id_number', $idNumber);
+        $stmt->execute();
+        return $stmt->fetch();
+    }
+
 }
