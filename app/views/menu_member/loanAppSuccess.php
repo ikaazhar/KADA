@@ -13,7 +13,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-light fixed-top" style="background-color: rgb(236, 215, 145); padding: 0.3rem 1rem;">
         <div class="container-xxl">
-            <a class="navbar-brand" href="/homepageAhli" style="font-family: 'Times New Roman', Times, serif; font-weight: bold;">
+            <a class="navbar-brand" href="/homepageMember" style="font-family: 'Times New Roman', Times, serif; font-weight: bold;">
                 Koperasi Kakitangan KADA
             </a>
     
@@ -49,13 +49,13 @@
     <div class="container d-flex justify-content-center align-items-center vh-100">
         <div class="card shadow-lg p-4" style="max-width: 500px; width: 100%;">
             <div class="card-body text-center">
-                <h2 class="card-title text-success mb-4">Application Submitted!</h2>
+                <h2 class="card-title text-success mb-4">Permohonan Dihantar!</h2>
                 <p class="card-text text-muted">
-                    Your loan application has been successfully sent for review. It will take approximately 
-                    <strong>30 days</strong> to process your application and notify you of the result.
+                    Permohonan Pinjaman Anda telah berjaya dihantar untuk disemak dan diluluskan. Semakan dan kelulusan ini mengambil masa selama
+                    <strong>30 HARI</strong> untuk memproses dan maklumkan keputusan permohonan anda.
                 </p>
                 <div class="mt-4">
-                    <a href="/homepageMember" class="btn btn-primary btn-lg">Back to Homepage</a>
+                    <a href="/homepageMember" class="btn btn-primary btn-lg">Balik ke Halaman Utama</a>
                 </div>
             </div>
         </div>
