@@ -12,7 +12,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-light fixed-top" style="background-color: rgb(236, 215, 145); padding: 0.3rem 1rem;">
         <div class="container-xxl">
-            <a class="navbar-brand" href="/homepageAhli" style="font-family: 'Times New Roman', Times, serif; font-weight: bold;">
+            <a class="navbar-brand" href="/homepageMember" style="font-family: 'Times New Roman', Times, serif; font-weight: bold;">
                 Koperasi Kakitangan KADA
             </a>
     
@@ -35,40 +35,53 @@
 
 
    <!-- Main Content -->
-<div class="container py-5 text-center">
+   <div class="container py-5 text-center">
     <h1 class="display-4 mb-3" style="font-family: 'Times New Roman', Times, serif; font-size: 60px; font-weight: bold;">Selamat Datang ke Koperasi KADA</h1>
-    <p class="lead mb-5"  style="font-family: 'Times New Roman', Times, serif; font-size: 20px;">Akses pelbagai perkhidmatan koperasi dengan mudah</p>
+    <p class="lead mb-5" style="font-family: 'Times New Roman', Times, serif; font-size: 20px;">Akses pelbagai perkhidmatan koperasi dengan mudah</p>
 
     <!-- Button Container with Grid System -->
     <div class="row justify-content-center">
+        <!-- Button 1 -->
         <div class="col-md-4 mb-3">
-            <a href="/viewLoanForm" class="btn btn-primary w-100" style="width: 500px; height: 200px; font-family: 'Times New Roman', Times, serif; font-size: 40px; text-transform: uppercase; text-align: center; box-shadow: 0 6px 12px rgba(168, 138, 80, 0.712); 
-            border-radius: 40px; background-color: #c8781cce; border-color: #a6801767;">
+            <a href="/viewLoanForm" class="btn btn-primary w-100 d-flex align-items-center justify-content-center text-uppercase" 
+                style="font-family: 'Times New Roman', Times, serif; font-size: 40px; height: 200px; border-radius: 40px; background-color: #c8781cce; border-color: #a6801767; 
+                box-shadow: 0 6px 12px rgba(168, 138, 80, 0.712); transition: all 0.3s ease;">
                 Mohon Pinjaman
             </a>
-
         </div>
+        
+        <!-- Button 2 -->
         <div class="col-md-4 mb-3">
-            <a href="/loanStatus" class="btn btn-primary w-100" style="width: 500px; height: 200px; font-family: 'Times New Roman', Times, serif; font-size: 40px; text-transform: uppercase; text-align: center; box-shadow: 0 6px 12px rgba(168, 138, 80, 0.712); 
-            border-radius: 40px; background-color: #c8781cce; border-color: #a6801767;">
+            <a href="/loanStatus" class="btn btn-primary w-100 d-flex align-items-center justify-content-center text-uppercase" 
+                style="font-family: 'Times New Roman', Times, serif; font-size: 40px; height: 200px; border-radius: 40px; background-color: #c8781cce; border-color: #a6801767; 
+                box-shadow: 0 6px 12px rgba(168, 138, 80, 0.712); transition: all 0.3s ease;">
                 Semak Kelulusan Pinjaman
             </a>
         </div>
+
+        <!-- Button 3 -->
         <div class="col-md-4 mb-3">
-            <a href="/showSaving" class="btn btn-primary w-100" style="width: 500px; height: 200px; font-family: 'Times New Roman', Times, serif; font-size: 40px; text-transform: uppercase; text-align: center; box-shadow: 0 6px 12px rgba(168, 138, 80, 0.712); 
-            border-radius: 40px; background-color: #c8781cce; border-color: #a6801767;">
+            <a href="/showSaving" class="btn btn-primary w-100 d-flex align-items-center justify-content-center text-uppercase" 
+                style="font-family: 'Times New Roman', Times, serif; font-size: 40px; height: 200px; border-radius: 40px; background-color: #c8781cce; border-color: #a6801767; 
+                box-shadow: 0 6px 12px rgba(168, 138, 80, 0.712); transition: all 0.3s ease;">
                 Semak Simpanan
             </a>
         </div>
+
+        <!-- Button 4 -->
         <div class="col-md-4 mb-3">
-            <a href="/loanBalance" class="btn btn-primary w-100" style="width: 500px; height: 200px; font-family: 'Times New Roman', Times, serif; font-size: 40px; text-transform: uppercase; text-align: center; box-shadow: 0 6px 12px rgba(168, 138, 80, 0.712); 
-            border-radius: 40px; background-color: #c8781cce; border-color: #a6801767;">
+            <a href="/loanBalance" class="btn btn-primary w-100 d-flex align-items-center justify-content-center text-uppercase" 
+                style="font-family: 'Times New Roman', Times, serif; font-size: 40px; height: 200px; border-radius: 40px; background-color: #c8781cce; border-color: #a6801767; 
+                box-shadow: 0 6px 12px rgba(168, 138, 80, 0.712); transition: all 0.3s ease;">
                 Baki Pinjaman
             </a>
         </div>
+
+        <!-- Button 5 -->
         <div class="col-md-4 mb-3">
-            <a href="/viewInvoice" class="btn btn-primary w-100" style="width: 500px; height: 200px; font-family: 'Times New Roman', Times, serif; font-size: 40px; text-transform: uppercase; text-align: center; box-shadow: 0 6px 12px rgba(168, 138, 80, 0.712); 
-            border-radius: 40px; background-color: #c8781cce; border-color: #a6801767;">
+            <a href="/viewInvoice" class="btn btn-primary w-100 d-flex align-items-center justify-content-center text-uppercase" 
+                style="font-family: 'Times New Roman', Times, serif; font-size: 40px; height: 200px; border-radius: 40px; background-color: #c8781cce; border-color: #a6801767; 
+                box-shadow: 0 6px 12px rgba(168, 138, 80, 0.712); transition: all 0.3s ease;">
                 Semak Penyata
             </a>
         </div>
