@@ -13,7 +13,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-light fixed-top" style="background-color: rgb(236, 215, 145); padding: 0.3rem 1rem;">
         <div class="container-xxl">
-            <a class="navbar-brand" href="/homepageAhli" style="font-family: 'Times New Roman', Times, serif; font-weight: bold;">
+            <a class="navbar-brand" href="/homepageMember" style="font-family: 'Times New Roman', Times, serif; font-weight: bold;">
                 Koperasi Kakitangan KADA
             </a>
     
@@ -50,18 +50,13 @@
 <body>
 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jadual Pembayaran Balik Pembiayaan</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" style="font-family: 'Times New Roman', Times, serif; font-weight: bold;">
+    <title >Jadual Pembayaran Balik Pembiayaan</title>
 
     <div class="container my-4">
-        <h1 class="text-center mb-4">Jadual Pembayaran Balik Pembiayaan</h1>
-        <table class="table table-bordered table-striped text-center">
-            <thead class="table-dark">
-                <tr>
-                    <th>KADAR KEUNTUNGAN</th>
-                    <th colspan="6">4.20%</th>
-                </tr>
-            </thead>
+        <h2 class="text-center mb-4" style=" font-weight: bold; color: rgb(8, 8, 8); text-shadow: #d48933;">JADUAL PEMBAYARAN BALIK PEMBIAYAAN</h2>
+        <table class="table table-bordered table-striped table-hover text-center bg-white">
+            <thead class="table-light" style="background-color: #d48933;">
             <tbody>
                 <tr>
                     <th>Tempoh (Tahun)</th>
@@ -153,15 +148,15 @@
     </div>
 
     <div class="container mt-5">
-        <h1 class="text-center mb-4">Loan Application</h1>
+        <h1 class="text-center mb-4">BORANG PERMOHONAN PINJAMAN</h1>
         <div class="card shadow">
             <div class="card-body">
                 <form action="/submitLoanApp" method="post" enctype="multipart/form-data">
                     <!-- Loan Type -->
                     <div class="mb-3">
-                        <label for="loan_type" class="form-label">Loan Type</label>
+                        <label for="loan_type" class="form-label">Jenis Pinjaman</label>
                         <select class="form-select" name="loan_type" id="loan_type" required>
-                            <option value="" disabled selected>Select Loan Type</option>
+                            <option value="" disabled selected>Sila Pilih Jenis Pinjaman</option>
                             <option value="Al-Bai">Al-Bai</option>
                             <option value="Al-Inah">Al-Inah</option>
                             <option value="Skim Khas">Skim Khas</option>
@@ -174,53 +169,53 @@
 
                     <!-- Other Loan Type -->
                     <div class="mb-3">
-                        <label for="other_loan_type" class="form-label">If "Lain-Lain", specify</label>
-                        <input type="text" class="form-control" name="other_loan_type" id="other_loan_type" placeholder="Enter other loan type">
+                        <label for="other_loan_type" class="form-label">Jika 'Lain-lain', Nyatakan</label>
+                        <input type="text" class="form-control" name="other_loan_type" id="other_loan_type" placeholder="Nyatakan Jenis Pinjaman Lain">
                     </div>
 
                     <!-- Loan Amount -->
                     <div class="mb-3">
-                        <label for="loan_amount" class="form-label">Loan Amount</label>
-                        <input type="number" step="0.01" class="form-control" name="loan_amount" id="loan_amount" placeholder="Enter loan amount" required>
+                        <label for="loan_amount" class="form-label">Jumlah Pinjaman (RM)</label>
+                        <input type="number" step="0.01" class="form-control" name="loan_amount" id="loan_amount" placeholder="Masukkan Jumlah Pinjaman" required>
                     </div>
 
                     <!-- Repayment Period -->
                     <div class="mb-3">
-                        <label for="repayment_period_months" class="form-label">Repayment Period (Months)</label>
-                        <input type="number" class="form-control" name="repayment_period_months" id="repayment_period_months" placeholder="Enter repayment period in months" required>
+                        <label for="repayment_period_months" class="form-label">Tempoh Bayaran Balik (bulan) </label>
+                        <input type="number" class="form-control" name="repayment_period_months" id="repayment_period_months" placeholder="Nyatakan Tempoh Bayaran Balik Bulanan" required>
                     </div>
 
                     <!-- Monthly Installment -->
                     <div class="mb-3">
-                        <label for="monthly_installment" class="form-label">Monthly Installment</label>
-                        <input type="number" step="0.01" class="form-control" name="monthly_installment" id="monthly_installment" placeholder="Enter monthly installment" required>
+                        <label for="monthly_installment" class="form-label">Ansuran Bulanan (RM)</label>
+                        <input type="number" step="0.01" class="form-control" name="monthly_installment" id="monthly_installment" placeholder="Masukkan Ansuran Bulanan" required>
                     </div>
                     
                     <!-- Bank Name -->
                     <div class="mb-3">
-                        <label for="bank_name" class="form-label">Bank Name</label>
-                        <input type="text" class="form-control" name="bank_name" id="bank_name" placeholder="Enter bank name" required>
+                        <label for="bank_name" class="form-label">Nama Bank</label>
+                        <input type="text" class="form-control" name="bank_name" id="bank_name" placeholder="Nyatakan Nama Bank" required>
                     </div>
 
                     <!-- Account Number -->
                     <div class="mb-3">
-                        <label for="account_number" class="form-label">Account Number</label>
-                        <input type="text" class="form-control" name="account_number" id="account_number" placeholder="Enter account number" required>
+                        <label for="account_number" class="form-label">Nombor Akaun</label>
+                        <input type="text" class="form-control" name="account_number" id="account_number" placeholder="Masukkan Nombor Akaun" required>
                     </div>
 
                     <!-- Download Loan Document Template -->
                     <div class="mb-3">
-                        <a href="/download_loan_template" class="btn btn-outline-primary">Download Loan Document Template</a>
+                        <a href="/download_loan_template" class="btn btn-outline-primary">Muat Turun Templat Dokumen Borang Permohonan Pinjaman</a>
                     </div>
 
                     <!-- Upload Document -->
                     <div class="mb-3">
-                        <label for="uploaded_file_path" class="form-label">Upload Completed Document</label>
+                        <label for="uploaded_file_path" class="form-label">Muat Naik Dokumen Lengkap</label>
                         <input type="file" class="form-control" name="uploaded_file_path" id="uploaded_file_path" accept=".pdf" required>
                     </div>
 
                     <!-- Submit Button -->
-                    <button type="submit" class="btn btn-success w-100">Submit Application</button>
+                    <button type="submit" class="btn btn-success w-100">HANTAR PERMOHONAN</button>
                 </form>
             </div>
         </div>

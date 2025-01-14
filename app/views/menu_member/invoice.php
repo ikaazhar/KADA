@@ -4,116 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Penyata Kewangan</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        /* Custom Styles for Background and Text */
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: url('bgimage2.jpeg') no-repeat center center fixed;
-            background-size: cover;
-            color: white;
-            padding-top: 30px;
-            margin: 0;
-        }
-
-        .navbar {
-            background-color: #f3d78a;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        }
-
-        .card {
-            background-color: rgba(255, 255, 255, 0.7);
-            border: none;
-            margin-bottom: 20px;
-        }
-
-        .card-body {
-            padding: 20px;
-        }
-
-        .card-text {
-            font-size: 1.2rem;
-            color: #333;
-        }
-
-        h1 {
-            font-family: 'Times New Roman', Times, serif;
-            font-weight: 700;
-            font-size: 3.5rem;
-            color: #ffffff;
-            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7); /* Subtle shadow for depth */
-            margin-bottom: 40px;
-        }
-
-        .table {
-            color: #491b00;
-        }
-
-        .table th, .table td {
-            font-size: 1.1rem;
-            vertical-align: middle;
-        }
-
-        .table-bordered {
-            border: 2px solid #ddd;
-        }
-
-        .table-hover tbody tr:hover {
-            background-color: #f1f1f1;
-        }
-
-        .table-dark {
-            background-color: #343a40;
-            color: white;
-        }
-
-        .table th {
-            font-weight: bold;
-            background-color: #9e7400;
-        }
-
-        .table td {
-            color: #333333;
-        }
-
-        /* Custom Button Styling */
-        .btn-custom {
-            background-color: #dd7672;
-            border-color: #1cc88a;
-            font-weight: 600;
-            padding: 14px 30px;
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            border-radius: 30px;
-            letter-spacing: 2px;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease-in-out;
-        }
-
-        .btn-custom:hover {
-            background-color: #1cc88a;
-            border-color: #17a673;
-            transform: scale(1.05);
-        }
-    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"> <!-- Added Bootstrap Icons -->  
 </head>
-<body>
+<body style="padding-top: 70px;">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-light fixed-top" style="background-color: rgb(236, 215, 145); padding: 0.3rem 1rem;">
+        <div class="container-xxl">
+            <a class="navbar-brand" href="/homepageMember" style="font-family: 'Times New Roman', Times, serif; font-weight: bold;">
+                Koperasi Kakitangan KADA
+            </a>
+    
+            <!-- Profile, Dropdown, and Logout Button Group -->
+            <div class="d-flex align-items-center">
+                    <!-- Dropdown Menu -->
+                <div class="dropdown me-3">
+                    <button class="btn btn-secondary dropdown-toggle btn-sm" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false" style="background-color:#c8781cce; border-color:#a6801767; font-size: 20px; color: black;">
+                        Pilihan
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+                        <li><a class="dropdown-item" href="/viewLoanForm">Mohon Pinjaman</a></li>
+                            <li><a class="dropdown-item" href="/loanStatus">Semak Kelulusan Pinjaman</a></li>
+                            <li><a class="dropdown-item" href="/showSaving">Semak Simpanan</a></li>
+                            <li><a class="dropdown-item" href="/loanBalance">Baki Pinjaman</a></li>
+                            <li><a class="dropdown-item" href="/viewInvoice">Semak Penyata</a></li>
+                        </ul>
+                    </div>
+        
+                    <!-- Logout Button -->
+                    <a href="/logout" class="btn btn-info btn-sm text-dark" style="background-color:#c8781cce; border-color:#a6801767; font-weight: bold;">
+                        <i class="bi bi-box-arrow-right" style="font-size: 20px;"></i> DAFTAR KELUAR
+                    </a>
+        
+                    <!-- Profile Icon -->
+                    <a href="#" class="nav-link text-dark ms-2">
+                        <i class="bi bi-person-circle" style="font-size: 30px;"></i>
+                    </a>
+                </div>
+            </div>
+        </nav>
 
     <!-- Main Content -->
     <div class="container text-center mt-5">
-        <h1>Penyata Kewangan</h1>
+        <h1 class="text-dark" style="font-family: 'Times New Roman', Times, serif; font-weight: bold;">PENYATA KEWANGAN</h1>
 
         <!-- Member Details Card -->
-        <div class="card">
+        <div class="card" style="background-color: rgb(238, 213, 146);">
             <div class="card-body">
             <p class="card-text"><strong>Nama: </strong><?php echo $data['memberDetails']['name']; ?></p>
                 <p class="card-text"><strong>No. IC: </strong><?php echo $data['memberDetails']['id_number']; ?></p>
                 <p class="card-text"><strong>No. Ahli: </strong><?php echo $data['memberDetails']['membership_number']; ?></p>
             </div>
         </div>
-
+         
+        <br>
         <!-- Transaction Table -->
-        <div class="card">
+        <div class="card"  style="background-color: rgb(238, 213, 146);">
             <div class="card-body">
                 <table class="table table-bordered table-hover text-center">
                     <thead class="table-dark">
