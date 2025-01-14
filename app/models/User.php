@@ -615,6 +615,7 @@ class User extends Model
     $stmt = $this->getConnection()->prepare("SELECT name, id_number, applicant_id, approval FROM member_application");
         $stmt->execute();
        return $stmt->fetchAll();
+    }
 
     public function getMemberIDByIdNumber($IdNum) {
         $stmt = $this->db->prepare("SELECT member_id FROM Member_Info WHERE id_number = :id_number");
