@@ -475,6 +475,7 @@ class UserController extends Controller
         'annualReport' => $annualReport
     ]);
     }
+    
 
     public function showSavings() {
         // Assuming session holds logged-in member ID
