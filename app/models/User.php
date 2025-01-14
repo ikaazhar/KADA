@@ -536,7 +536,7 @@ class User extends Model
     return $stmt->fetch();
     }
 
-    public function getApplicationsByDate($year, $month, $day = null)
+    public function getApplicationsByDate($year, $month, $day = null, $approval = null)
     {
         $sql = "SELECT name, id_number, approval, created_at 
                 FROM member_application 
@@ -547,6 +547,10 @@ class User extends Model
             $sql .= " AND DAY(created_at) <= :day";
         }
     
+        if ($approval !== null) {
+            $sql .= " AND approval = :approval";
+        }
+
         $stmt = $this->getConnection()->prepare($sql);
     
     //    // Bind parameters
@@ -557,10 +561,54 @@ class User extends Model
         if ($day !== null) {
             $params[':day'] = $day;
        }
+
+       if ($approval !== null) {
+        $params[':approval'] = $approval;
+    }
     
         $stmt->execute($params);
         return $stmt->fetchAll();
     }
+
+    public function getApplicationsCountByStatus($year, $month, $day = null)
+{
+    $statuses = ['Pending', 'Reviewed', 'Approved', 'Disapproved'];
+    
+    $sql = "SELECT approval, COUNT(*) AS count
+            FROM member_application
+            WHERE MONTH(created_at) = :month AND YEAR(created_at) = :year";
+
+    if ($day !== null) {
+        $sql .= " AND DAY(created_at) <= :day";
+    }
+
+    $sql .= " GROUP BY approval";
+
+    $stmt = $this->getConnection()->prepare($sql);
+
+    // Bind parameters
+    $params = [
+        ':month' => $month,
+        ':year' => $year,
+    ];
+    if ($day !== null) {
+        $params[':day'] = $day;
+    }
+
+    $stmt->execute($params);
+    $result = $stmt->fetchAll();
+
+    // Format result into a more usable associative array
+    $counts = array_fill_keys($statuses, 0);
+
+    // Map query results to the counts array
+    foreach ($result as $row) {
+        $counts[$row['approval']] = $row['count'];
+    }
+
+    return $counts;
+}
+
 
     public function getMembershipListReport() 
     {
