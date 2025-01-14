@@ -497,4 +497,43 @@ class User extends Model
         return $stmt->fetch();
     }
 
+    public function getMonthlySyerReport($month, $year, $upToDay)
+    {
+    // Add the upToDay condition only if $upToDay is provided
+    $upToDayCondition = $upToDay ? "AND DAY(created_at) <= :upToDay" : "";
+    
+    $query = "SELECT 
+                  SUM(Syer_majikan) AS total_syer_majikan, 
+                  SUM(Syer_pekerja) AS total_syer_pekerja
+              FROM membersyer
+              WHERE MONTH(created_at) = :month 
+              AND YEAR(created_at) = :year
+              $upToDayCondition";
+
+    $stmt = $this->db->prepare($query);
+    $stmt->bindValue(':month', $month);
+    $stmt->bindValue(':year', $year);
+
+    if ($upToDay) {
+        $stmt->bindValue(':upToDay', $upToDay);
+    }
+
+    $stmt->execute();
+    return $stmt->fetch();
+    }
+
+    public function getAnnualSyerReport($year)
+    {
+    $query = "SELECT 
+                  SUM(Syer_majikan) AS total_syer_majikan, 
+                  SUM(Syer_pekerja) AS total_syer_pekerja
+              FROM membersyer
+              WHERE YEAR(created_at) = :year";
+
+    $stmt = $this->db->prepare($query);
+    $stmt->bindValue(':year', $year);
+    $stmt->execute();
+    return $stmt->fetch();
+    }
+
 }
