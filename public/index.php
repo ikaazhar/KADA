@@ -215,13 +215,19 @@ if ($uri === '' && $method === 'GET') {
     } else {
         $controller->homepage();
     }
+} elseif ($uri === 'calendarWithApplications' && $method === 'GET') {
+    if (isAuthenticated()) {
+        $controller->calendarWithApplications();
+    } else {
+        $controller->homepage();
+    }
 } elseif ($action == 'calendar') {
      if (isAuthenticated()) {
          $controller->calendar();
      } else {
          $controller->homepage();
      }
-} else {
+}  else {
     http_response_code(404);
     echo "Page not found.";
 }

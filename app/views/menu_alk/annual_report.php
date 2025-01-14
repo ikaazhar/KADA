@@ -84,6 +84,19 @@
             <p>Syer Majikan: RM <?= isset($annualReport['total_syer_majikan']) ? $annualReport['total_syer_majikan'] : '0' ?></p>
             <p>Syer Pekerja: RM <?= isset($annualReport['total_syer_pekerja']) ? $annualReport['total_syer_pekerja'] : '0' ?></p>
             </div>
+
+        <!-- Applications List -->
+        <br><h4>Applications for Up to <?= htmlspecialchars($monthName) ?> <?= htmlspecialchars($selectedDay ?? '') ?> <?= htmlspecialchars($currentYear) ?></h2>
+        <div class="mt-4">
+        <ul class="list-group">
+            <li class="list-group-item">Pending: <?= $applicationCounts['Pending'] ?></li>
+            <li class="list-group-item">Reviewed: <?= $applicationCounts['Reviewed'] ?></li>
+            <li class="list-group-item">Approved: <?= $applicationCounts['Approved'] ?></li>
+            <li class="list-group-item">Disapproved: <?= $applicationCounts['Disapproved'] ?></li>
+        </ul>
+    </div>
+        
+
     </div>
             <!-- Back to Main Menu -->
             <a href="/homepageAdmin" class="btn btn-primary">Back to Main Menu</a>
