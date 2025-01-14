@@ -76,6 +76,7 @@
         </nav>
 
         <div class="container mt-5">
+
         <?php if ($loanApplication): ?>
             <?php if ($loanApplication['approval'] === 'Approved'): ?>
                 <?php if ($applicantDetails): ?>
@@ -90,38 +91,54 @@
                             <p class="card-text"><strong>Jumlah Pinjaman: </strong><?= htmlspecialchars($applicantDetails['LoanAmount']) ?></p>
                             <p class="card-text"><strong>Tempoh Pembayaran Pinjaman: </strong><?= htmlspecialchars($applicantDetails['RepaymentPeriodMonths']) ?></p>
                             <p class="card-text"><strong>Ansuran Bulanan: </strong><?= htmlspecialchars($applicantDetails['MonthlyInstallment']) ?></p>
+
+        <?php if (!empty($loanApplication)): ?>
+            <?php foreach ($loanApplication as $index => $LoanID): ?>
+                <?php $deets = isset($applicantDetails[$index]) ? $applicantDetails[$index] : null; ?>
+                <?php if ($LoanID['approval'] === 'Approved' && $deets !== null): ?>
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h4 class="fw-bold text-success text-center">Permohonan Anda Berjaya!</h4>
+                                <p class="card-text"><strong>No. ID Member: </strong><?= htmlspecialchars($deets['member_id']) ?></p>
+                                <p class="card-text"><strong>Nama Bank: </strong><?= htmlspecialchars($deets['BankName']) ?></p>
+                                <p class="card-text"><strong>No. Akaun Bank: </strong><?= htmlspecialchars($deets['AccountNumber']) ?></p>
+                                <p class="card-text"><strong>Jenis Pinjaman: </strong><?= htmlspecialchars($deets['LoanType']) ?></p>
+                                <p class="card-text"><strong>Jumlah Pinjaman: </strong><?= htmlspecialchars($deets['LoanAmount']) ?></p>
+                                <p class="card-text"><strong>Tempoh Pembayaran Pinjaman: </strong><?= htmlspecialchars($deets['RepaymentPeriodMonths']) ?></p>
+                                <p class="card-text"><strong>Ansuran Bulanan: </strong><?= htmlspecialchars($deets['MonthlyInstallment']) ?></p>
+                            </div>
+
                         </div>
+                <?php elseif ($LoanID['approval'] === 'Pending'): ?>
+                    <div class="alert alert-warning text-center">
+                        <h4 class="fw-bold">Permohonan Anda Sedang Diproses</h4>
+                        <p>Sila tunggu keputusan kelulusan.</p>
                     </div>
+
                     
                 <?php else: ?>
+
+                <?php elseif ($LoanID['approval'] === 'Reviewed'): ?>
+                    <div class="alert alert-info text-center">
+                        <h4 class="fw-bold">Permohonan Anda Dalam Penilaian</h4>
+                        <p>Pihak kami sedang menilai permohonan anda. Sila semak semula kemudian.</p>
+                    </div>
+                <?php elseif ($LoanID['approval'] === 'Disapproved'): ?>
+
                     <div class="alert alert-danger text-center">
-                        <h4 class="fw-bold">Maklumat Tidak Ditemui</h4>
-                        <p>Maklumat pemohon tidak dijumpai.</p>
+                        <h4 class="fw-bold">Permohonan Anda Ditolak</h4>
+                        <p>Sila hubungi pihak kami untuk maklumat lanjut.</p>
                     </div>
                 <?php endif; ?>
-            <?php elseif ($loanApplication['approval'] === 'Pending'): ?>
-                <div class="alert alert-warning text-center">
-                    <h4 class="fw-bold">Permohonan Anda Sedang Diproses</h4>
-                    <p>Sila tunggu keputusan kelulusan.</p>
-                </div>
-            <?php elseif ($loanApplication['approval'] === 'Reviewed'): ?>
-                <div class="alert alert-info text-center">
-                    <h4 class="fw-bold">Permohonan Anda Dalam Penilaian</h4>
-                    <p>Pihak kami sedang menilai permohonan anda. Sila semak semula kemudian.</p>
-                </div>
-            <?php elseif ($loanApplication['approval'] === 'Disapproved'): ?>
-                <div class="alert alert-danger text-center">
-                    <h4 class="fw-bold">Permohonan Anda Ditolak</h4>
-                    <p>Sila hubungi pihak kami untuk maklumat lanjut.</p>
-                </div>
-            <?php endif; ?>
+            <?php endforeach; ?>
         <?php else: ?>
             <div class="alert alert-danger text-center">
                 <h4 class="fw-bold">Tiada Rekod Ditemui</h4>
                 <p>Rekod pinjaman tidak dijumpai untuk akaun anda.</p>
             </div>
         <?php endif; ?>
-        </div>
+    </div>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     </body>

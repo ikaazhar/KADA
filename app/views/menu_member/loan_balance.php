@@ -114,6 +114,52 @@
             </div>
         </div>
     </div>    
+
+        <br><br><br><h2 class="fw-bold" style="text-align:center;"> Baki Pinjaman </h2>
+        <?php if (!empty($loanDetails)): ?>
+            <?php foreach ($loanDetails as $index => $loan): ?>
+                <?php $loanID = $loan['LoanID']; ?>
+                <?php $deets = isset($transactionDetails[$loanID]) ? $transactionDetails[$loanID] : null; ?>
+                    <br><br><h3 class="fw-bold" style="text-align:center; color:red;">RM <?= htmlspecialchars($loan['OutstandingAmount']) ?></h3>
+
+                    <div class="container">
+                        <div class="card">
+                            <div class="card-body">
+                                <p class="card-text"><strong>Jenis Pinjaman: </strong><?= htmlspecialchars($loan['LoanType']) ?></p>
+                                <p class="card-text"><strong>Ansuran Bulanan: </strong>RM <?= htmlspecialchars($loan['MonthlyInstallment']) ?></p>
+                                <table class="table table-bordered table-striped text-center">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th>Tarikh</th>
+                                            <th>Bayaran</th>
+                                            <th>No. Rujukan</th>
+                                            <th>Kaedah Pembayaran</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php if (!empty($deets)) : ?>
+                                            <?php foreach ($deets as $transaction) : ?>
+                                                <tr>
+                                                    <th><?= htmlspecialchars($transaction['PaymentDate']) ?></th>
+                                                    <td>RM <?= htmlspecialchars($transaction['PaymentAmount']) ?></td>
+                                                    <td><?= htmlspecialchars($transaction['PaymentReference']) ?></td>
+                                                    <td><?= htmlspecialchars($transaction['PaymentMethod']) ?></td>
+                                                </tr>
+                                            <?php endforeach; ?>
+                                        <?php else: ?>
+                                        <tr>
+                                            <td colspan="4">Tiada transaksi tersedia.</td>
+                                        </tr>
+                                        <?php endif; ?>
+                                    </tbody>      
+                                </table> 
+                            </div>
+                        </div>
+                    </div>
+        <?php endforeach; ?>
+    <?php else: ?>
+        <br><br><h3 class="fw-bold text-center text-danger">Permohonan pinjaman anda belum diluluskan.</h3>
+
     <?php endif; ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

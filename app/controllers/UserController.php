@@ -334,14 +334,25 @@ class UserController extends Controller
 
         $loanApplication = $this->user->findLoanStatus($member_id);
 
-        $applicantDetails = null;
-        if ($loanApplication && $loanApplication['approval'] === 'Approved') {
-            $applicantDetails = $this->user->findLoanDetails($member_id);
+        $applicantDetails = [];
+        if (!empty($loanApplication)) {
+            foreach ($loanApplication as $LoanID) {
+                // Check approval status for each application
+                    $details = $this->user->findLoanDetails($LoanID['LoanID']);
+                
+                    if (!empty($details)) {
+                        $applicantDetails[] = $details[0]; // Only take the first result (assuming LoanID is unique)
+                    } else {
+                        $applicantDetails[] = null; // Store null if no details found
+                    }        
+            }
         }
-
-        if ($loanApplication && $member_id == $loanApplication['member_id']) {
-            $this->view('menu_member/loan_status', ['loanApplication' => $loanApplication, 'applicantDetails' => $applicantDetails]);
-        }
+    
+        // Pass all loan applications and their details to the view
+        $this->view('menu_member/loan_status', [
+            'loanApplication' => $loanApplication,
+            'applicantDetails' => $applicantDetails,
+        ]);
     }
 
     public function loanBalance()
@@ -350,9 +361,17 @@ class UserController extends Controller
         
         $loanDetails = $this->user->checkLoanBalance($member_id);
         $transactionDetails = [];
-        if ($loanDetails) {
-            $transactionDetails = $this->user->getTransactionDetails($member_id);
+
+        if (!empty($loanDetails)) {
+            foreach ($loanDetails as $loan) {
+                // Check approval status for each application
+                    $balance = $this->user->getTransactionDetails($loan['LoanID']);
+            
+                    $transactionDetails[$loan['LoanID']] = $balance; // Store null if no details found
+                
+            }
         }
+
         $this->view('menu_member/loan_balance', ['loanDetails' => $loanDetails, 'transactionDetails' => $transactionDetails]);
     }
 
@@ -374,9 +393,23 @@ class UserController extends Controller
 
     // View detailed application
     public function viewLoanApplication($loanId) {
-        $users = $this->user->getLoanApplicationById($loanId);
-        $this->view('menu_admin/viewLoanForm', compact('users'));
+        // Fetch loan application details
+        $loanDetails = $this->user->getLoanApplicationById($loanId);
+        
+        if ($loanDetails) {
+            // Fetch the member's ID number using member_id
+            $idNumber = $this->user->getIdNumberByMemberId($loanDetails['member_id']);
+            
+            // Fetch member details from member_application if idNumber exists
+            $memberDetails = $idNumber ? $this->user->getMemberDetailsByIdNumber($idNumber) : null;
+    
+            $this->view('menu_admin/viewLoanForm', compact('loanDetails', 'memberDetails'));
+        } else {
+            // Handle case when loan details are not found
+            header("Location: /listPendingForm");
+        }
     }
+    
     
     public function reviewMembershipForm()
     {
@@ -390,10 +423,10 @@ class UserController extends Controller
 
     }
 
-    public function viewMembershipForm()
+    public function viewMembershipForm($id_number)
     {
-        $memberDetails = $this->user->getMembershipFormList();
-        $this->view('menu_admin/edit_member_application', ['memberDetails' => $memberDetails]);
+        $memberDetails = $this->user->getMemberAppForm($id_number);
+        $this->view('menu_admin/viewMemberForm', compact('memberDetails'));
     }
   
     public function approveMembershipForm()
@@ -402,10 +435,34 @@ class UserController extends Controller
         $this->view('menu_admin/approve_member_application', compact('viewMembershipFormList'));
     }
 
-    public function updateMembershipFormStatusALK($data) {
+    public function updateMembershipFormStatusALK($data)
+    {
+        // Update the approval status in the Member_Application table
         $stmt = $this->user->approveMembershipFormALK($data);
+
+        // If the status is approved, create a MemberLogin entry
+        if ($data['approval'] === 'Approved') {
+
+            $newAcc = [
+                'password' => '1234', // The raw password to be hashed and stored
+            ];
+            $memberId = $this->user->createMemberAcc($newAcc);
+
+            if ($memberId) {
+                // Insert the new row into Member_Info
+                $this->user->createMemberInfo([
+                    'member_id' => $memberId,
+                    'id_number' => $data['id_number']
+                ]);
+            } else {
+                die('Error creating MemberLogin entry');
+            }
+        }
+
+        // Redirect to a success page or display a success message
         $this->view('menu_admin/kemaskini_success_ALK');
     }
+
 
     public function viewMembershipFormALK()
     {
@@ -428,6 +485,28 @@ class UserController extends Controller
         header("Location: /listReviewedLoan");
     }
 
+    public function calendar()
+    {
+        // Get the month and year from the URL parameters (defaults to current month and year)
+        $month = isset($_GET['month']) ? (int)$_GET['month'] : date('m');
+        $year = isset($_GET['year']) ? (int)$_GET['year'] : date('Y');
+        
+        // Get the calendar data from the model
+        $calendar = $this->user->generateCalendar($month, $year);
+        
+        // Get the month name for the view
+        $monthName = date('F', mktime(0, 0, 0, $month, 10));
+
+        // Pass the data to the view
+        $this->view('menu_alk/annual_report', [
+            'calendar' => $calendar,
+            'monthName' => $monthName,
+            'currentMonth' => $month,
+            'currentYear' => $year
+        ]);
+    }
+
+
     public function logout()
     {
         session_start();
@@ -440,15 +519,15 @@ class UserController extends Controller
         $memberId = $_SESSION['user_id']; 
 
         // Use User model to fetch member's details
-        $userModel = new User();
-        $memberDetails = $userModel->getMemberDetails($memberId);  // Fetch member details
+        $infoID = $this->user->getIdNumberByMemberId($memberId); // Fetch member details
 
         // Fetch savings data (as before)
-        $data['savings'] = $userModel->getSavingsByMemberId($memberId);
-        $data['memberDetails'] = $memberDetails; // Add member details to the data array
+        $savings = $this->user->getSavingsByMemberId($memberId); 
+        $share = $this->user->getShareByMemberId($memberId);
+        $memberDetails = $this->user->getMemberDetailsByIdNumber($infoID); 
 
         // Pass data to the view
-        $this->view('menu_member/saving', $data);
+        $this->view('menu_member/saving', compact('memberDetails', 'savings', 'share'));
     }
 
     public function showInvoice() {
@@ -456,15 +535,16 @@ class UserController extends Controller
         $memberId = $_SESSION['user_id']; 
 
         // Use User model to fetch member's details
-        $userModel = new User();
-        $memberDetails = $userModel->getMemberDetails($memberId);  // Fetch member details
+        $infoID = $this->user->getIdNumberByMemberId($memberId); // Fetch member details
 
         // Fetch savings data (as before)
-        $data['invoice'] = $userModel->getInvoiceDetails($memberId);
-        $data['memberDetails'] = $memberDetails; // Add member details to the data array
+        $memberDetails = $this->user->getMemberDetailsByIdNumber($infoID);
+
+        // Fetch savings data (as before)
+        $invoice = $this->user->getInvoiceDetails($memberId);
 
         // Pass data to the view
-        $this->view('menu_member/invoice', $data);
+        $this->view('menu_member/invoice', compact('memberDetails', 'invoice'));
     }
     
 }

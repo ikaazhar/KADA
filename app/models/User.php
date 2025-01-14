@@ -279,16 +279,16 @@ class User extends Model
     
     public function findLoanStatus($member_id) 
     {
-        $stmt = $this->getConnection()->prepare("SELECT member_id, approval FROM loan_application WHERE member_id = :member_id");
+        $stmt = $this->getConnection()->prepare("SELECT member_id, approval, LoanID FROM loan_application WHERE member_id = :member_id");
         $stmt->execute([':member_id' => $member_id]);
-        return $stmt->fetch();
+        return $stmt->fetchAll();
     }
 
-    public function findLoanDetails($member_id)
+    public function findLoanDetails($LoanID)
     {
-        $stmt = $this->getConnection()->prepare("SELECT * FROM loan_application WHERE member_id = :member_id");
-        $stmt->execute([':member_id' => $member_id]);
-        return $stmt->fetch();
+        $stmt = $this->getConnection()->prepare("SELECT * FROM loan_application WHERE LoanID = :LoanID AND approval = 'Approved'");
+        $stmt->execute([':LoanID' => $LoanID]);
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 
 
@@ -296,6 +296,7 @@ class User extends Model
     {
         $stmt = $this->getConnection()->prepare("
                 SELECT 
+                    la.LoanID,
                     la.LoanAmount,
                     IFNULL(SUM(t.PaymentAmount), 0) AS TotalPayments,
                     (la.LoanAmount - IFNULL(SUM(t.PaymentAmount), 0)) AS OutstandingAmount,
@@ -307,19 +308,19 @@ class User extends Model
                 LEFT JOIN 
                     transaction t
                 ON 
-                    la.member_id = t.member_id
+                    la.LoanID = t.LoanID
                 WHERE 
                     la.member_id = :member_id
                 AND 
                     la.approval = 'Approved'
                 GROUP BY 
-                    la.member_id, la.LoanAmount;
+                    la.LoanID, la.LoanAmount, la.LoanType, la.RepaymentPeriodMonths, la.MonthlyInstallment
         ");
         $stmt->execute([':member_id' => $member_id]);
-        return $stmt->fetch();
+        return $stmt->fetchAll();
     }
 
-    public function getTransactionDetails($member_id)
+    public function getTransactionDetails($loan_id)
     {
         $stmt = $this->getConnection()->prepare("
             SELECT 
@@ -330,9 +331,9 @@ class User extends Model
             FROM 
                 transaction t
             WHERE 
-                t.member_id = :member_id;
+                t.LoanID= :LoanID;
         ");
-        $stmt->execute([':member_id' => $member_id]);
+        $stmt->execute([':LoanID' => $loan_id]);
         return $stmt->fetchAll();
     }
 
@@ -354,6 +355,13 @@ class User extends Model
     public function getLoanApplicationById($loanId) {
         $stmt = $this->db->prepare("SELECT * FROM loan_application WHERE LoanID = :loan_id");
         $stmt->bindParam(':loan_id', $loanId);
+        $stmt->execute();
+        return $stmt->fetch();
+    }
+
+    public function getMemberAppForm($IdNum) {
+        $stmt = $this->db->prepare("SELECT * FROM member_application WHERE id_number = :id_number");
+        $stmt->bindParam(':id_number', $IdNum);
         $stmt->execute();
         return $stmt->fetch();
     }
@@ -398,7 +406,32 @@ class User extends Model
         $stmt->execute();
         return $stmt->fetchAll();
     }
+  
+    public function generateCalendar($month, $year)
+    {
+        // Get the number of days in the given month
+        $numDays = cal_days_in_month(CAL_GREGORIAN, $month, $year);
 
+        // Get the first day of the month (1 = Sunday, 7 = Saturday)
+        $firstDay = date('w', strtotime("$year-$month-01"));
+
+        // Prepare the calendar array (empty slots are represented as null)
+        $calendar = [];
+
+        // Fill in the empty slots before the first day of the month
+        for ($i = 0; $i < $firstDay; $i++) {
+            $calendar[] = null;
+        }
+
+        // Fill in the actual days of the month
+        for ($day = 1; $day <= $numDays; $day++) {
+            $calendar[] = $day;
+        }
+
+        // Return the full calendar
+        return $calendar;
+    }
+      
     public function getMemberDetails($memberId) {
         // Query to fetch member details
         $sql = "SELECT * FROM member_application WHERE applicant_id = :memberId";
@@ -413,16 +446,55 @@ class User extends Model
     
     // Method to get savings by member ID (as before)
     public function getSavingsByMemberId($memberId) {
-        $sql = "SELECT * FROM saving_syer WHERE Member_id = :memberId";
+        $sql = "SELECT * FROM membersavings WHERE Member_id = :memberId";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([':memberId' => $memberId]);
+        return $stmt;
+    }
+
+    public function getShareByMemberId($memberId) {
+        $sql = "SELECT * FROM membersyer WHERE Member_id = :memberId";
         $stmt = $this->db->prepare($sql);
         $stmt->execute([':memberId' => $memberId]);
         return $stmt;
     }
 
     public function getInvoiceDetails($memberId) {
-        $sql = "SELECT * FROM member_transaction WHERE MemberID = :memberId";
+        $sql = "SELECT * FROM transaction WHERE member_id = :memberId";
         $stmt = $this->db->prepare($sql);
         $stmt->execute([':memberId' => $memberId]);
         return $stmt;
+
     }
+
+    public function createMemberInfo($data)
+    {
+        // Prepare the SQL query for inserting into Member_Info
+        $stmt = $this->getConnection()->prepare(
+            "INSERT INTO Member_Info (member_id, id_number) VALUES (:member_id, :id_number)"
+        );
+
+        // Execute the query with the provided data
+        return $stmt->execute([
+            ':member_id' => $data['member_id'],
+            ':id_number' => $data['id_number']
+        ]);
+    }
+
+    // Fetch id_number from member_info table using member_id
+    public function getIdNumberByMemberId($memberId) {
+        $stmt = $this->db->prepare("SELECT id_number FROM Member_Info WHERE member_id = :member_id");
+        $stmt->bindParam(':member_id', $memberId);
+        $stmt->execute();
+        return $stmt->fetchColumn();
+    }
+
+    // Fetch member details from member_application using id_number
+    public function getMemberDetailsByIdNumber($idNumber) {
+        $stmt = $this->db->prepare("SELECT * FROM member_application WHERE id_number = :id_number");
+        $stmt->bindParam(':id_number', $idNumber);
+        $stmt->execute();
+        return $stmt->fetch();
+    }
+
 }

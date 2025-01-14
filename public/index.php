@@ -22,6 +22,7 @@ $controller = new UserController();
 
 // Basic routing logic
 $uri = explode('?', trim($_SERVER['REQUEST_URI'], '/'))[0];
+$action = isset($_GET['action']) ? $_GET['action'] : 'calendar';
 $method = $_SERVER['REQUEST_METHOD'];
 
 if ($uri === '' && $method === 'GET') {
@@ -176,7 +177,7 @@ if ($uri === '' && $method === 'GET') {
     }
 } elseif ($uri === 'viewMembershipForm' && $method === 'GET') {
     if (isAuthenticated()) {
-        $controller->viewMembershipForm();
+        $controller->viewMembershipForm($_GET['id_number']);
     } else {
         $controller->homepage();
     }
@@ -210,7 +211,13 @@ if ($uri === '' && $method === 'GET') {
     } else {
         $controller->homepage();
     }
-}else {
+} elseif ($action == 'calendar') {
+     if (isAuthenticated()) {
+         $controller->calendar();
+     } else {
+         $controller->homepage();
+     }
+} else {
     http_response_code(404);
     echo "Page not found.";
 }
