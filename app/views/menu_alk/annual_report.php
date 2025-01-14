@@ -1,12 +1,10 @@
-<!-- calendar.php -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calendar</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Annual Report</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <div class="container mt-5">
@@ -25,8 +23,8 @@
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                     Select Year
                 </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <?php for ($i = 2020; $i <= 2030; $i++): ?>
+                <ul class="dropdown-menu overflow-auto" style="max-height: 200px;" aria-labelledby="dropdownMenuButton">
+                    <?php for ($i = 1980; $i <= 2100; $i++): ?>
                         <li><a class="dropdown-item" href="/user/calendar?month=<?= $currentMonth ?>&year=<?= $i ?>"><?= $i ?></a></li>
                     <?php endfor; ?>
                 </ul>
@@ -51,34 +49,46 @@
                 $week = [];
                 $dayCount = 0;
 
-                // Loop through each day of the calendar
                 foreach ($calendar as $key => $day) {
-                    // If it's an empty slot, show an empty table cell
                     if ($day === null) {
                         $week[] = '<td></td>';
                     } else {
-                        // Show the day number as a clickable button
-                        $week[] = '<td><button class="btn btn-link" onclick="alert(\'You clicked on ' . $day . ' ' . $monthName . ' ' . $currentYear . '\')">' . $day . '</button></td>';
+                        $isSelected = $selectedDay == $day;
+                        $week[] = '<td><a href="/user/calendar?month=' . $currentMonth . '&year=' . $currentYear . '&day=' . $day . '" class="btn ' . ($isSelected ? 'btn-info' : 'btn-link') . '">' . $day . '</a></td>';
                     }
 
                     $dayCount++;
-
-                    // If the week is full (7 days), print the week and reset the row
                     if ($dayCount % 7 == 0) {
                         echo '<tr>' . implode('', $week) . '</tr>';
                         $week = [];
                     }
                 }
 
-                // Add remaining days if the last week is not full
                 if (!empty($week)) {
                     echo '<tr>' . implode('', $week) . '</tr>';
                 }
                 ?>
             </tbody>
         </table>
-    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <!-- Monthly and Annual Reports -->
+        <div class="mt-5">
+            <h3>Reports</h3>
+        
+            <br><h4>Monthly Report (Up to <?= $selectedDay ?: 'Full Month' ?> <?= $monthName ?>)</h4>
+            <p>Syer Majikan: RM <?= isset($monthlyReport['total_syer_majikan']) ? $monthlyReport['total_syer_majikan'] : '0' ?></p>
+            <p>Syer Pekerja: RM <?= isset($monthlyReport['total_syer_pekerja']) ? $monthlyReport['total_syer_pekerja'] : '0' ?></p>
+
+
+            <h4>Annual Report (<?= $currentYear ?>)</h4>
+            <p>Syer Majikan: RM <?= isset($annualReport['total_syer_majikan']) ? $annualReport['total_syer_majikan'] : '0' ?></p>
+            <p>Syer Pekerja: RM <?= isset($annualReport['total_syer_pekerja']) ? $annualReport['total_syer_pekerja'] : '0' ?></p>
+            </div>
+    </div>
+            <!-- Back to Main Menu -->
+            <a href="/homepageAdmin" class="btn btn-primary">Back to Main Menu</a>
+        </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
