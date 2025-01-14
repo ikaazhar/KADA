@@ -550,6 +550,20 @@ class UserController extends Controller
     public function showCheckAccountForm() {
         $this->view('auth/checkAccount');
     }
+
+    public function checkAccount() {
+        $idNumber = $_POST['id_number'] ?? '';
+
+        $memberID = $this->user->getMemberIDByIdNumber($idNumber);
+
+        if ($memberID) {
+            $accountDetails = $this->user->getAccountDetails($memberID);
+        } else {
+            $accountDetails = null;
+        }
+
+        $this->view('auth/AccInfo', compact('accountDetails'));
+    }
     
 }
 

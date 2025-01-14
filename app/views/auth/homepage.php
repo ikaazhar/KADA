@@ -115,8 +115,6 @@
             <h3 class="kada">     1.BANK ISLAM MALAYSIA BHD       – CAWANGAN KUBANG KERIAN<br></h3>
             <h3 class="kada">     2.BANK MUAMALAT MALAYSIA BERHAD – CAWANGAN JALAN SULTAN YAHYA PETRa<br></h3>
             <h3 class="kada">     3.BANK MUAMALAT MALAYSIA BERHAD – CAWANGAN KOTA BHARU<br></h3>
-
-            <a class="btn btn-info d-inline-block mx-1" href="/checkAcc">Check Account</a>
             
         </div>
     </div>
