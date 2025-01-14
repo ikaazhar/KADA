@@ -47,9 +47,9 @@
 
         <div class="container py-5 text-center"></div>
         <a href="/listReviewedLoan" class="btn btn-primary mb-2">Pengesahan Permohonan Pinjaman</a>
-        <a href="" class="btn btn-primary mb-2">Pengesahan Permohonan Ahli</a>
+        <a href="/approveMembershipForm" class="btn btn-primary mb-2">Pengesahan Permohonan Ahli</a>
         <a href="/viewSaving" class="btn btn-primary">Rekod Kewangan Tahunan</a>
-        <a href="" class="btn btn-primary mb-2">Laporan Koperasi</a>
+        <a href="/calendar" class="btn btn-primary mb-2">Annual Report</a>
         <a href="/viewInvoice" class="btn btn-primary mb-2">ETC</a>
     </div>
 </body>

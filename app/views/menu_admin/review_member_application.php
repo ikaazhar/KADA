@@ -58,9 +58,9 @@
             <?php if (!empty($viewMembershipFormList)): ?>
             <?php foreach ($viewMembershipFormList as $form): ?>
                 <tr>
-                    <td><?= htmlspecialchars($form['name']) ?></td>
-                    <td><?= htmlspecialchars($form['id_number']) ?></td>
-                    <td><a href="/viewMembershipForm">Dokumen_Permohonan_Ahli_<?= htmlspecialchars($form['name']) ?></a></td>
+                    <td><?= $form['name'] ?></td>
+                    <td><?= $form['id_number'] ?></td>
+                    <td><a href="/viewMembershipForm?id_number=<?= $form['id_number'] ?>">Dokumen_Permohonan_Ahli</a></td>
                     <td>
                     <form action="/storeMembershipFormStatus" method="POST">
                         <label for="approval" class="form-label"></label>
