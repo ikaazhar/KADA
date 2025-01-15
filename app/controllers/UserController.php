@@ -571,11 +571,40 @@ class UserController extends Controller
 
         if ($memberID) {
             $accountDetails = $this->user->getAccountDetails($memberID);
+            $message = null;
         } else {
+            $application= $this->user->getMemberDetailsByIdNumber($idNumber);
+        
+            if ($application) {
+                if ($application['approval'] === 'Pending') {
+                    $message = 'Permohonan anda sedang diproses.';
+                } elseif ($application['approval'] === 'Reviewed') {
+                    $message = 'Permohonan anda dalam penilaian.';
+                } elseif ($application['approval'] === 'Disapproved') {
+                    $message = 'Permohonan anda ditolak.';
+                }
+            } else {
+                $message = 'Tiada akaun atau permohonan ditemui untuk nombor KP yang diberikan.';
+            }
+
             $accountDetails = null;
         }
 
-        $this->view('auth/AccInfo', compact('accountDetails'));
+        $this->view('auth/AccInfo', compact('accountDetails', 'message'));
+    }
+
+    public function showProfile() {
+        // Assuming session holds logged-in member ID
+        $memberId = $_SESSION['user_id']; 
+
+        // Use User model to fetch member's details
+        $infoID = $this->user->getIdNumberByMemberId($memberId); // Fetch member details
+
+        // Fetch savings data (as before)
+        $memberDetails = $this->user->getMemberDetailsByIdNumber($infoID);
+
+        // Pass data to the view
+        $this->view('menu_member/viewPersonalInfo', compact('memberDetails'));
     }
     
 }

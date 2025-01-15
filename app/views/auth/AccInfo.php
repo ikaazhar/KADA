@@ -32,6 +32,15 @@
                 <a href="/homepage" class="btn btn-secondary">Back</a>
             </div>
         </div>
+    <div class="container mt-5">
+        <h1 class="text-center">Account Details</h1>
+        <?php if ($accountDetails): ?>
+            <p class="mt-4">Member ID: <strong><?= htmlspecialchars($accountDetails['member_id']); ?></strong></p>
+            <p>Password: <strong>1234<strong></p>
+            <?php elseif ($message): ?>
+            <p class="text-danger mt-4"><?= htmlspecialchars($message); ?></p>
+        <?php endif; ?>
+        <a href="/homepage" class="btn btn-secondary mt-3">Back</a>
     </div>
 </body>
 </html>
