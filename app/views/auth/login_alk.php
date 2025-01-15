@@ -73,8 +73,8 @@
                 <?php endif; ?>
                 <!-- Form Fields -->
                 <div class="mb-3">
-                    <label for="ALK_id" class="form-label text-dark">Nombor ALK:</label>
-                    <input type="text" name="ALK_id" id="ALK_id" class="form-control" placeholder="Masukkan nombor ALK" required>
+                    <label for="alk_id" class="form-label text-dark">Nombor ALK:</label>
+                    <input type="text" name="alk_id" id="alk_id" class="form-control" placeholder="Masukkan nombor ALK" required>
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label text-dark">Kata Laluan:</label>
