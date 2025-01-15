@@ -98,6 +98,9 @@
                     <li class="nav-item">
                         <a class="btn btn-info d-inline-block mx-1" href="/buttonpage">Login</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="btn btn-info d-inline-block mx-1" href="/createALK">Create ALK</a>
+                    </li>
                 </ul>
             </div>
         </div>

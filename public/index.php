@@ -221,7 +221,19 @@ if ($uri === '' && $method === 'GET') {
     } else {
         $controller->homepage();
     }
-} elseif ($action == 'calendar') {
+} elseif ($uri == 'editPersonalInfo'&& $method === 'GET') {
+    if (isAuthenticated()) {
+        $controller->editPersonalInfo();
+    } else {
+        $controller->homepage();
+    }
+} elseif ($uri == 'updateMemberInfo'&& $method === 'POST') {
+    if (isAuthenticated()) {
+        $controller->updateMemberInfo();
+    } else {
+        $controller->homepage();
+    }
+} elseif ($uri == 'calendar' && $method === 'GET') {
      if (isAuthenticated()) {
          $controller->calendar();
      } else {
