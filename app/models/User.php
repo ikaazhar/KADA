@@ -629,7 +629,81 @@ class User extends Model
         $stmt->bindParam(':member_id', $memberId);
         $stmt->execute();
         return $stmt->fetch();
+    }
 
+    public function updateMemberInfo($id_number, $data)
+    {
+        $stmt = $this->getConnection()->prepare("UPDATE member_application 
+        SET name = :name, 
+            id_number = :id_number, 
+            email = :email, 
+            marital_status = :marital_status, 
+            gender = :gender, 
+            religion = :religion, 
+            ethnicity = :ethnicity, 
+            home_address = :home_address, 
+            postcode = :postcode, 
+            state = :state, 
+            membership_number = :membership_number, 
+            pf_number = :pf_number, 
+            position_grade = :position_grade, 
+            office_address = :office_address, 
+            office_postcode = :office_postcode, 
+            city = :city, 
+            phone_office = :phone_office, 
+            phone_mobile = :phone_mobile, 
+            phone_home = :phone_home, 
+            monthly_salary = :monthly_salary, 
+            famName1 = :famName1, 
+            famRelationship1 = :famRelationship1, 
+            famIC1 = :famIC1, 
+            famName2 = :famName2, 
+            famRelationship2 = :famRelationship2, 
+            famIC2 = :famIC2,
+            yuran_masuk_value = :yuran_masuk_value, 
+            modal_syer_value = :modal_syer_value, 
+            modal_yuran_value = :modal_yuran_value, 
+            wang_deposit_value = :wang_deposit_value, 
+            sumbangan_kebajikan_value = :sumbangan_kebajikan_value, 
+            simpanan_tetap_value = :simpanan_tetap_value, 
+            lain_lain_value = :lain_lain_value
+        WHERE id_number = :id_number"); // Use prepare() for SQL statements with variables
+        $stmt->execute([ // Use execute() to run the query
+            ':name' => $data['name'],
+            ':id_number' => $data['id_number'],
+            ':email' => $data['email'],
+            ':marital_status' => $data['marital_status'],
+            ':gender' => $data['gender'],
+            ':religion' => $data['religion'],
+            ':ethnicity' => $data['ethnicity'],
+            ':home_address' => $data['home_address'],
+            ':postcode' => $data['postcode'],
+            ':state' => $data['state'],
+            ':membership_number' => $data['membership_number'],
+            ':pf_number' => $data['pf_number'],
+            ':position_grade' => $data['position_grade'],
+            ':office_address' => $data['office_address'],
+            ':office_postcode' => $data['office_postcode'],
+            ':city' => $data['city'],
+            ':phone_office' => $data['phone_office'], 
+            ':phone_mobile' => $data['phone_mobile'],
+            ':phone_home' => $data['phone_home'],
+            ':monthly_salary' => $data['monthly_salary'],
+            ':famName1' => $data['famName1'],
+            ':famRelationship1' => $data['famRelationship1'],
+            ':famIC1' => $data['famIC1'],
+            ':famName2' => $data['famName2'],
+            ':famRelationship2' => $data['famRelationship2'],
+            ':famIC2' => $data['famIC2'],
+            ':yuran_masuk_value' => $data['yuran_masuk_value'],
+            ':modal_syer_value' => $data['modal_syer_value'],
+            ':modal_yuran_value' => $data['modal_yuran_value'],
+            ':wang_deposit_value' => $data['wang_deposit_value'],
+            ':sumbangan_kebajikan_value' => $data['sumbangan_kebajikan_value'],
+            ':simpanan_tetap_value' => $data['simpanan_tetap_value'],
+            ':lain_lain_value' => $data['lain_lain_value'] 
+        ]);
+        return $stmt; // Return the PDOStatement object
     }
 
 }
