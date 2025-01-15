@@ -182,7 +182,7 @@ else if (isset($_SESSION['role']) && $_SESSION['role'] == "MEMBER"){
         } else {
             $controller->homepage();
         }
-    } elseif ($uri == 'updateMemberInfo'&& $method === 'GET') {
+    } elseif ($uri == 'updateMemberInfo'&& $method === 'POST') {
         if (isAuthenticated()) {
             $controller->updateMemberInfo();
         } else {

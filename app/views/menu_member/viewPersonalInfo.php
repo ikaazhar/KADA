@@ -28,19 +28,12 @@
         <div class="row mb-3">
             <div class="col-md-4">
                 <label for="marital_status" class="form-label">Taraf Perkahwinan</label>
-                <select class="form-select" id="marital_status" name="marital_status" value="<?= htmlspecialchars($memberDetails['marital_status']); ?>" required>
-                    <option value="Default">Taraf perkahwinan</option>
-                    <option value="Bujang">Bujang</option>
-                    <option value="Berkahwin">Berkahwin</option>
-                    <option value="Duda">Duda</option>
-                    <option value="Janda">Janda</option>
+                <input type="text" class="form-control" id="marital_status" name="marital_status" value="<?= htmlspecialchars($memberDetails['marital_status']); ?>" required>
                 </select>
             </div>
             <div class="col-md-4">
                 <label for="gender" class="form-label">Jantina</label>
-                <select class="form-select" id="gender" name="gender" value="<?= htmlspecialchars($memberDetails['gender']); ?>" required>
-                    <option value="Lelaki">Lelaki</option>
-                    <option value="Perempuan">Perempuan</option>
+                <input type="text" class="form-control" id="gender" name="gender" value="<?= htmlspecialchars($memberDetails['gender']); ?>" required>
                 </select>
             </div>
             <div class="col-md-4">
