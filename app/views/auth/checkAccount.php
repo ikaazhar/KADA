@@ -6,16 +6,33 @@
     <title>Check Account</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-    <div class="container mt-5">
-        <h1 class="text-center">Check Your Account</h1>
-        <form method="POST" action="/getAccInfo" class="mt-4">
-            <div class="mb-3">
-                <label for="id_number" class="form-label">ID Number</label>
-                <input type="text" class="form-control" id="id_number" name="id_number" placeholder="Enter your ID number" required>
+<body class="bg-light">
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+        <div class="card shadow-lg w-50">
+            <div class="card-header bg-primary text-white text-center">
+                <h2>Check Your Account</h2>
             </div>
-            <button type="submit" class="btn btn-primary">Check Account</button>
-        </form>
+            <div class="card-body">
+                <form method="POST" action="/getAccInfo">
+                    <div class="mb-3">
+                        <label for="id_number" class="form-label">ID Number</label>
+                        <input 
+                            type="text" 
+                            class="form-control" 
+                            id="id_number" 
+                            name="id_number" 
+                            placeholder="Enter your ID number" 
+                            required>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-secondary w-50">Check Account</button>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer text-center">
+                <small class="text-muted">Sila pastikan nombor KP anda ialah betul.</small>
+            </div>
+        </div>
     </div>
 </body>
 </html>
