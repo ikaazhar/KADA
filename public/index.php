@@ -25,7 +25,7 @@ $uri = explode('?', trim($_SERVER['REQUEST_URI'], '/'))[0];
 $action = isset($_GET['action']) ? $_GET['action'] : 'calendar';
 $method = $_SERVER['REQUEST_METHOD'];
 
-if($_SESSION['role']=="ALK"){
+if (isset($_SESSION['role']) && $_SESSION['role'] == "ALK"){
     if ($uri === 'homepageALK' && $method === 'GET') {
         if (isAuthenticated()) {
             $controller->homepageALK();
@@ -83,7 +83,7 @@ if($_SESSION['role']=="ALK"){
 
 }
 
-else if($_SESSION['role']=="MEMBER"){
+elseif (isset($_SESSION['role']) && $_SESSION['role'] == "MEMBER"){
     if ($uri === 'homepageMember' && $method === 'GET') {
         if (isAuthenticated()) {
             $controller->homepageMember();
@@ -159,7 +159,7 @@ else if($_SESSION['role']=="MEMBER"){
 
 }
 
-else if($_SESSION['role']=="ADMIN"){
+elseif (isset($_SESSION['role']) && $_SESSION['role'] == "ADMIN"){
     if ($uri === 'homepageAdmin' && $method === 'GET') {
         if (isAuthenticated()) {
             $controller->homepageAdmin();
@@ -217,7 +217,7 @@ else if($_SESSION['role']=="ADMIN"){
     
 }
 
-else{
+else if(!isset($_SESSION['role'])){
     if ($uri === '' && $method === 'GET') {
         $controller->homepage();
     } elseif ($uri === 'homepage' && $method === 'GET') {
