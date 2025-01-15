@@ -606,7 +606,25 @@ class UserController extends Controller
         // Pass data to the view
         $this->view('menu_member/viewPersonalInfo', compact('memberDetails'));
     }
+
+    public function editPersonalInfo() {
+        $memberId = $_SESSION['user_id']; 
+
+        // Use User model to fetch member's details
+        $infoID = $this->user->getIdNumberByMemberId($memberId); // Fetch member details
+
+        // Fetch savings data (as before)
+        $memberDetails = $this->user->getMemberDetailsByIdNumber($infoID);
+        $this->view('menu_member/editPersonalInfo', compact('memberDetails'));
+    }
     
+    public function updateMemberInfo()
+    {
+        $member_id = $_SESSION['user_id'];
+        $id_number = $this->user->getIdNumberByMemberId($member_id);
+        $this->user->updateMemberInfo($id_number, $_POST);
+        $this->view('menu_member/kemaskini_success');
+    }
 }
 
 

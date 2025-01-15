@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit User</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Borang Permohonan Menjadi Anggota</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 <div class="container my-5">
-    <h1 class="text-center mb-4">Maklumat Ahli</h1>
-    <form action="" method="GET">
+    <h1 class="text-center mb-4">Kemaskini Maklumat Pemohon</h1>
+    <form action="/updateMemberInfo" method="POST">
         <!-- Personal Details -->
         <div class="row mb-3">
             <div class="col-md-6">
@@ -29,18 +29,17 @@
             <div class="col-md-4">
                 <label for="marital_status" class="form-label">Taraf Perkahwinan</label>
                 <select class="form-select" id="marital_status" name="marital_status" value="<?= htmlspecialchars($memberDetails['marital_status']); ?>" required>
-                    <option value="Default">Taraf perkahwinan</option>
-                    <option value="Bujang">Bujang</option>
-                    <option value="Berkahwin">Berkahwin</option>
-                    <option value="Duda">Duda</option>
-                    <option value="Janda">Janda</option>
+                    <option value="Bujang" <?= $memberDetails['marital_status'] === 'Bujang' ? 'selected' : '' ?>>Bujang</option>
+                    <option value="Berkahwin" <?= $memberDetails['marital_status'] === 'Berkahwin' ? 'selected' : '' ?>>Berkahwin</option>
+                    <option value="Duda" <?= $memberDetails['marital_status'] === 'Duda' ? 'selected' : '' ?>>Duda</option>
+                    <option value="Janda" <?= $memberDetails['marital_status'] === 'Janda' ? 'selected' : '' ?>>Janda</option>
                 </select>
             </div>
             <div class="col-md-4">
                 <label for="gender" class="form-label">Jantina</label>
                 <select class="form-select" id="gender" name="gender" value="<?= htmlspecialchars($memberDetails['gender']); ?>" required>
-                    <option value="Lelaki">Lelaki</option>
-                    <option value="Perempuan">Perempuan</option>
+                    <option value="Lelaki" <?= $memberDetails['gender'] === 'Lelaki' ? 'selected' : '' ?>>Lelaki</option>
+                    <option value="Perempuan" <?= $memberDetails['gender'] === 'Perempuan' ? 'selected' : '' ?>>Perempuan</option>
                 </select>
             </div>
             <div class="col-md-4">
@@ -102,7 +101,7 @@
             </div>
             <div class="col-md-6">
                 <label for="phone_office" class="form-label">No. Tel/Fax</label>
-                <input type="text" class="form-control" id="phone_office" name="phone_office" value="<?= htmlspecialchars($memberDetails['phone_office']); ?>" >
+                <input type="text" class="form-control" id="phone_office" name="phone_office" value="<?= htmlspecialchars($memberDetails['phone_office']); ?>">
             </div>
         </div>
 
@@ -115,7 +114,7 @@
             </div>
             <div class="col-md-6">
                 <label for="phone_home" class="form-label">No. Tel Rumah</label>
-                <input type="text" class="form-control" id="phone_home" name="phone_home" value="<?= htmlspecialchars($memberDetails['phone_home']); ?>" >
+                <input type="text" class="form-control" id="phone_home" name="phone_home" value="<?= htmlspecialchars($memberDetails['phone_home']); ?>">
             </div>
         </div>
 
@@ -173,7 +172,7 @@
             <tbody>
                 <tr>
                     <td>Yuran Masuk</td>
-                    <td><input type="number" step="0.01" name="yuran_masuk_value" class="form-control" value="<?= htmlspecialchars($memberDetails['yuran_masuk_value']); ?>" ></td>
+                    <td><input type="number" step="0.01" name="yuran_masuk_value" class="form-control" value="<?= htmlspecialchars($memberDetails['yuran_masuk_value']); ?>"></td>
                 </tr>
                 <tr>
                     <td>Modal Syer</td>
@@ -201,9 +200,14 @@
                 </tr>
             </tbody>
         </table>
-        <a href="/editPersonalInfo" class="btn btn-warning mb-2">
-                <span class="btn-text">Kemaskini Maklumat Peribadi</span>
-            </a>
+        
+        
+
+        <!-- Submit Button -->
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Simpan Maklumat</button>
+        </div>
+        
     </form>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
