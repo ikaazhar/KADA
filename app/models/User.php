@@ -34,10 +34,10 @@ class User extends Model
         return $stmt->fetch();
     }
 
-    public function findByALKID($ALK_id)
+    public function findByALKID($alk_id)
     {
-        $stmt = $this->getConnection()->prepare("SELECT * FROM alklogin WHERE ALK_id = :ALK_id");
-        $stmt->bindParam(':ALK_id', $ALK_id, \PDO::PARAM_STR);
+        $stmt = $this->getConnection()->prepare("SELECT * FROM alklogin WHERE alk_id = :alk_id");
+        $stmt->bindParam(':alk_id', $alk_id, \PDO::PARAM_STR);
         $stmt->execute();
         return $stmt->fetch();
     }

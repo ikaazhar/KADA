@@ -82,14 +82,14 @@ class UserController extends Controller
 
     public function authenticateALK()
     {
-        $ALK_id = $_POST['ALK_id'];
+        $alk_id = $_POST['alk_id'];
         $password = $_POST['password'];
     
-        $user = $this->user->findByALKID($ALK_id);
+        $user = $this->user->findByALKID($alk_id);
     
         if ($user && password_verify($password, $user['password'])) {
             session_start();
-            $_SESSION['user_id'] = $user['ALK_id'];
+            $_SESSION['user_id'] = $user['alk_id'];
             $_SESSION['role'] = $user['user_role'];
             //$_SESSION['user_name'] = $user['name'];
             header('Location: /homepageALK');

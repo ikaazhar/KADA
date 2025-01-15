@@ -25,7 +25,35 @@ $uri = explode('?', trim($_SERVER['REQUEST_URI'], '/'))[0];
 $action = isset($_GET['action']) ? $_GET['action'] : 'calendar';
 $method = $_SERVER['REQUEST_METHOD'];
 
-if (isset($_SESSION['role']) && $_SESSION['role'] == "ALK"){
+if ($uri === '' && $method === 'GET') {
+    $controller->homepage();
+} elseif ($uri === 'homepage' && $method === 'GET') {
+    $controller->homepage();
+} elseif ($uri === 'buttonpage' && $method === 'GET') {
+    $controller->buttonpage();
+} elseif ($uri === 'register' && $method === 'POST') {
+    $controller->register();
+} elseif ($uri === 'loginMember' && $method === 'GET') {
+    $controller->loginMember();
+} elseif ($uri === 'loginStaff' && $method === 'GET') {
+    $controller->loginStaff();
+} elseif ($uri === 'loginALK' && $method === 'GET') {
+    $controller->loginALK();
+} elseif ($uri === 'createMember' && $method === 'GET') {
+    $controller->createMember();
+} elseif ($uri === 'createAdmin' && $method === 'GET') {
+    $controller->createAdmin();
+} elseif ($uri === 'createALK' && $method === 'GET') {
+    $controller->createALK();
+} elseif ($uri === 'authenticateMember' && $method === 'POST') {
+    $controller->authenticateMember();
+} elseif ($uri === 'authenticateStaff' && $method === 'POST') {
+    $controller->authenticateStaff();
+} elseif ($uri === 'authenticateALK' && $method === 'POST') {
+    $controller->authenticateALK();
+}
+
+else if (isset($_SESSION['role']) && $_SESSION['role'] === "ALK"){
     if ($uri === 'homepageALK' && $method === 'GET') {
         if (isAuthenticated()) {
             $controller->homepageALK();
