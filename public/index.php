@@ -176,6 +176,18 @@ else if (isset($_SESSION['role']) && $_SESSION['role'] == "MEMBER"){
         } else {
             $controller->homepage();
         }
+    } elseif ($uri == 'editPersonalInfo'&& $method === 'GET') {
+        if (isAuthenticated()) {
+            $controller->editPersonalInfo();
+        } else {
+            $controller->homepage();
+        }
+    } elseif ($uri == 'updateMemberInfo'&& $method === 'GET') {
+        if (isAuthenticated()) {
+            $controller->updateMemberInfo();
+        } else {
+            $controller->homepage();
+        }
     } elseif ($uri === 'logout' && $method === 'GET') {
         $controller->logout();
     } else {
