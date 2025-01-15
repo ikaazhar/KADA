@@ -623,7 +623,7 @@ class UserController extends Controller
         $member_id = $_SESSION['user_id'];
         $id_number = $this->user->getIdNumberByMemberId($member_id);
         $this->user->updateMemberInfo($id_number, $_POST);
-        $this->view('menu_member/homepage_ahli');
+        $this->view('menu_member/kemaskini_success');
     }
 }
 
