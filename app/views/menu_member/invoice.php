@@ -9,6 +9,13 @@
 </head>
 <body style="padding-top: 70px;">
 
+    <!-- Background Image Container -->
+    <div class="position-fixed top-0 start-0 w-100 h-100" style="z-index: -1;">
+        <div class="bg-light" style="opacity: 0.8;">
+            <img src="/assets_img/bgimage2.jpeg" alt="Background" class="img-fluid w-100 h-100" style="object-fit: cover;">
+        </div>
+    </div>
+
     <!-- Navbar -->
     <nav class="navbar navbar-light fixed-top" style="background-color: rgb(236, 215, 145); padding: 0.3rem 1rem;">
         <div class="container-xxl">
@@ -47,10 +54,10 @@
 
     <!-- Main Content -->
     <div class="container text-center mt-5">
-        <h1 class="text-dark" style="font-family: 'Times New Roman', Times, serif; font-weight: bold;">PENYATA KEWANGAN</h1>
+        <h1 class="text-dark" style="font-family: 'Times New Roman', Times, serif; font-weight: bold;text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">PENYATA KEWANGAN</h1>
 
         <!-- Member Details Card -->
-        <div class="card" style="background-color: rgb(238, 213, 146);">
+        <div class="card" style="background-color: rgb(255, 235, 179);">
             <div class="card-body">
             <p class="card-text"><strong>Nama: </strong><?php echo $data['memberDetails']['name']; ?></p>
                 <p class="card-text"><strong>No. IC: </strong><?php echo $data['memberDetails']['id_number']; ?></p>
@@ -60,7 +67,7 @@
          
         <br>
         <!-- Transaction Table -->
-        <div class="card"  style="background-color: rgb(238, 213, 146);">
+        <div class="card"  style="background-color: rgb(255, 235, 179);">
             <div class="card-body">
                 <table class="table table-bordered table-hover text-center">
                     <thead class="table-dark">
