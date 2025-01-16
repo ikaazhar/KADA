@@ -19,7 +19,7 @@
         <!-- Navigation Bar -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary w-100">
             <div class="container">
-                <a href="/homepageAhli" class="navbar-brand">
+                <a href="/homepageAdmin" class="navbar-brand">
                     <span class="fw-bold text-white">
                         Koperasi Kakitangan KADA         
                     </span>
