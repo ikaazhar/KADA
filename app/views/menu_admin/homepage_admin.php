@@ -79,7 +79,7 @@
                     <br><br><br>
 
                     <div class="col-12">
-                        <a href="/calendar" class="btn btn-primary btn-lg w-100 d-flex flex-column align-items-center">
+                        <a href="/calendarAdmin" class="btn btn-primary btn-lg w-100 d-flex flex-column align-items-center">
                             <i class="bi bi-clipboard2-data-fill"></i>
                             Laporan Koperasi
                         </a>
