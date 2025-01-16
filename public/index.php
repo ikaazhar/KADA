@@ -31,6 +31,10 @@ if ($uri === '' && $method === 'GET') {
     $controller->homepage();
 } elseif ($uri === 'buttonpage' && $method === 'GET') {
     $controller->buttonpage();
+} elseif ($uri === 'newPassword' && $method === 'GET') {
+    $controller->newPassword();
+} elseif ($uri === 'changePassword' && $method === 'POST') {
+    $controller->changePassword();
 } elseif ($uri === 'register' && $method === 'POST') {
     $controller->register();
 } elseif ($uri === 'loginMember' && $method === 'GET') {

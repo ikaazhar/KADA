@@ -628,6 +628,22 @@ class UserController extends Controller
         $this->user->updateMemberInfo($id_number, $_POST);
         $this->view('menu_member/kemaskini_success');
     }
+
+    public function changePassword() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $member_id = $_POST['member_id'] ?? null;
+            $new_password = $_POST['new_password'] ?? null;
+
+            $success = $this->user->updatePassword($member_id, $new_password);
+
+            $this->view('auth/kemaskini_password', compact('success'));
+        }
+    }
+    
+    public function newPassword()
+    {
+        $this->view('auth/newPassword');
+    }
 }
 
 

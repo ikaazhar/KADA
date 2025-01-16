@@ -706,4 +706,15 @@ class User extends Model
         return $stmt; // Return the PDOStatement object
     }
 
+    public function updatePassword($member_id, $new_password) {
+        $hashed_password = password_hash($new_password, PASSWORD_BCRYPT);
+
+        $query = "UPDATE memberlogin SET password = :password WHERE member_id = :member_id";
+        $stmt = $this->db->prepare($query);
+
+        $stmt->bindParam(':password', $hashed_password);
+        $stmt->bindParam(':member_id', $member_id);
+
+        return $stmt->execute();
+    }
 }
