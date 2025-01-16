@@ -9,7 +9,7 @@
 
     <div class="position-fixed top-0 start-0 w-100 h-100" style="z-index: -1;">
         <div class="bg-light" style="opacity: 0.8;">
-            <img src="bgimageALK.png" alt="Background" class="img-fluid w-100 h-100" style="object-fit: cover;">
+            <img src="/assets_img/bgimageALK.png" alt="Background" class="img-fluid w-100 h-100" style="object-fit: cover;">
         </div>
     </div>
 
