@@ -12,7 +12,7 @@
     <!-- Background Image Container -->
     <div class="position-fixed top-0 start-0 w-100 h-100" style="z-index: -1;">
         <div class="bg-light" style="opacity: 0.8;">
-            <img src="/assets_image/bgimage2.jpeg" alt="Background" class="img-fluid w-100 h-100" style="object-fit: cover;">
+            <img src="/assets_img/bgimage2.jpeg" alt="Background" class="img-fluid w-100 h-100" style="object-fit: cover;">
         </div>
     </div>
 
@@ -43,6 +43,14 @@
                     <a href="/logout" class="btn btn-info btn-sm text-dark" style="background-color:#c8781cce; border-color:#a6801767; font-weight: bold;">
                         <i class="bi bi-box-arrow-right" style="font-size: 20px;"></i> DAFTAR KELUAR
                     </a>
+
+                        <!-- Profile Icon -->
+                        <a href="showProfile" class="nav-link text-dark ms-2">
+                            <i class="bi bi-person-circle" style="font-size: 30px;"></i>
+                        </a>
+                    </div>
+                </div>
+            </nav>
         
                 </div>
             </div>

@@ -44,7 +44,7 @@
                     </a>
         
                     <!-- Profile Icon -->
-                    <a href="#" class="nav-link text-dark ms-2">
+                    <a href="showProfile" class="nav-link text-dark ms-2">
                         <i class="bi bi-person-circle" style="font-size: 30px;"></i>
                     </a>
                 </div>
