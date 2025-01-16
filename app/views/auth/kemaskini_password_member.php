@@ -29,7 +29,7 @@
         </div>
         <div class="card-footer text-center">
             <a href="/homepage" class="btn btn-secondary">Kembali ke Laman Utama</a>
-            <a href="/newPassword" class="btn btn-warning">Tukar Kata Laluan Lagi</a>
+            <a href="/newPasswordMember" class="btn btn-warning">Tukar Kata Laluan Lagi</a>
         </div>
     </div>
 </div>

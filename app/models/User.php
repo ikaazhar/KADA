@@ -706,14 +706,52 @@ class User extends Model
         return $stmt; // Return the PDOStatement object
     }
 
-    public function updatePassword($member_id, $new_password) {
+    public function updatePasswordMember($memberID, $new_password) {
         $hashed_password = password_hash($new_password, PASSWORD_BCRYPT);
 
         $query = "UPDATE memberlogin SET password = :password WHERE member_id = :member_id";
         $stmt = $this->db->prepare($query);
 
         $stmt->bindParam(':password', $hashed_password);
-        $stmt->bindParam(':member_id', $member_id);
+        $stmt->bindParam(':member_id', $memberID);
+
+        return $stmt->execute();
+    }
+
+    public function getALKIDByIdNumber($IdNum) {
+        $stmt = $this->db->prepare("SELECT alk_id FROM alklogin WHERE id_number = :id_number");
+        $stmt->bindParam(':id_number', $IdNum);
+        $stmt->execute();
+        return $stmt->fetchColumn();
+    }
+
+    public function updatePasswordALK($alkID, $new_password) {
+        $hashed_password = password_hash($new_password, PASSWORD_BCRYPT);
+
+        $query = "UPDATE alklogin SET password = :password WHERE alk_id = :alk_id";
+        $stmt = $this->db->prepare($query);
+
+        $stmt->bindParam(':password', $hashed_password);
+        $stmt->bindParam(':alk_id', $alkID);
+
+        return $stmt->execute();
+    }
+
+    public function getAdminIDByIdNumber($IdNum) {
+        $stmt = $this->db->prepare("SELECT admin_id FROM adminlogin WHERE id_number = :id_number");
+        $stmt->bindParam(':id_number', $IdNum);
+        $stmt->execute();
+        return $stmt->fetchColumn();
+    }
+
+    public function updatePasswordAdmin($adminID, $new_password) {
+        $hashed_password = password_hash($new_password, PASSWORD_BCRYPT);
+
+        $query = "UPDATE adminlogin SET password = :password WHERE admin_id = :admin_id";
+        $stmt = $this->db->prepare($query);
+
+        $stmt->bindParam(':password', $hashed_password);
+        $stmt->bindParam(':admin_id', $adminID);
 
         return $stmt->execute();
     }

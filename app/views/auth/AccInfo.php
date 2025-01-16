@@ -30,7 +30,9 @@
             </div>
             <div class="card-footer text-center">
                 <a href="/homepage" class="btn btn-secondary">Kembali</a>
-                <a href="/newPassword" class="btn btn-warning">Tukar Kata Laluan</a>
+                <?php if ($accountDetails): ?>
+                    <a href="/newPasswordMember" class="btn btn-warning">Tukar Kata Laluan</a>
+                <?php endif; ?>
             </div>
         </div>
 </body>

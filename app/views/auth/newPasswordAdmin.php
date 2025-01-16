@@ -12,11 +12,11 @@
             <div class="card-header bg-info text-white text-center">
                 <h2>Tukar Kata Laluan</h2>
             </div>
-            <form action="/changePassword" method="POST">
+            <form action="/changePasswordAdmin" method="POST">
                 <div class="card-body">
                     <div class="col-md-6">
-                        <label for="name" class="form-label">No. ID</label>
-                        <input type="text" class="form-control" id="member_id" name="member_id" required>
+                        <label for="name" class="form-label">No. KP</label>
+                        <input type="text" class="form-control" id="id_number" name="id_number" required>
                     </div>
                     <div class="col-md-6">
                         <label for="name" class="form-label">Kata Laluan Baharu</label>

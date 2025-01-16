@@ -629,20 +629,64 @@ class UserController extends Controller
         $this->view('menu_member/kemaskini_success');
     }
 
-    public function changePassword() {
+    public function changePasswordMember() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $member_id = $_POST['member_id'] ?? null;
-            $new_password = $_POST['new_password'] ?? null;
+            $id_number = $_POST['id_number'];
+            $new_password = $_POST['new_password'];
 
-            $success = $this->user->updatePassword($member_id, $new_password);
+            $memberID = $this->user->getMemberIDByIdNumber($id_number);
+            $success = [];
 
-            $this->view('auth/kemaskini_password', compact('success'));
+        if ($memberID) {
+            $success = $this->user->updatePasswordMember($memberID, $new_password);
+        }
+            $this->view('auth/kemaskini_password_member', compact('success'));
+        }
+    }
+
+    public function changePasswordALK() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id_number = $_POST['id_number'];
+            $new_password = $_POST['new_password'];
+
+            $alkID = $this->user->getALKIDByIdNumber($id_number);
+            $success = [];
+
+        if ($alkID) {
+            $success = $this->user->updatePasswordALK($alkID, $new_password);
+        }
+            $this->view('auth/kemaskini_password_alk', compact('success'));
+        }
+    }
+
+    public function changePasswordAdmin() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id_number = $_POST['id_number'];
+            $new_password = $_POST['new_password'];
+
+            $adminID = $this->user->getAdminIDByIdNumber($id_number);
+            $success = [];
+
+        if ($adminID) {
+            $success = $this->user->updatePasswordAdmin($adminID, $new_password);
+        }
+            $this->view('auth/kemaskini_password_admin', compact('success'));
         }
     }
     
-    public function newPassword()
+    public function newPasswordMember()
     {
-        $this->view('auth/newPassword');
+        $this->view('auth/newPasswordMember');
+    }
+
+    public function newPasswordALK()
+    {
+        $this->view('auth/newPasswordALK');
+    }
+
+    public function newPasswordAdmin()
+    {
+        $this->view('auth/newPasswordAdmin');
     }
 }
 

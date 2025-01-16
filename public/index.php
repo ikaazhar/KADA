@@ -31,10 +31,18 @@ if ($uri === '' && $method === 'GET') {
     $controller->homepage();
 } elseif ($uri === 'buttonpage' && $method === 'GET') {
     $controller->buttonpage();
-} elseif ($uri === 'newPassword' && $method === 'GET') {
-    $controller->newPassword();
-} elseif ($uri === 'changePassword' && $method === 'POST') {
-    $controller->changePassword();
+} elseif ($uri === 'newPasswordMember' && $method === 'GET') {
+    $controller->newPasswordMember();
+} elseif ($uri === 'changePasswordMember' && $method === 'POST') {
+    $controller->changePasswordMember();
+} elseif ($uri === 'newPasswordALK' && $method === 'GET') {
+    $controller->newPasswordALK();
+} elseif ($uri === 'changePasswordALK' && $method === 'POST') {
+    $controller->changePasswordALK();
+} elseif ($uri === 'newPasswordAdmin' && $method === 'GET') {
+    $controller->newPasswordAdmin();
+} elseif ($uri === 'changePasswordAdmin' && $method === 'POST') {
+    $controller->changePasswordAdmin();
 } elseif ($uri === 'register' && $method === 'POST') {
     $controller->register();
 } elseif ($uri === 'loginMember' && $method === 'GET') {
