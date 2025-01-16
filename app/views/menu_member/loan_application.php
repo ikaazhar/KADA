@@ -10,6 +10,13 @@
 </head>
 <body style="padding-top: 70px;">
 
+         <!-- Background Image Container -->
+    <div class="position-fixed top-0 start-0 w-100 h-100" style="z-index: -1;">
+        <div class="bg-light" style="opacity: 0.8;">
+            <img src="/assets_img/bgimage2.jpeg" alt="Background" class="img-fluid w-100 h-100" style="object-fit: cover;">
+        </div>
+    </div>
+
     <!-- Navbar -->
     <nav class="navbar navbar-light fixed-top" style="background-color: rgb(236, 215, 145); padding: 0.3rem 1rem;">
         <div class="container-xxl">
@@ -49,108 +56,109 @@
 </head>
 <body>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" style="font-family: 'Times New Roman', Times, serif; font-weight: bold;">
-    <title >Jadual Pembayaran Balik Pembiayaan</title>
-
     <div class="container my-4">
-        <h2 class="text-center mb-4" style=" font-weight: bold; color: rgb(8, 8, 8); text-shadow: #d48933;">JADUAL PEMBAYARAN BALIK PEMBIAYAAN</h2>
-        <table class="table table-bordered table-striped table-hover text-center bg-white">
-            <thead class="table-light" style="background-color: #d48933;">
-            <tbody>
-                <tr>
-                    <th>Tempoh (Tahun)</th>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>4</td>
-                    <td>5</td>
-                    <td>6</td>
-                </tr>
-                <tr>
-                    <th>Tempoh (Bulan)</th>
-                    <td>12</td>
-                    <td>24</td>
-                    <td>36</td>
-                    <td>48</td>
-                    <td>60</td>
-                    <td>72</td>
-                </tr>
-                <tr>
-                    <th>Jumlah Pembayaran</th>
-                    <td colspan="6">Ansuran Bulanan</td>
-                </tr>
-                <tr>
-                    <td>1,000.00</td>
-                    <td>86.83</td>
-                    <td>45.17</td>
-                    <td>31.28</td>
-                    <td>24.33</td>
-                    <td>20.17</td>
-                    <td>17.39</td>
-                </tr>
-                <tr>
-                    <td>2,000.00</td>
-                    <td>173.67</td>
-                    <td>90.33</td>
-                    <td>62.56</td>
-                    <td>48.67</td>
-                    <td>40.33</td>
-                    <td>34.78</td>
-                </tr>
-                <tr>
-                    <td>3,000.00</td>
-                    <td>260.50</td>
-                    <td>135.50</td>
-                    <td>93.83</td>
-                    <td>73.00</td>
-                    <td>60.50</td>
-                    <td>52.17</td>
-                </tr>
-                <tr>
-                    <td>4,000.00</td>
-                    <td>347.33</td>
-                    <td>180.67</td>
-                    <td>125.11</td>
-                    <td>97.33</td>
-                    <td>80.67</td>
-                    <td>69.56</td>
-                </tr>
-                <tr>
-                    <td>5,000.00</td>
-                    <td>434.17</td>
-                    <td>225.83</td>
-                    <td>156.39</td>
-                    <td>121.67</td>
-                    <td>100.83</td>
-                    <td>86.94</td>
-                </tr>
-                <tr>
-                    <td>6,000.00</td>
-                    <td>521.00</td>
-                    <td>271.00</td>
-                    <td>187.67</td>
-                    <td>146.00</td>
-                    <td>121.00</td>
-                    <td>104.33</td>
-                </tr>
-                <tr>
-                    <td>7,000.00</td>
-                    <td>607.83</td>
-                    <td>316.17</td>
-                    <td>218.94</td>
-                    <td>170.33</td>
-                    <td>141.17</td>
-                    <td>121.72</td>
-                </tr>
-            </tbody>
-        </table>
+        <h2 class="text-center mb-4" style="font-family: 'Times New Roman', Times, serif; font-weight: bold;text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); font-size: 40px;">JADUAL PEMBAYARAN BALIK PEMBIAYAAN</h2>
+    
+        <!-- Bootstrap Card for Table -->
+        <div class="card shadow">
+            <div class="card-body" style="background-color: rgb(255, 235, 179);">
+                <table class="table table-bordered table-striped table-hover text-center bg-white">
+                    <thead class="table-light" style="background-color: #d48933;">
+                    <tbody>
+                        <tr>
+                            <th>Tempoh (Tahun)</th>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>4</td>
+                            <td>5</td>
+                            <td>6</td>
+                        </tr>
+                        <tr>
+                            <th>Tempoh (Bulan)</th>
+                            <td>12</td>
+                            <td>24</td>
+                            <td>36</td>
+                            <td>48</td>
+                            <td>60</td>
+                            <td>72</td>
+                        </tr>
+                        <tr>
+                            <th>Jumlah Pembayaran</th>
+                            <td colspan="6">Ansuran Bulanan</td>
+                        </tr>
+                        <tr>
+                            <td>1,000.00</td>
+                            <td>86.83</td>
+                            <td>45.17</td>
+                            <td>31.28</td>
+                            <td>24.33</td>
+                            <td>20.17</td>
+                            <td>17.39</td>
+                        </tr>
+                        <tr>
+                            <td>2,000.00</td>
+                            <td>173.67</td>
+                            <td>90.33</td>
+                            <td>62.56</td>
+                            <td>48.67</td>
+                            <td>40.33</td>
+                            <td>34.78</td>
+                        </tr>
+                        <tr>
+                            <td>3,000.00</td>
+                            <td>260.50</td>
+                            <td>135.50</td>
+                            <td>93.83</td>
+                            <td>73.00</td>
+                            <td>60.50</td>
+                            <td>52.17</td>
+                        </tr>
+                        <tr>
+                            <td>4,000.00</td>
+                            <td>347.33</td>
+                            <td>180.67</td>
+                            <td>125.11</td>
+                            <td>97.33</td>
+                            <td>80.67</td>
+                            <td>69.56</td>
+                        </tr>
+                        <tr>
+                            <td>5,000.00</td>
+                            <td>434.17</td>
+                            <td>225.83</td>
+                            <td>156.39</td>
+                            <td>121.67</td>
+                            <td>100.83</td>
+                            <td>86.94</td>
+                        </tr>
+                        <tr>
+                            <td>6,000.00</td>
+                            <td>521.00</td>
+                            <td>271.00</td>
+                            <td>187.67</td>
+                            <td>146.00</td>
+                            <td>121.00</td>
+                            <td>104.33</td>
+                        </tr>
+                        <tr>
+                            <td>7,000.00</td>
+                            <td>607.83</td>
+                            <td>316.17</td>
+                            <td>218.94</td>
+                            <td>170.33</td>
+                            <td>141.17</td>
+                            <td>121.72</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
-
     <div class="container mt-5">
         <h1 class="text-center mb-4">BORANG PERMOHONAN PINJAMAN</h1>
         <div class="card shadow">
-            <div class="card-body">
+            <div class="card-body" style="background-color: rgb(255, 235, 179);">
                 <form action="/submitLoanApp" method="post" enctype="multipart/form-data">
                     <!-- Loan Type -->
                     <div class="mb-3">
