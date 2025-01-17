@@ -24,9 +24,39 @@
                     </div>
                 <?php elseif ($application): ?>
                     <div class="alert alert-warning text-center" role="alert">
-                    <p class="text-muted"><?= htmlspecialchars($message); ?></p>
+                        <p class="text-muted"><?= htmlspecialchars($message); ?></p>
                     </div>
                 <?php endif; ?>
+                    <?php if ($adminID): ?>
+                    <div class="mb-3">
+                        <p class="fw-bold">No. ID:</p>
+                        <p class="text-muted"><?= htmlspecialchars($adminID); ?></p>
+                    </div>
+                    <div class="mb-3">
+                        <p class="fw-bold">Kata Laluan:</p>
+                        <p class="text-muted">1234</p>
+                    </div>
+                    <?php elseif (!$application): ?>
+                        <?php if ($alkID): ?>
+                    <div class="mb-3">
+                        <p class="fw-bold">No. ID:</p>
+                        <p class="text-muted"><?= htmlspecialchars($alkID); ?></p>
+                    </div>
+                    <div class="mb-3">
+                        <p class="fw-bold">Kata Laluan:</p>
+                        <p class="text-muted">1234</p>
+                    </div>
+                    <?php else: ?>
+                        <div class="alert alert-warning text-center" role="alert">
+                        <p class="text-muted">Tiada akaun atau permohonan ditemui untuk nombor KP yang diberikan.</p>
+                    </div>
+                    <?php endif; ?>
+                    <?php else: ?>
+                        <div class="alert alert-warning text-center" role="alert">
+                        <p class="text-muted">Tiada akaun atau permohonan ditemui untuk nombor KP yang diberikan.</p>
+                    </div>
+                    <?php endif; ?>
+
             </div>
             <div class="card-footer text-center">
                 <a href="/homepage" class="btn btn-secondary">Kembali</a>

@@ -570,28 +570,33 @@ class UserController extends Controller
     public function checkAccount() {
         $idNumber = $_POST['id_number'] ?? '';
 
-        $memberID = $this->user->getMemberIDByIdNumber($idNumber);
+        $accountDetails = null;
+        $message = null;
+        $application = null;
 
+        $memberID = $this->user->getMemberIDByIdNumber($idNumber);
+        $adminID = $this->user->getAdminIDByIdNumber($idNumber);
+        $alkID = $this->user->getALKIDByIdNumber($idNumber);
+
+        if (!$adminID) {
+            if(!$alkID) {
         if ($memberID) {
             $accountDetails = $this->user->getAccountDetails($memberID);
-            $message = null;
-            $application = null;
-        } else {
-            $application= $this->user->getMemberDetailsByIdNumber($idNumber);
-        
+        } else if ($application) {
             if ($application['approval'] === 'Pending') {
                 $message = 'Permohonan anda sedang diproses.';
             } elseif ($application['approval'] === 'Reviewed') {
                 $message = 'Permohonan anda dalam penilaian.';
             } elseif ($application['approval'] === 'Disapproved') {
                 $message = 'Permohonan anda ditolak.';
-            } else {
-                $message = 'Tiada akaun atau permohonan ditemui untuk nombor KP yang diberikan.';
             }
-            $accountDetails = null;
+        } else {
+            $message = 'Tiada akaun atau permohonan ditemui untuk nombor KP yang diberikan.';
+        }        
         }
+    }
 
-        $this->view('auth/AccInfo', compact('accountDetails', 'message', 'application'));
+        $this->view('auth/AccInfo', compact('accountDetails', 'message', 'application', 'adminID', 'alkID'));
     }
 
     public function showProfile() {

@@ -10,22 +10,22 @@
     <div class="container d-flex justify-content-center align-items-center min-vh-100">
         <div class="card shadow-lg w-50">
             <div class="card-header bg-primary text-white text-center">
-                <h2>Check Your Account</h2>
+                <h2>Semak Permohonan</h2>
             </div>
             <div class="card-body">
                 <form method="POST" action="/getAccInfo">
                     <div class="mb-3">
-                        <label for="id_number" class="form-label">ID Number</label>
+                        <label for="id_number" class="form-label">No. KP</label>
                         <input 
                             type="text" 
                             class="form-control" 
                             id="id_number" 
                             name="id_number" 
-                            placeholder="Enter your ID number" 
+                            placeholder="Sila masukkan No. KP anda" 
                             required>
                     </div>
                     <div class="text-center">
-                        <button type="submit" class="btn btn-secondary w-50">Check Account</button>
+                        <button type="submit" class="btn btn-secondary w-50">Semak Akaun</button>
                     </div>
                 </form>
             </div>
