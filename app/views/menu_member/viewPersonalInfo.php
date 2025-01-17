@@ -154,7 +154,7 @@
         <!-- Contact Details -->
         <div class="card mb-4">
             <div class="card-header text-white" style="background-color: rgb(201, 168, 109)">
-                <h5 class="mb-0">Maklumat Kontak</h5>
+                <h5 class="mb-0">Maklumat Nombor Telefon</h5>
             </div>
             <div class="card-body">
                 <div class="row mb-3">
@@ -266,7 +266,9 @@
         </div>
 
         <div class="d-flex justify-content-end">
-            <button type="submit" class="btn btn-primary">Save</button>
+            <a href="/editPersonalInfo" class="btn btn-info btn-sm text-dark" style="background-color:#c7dfffe8; border-color:#1750a667; font-weight: bold;">
+                <i class="bi bi-check2-square"style="font-size: 20px;"></i> Kemaskini Maklumat
+            </a>
         </div>
     </form>
 </div>
