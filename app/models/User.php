@@ -618,7 +618,7 @@ class User extends Model
     }
 
     public function getMemberIDByIdNumber($IdNum) {
-        $stmt = $this->db->prepare("SELECT member_id FROM Member_Info WHERE id_number = :id_number");
+        $stmt = $this->db->prepare("SELECT member_id FROM member_info WHERE id_number = :id_number");
         $stmt->bindParam(':id_number', $IdNum);
         $stmt->execute();
         return $stmt->fetchColumn();

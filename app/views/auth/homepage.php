@@ -96,6 +96,12 @@
                         <a class="btn btn-info d-inline-block mx-1" href="/checkAcc">Semak Permohonan</a>
                     </li>
                     <li class="nav-item">
+                    <li class="nav-item">
+                        <a class="btn btn-info d-inline-block mx-1" href="/createAdmin">Create Admin</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-info d-inline-block mx-1" href="/createALK">Create ALK</a>
+                    </li>
                         <a class="btn btn-info d-inline-block mx-1" href="/buttonpage">Login</a>
                     </li>
                 </ul>

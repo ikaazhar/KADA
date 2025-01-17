@@ -22,9 +22,9 @@
                         <p class="fw-bold">Kata Laluan:</p>
                         <p class="text-muted">1234</p>
                     </div>
-                <?php else: ?>
-                    <div class="alert alert-danger text-center" role="alert">
-                        Tiada akaun ditemui untuk nombor ID yang diberikan.
+                <?php elseif ($application): ?>
+                    <div class="alert alert-warning text-center" role="alert">
+                    <p class="text-muted"><?= htmlspecialchars($message); ?></p>
                     </div>
                 <?php endif; ?>
             </div>
