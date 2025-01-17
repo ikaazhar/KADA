@@ -25,7 +25,7 @@
     
             <!-- Profile, Dropdown, and Logout Button Group -->
             <div class="d-flex align-items-center">
-                <a href="/createMembershipForm/" class="btn btn-info btn-sm text-dark" style="background-color:#c7dfffe8; border-color:#1750a667; font-weight: bold;">
+                <a href="/createMembershipForm" class="btn btn-info btn-sm text-dark" style="background-color:#c7dfffe8; border-color:#1750a667; font-weight: bold;">
                     <i class="bi bi-r-square-fill" style="font-size: 20px;"></i> DAFTAR SEKARANG
                 </a>
 
