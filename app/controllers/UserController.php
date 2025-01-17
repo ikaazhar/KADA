@@ -572,7 +572,7 @@ class UserController extends Controller
 
         $accountDetails = null;
         $message = null;
-        $application = null;
+        $application = $this->user->getMemberDetailsByIdNumber($idNumber);
 
         $memberID = $this->user->getMemberIDByIdNumber($idNumber);
         $adminID = $this->user->getAdminIDByIdNumber($idNumber);
@@ -580,21 +580,19 @@ class UserController extends Controller
 
         if (!$adminID) {
             if(!$alkID) {
-        if ($memberID) {
-            $accountDetails = $this->user->getAccountDetails($memberID);
-        } else if ($application) {
-            if ($application['approval'] === 'Pending') {
-                $message = 'Permohonan anda sedang diproses.';
-            } elseif ($application['approval'] === 'Reviewed') {
-                $message = 'Permohonan anda dalam penilaian.';
-            } elseif ($application['approval'] === 'Disapproved') {
-                $message = 'Permohonan anda ditolak.';
+                if ($memberID) {
+                $accountDetails = $this->user->getAccountDetails($memberID);
+                } else if ($application) {
+                    if ($application['approval'] === 'Pending') {
+                        $message = 'Permohonan anda sedang diproses.';
+                    } elseif ($application['approval'] === 'Reviewed') {
+                        $message = 'Permohonan anda dalam penilaian.';
+                    } elseif ($application['approval'] === 'Disapproved') {
+                        $message = 'Permohonan anda ditolak.';
+                    }
+                }        
             }
-        } else {
-            $message = 'Tiada akaun atau permohonan ditemui untuk nombor KP yang diberikan.';
-        }        
         }
-    }
 
         $this->view('auth/AccInfo', compact('accountDetails', 'message', 'application', 'adminID', 'alkID'));
     }

@@ -51,10 +51,6 @@
                         <p class="text-muted">Tiada akaun atau permohonan ditemui untuk nombor KP yang diberikan.</p>
                     </div>
                     <?php endif; ?>
-                    <?php else: ?>
-                        <div class="alert alert-warning text-center" role="alert">
-                        <p class="text-muted">Tiada akaun atau permohonan ditemui untuk nombor KP yang diberikan.</p>
-                    </div>
                     <?php endif; ?>
 
             </div>
