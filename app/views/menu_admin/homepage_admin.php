@@ -19,7 +19,7 @@
         <!-- Navigation Bar -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary w-100">
             <div class="container">
-                <a href="/homepageAhli" class="navbar-brand">
+                <a href="/homepageAdmin" class="navbar-brand">
                     <span class="fw-bold text-white">
                         Koperasi Kakitangan KADA         
                     </span>
@@ -34,6 +34,13 @@
                 <!--Navigation Bar Links-->
                 <div class="collapse navbar-collapse justify-content-end align-center" id = "main-nav">
                     <ul class="navbar-nav ms-auto">
+                    <li class="nav-item me-3">
+                            <a href="/createAdmin" class="btn btn-info btn-sm text-dark">
+                                <i class="bi bi-person-fill-add" style="font-size: 19px;"></i>
+                                Tambah Admin  
+                            </a>
+                        </li>
+
                         <li class="nav-item">
                             <a href="/logout" class="btn btn-info btn-sm text-dark">
                                 <i class="bi bi-box-arrow-right" style="font-size: 19px;"></i>
@@ -63,7 +70,7 @@
                     <div class="col">
                         <a href="/listPendingForm" class="btn btn-primary btn-lg w-100 d-flex flex-column align-items-center">
                             <i class="bi bi-cash-stack"></i>
-                            Senarai Pemohon Pinjaman
+                            Senarai Permohonan Pinjaman
                         </a>
                     </div>
 
@@ -72,14 +79,14 @@
                     <div class="col">
                         <a href="/reviewMembershipForm" class="btn btn-primary btn-lg w-100 d-flex flex-column align-items-center">
                             <i class="bi bi-person-vcard-fill"></i>
-                            Senarai Pemohon Ahli
+                            Senarai Permohonan Ahli
                         </a>
                     </div>
 
                     <br><br><br>
 
                     <div class="col-12">
-                        <a href="/calendar" class="btn btn-primary btn-lg w-100 d-flex flex-column align-items-center">
+                        <a href="/calendarAdmin" class="btn btn-primary btn-lg w-100 d-flex flex-column align-items-center">
                             <i class="bi bi-clipboard2-data-fill"></i>
                             Laporan Koperasi
                         </a>
