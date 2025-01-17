@@ -207,6 +207,12 @@
         </div>
     </div>
 
+    <!-- Back button -->
+    <div class="text-center mt-4">
+                <a href="/homepageAdmin" class="btn btn-info">
+                    <i class="bi bi-arrow-left-circle"></i> Kembali Semula
+                </a>
+            </div>
     <script>
         // Monthly Report Chart
         const monthlyCtx = document.getElementById('monthlyReportChart').getContext('2d');
@@ -256,6 +262,7 @@
             }
         });
     </script>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
