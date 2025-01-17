@@ -63,7 +63,9 @@ if ($uri === '' && $method === 'GET') {
     $controller->authenticateStaff();
 } elseif ($uri === 'authenticateALK' && $method === 'POST') {
     $controller->authenticateALK();
-}
+} elseif ($uri === 'getAccInfo' && $method === 'POST') {
+    $controller->checkAccount();
+} 
 
 else if (isset($_SESSION['role']) && $_SESSION['role'] === "ALK"){
     if ($uri === 'homepageALK' && $method === 'GET') {
