@@ -2,128 +2,75 @@
 <html lang="en">
 <head>
     <title>KADA Homepage</title>
+    <!-- Link to Google Fonts for a more attractive font -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: url('bgimage_buttonpage.jpg') no-repeat center center fixed;
-            background-size: cover;
-            color: white;
-        }
-        .navbar {
-            background-color: rgba(0, 102, 204, 0.8); /* Semi-transparent blue */
-        }
-        .navbar-brand {
-            color: white !important;
-        }
-        .navbar-nav .nav-link, .navbar-nav .btn-info {
-            color: #fff !important;
-            padding: 10px 20px; /* Consistent button size */
-            height: 50px; /* Fixed height */
-        }
-        .navbar-nav .btn-info {
-            background-color: #00cc66; /* Green buttons */
-            border: none;
-        }
-        .navbar-nav .nav-link:hover, .navbar-nav .btn-info:hover {
-            background-color: #218838; /* Darker green hover effect */
-        }
-        .btn-info {
-            font-size: 16px; /* Button font size */
-        }
-        .btn-custom {
-            background-color: #0066cc; /* Blue buttons */
-            color: white;
-            border-radius: 8px;
-            font-size: 18px;
-            padding: 12px 25px;
-            width: 100%; /* Full-width buttons */
-            max-width: 300px; /* Consistent button width */
-            height: 80px; /* Consistent height */
-        }
-        .btn-custom:hover {
-            background-color: #005bb5; /* Darker blue on hover */
-        }
-        .page-title {
-            color: #9dbbda;
-            font-weight: 600;
-            text-align: center;
-            margin: 30px 0;
-        }
-        .footer {
-            background-color: rgba(0, 102, 204, 0.9); /* Blue footer */
-            color: white;
-            text-align: center;
-            padding: 20px;
-            margin-top: 50px;
-            font-size: 14px;
-        }
-        .content-section {
-            margin: 20px auto;
-            text-align: left;
-            padding: 30px;
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            max-width: 800px;
-            color: #333;
-        }
-
-        .kada {
-            font-size: 16px;
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
-<body>
+<body style="padding-top: 70px;">
+
+    <!-- Background Image Container -->
+    <div class="position-fixed top-0 start-0 w-100 h-100" style="z-index: -1;">
+        <div class="bg-light" style="opacity: 0.8;">
+            <img src="/assets_img/bgimageauth.jpg" alt="Background" class="img-fluid w-100 h-100" style="object-fit: cover;">
+        </div>
+    </div>
+
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-md fixed-top navbar-light">
+    <nav class="navbar navbar-light fixed-top" style="background-color: rgb(145, 215, 236); padding: 0.3rem 1rem;">
         <div class="container-xxl">
-            <a href="/homepage" class="navbar-brand">
-                <span class="fw-bold">
-                    Koperasi Kakitangan KADA
-                </span>
+            <a class="navbar-brand" href="/homepage" style="font-family: 'Times New Roman', Times, serif; font-weight: bold;">
+                Koperasi Kakitangan KADA
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end align-center" id="main-nav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="btn btn-info d-inline-block mx-1" href="/createMembershipForm/">Daftar Sekarang</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="btn btn-info d-inline-block mx-1" href="/checkAcc">Semak Permohonan</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="btn btn-info d-inline-block mx-1" href="/buttonpage">Login</a>
-                    </li>
-                </ul>
+    
+            <!-- Profile, Dropdown, and Logout Button Group -->
+            <div class="d-flex align-items-center">
+                <a href="/createMembershipForm/" class="btn btn-info btn-sm text-dark" style="background-color:#c7dfffe8; border-color:#1750a667; font-weight: bold;">
+                    <i class="bi bi-r-square-fill" style="font-size: 20px;"></i> DAFTAR SEKARANG
+                </a>
+
+                <a href="/checkAcc" class="btn btn-info btn-sm text-dark" style="background-color:#c7dfffe8; border-color:#1750a667; font-weight: bold;">
+                    <i class="bi bi-check2-square"style="font-size: 20px;"></i> SEMAK PERMOHONAN
+                </a>
+
+                <a href="/buttonpage" class="btn btn-info btn-sm text-dark" style="background-color:#c7dfffe8; border-color:#1750a667; font-weight: bold;">
+                    <i class="bi bi-box-arrow-in-left"style="font-size: 20px;"></i> DAFTAR MASUK
+                </a>
             </div>
         </div>
     </nav>
 
     <!-- Main Content -->
     <div class="container mt-5 pt-5">
-        <h1 class="page-title">KOPERASI KAKITANGAN KADA</h1>
 
-        <div class="content-section">
-            <h3 class="kada">NAMA BERDAFTAR : KOPERASI KAKITANGAN KADA SDN BHD<br></h3>
-            <h3 class="kada">NO. PENDAFTARAN : IP5429/1<br></h3> 
-            <h3 class="kada">TARIKH DAFTAR : 29 Ogos 1981<br></h3>
-            <h3 class="kada">PEJABAT BERDAFTAR : D/A Lembaga Kemajuan Pertanian Kemubu, P/S 127 , 15710 Kota Bharu, Kelantan</h3>
-            <h3 class="kada">NO. TELEFON : 09-7447088 samb. 5339 @ 5312<br></h3>
-            <h3 class="kada">EMEL : koperasi_kada@yahoo.com<br></h3>
-            <h3 class="kada">BANK :<br></h3>
-            <h3 class="kada">     1.BANK ISLAM MALAYSIA BHD       – CAWANGAN KUBANG KERIAN<br></h3>
-            <h3 class="kada">     2.BANK MUAMALAT MALAYSIA BERHAD – CAWANGAN JALAN SULTAN YAHYA PETRa<br></h3>
-            <h3 class="kada">     3.BANK MUAMALAT MALAYSIA BERHAD – CAWANGAN KOTA BHARU<br></h3>
-            
+        <!-- Card Design with enhanced shadow and centered image -->
+        <div class="card shadow-lg" style="max-width: 800px; margin: auto; border-radius: 15px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);">
+            <!-- Card Image (Logo) -->
+            <img src="/assets_img/LOGO_KOPERASI_KADA-removebg-preview.png" class="card-img-top mx-auto d-block" alt="Koperasi KADA Logo" style="max-width: 200px; margin-top: 20px;">
+
+            <!-- Card Body -->
+            <div class="card-body" style="font-family: 'Roboto', sans-serif;">
+                <h1 class="card-title text-center" style="font-family: 'Times New Roman', Times, serif; font-weight: 700; color: #004c77;">KOPERASI KAKITANGAN KADA</h1>
+
+                <div class="content-section">
+                    <h3 class="kada" style="font-size: 25px; font-family: 'Times New Roman', Times, serif;">Nama Berdaftar    : Koperasi Kakitangan KADA SDN BHD<br></h3>
+                    <h3 class="kada" style="font-size: 25px; font-family: 'Times New Roman', Times, serif;">NO. Pendaftaran   : IP5429/1<br></h3> 
+                    <h3 class="kada" style="font-size: 25px; font-family: 'Times New Roman', Times, serif;">Tarikh Daftar     : 29 Ogos 1981<br></h3>
+                    <h3 class="kada" style="font-size: 25px; font-family: 'Times New Roman', Times, serif;">Pejabat Berdaftar : D/A Lembaga Kemajuan Pertanian Kemubu, P/S 127 , 15710 Kota Bharu, Kelantan</h3>
+                    <h3 class="kada" style="font-size: 25px; font-family: 'Times New Roman', Times, serif;">No. Telefon       : 09-7447088 samb. 5339 @ 5312<br></h3>
+                    <h3 class="kada" style="font-size: 25px; font-family: 'Times New Roman', Times, serif;">Emel              : koperasi_kada@yahoo.com<br></h3>
+                    <h3 class="kada" style="font-size: 25px; font-family: 'Times New Roman', Times, serif;">Bank              :<br></h3>
+                    <h3 class="kada" style="font-size: 25px; font-family: 'Times New Roman', Times, serif;">                      1.BANK ISLAM MALAYSIA BHD       – Cawangan Kubang Kerian<br></h3>
+                    <h3 class="kada" style="font-size: 25px; font-family: 'Times New Roman', Times, serif;">                      2.BANK MUAMALAT MALAYSIA BERHAD – Cawangan Jalan Sultan Yahya Petra<br></h3>
+                    <h3 class="kada" style="font-size: 25px; font-family: 'Times New Roman', Times, serif;">                      3.BANK MUAMALAT MALAYSIA BERHAD – Cawangan Kota Bharu<br></h3>
+                </div>
+            </div>
         </div>
+
     </div>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer text-center mt-5">
         <p>&copy; 2025 Koperasi Kakitangan KADA. All rights reserved.</p>
     </footer>
 

@@ -8,6 +8,13 @@
 </head>
 <body style="padding-top: 70px;">
 
+      <!-- Background Image Container -->
+      <div class="position-fixed top-0 start-0 w-100 h-100" style="z-index: -1;">
+        <div class="bg-light" style="opacity: 0.8;">
+            <img src="/assets_img/bgimage2.jpeg" alt="Background" class="img-fluid w-100 h-100" style="object-fit: cover;">
+        </div>
+    </div>
+
     <!-- Navbar -->
     <nav class="navbar navbar-light fixed-top" style="background-color: rgb(236, 215, 145); padding: 0.3rem 1rem;">
         <div class="container-xxl">
@@ -37,14 +44,14 @@
                     </a>
         
                     <!-- Profile Icon -->
-                    <a href="#" class="nav-link text-dark ms-2">
+                    <a href="showProfile" class="nav-link text-dark ms-2">
                         <i class="bi bi-person-circle" style="font-size: 30px;"></i>
                     </a>
                 </div>
             </div>
         </nav>
 
-        <br><br><br><br><h2 class="fw-bold" style="text-align:center;"> Semak Kelulusan Pinjaman </h2>
+        <br><br><br><br><h2 class="fw-bold" style="text-align:center;font-family: 'Times New Roman', Times, serif; font-weight: bold;text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); font-size: 40px;"> SEMAK KELULUSAN PINJAMAN</h2>
 
         <div class="container mt-5">
         <?php if (!empty($loanApplication)): ?>

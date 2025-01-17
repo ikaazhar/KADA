@@ -8,6 +8,13 @@
 </head>
 <body style="padding-top: 70px;">
 
+             <!-- Background Image Container -->
+             <div class="position-fixed top-0 start-0 w-100 h-100" style="z-index: -1;">
+                <div class="bg-light" style="opacity: 0.8;">
+                    <img src="/assets_img/bgimage2.jpeg" alt="Background" class="img-fluid w-100 h-100" style="object-fit: cover;">
+                </div>
+            </div>
+        
     <!-- Navbar -->
     <nav class="navbar navbar-light fixed-top" style="background-color: rgb(236, 215, 145); padding: 0.3rem 1rem;">
         <div class="container-xxl">
@@ -37,7 +44,7 @@
                     </a>
         
                     <!-- Profile Icon -->
-                    <a href="#" class="nav-link text-dark ms-2">
+                    <a href="showProfile" class="nav-link text-dark ms-2">
                         <i class="bi bi-person-circle" style="font-size: 30px;"></i>
                     </a>
                 </div>
@@ -75,15 +82,15 @@
             </div>
         </nav>
 
-        <br><br><br><h2 class="fw-bold" style="text-align:center;"> Baki Pinjaman </h2>
+        <br><br><br><h2 class="fw-bold" style="text-align:center;font-family: 'Times New Roman', Times, serif; font-weight: bold;text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); font-size: 40px;"> BAKI PINJAMAN </h2>
         <?php if (!empty($loanDetails)): ?>
             <?php foreach ($loanDetails as $index => $loan): ?>
                 <?php $loanID = $loan['LoanID']; ?>
                 <?php $deets = isset($transactionDetails[$loanID]) ? $transactionDetails[$loanID] : null; ?>
-                    <br><br><h3 class="fw-bold" style="text-align:center; color:red;">RM <?= htmlspecialchars($loan['OutstandingAmount']) ?></h3>
+                    <br><br><h3 class="fw-bold" style="text-align:center; color:red; font-size: 40px; font-family: 'Times New Roman', Times, serif;">RM <?= htmlspecialchars($loan['OutstandingAmount']) ?></h3>
 
                     <div class="container">
-                        <div class="card">
+                        <div class="card" style="background-color: rgb(255, 235, 179);">
                             <div class="card-body">
                                 <p class="card-text"><strong>Jenis Pinjaman: </strong><?= htmlspecialchars($loan['LoanType']) ?></p>
                                 <p class="card-text"><strong>Ansuran Bulanan: </strong>RM <?= htmlspecialchars($loan['MonthlyInstallment']) ?></p>
@@ -118,8 +125,24 @@
                     </div>
         <?php endforeach; ?>
     <?php else: ?>
-        <br><br><h3 class="fw-bold text-center text-danger">Permohonan pinjaman anda belum diluluskan.</h3>
+    <br><br>
+    <!-- Card Design for "Permohonan Pinjaman Belum Diluluskan" with bottom space -->
+    <div class="container">
+        <div class="card text-center" style="width: 100%; max-width: 600px; margin: 0 auto; border: 2px solid #c8781c; background-color: #f8d7da; margin-bottom: 40px;">
+            <div class="card-body">
+                <h3 class="fw-bold text-danger" style="font-size: 1.8rem; text-transform: uppercase; letter-spacing: 2px;">
+                    PERMOHONAN PINJAMAN ANDA BELUM DILULUSKAN.
+                </h3>
+                <p class="text-warning" style="font-size: 1.1rem; font-style: italic; margin-top: 20px;">
+                    Sila semak semula status pinjaman anda.
+                </p>
+            </div>
+        </div>
+    </div>
     <?php endif; ?>
+
+    <!-- Add Space at the Bottom -->
+    <div style="height: 50px;"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     </body>
