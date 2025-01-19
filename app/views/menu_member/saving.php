@@ -10,6 +10,13 @@
   </head>
   <body style="padding-top: 70px;">
   
+      <!-- Background Image Container -->
+      <div class="position-fixed top-0 start-0 w-100 h-100" style="z-index: -1;">
+        <div class="bg-light" style="opacity: 0.8;">
+            <img src="/assets_img/bgimage2.jpeg" alt="Background" class="img-fluid w-100 h-100" style="object-fit: cover;">
+        </div>
+    </div>
+  
       <!-- Navbar -->
       <nav class="navbar navbar-light fixed-top" style="background-color: rgb(236, 215, 145); padding: 0.3rem 1rem;">
           <div class="container-xxl">
@@ -39,17 +46,17 @@
                       </a>
           
                       <!-- Profile Icon -->
-                      <a href="#" class="nav-link text-dark ms-2">
+                      <a href="showProfile" class="nav-link text-dark ms-2">
                           <i class="bi bi-person-circle" style="font-size: 30px;"></i>
                       </a>
                   </div>
               </div>
           </nav>
 
-    <h1 class="text-center"style="font-family: 'Times New Roman', Times, serif; font-weight: bold;">SIMPANAN DAN SYER PERIBADI</h1>
+    <h1 class="text-center"style="font-family: 'Times New Roman', Times, serif; font-weight: bold; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); font-size: 40px;">SIMPANAN DAN SYER PERIBADI</h1>
 
     <div class="container">
-        <div class="card" style="background-color: rgb(238, 213, 146);">
+        <div class="card" style="background-color: rgb(255, 235, 179)">
             <div class="card-body">
                 <!-- Dynamically populated member details -->
                 <p class="card-text"><strong>Nama: </strong><?php echo $data['memberDetails']['name']; ?></p>
@@ -61,8 +68,8 @@
     
     <div class="container mt-5">
         <!-- Card for Maklumat Simpanan Ahli -->
-        <br><h1 class="text-center mb-4"style="font-family: 'Times New Roman', Times, serif; font-weight: bold;">Simpanan Peribadi Ahli</h1>
-        <div class="card" style="background-color: rgb(238, 213, 146);">
+        <br><h1 class="text-center mb-4"style="font-family: 'Times New Roman', Times, serif; font-weight: bold; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Simpanan Peribadi Ahli</h1>
+        <div class="card" style="background-color: rgb(255, 235, 179)">
             <div class="card-body">
                 <table class="table table-bordered table-hover text-center">
                     <thead class="table-dark">
@@ -97,8 +104,8 @@
 
     <div class="container mt-5">
         <!-- Card for Maklumat Simpanan Ahli -->
-        <br><h1 class="text-center mb-4" style="font-family: 'Times New Roman', Times, serif; font-weight: bold;">Syer Ahli</h1>
-        <div class="card" style="background-color: rgb(238, 213, 146);">
+        <br><h1 class="text-center mb-4" style="font-family: 'Times New Roman', Times, serif; font-weight: bold; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Syer Ahli</h1>
+        <div class="card" style="background-color: rgb(255, 235, 179)">
             <div class="card-body">
                 <table class="table table-bordered table-hover text-center">
                     <thead class="table-dark">
@@ -128,6 +135,9 @@
             </div>
         </div>
     </div>
+
+     <!-- Add Space at the Bottom -->
+     <div style="height: 50px;"></div>
 
     <!-- Bootstrap 5 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

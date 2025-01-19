@@ -50,7 +50,7 @@
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary w-100">
         <div class="container">
-            <a href="/homepageALK" class="navbar-brand">
+            <a href="/homepageAdmin" class="navbar-brand">
                 <span class="fw-bold text-white">Koperasi Kakitangan KADA</span>
             </a>
 
@@ -209,11 +209,10 @@
 
     <!-- Back button -->
     <div class="text-center mt-4">
-        <a href="/homepageALK" class="btn btn-info">
-            <i class="bi bi-arrow-left-circle"></i> Kembali Semula
-        </a>
-    </div>
-
+                <a href="/homepageAdmin" class="btn btn-info">
+                    <i class="bi bi-arrow-left-circle"></i> Kembali Semula
+                </a>
+            </div>
     <script>
         // Monthly Report Chart
         const monthlyCtx = document.getElementById('monthlyReportChart').getContext('2d');

@@ -23,6 +23,7 @@ $controller = new UserController();
 // Basic routing logic
 $uri = explode('?', trim($_SERVER['REQUEST_URI'], '/'))[0];
 $action = isset($_GET['action']) ? $_GET['action'] : 'calendar';
+$action = isset($_GET['action']) ? $_GET['action'] : 'calendarAdmin';
 $method = $_SERVER['REQUEST_METHOD'];
 
 if ($uri === '' && $method === 'GET') {
@@ -196,7 +197,7 @@ else if (isset($_SESSION['role']) && $_SESSION['role'] == "MEMBER"){
         } else {
             $controller->homepage();
         }
-    } elseif ($uri == 'updateMemberInfo'&& $method === 'GET') {
+    } elseif ($uri == 'updateMemberInfo'&& $method === 'POST') {
         if (isAuthenticated()) {
             $controller->updateMemberInfo();
         } else {
@@ -256,9 +257,9 @@ elseif (isset($_SESSION['role']) && $_SESSION['role'] == "ADMIN"){
         }
     } elseif ($uri === 'logout' && $method === 'GET') {
         $controller->logout();
-    } elseif ($action == 'calendar') {
+    } elseif ($action == 'calendarAdmin') {
         if (isAuthenticated()) {
-            $controller->calendar();
+            $controller->calendarAdmin();
         } else {
             $controller->homepage();
         }

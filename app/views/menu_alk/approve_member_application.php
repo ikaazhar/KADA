@@ -2,50 +2,49 @@
 <html lang="en">
     <head>
     <title> KADA Homepage </title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    </head>
-    <body>
-        <nav class="navbar navbar-expand-md fixed-top navbar-light bg-warning">
-            <div class="container-xxl">
-                <a href="/homepageAhli" class="navbar-brand">
-                    <span class="fw-bold text-dark">
-                        Koperasi Kakitangan KADA         
-                    </span>
-                </a>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+</head>
+<body style="padding-top: 70px;">
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+    <div class="position-fixed top-0 start-0 w-100 h-100" style="z-index: -1;">
+        <div class="bg-light" style="opacity: 0.8;">
+            <img src="/assets_img/bgimageALK.png" alt="Background" class="img-fluid w-100 h-100" style="object-fit: cover;">
+        </div>
+    </div>
 
-                <div class="collapse navbar-collapse justify-content-end align-center" id="main-nav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="/viewLoanForm"> Semak Dokumen Permohonan Pinjaman</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="/reviewMembershipForm"> Semak Dokumen Permohonan Ahli </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="/viewSaving"> Rekod Kewangan Tahunan</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href=""> Laporan Koperasi</a>
-                        </li>
-                        <li class="nav-item d-md-none">
-                            <a href="/logout" class="nav-link text-dark"> Logout </a>
-                        </li>
-                        <li class="nav-item m-2 d-none d-md-inline">
-                            <a href="/logout" class="btn btn-sm btn-info text-dark"> Logout </a>
-                        </li>
+    <!-- Navbar -->
+    <nav class="navbar navbar-light fixed-top" style="background-color: rgb(145, 236, 165); padding: 0.3rem 1rem;">
+        <div class="container-xxl d-flex justify-content-between align-items-center">
+            <a class="navbar-brand" href="/homepageALK" style="font-family: 'Times New Roman', Times, serif; font-weight: bold;">
+                Koperasi Kakitangan KADA
+            </a>
+
+            <div class="d-flex align-items-center">
+                <!-- Dropdown Button -->
+                <div class="dropdown me-2">
+                    <button class="btn btn-secondary dropdown-toggle btn-sm" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false" style="background-color:#67ffb8ce; border-color:#17a66367; font-size: 20px; color: black;">
+                        Pilihan
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+                        <li><a class="dropdown-item" href="/listReviewedLoan">Pengesahan Permohonan Pinjaman</a></li>
+                        <li><a class="dropdown-item" href="/approveMembershipForm">Pengesahan Permohonan Ahli</a></li>
+                        <li><a class="dropdown-item" href="/calendar">Laporan Tahunan</a></li>
                     </ul>
                 </div>
+
+                <!-- Logout Button -->
+                <a href="/logout" class="btn btn-sm text-dark" style="background-color: #67ffb8ce; border-color: #17a66367; font-weight: bold;">
+                    <i class="bi bi-box-arrow-right" style="font-size: 20px;"></i> DAFTAR KELUAR
+                </a>
             </div>
-        </nav>
+        </div>
+    </nav>
 
         <div class="container my-4">
-        <br><br><br><br><h1 class="text-center mb-4">Senarai Permohonan Ahli</h1>
+        <br><br><br><br><h1 style="font-family: 'Times New Roman', Times, serif; font-weight: bold;text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); color: rgb(186, 240, 198); font-size: 50px" class="text-center mb-4">SENARAI PERMOHONAN AHLI</h1>
         <table class="table table-bordered table-striped text-center">
-            <thead class="table-dark">
+            <thead style="background-color: #4CAF50; color: white;">
                 <tr>
                     <th>Nama</th>
                     <th>No. KP</th>
@@ -66,14 +65,14 @@
                         <label for="approval" class="form-label"></label>
                         <input type="hidden" name="id_number" value="<?= $form['id_number'] ?>">
                         <select class="form-select" id="approval" name="approval" required>
-                            <option value="Reviewed" <?= $form['approval'] === 'Reviewed' ? 'selected' : '' ?>>Reviewed</option>
-                            <option value="Approved" <?= $form['approval'] === 'Approved' ? 'selected' : '' ?>>Approved</option>
-                            <option value="Disapproved" <?= $form['approval'] === 'Disapproved' ? 'selected' : '' ?>>Disapproved</option>
+                            <option value="Reviewed" <?= $form['approval'] === 'Reviewed' ? 'selected' : '' ?>>Disemak</option>
+                            <option value="Approved" <?= $form['approval'] === 'Approved' ? 'selected' : '' ?>>Disahkan</option>
+                            <option value="Disapproved" <?= $form['approval'] === 'Disapproved' ? 'selected' : '' ?>>Ditolak</option>
                         </select>
                         </td>
                         <td>
                             <div class="text-center">
-                                <button type="submit" class="btn btn-success">Update</button>
+                                <button type="submit" class="btn btn-success">Kemaskini</button>
                             </div>
                         </td>
                     </form>
@@ -84,8 +83,9 @@
         </table>
         </div>
         <div class="text-center">
-            <a href="/homepageAdmin" class="btn btn-info btn-sm">Back</a>
+            <a href="/homepageAdmin" class="btn btn-info btn-lg shadow">Kembali</a>
         </div>
+        
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     </body>
 </html>
