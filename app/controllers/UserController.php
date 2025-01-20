@@ -507,7 +507,7 @@ class UserController extends Controller
     $annualReport = $this->user->getAnnualSyerReport($year);
     $applications = $this->user->getApplicationsByDate($year, $month, $selectedDay, $approval);
     $applicationCounts = $this->user->getApplicationsCountByStatus($year, $month, $selectedDay);
-
+    
     // Pass the data to the view
     $this->view('menu_alk/annual_report', [
         'calendar' => $calendar,
@@ -542,6 +542,8 @@ class UserController extends Controller
     $annualReport = $this->user->getAnnualSyerReport($year);
     $applications = $this->user->getApplicationsByDate($year, $month, $selectedDay, $approval);
     $applicationCounts = $this->user->getApplicationsCountByStatus($year, $month, $selectedDay);
+    $loanapplications = $this->user->getLoanApplicationsByDate($year, $month, $selectedDay, $approval);
+    $loanapplicationCounts = $this->user->getLoanApplicationsCountByStatus($year, $month, $selectedDay);
 
     // Pass the data to the view
     $this->view('menu_admin/annual_reportAdmin', [
@@ -554,7 +556,9 @@ class UserController extends Controller
         'monthlyReport' => $monthlyReport,
         'annualReport' => $annualReport,
         'applications' => $applications,
-        'applicationCounts' => $applicationCounts
+        'applicationCounts' => $applicationCounts,
+        'loanapplications' => $loanapplications,
+        'loanapplicationCounts' => $loanapplicationCounts
     ]);
     }
 

@@ -571,43 +571,116 @@ class User extends Model
     }
 
     public function getApplicationsCountByStatus($year, $month, $day = null)
-{
-    $statuses = ['Pending', 'Reviewed', 'Approved', 'Disapproved'];
+    {
+        $statuses = ['Pending', 'Reviewed', 'Approved', 'Disapproved'];
+
+        $sql = "SELECT approval, COUNT(*) AS count
+                FROM member_application
+                WHERE MONTH(created_at) = :month AND YEAR(created_at) = :year";
+
+        if ($day !== null) {
+            $sql .= " AND DAY(created_at) <= :day";
+        }
+
+        $sql .= " GROUP BY approval";
+
+        $stmt = $this->getConnection()->prepare($sql);
+
+        // Bind parameters
+        $params = [
+            ':month' => $month,
+            ':year' => $year,
+        ];
+        if ($day !== null) {
+            $params[':day'] = $day;
+        }
+
+        $stmt->execute($params);
+        $result = $stmt->fetchAll();
+
+        // Format result into a more usable associative array
+        $counts = array_fill_keys($statuses, 0);
+
+        // Map query results to the counts array
+        foreach ($result as $row) {
+            $counts[$row['approval']] = $row['count'];
+        }
+
+        return $counts;
+    }
+
+    public function getLoanApplicationsByDate($year, $month, $day = null, $approval = null)
+    {
+        $sql = "SELECT member_id, approval, created_at 
+                FROM loan_application 
+                WHERE MONTH(created_at) = :month AND YEAR(created_at) = :year";
     
-    $sql = "SELECT approval, COUNT(*) AS count
-            FROM member_application
-            WHERE MONTH(created_at) = :month AND YEAR(created_at) = :year";
+    //    // If a specific day is selected, add it to the query
+       if ($day !== null) {
+            $sql .= " AND DAY(created_at) <= :day";
+        }
+    
+        if ($approval !== null) {
+            $sql .= " AND approval = :approval";
+        }
 
-    if ($day !== null) {
-        $sql .= " AND DAY(created_at) <= :day";
+        $stmt = $this->getConnection()->prepare($sql);
+    
+    //    // Bind parameters
+       $params = [
+            ':month' => $month,
+            ':year' => $year,
+        ];
+        if ($day !== null) {
+            $params[':day'] = $day;
+       }
+
+       if ($approval !== null) {
+        $params[':approval'] = $approval;
+    }
+    
+        $stmt->execute($params);
+        return $stmt->fetchAll();
     }
 
-    $sql .= " GROUP BY approval";
-
-    $stmt = $this->getConnection()->prepare($sql);
-
-    // Bind parameters
-    $params = [
-        ':month' => $month,
-        ':year' => $year,
-    ];
-    if ($day !== null) {
-        $params[':day'] = $day;
+    public function getLoanApplicationsCountByStatus($year, $month, $day = null)
+    {
+        $statuses = ['Pending', 'Reviewed', 'Approved', 'Disapproved'];
+        
+        $sql = "SELECT approval, COUNT(*) AS count
+                FROM loan_application
+                WHERE MONTH(created_at) = :month AND YEAR(created_at) = :year";
+    
+        if ($day !== null) {
+            $sql .= " AND DAY(created_at) <= :day";
+        }
+    
+        $sql .= " GROUP BY approval";
+    
+        $stmt = $this->getConnection()->prepare($sql);
+    
+        // Bind parameters
+        $params = [
+            ':month' => $month,
+            ':year' => $year,
+        ];
+        if ($day !== null) {
+            $params[':day'] = $day;
+        }
+    
+        $stmt->execute($params);
+        $result = $stmt->fetchAll();
+    
+        // Format result into a more usable associative array
+        $counts = array_fill_keys($statuses, 0);
+    
+        // Map query results to the counts array
+        foreach ($result as $row) {
+            $counts[$row['approval']] = $row['count'];
+        }
+    
+        return $counts;
     }
-
-    $stmt->execute($params);
-    $result = $stmt->fetchAll();
-
-    // Format result into a more usable associative array
-    $counts = array_fill_keys($statuses, 0);
-
-    // Map query results to the counts array
-    foreach ($result as $row) {
-        $counts[$row['approval']] = $row['count'];
-    }
-
-    return $counts;
-}
 
 
     public function getMembershipListReport() 
