@@ -20,17 +20,20 @@
     <div class="container d-flex justify-content-center align-items-center min-vh-100">
         <div class="card shadow-lg w-50">
             <div class="card-header bg-primary text-white text-center">
+                <h2>Semak Permohonan</h2>
                 <h2>Semak Nombor Akaun Anda</h2>
             </div>
             <div class="card-body">
                 <form method="POST" action="/getAccInfo">
                     <div class="mb-3">
+                        <label for="id_number" class="form-label">No. KP</label>
                         <label for="id_number" class="form-label">Nombor ID</label>
                         <input 
                             type="text" 
                             class="form-control" 
                             id="id_number" 
                             name="id_number" 
+                            placeholder="Sila masukkan No. KP anda" 
                             placeholder="Masukkan nombor ID anda" 
                             required>
                     </div>
@@ -49,3 +52,4 @@
     
 </body>
 </html>
+

@@ -32,6 +32,18 @@ if ($uri === '' && $method === 'GET') {
     $controller->homepage();
 } elseif ($uri === 'buttonpage' && $method === 'GET') {
     $controller->buttonpage();
+} elseif ($uri === 'newPasswordMember' && $method === 'GET') {
+    $controller->newPasswordMember();
+} elseif ($uri === 'changePasswordMember' && $method === 'POST') {
+    $controller->changePasswordMember();
+} elseif ($uri === 'newPasswordALK' && $method === 'GET') {
+    $controller->newPasswordALK();
+} elseif ($uri === 'changePasswordALK' && $method === 'POST') {
+    $controller->changePasswordALK();
+} elseif ($uri === 'newPasswordAdmin' && $method === 'GET') {
+    $controller->newPasswordAdmin();
+} elseif ($uri === 'changePasswordAdmin' && $method === 'POST') {
+    $controller->changePasswordAdmin();
 } elseif ($uri === 'register' && $method === 'POST') {
     $controller->register();
 } elseif ($uri === 'loginMember' && $method === 'GET') {
@@ -52,7 +64,9 @@ if ($uri === '' && $method === 'GET') {
     $controller->authenticateStaff();
 } elseif ($uri === 'authenticateALK' && $method === 'POST') {
     $controller->authenticateALK();
-}
+} elseif ($uri === 'getAccInfo' && $method === 'POST') {
+    $controller->checkAccount();
+} 
 
 else if (isset($_SESSION['role']) && $_SESSION['role'] === "ALK"){
     if ($uri === 'homepageALK' && $method === 'GET') {

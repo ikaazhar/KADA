@@ -605,30 +605,31 @@ class UserController extends Controller
     public function checkAccount() {
         $idNumber = $_POST['id_number'] ?? '';
 
+        $accountDetails = null;
+        $message = null;
+        $application = $this->user->getMemberDetailsByIdNumber($idNumber);
+
         $memberID = $this->user->getMemberIDByIdNumber($idNumber);
+        $adminID = $this->user->getAdminIDByIdNumber($idNumber);
+        $alkID = $this->user->getALKIDByIdNumber($idNumber);
 
-        if ($memberID) {
-            $accountDetails = $this->user->getAccountDetails($memberID);
-            $message = null;
-        } else {
-            $application= $this->user->getMemberDetailsByIdNumber($idNumber);
-        
-            if ($application) {
-                if ($application['approval'] === 'Pending') {
-                    $message = 'Permohonan anda sedang diproses.';
-                } elseif ($application['approval'] === 'Reviewed') {
-                    $message = 'Permohonan anda dalam penilaian.';
-                } elseif ($application['approval'] === 'Disapproved') {
-                    $message = 'Permohonan anda ditolak.';
-                }
-            } else {
-                $message = 'Tiada akaun atau permohonan ditemui untuk nombor KP yang diberikan.';
+        if (!$adminID) {
+            if(!$alkID) {
+                if ($memberID) {
+                $accountDetails = $this->user->getAccountDetails($memberID);
+                } else if ($application) {
+                    if ($application['approval'] === 'Pending') {
+                        $message = 'Permohonan anda sedang diproses.';
+                    } elseif ($application['approval'] === 'Reviewed') {
+                        $message = 'Permohonan anda dalam penilaian.';
+                    } elseif ($application['approval'] === 'Disapproved') {
+                        $message = 'Permohonan anda ditolak.';
+                    }
+                }        
             }
-
-            $accountDetails = null;
         }
 
-        $this->view('auth/AccInfo', compact('accountDetails', 'message'));
+        $this->view('auth/AccInfo', compact('accountDetails', 'message', 'application', 'adminID', 'alkID'));
     }
 
     public function showProfile() {
@@ -662,6 +663,66 @@ class UserController extends Controller
         $id_number = $this->user->getIdNumberByMemberId($member_id);
         $this->user->updateMemberInfo($id_number, $_POST);
         $this->view('menu_member/kemaskini_success');
+    }
+
+    public function changePasswordMember() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id_number = $_POST['id_number'];
+            $new_password = $_POST['new_password'];
+
+            $memberID = $this->user->getMemberIDByIdNumber($id_number);
+            $success = [];
+
+        if ($memberID) {
+            $success = $this->user->updatePasswordMember($memberID, $new_password);
+        }
+            $this->view('auth/kemaskini_password_member', compact('success'));
+        }
+    }
+
+    public function changePasswordALK() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id_number = $_POST['id_number'];
+            $new_password = $_POST['new_password'];
+
+            $alkID = $this->user->getALKIDByIdNumber($id_number);
+            $success = [];
+
+        if ($alkID) {
+            $success = $this->user->updatePasswordALK($alkID, $new_password);
+        }
+            $this->view('auth/kemaskini_password_alk', compact('success'));
+        }
+    }
+
+    public function changePasswordAdmin() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id_number = $_POST['id_number'];
+            $new_password = $_POST['new_password'];
+
+            $adminID = $this->user->getAdminIDByIdNumber($id_number);
+            $success = [];
+
+        if ($adminID) {
+            $success = $this->user->updatePasswordAdmin($adminID, $new_password);
+        }
+            $this->view('auth/kemaskini_password_admin', compact('success'));
+        }
+    }
+    
+    public function newPasswordMember()
+    {
+        $this->view('auth/newPasswordMember');
+    }
+
+    public function newPasswordALK()
+    {
+        $this->view('auth/newPasswordALK');
+    }
+
+    public function newPasswordAdmin()
+    {
+        $this->view('auth/newPasswordAdmin');
     }
 }
 

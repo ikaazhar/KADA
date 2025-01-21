@@ -63,6 +63,7 @@
                     <button type="submit" class="btn btn-primary">Log Masuk</button>
                 </div>
             </form>
+                <br><a href="/newPasswordMember" class="btn btn-warning">Tukar Kata Laluan</a>
         </div>
     </div>
 </div>
