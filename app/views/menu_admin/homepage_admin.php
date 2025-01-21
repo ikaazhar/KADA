@@ -34,13 +34,6 @@
                 <!--Navigation Bar Links-->
                 <div class="collapse navbar-collapse justify-content-end align-center" id = "main-nav">
                     <ul class="navbar-nav ms-auto">
-                    <li class="nav-item me-3">
-                            <a href="/createAdmin" class="btn btn-info btn-sm text-dark">
-                                <i class="bi bi-person-fill-add" style="font-size: 19px;"></i>
-                                Tambah Admin  
-                            </a>
-                        </li>
-
                         <li class="nav-item">
                             <a href="/logout" class="btn btn-info btn-sm text-dark">
                                 <i class="bi bi-box-arrow-right" style="font-size: 19px;"></i>
@@ -89,6 +82,24 @@
                         <a href="/calendarAdmin" class="btn btn-primary btn-lg w-100 d-flex flex-column align-items-center">
                             <i class="bi bi-clipboard2-data-fill"></i>
                             Laporan Koperasi
+                        </a>
+                    </div>
+
+                    <br><br><br>
+
+                    <div class="col-12">
+                        <a href="/createAdmin" class="btn btn-primary btn-lg w-100 d-flex flex-column align-items-center">
+                            <i class="bi bi-person-fill-add" style="font-size: 19px;"></i>
+                            Tambah Admin
+                        </a>
+                    </div>
+
+                    <br><br><br>
+
+                    <div class="col-12">
+                        <a href="/createALK" class="btn btn-primary btn-lg w-100 d-flex flex-column align-items-center">
+                            <i class="bi bi-person-fill-add" style="font-size: 19px;"></i>
+                            Tambah Ahli Lembaga Koperasi
                         </a>
                     </div>
                 </div>

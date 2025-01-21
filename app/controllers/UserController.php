@@ -490,41 +490,41 @@ class UserController extends Controller
 
     public function calendar()
     {
-    // Get the month and year from the URL parameters (defaults to current month and year)
-    $month = isset($_GET['month']) ? (int)$_GET['month'] : date('m');
-    $year = isset($_GET['year']) ? (int)$_GET['year'] : date('Y');
-    $selectedDay = isset($_GET['day']) ? (int)$_GET['day'] : null;
-    $approval = isset($_GET['approval']) ? $_GET['approval'] : null;
+        // Get the month and year from the URL parameters (defaults to current month and year)
+        $month = isset($_GET['month']) ? (int)$_GET['month'] : date('m');
+        $year = isset($_GET['year']) ? (int)$_GET['year'] : date('Y');
+        $selectedDay = isset($_GET['day']) ? (int)$_GET['day'] : null;
+        $approval = isset($_GET['approval']) ? $_GET['approval'] : null;
 
-    // Get the calendar data from the model
-    $calendar = $this->user->generateCalendar($month, $year);
+        // Get the calendar data from the model
+        $calendar = $this->user->generateCalendar($month, $year);
 
-    // Get the month name for the view
-    $monthName = date('F', mktime(0, 0, 0, $month, 10));
+        // Get the month name for the view
+        $monthName = date('F', mktime(0, 0, 0, $month, 10));
 
-    // Fetch reports
-    $monthlyReport = $this->user->getMonthlySyerReport($month, $year, $selectedDay);
-    $annualReport = $this->user->getAnnualSyerReport($year);
-    $applications = $this->user->getApplicationsByDate($year, $month, $selectedDay, $approval);
-    $applicationCounts = $this->user->getApplicationsCountByStatus($year, $month, $selectedDay);
-    $loanapplications = $this->user->getLoanApplicationsByDate($year, $month, $selectedDay, $approval);
-    $loanapplicationCounts = $this->user->getLoanApplicationsCountByStatus($year, $month, $selectedDay);
+        // Fetch reports
+        $monthlyReport = $this->user->getMonthlySyerReport($month, $year, $selectedDay);
+        $annualReport = $this->user->getAnnualSyerReport($year);
+        $applications = $this->user->getApplicationsByDate($year, $month, $selectedDay, $approval);
+        $applicationCounts = $this->user->getApplicationsCountByStatus($year, $month, $selectedDay);
+        $loanapplications = $this->user->getLoanApplicationsByDate($year, $month, $selectedDay, $approval);
+        $loanapplicationCounts = $this->user->getLoanApplicationsCountByStatus($year, $month, $selectedDay);
 
-    // Pass the data to the view
-    $this->view('menu_admin/annual_reportAdmin', [
-        'calendar' => $calendar,
-        'monthName' => $monthName,
-        'currentMonth' => $month,
-        'currentYear' => $year,
-        'selectedDay' => $selectedDay,
-        'approval' => $approval,
-        'monthlyReport' => $monthlyReport,
-        'annualReport' => $annualReport,
-        'applications' => $applications,
-        'applicationCounts' => $applicationCounts,
-        'loanapplications' => $loanapplications,
-        'loanapplicationCounts' => $loanapplicationCounts
-    ]);
+        // Pass the data to the view
+        $this->view('menu_alk/annual_report', [
+            'calendar' => $calendar,
+            'monthName' => $monthName,
+            'currentMonth' => $month,
+            'currentYear' => $year,
+            'selectedDay' => $selectedDay,
+            'approval' => $approval,
+            'monthlyReport' => $monthlyReport,
+            'annualReport' => $annualReport,
+            'applications' => $applications,
+            'applicationCounts' => $applicationCounts,
+            'loanapplications' => $loanapplications,
+            'loanapplicationCounts' => $loanapplicationCounts
+        ]);
     }
 
     public function calendarAdmin()
