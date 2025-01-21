@@ -50,7 +50,7 @@
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary w-100">
         <div class="container">
-            <a href="/homepageALK" class="navbar-brand">
+            <a href="/homepageAdmin" class="navbar-brand">
                 <span class="fw-bold text-white">Koperasi Kakitangan KADA</span>
             </a>
 
@@ -153,7 +153,7 @@
             <div class="col-md-6 mb-4">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="text-primary">Laporan Bulanan</h4>
+                        <h4 class="text-primary text-center">Laporan Bulanan</h4>
                         <canvas id="monthlyReportChart"></canvas>
                         <p class="mt-3">Syer Majikan: <strong>RM <?= $monthlyReport['total_syer_majikan'] ?? '0' ?></strong></p>
                         <p>Syer Pekerja: <strong>RM <?= $monthlyReport['total_syer_pekerja'] ?? '0' ?></strong></p>
@@ -164,7 +164,7 @@
             <div class="col-md-6 mb-4">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="text-primary">Laporan Tahunan</h4>
+                        <h4 class="text-primary text-center">Laporan Tahunan</h4>
                         <canvas id="annualReportChart"></canvas>
                         <p class="mt-3">Syer Majikan: <strong>RM <?= $annualReport['total_syer_majikan'] ?? '0' ?></strong></p>
                         <p>Syer Pekerja: <strong>RM <?= $annualReport['total_syer_pekerja'] ?? '0' ?></strong></p>
@@ -177,8 +177,13 @@
         <div class="row">
             <div class="col-md-6 mb-4">
                 <div class="card">
+                    <h4 class="text-primary text-center">Laporan Permohanan Keahlian </h4>
+                        
+                    <div class="card-body text-center">
+                        <canvas id="applicationsSummaryChart"></canvas>
+                    </div>
+
                     <div class="card-body">
-                        <h4 class="text-primary">Laporan Permohanan</h4>
                         <ul class="list-group">
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 Belum Selesai <span class="badge bg-warning"> <?= $applicationCounts['Pending'] ?> </span>
@@ -199,8 +204,26 @@
 
             <div class="col-md-6 mb-4">
                 <div class="card">
+                    <h4 class="text-primary text-center">Laporan Permohanan Pinjaman</h4>
                     <div class="card-body text-center">
-                        <canvas id="applicationsSummaryChart"></canvas>
+                        <canvas id="loanapplicationsSummaryChart"></canvas>
+                    </div> 
+
+                    <div class="card-body">
+                        <ul class="list-group">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Belum Selesai <span class="badge bg-warning"> <?= $loanapplicationCounts['Pending'] ?> </span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Telah Disemak <span class="badge bg-info"> <?= $loanapplicationCounts['Reviewed'] ?> </span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Diluluskan <span class="badge bg-success"> <?= $loanapplicationCounts['Approved'] ?> </span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Tidak Lulus <span class="badge bg-danger"> <?= $loanapplicationCounts['Disapproved'] ?> </span>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -209,11 +232,12 @@
 
     <!-- Back button -->
     <div class="text-center mt-4">
-        <a href="/homepageALK" class="btn btn-info">
+        <a href="/homepageAdmin" class="btn btn-info">
             <i class="bi bi-arrow-left-circle"></i> Kembali Semula
         </a>
     </div>
 
+    
     <script>
         // Monthly Report Chart
         const monthlyCtx = document.getElementById('monthlyReportChart').getContext('2d');
@@ -222,7 +246,7 @@
             data: {
                 labels: ['Syer Majikan', 'Syer Pekerja'],
                 datasets: [{
-                    label: 'Amount (RM)',
+                    label: 'Jumlah (RM)',
                     data: [<?= $monthlyReport['total_syer_majikan'] ?? 0 ?>, <?= $monthlyReport['total_syer_pekerja'] ?? 0 ?>],
                     backgroundColor: ['rgba(54, 162, 235, 0.7)', 'rgba(75, 192, 192, 0.7)']
                 }]
@@ -236,7 +260,7 @@
             data: {
                 labels: ['Syer Majikan', 'Syer Pekerja'],
                 datasets: [{
-                    label: 'Amount (RM)',
+                    label: 'Jumlah (RM)',
                     data: [<?= $annualReport['total_syer_majikan'] ?? 0 ?>, <?= $annualReport['total_syer_pekerja'] ?? 0 ?>],
                     backgroundColor: ['rgba(255, 206, 86, 0.7)', 'rgba(153, 102, 255, 0.7)']
                 }]
@@ -251,6 +275,26 @@
                 labels: ['Belum Selesai', 'Telah Disemak', 'Diluluskan', 'Tidak Lulus'],
                 datasets: [{
                     data: [<?= $applicationCounts['Pending'] ?>, <?= $applicationCounts['Reviewed'] ?>, <?= $applicationCounts['Approved'] ?>, <?= $applicationCounts['Disapproved'] ?>],
+                    backgroundColor: ['#f39c12', '#17a2b8', '#28a745', '#dc3545']
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    }
+                }
+            }
+        });
+
+        // Applications Summary Chart
+        const loanapplicationsSummaryCtx = document.getElementById('loanapplicationsSummaryChart').getContext('2d');
+        new Chart(loanapplicationsSummaryCtx, {
+            type: 'pie',
+            data: {
+                labels: ['Belum Selesai', 'Telah Disemak', 'Diluluskan', 'Tidak Lulus'],
+                datasets: [{
+                    data: [<?= $loanapplicationCounts['Pending'] ?>, <?= $loanapplicationCounts['Reviewed'] ?>, <?= $loanapplicationCounts['Approved'] ?>, <?= $loanapplicationCounts['Disapproved'] ?>],
                     backgroundColor: ['#f39c12', '#17a2b8', '#28a745', '#dc3545']
                 }]
             },
