@@ -223,29 +223,35 @@ class User extends Model
         return $this->getConnection()->lastInsertId();
     }
 
-    public function createAdminAcc($data)
+    public function createAdminAcc($data, $id_number)
     {
-        // Prepare the SQL query for inserting into MemberLogin table
-        $stmt = $this->getConnection()->prepare("INSERT INTO AdminLogin (password) VALUES (:password)");
+        $hashed_password = password_hash($data['password'], PASSWORD_BCRYPT);
 
-        // Execute the query with the hashed password
-        $stmt->execute([
-            ':password' => password_hash($data['password'], PASSWORD_BCRYPT), // Hash the password for security
-        ]);
+        // Prepare the SQL query for inserting into MemberLogin table
+        $query = "INSERT INTO AdminLogin (password, id_number) VALUES (:password, :id_number)";
+        $stmt = $this->db->prepare($query);
+
+        $stmt->bindParam(':password', $hashed_password);
+        $stmt->bindParam(':id_number', $id_number);
+
+        return $stmt->execute();
 
         // Optionally, return the ID of the newly inserted row
         return $this->getConnection()->lastInsertId();
     }
 
-    public function createALKAcc($data)
+    public function createALKAcc($data, $id_number)
     {
-        // Prepare the SQL query for inserting into MemberLogin table
-        $stmt = $this->getConnection()->prepare("INSERT INTO ALKLogin (password) VALUES (:password)");
+        $hashed_password = password_hash($data['password'], PASSWORD_BCRYPT);
 
-        // Execute the query with the hashed password
-        $stmt->execute([
-            ':password' => password_hash($data['password'], PASSWORD_BCRYPT), // Hash the password for security
-        ]);
+        // Prepare the SQL query for inserting into MemberLogin table
+        $query = "INSERT INTO alklogin (password, id_number) VALUES (:password, :id_number)";
+        $stmt = $this->db->prepare($query);
+
+        $stmt->bindParam(':password', $hashed_password);
+        $stmt->bindParam(':id_number', $id_number);
+
+        return $stmt->execute();
 
         // Optionally, return the ID of the newly inserted row
         return $this->getConnection()->lastInsertId();

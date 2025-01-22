@@ -255,12 +255,42 @@ elseif (isset($_SESSION['role']) && $_SESSION['role'] == "ADMIN"){
         } else {
             $controller->homepage();
         }
+    } elseif ($uri === 'addAdmin' && $method === 'GET') {
+        if (isAuthenticated()) {
+            $controller->viewAddNewAdmin();
+        } else {
+            $controller->homepage();
+        }
+    } elseif ($uri === 'addALK' && $method === 'GET') {
+        if (isAuthenticated()) {
+            $controller->viewAddNewALK();
+        } else {
+            $controller->homepage();
+        }
     } elseif ($uri === 'logout' && $method === 'GET') {
         $controller->logout();
-    } elseif ($uri === 'createAdmin' && $method === 'GET') {
-        $controller->createAdmin();
-    } elseif ($uri === 'createALK' && $method === 'GET') {
-        $controller->createALK();
+    } elseif ($uri === 'createAdmin' && $method === 'POST') {
+        if (isAuthenticated()) {
+            $controller->createAdmin();
+        } else {
+            $controller->homepage();
+        }
+    } elseif ($uri === 'createALK' && $method === 'POST') {
+        if (isAuthenticated()) {
+            $controller->createALK();
+        } else {
+            $controller->homepage();
+        }
+    } if ($uri === 'successAddAdmin' && $method === 'GET') {
+        if (isAuthenticated()) {
+            $controller->viewSuccessAddAdmin();
+        } else {
+            $controller->homepage();
+        }
+    } elseif ($uri === 'checkAcc' && $method === 'GET') {
+        $controller->showCheckAccountForm();
+    } elseif ($uri === 'getAccInfo' && $method === 'POST') {
+        $controller->checkAccount();
     } elseif ($action == 'calendarAdmin') {
         if (isAuthenticated()) {
             $controller->calendarAdmin();

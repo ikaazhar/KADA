@@ -88,7 +88,7 @@
                     <br><br><br>
 
                     <div class="col-12">
-                        <a href="/createAdmin" class="btn btn-primary btn-lg w-100 d-flex flex-column align-items-center">
+                        <a href="/addAdmin" class="btn btn-primary btn-lg w-100 d-flex flex-column align-items-center">
                             <i class="bi bi-person-fill-add" style="font-size: 19px;"></i>
                             Tambah Admin
                         </a>
@@ -97,7 +97,7 @@
                     <br><br><br>
 
                     <div class="col-12">
-                        <a href="/createALK" class="btn btn-primary btn-lg w-100 d-flex flex-column align-items-center">
+                        <a href="/addALK" class="btn btn-primary btn-lg w-100 d-flex flex-column align-items-center">
                             <i class="bi bi-person-fill-add" style="font-size: 19px;"></i>
                             Tambah Ahli Lembaga Koperasi
                         </a>
