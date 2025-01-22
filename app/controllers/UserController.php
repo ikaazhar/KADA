@@ -229,6 +229,21 @@ class UserController extends Controller
         $this->view('menu_member/loan_application');
     }
 
+    public function viewAddNewAdmin()
+    {
+        $this->view('menu_admin/addNewAdmin');
+    }
+
+    public function viewAddNewALK()
+    {
+        $this->view('menu_admin/addNewALK');
+    }
+
+    public function viewSuccessAddAdmin()
+    {
+        $this->view('menu_admin/successAddAdmin');
+    }
+
     public function createMember()
     {
         // Example data you might collect from a form or API request
@@ -244,28 +259,35 @@ class UserController extends Controller
 
     public function createAdmin()
     {
+        $id_number = $_POST['id_number'];
         // Example data you might collect from a form or API request
         $data = [
             'password' => '1234', // The raw password to be hashed and stored
         ];
-        $memberId = $this->user->createAdminAcc($data);
+        $memberId = $this->user->createAdminAcc($data, $id_number);
 
         if (!$memberId) {
             die('member ID is required');
         }
+
+        header("Location: /successAddAdmin");
     }
 
     public function createALK()
     {
         // Example data you might collect from a form or API request
+        $id_number = $_POST['id_number'];
+        // Example data you might collect from a form or API request
         $data = [
             'password' => '1234', // The raw password to be hashed and stored
         ];
-        $memberId = $this->user->createALKAcc($data);
+        $memberId = $this->user->createALKAcc($data, $id_number);
 
         if (!$memberId) {
             die('member ID is required');
         }
+        
+        header("Location: /successAddAdmin");
     }
 
     public function downloadLoanTemplate()
