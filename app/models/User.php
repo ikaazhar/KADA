@@ -828,4 +828,17 @@ class User extends Model
 
         return $stmt->execute();
     }
+
+    public function addAdminID($data)
+    {
+        $stmt = $this->getConnection()->prepare(
+            "INSERT INTO adminlogin (id_number) VALUES (:id_number)"
+        );
+
+        $stmt->execute([
+            ':id_number' => $data['id_number']
+        ]);
+
+        return $stmt;
+    }
 }

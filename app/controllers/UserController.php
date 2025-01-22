@@ -253,6 +253,8 @@ class UserController extends Controller
         if (!$memberId) {
             die('member ID is required');
         }
+        
+        $this->view('menu_admin/add_admin');
     }
 
     public function createALK()
@@ -732,6 +734,26 @@ class UserController extends Controller
     {
         $this->view('auth/newPasswordAdmin');
     }
+
+    
+    public function storeAdminID()
+    {
+        // Retrieve form input
+        $data = [
+            'id_number' => $_POST['id_number'] ?? null, // Ensure the key exists to avoid null issues
+        ];
+    
+        // Check for valid input
+        if (empty($data['id_number'])) {
+            die('No. Kad Pengenalan is required');
+        }
+        // Save the form details
+        $stmt = $this->user->addAdminID($data);
+
+        // Save Admin ID successfully
+        $this->view('menu_admin/add_adminSuccess');
+    }
+    
 }
 
 

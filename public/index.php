@@ -259,6 +259,8 @@ elseif (isset($_SESSION['role']) && $_SESSION['role'] == "ADMIN"){
         $controller->logout();
     } elseif ($uri === 'createAdmin' && $method === 'GET') {
         $controller->createAdmin();
+    } elseif ($uri === 'storeAdminID' && $method === 'POST') {
+        $controller->storeAdminID(); 
     } elseif ($uri === 'createALK' && $method === 'GET') {
         $controller->createALK();
     } elseif ($action == 'calendarAdmin') {
