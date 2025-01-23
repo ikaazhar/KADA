@@ -413,7 +413,7 @@ class UserController extends Controller
             $this->user->updateLoanStatus($loanId, $newStatus);
         }
         // Redirect back to the list view
-        header("Location: /listPendingForm");
+        $this->view('menu_admin/kemaskini_success_loan');
     }
 
     // View detailed application
@@ -444,7 +444,7 @@ class UserController extends Controller
 
     public function storeMembershipFormStatus($data) {
         $stmt = $this->user->reviewMembershipForm($data);
-        $this->view('menu_admin/kemaskini_success_staff');
+        $this->view('menu_admin/kemaskini_success_membership');
 
     }
 
@@ -485,7 +485,7 @@ class UserController extends Controller
         }
 
         // Redirect to a success page or display a success message
-        $this->view('menu_alk/kemaskini_success_ALK');
+        $this->view('menu_alk/kemaskini_success_membership');
     }
 
 
@@ -507,7 +507,7 @@ class UserController extends Controller
             $this->user->updateLoanStatus($loanId, $newStatus);
         }
         // Redirect back to the list view
-        header("Location: /listReviewedLoan");
+        $this->view('menu_alk/kemaskini_success_loan');
     }
 
     public function calendar()

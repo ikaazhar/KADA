@@ -18,12 +18,12 @@
     <div class="container d-flex justify-content-center align-items-center vh-100">
         <div class="card shadow-lg p-4" style="max-width: 500px; width: 100%;">
             <div class="card-body text-center">
-                <h2 class="card-title text-success mb-4">Status Permohonan Ahli Telah Dikemaskini!</h2>
+                <h2 class="card-title text-success mb-4">Status permohonan pinjaman telah dikemaskini!</h2>
                 <p class="card-text text-muted">
-                    Tekan Kembali untuk balik ke Senarai Permohonan Ahli
+                    Sila tekan butang Kembali untuk kembali ke halaman senarai permohonan pinjaman.
                 </p>
                 <div class="mt-4">
-                    <a href="/approveMembershipForm" class="btn btn-primary btn-lg">Kembali</a>
+                    <a href="/listReviewedLoan" class="btn btn-primary btn-lg">Kembali</a>
                 </div>
             </div>
         </div>
