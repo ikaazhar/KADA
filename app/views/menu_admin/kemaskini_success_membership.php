@@ -12,9 +12,9 @@
     <div class="container d-flex justify-content-center align-items-center vh-100">
         <div class="card shadow-lg p-4" style="max-width: 500px; width: 100%;">
             <div class="card-body text-center">
-                <h2 class="card-title text-success mb-4">Membership Application Status Updated!</h2>
+                <h2 class="card-title text-success mb-4">Status permohonan ahli telah dikemaskini!</h2>
                 <p class="card-text text-muted">
-                    Click Back to go back to Membership Form List.
+                Sila tekan butang Kembali untuk kembali ke halaman senarai permohonan ahli.
                 </p>
                 <div class="mt-4">
                     <a href="/reviewMembershipForm" class="btn btn-primary btn-lg">Back</a>

@@ -66,6 +66,7 @@
                                             <input type="hidden" name="loan_id" value="<?= $user['LoanID'] ?>">
                                             <select name="new_status" class="form-select d-inline w-auto">
                                                 <option value="Reviewed" <?= $user['approval'] === 'Reviewed' ? 'selected' : '' ?>>Telah Disemak</option>
+                                                <option value="Approved">Lulus</option>
                                                 <option value="Disapproved">Ditolak</option>
                                             </select>
                                             <button type="submit" class="btn btn-primary btn-sm">Kemaskini</button>

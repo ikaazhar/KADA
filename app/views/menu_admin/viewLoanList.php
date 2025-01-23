@@ -92,16 +92,16 @@
                                                     <option value="Reviewed">Telah Disemak</option>
                                                     <option value="Disapproved">Tidak Lulus</option>
                                                 </select>
-
-                                            </form>
-                                        </td>
-
-
-                                        <td>
+                                                <td>
                                             <button type="submit" class="btn btn-success w-100">
                                                 <i class="bi bi-save"></i> Kemas Kini 
                                             </button>
                                         </td>
+                                            </form>
+                                        </td>
+
+
+                                        
                                     </tr>
                                 <?php endforeach; ?>
                             <?php else: ?>
