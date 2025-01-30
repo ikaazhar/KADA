@@ -112,6 +112,7 @@
                         <tr>
                             <th rowspan="2"> Syer Majikan </th>
                             <th rowspan="2">Syer Pekerja</th>
+                            <th rowspan="2">Tarikh</th>
                         </tr>
 
                     </thead>
@@ -122,6 +123,7 @@
                     <tr>
                        <td><?= number_format($shares['Syer_majikan'], 2); ?></td>
                        <td><?= number_format($shares['Syer_pekerja'], 2); ?></td>
+                       <td><?= ($shares['created_at']); ?></td>
                     </tr>
                        <?php endforeach; ?>
                        <?php else: ?>
