@@ -237,6 +237,12 @@ elseif (isset($_SESSION['role']) && $_SESSION['role'] == "ADMIN"){
         } else {
             $controller->homepage();
         }
+    } elseif ($uri === 'listTermination' && $method === 'GET') {
+        if (isAuthenticated()) {
+            $controller->listPendingTermination();
+        } else {
+            $controller->homepage();
+        }
     } elseif ($uri === 'updateLoanStatus' && $method === 'POST') {
         if (isAuthenticated()) {
             $controller->updateLoanStatus();
@@ -267,6 +273,12 @@ elseif (isset($_SESSION['role']) && $_SESSION['role'] == "ADMIN"){
         } else {
             $controller->homepage();
         }
+    } elseif ($uri === 'viewTerminationForm' && $method === 'GET') {
+        if (isAuthenticated()) {
+            $controller->viewTerminationForm($_GET['id']);
+        } else {
+            $controller->homepage();
+        }
     } elseif ($uri === 'addAdmin' && $method === 'GET') {
         if (isAuthenticated()) {
             $controller->viewAddNewAdmin();
@@ -290,6 +302,12 @@ elseif (isset($_SESSION['role']) && $_SESSION['role'] == "ADMIN"){
     } elseif ($uri === 'createALK' && $method === 'POST') {
         if (isAuthenticated()) {
             $controller->createALK();
+        } else {
+            $controller->homepage();
+        }
+    } elseif ($uri === 'updateTermination' && $method === 'POST') {
+        if (isAuthenticated()) {
+            $controller->updateMemberTermination();
         } else {
             $controller->homepage();
         }

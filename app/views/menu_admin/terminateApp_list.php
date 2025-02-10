@@ -56,13 +56,15 @@
         
         <!-- Main Content -->
         <div class="container my-5">
-            <h1 class="text-center mb-5">Senarai Permohonan Pinjaman</h1>
+            <h1 class="text-center mb-5">Senarai Permohonan Berhenti Ahli</h1>
                 
                 <div class = "table-responsive">
                     <table class="table table-bordered table-striped table-hover text-center align middle">
                         <thead class="table-dark">
                             <tr>
                                 <th>ID Pinjaman</th>
+                                <th>Nama</th>
+                                <th>No IC</th>
                                 <th>Dokumen Permohonan Pinjaman</th>
                                 <th>Status Permohonan</th>
                                 <th>Tindakan</th>
@@ -72,10 +74,14 @@
                             <?php if (!empty($users)): ?>
                                 <?php foreach ($users as $user): ?>
                                     <tr>
-                                        <td><?= $user['LoanID'] ?></td>
+                                        <td><?= $user['id'] ?></td>
+
+                                        <td><?= $user['nama'] ?></td>
+
+                                        <td><?= $user['no_kp'] ?></td>
 
                                         <td>
-                                            <a href="/viewLoanApplication?loan_id=<?= $user['LoanID'] ?>" 
+                                            <a href="/viewTerminationForm?id=<?= $user['id'] ?>" 
                                                 class="btn btn-link" 
                                                 data-bs-toggle="tooltip" 
                                                 data-bs-placement="top" 
@@ -85,14 +91,15 @@
                                         </td>
 
                                         <td>
-                                            <form action="/updateLoanStatus" method="post" class="d-inline">
-                                                <input type="hidden" name="loan_id" value="<?= $user['LoanID'] ?>">
+                                            <form action="/updateTermination" method="post" class="d-inline">
+                                                <input type="hidden" name="id" value="<?= $user['id'] ?>">
                                                 <select name="new_status" class="form-select d-inline w-auto">
-                                                    <option value="Pending" <?= $user['approval'] === 'Pending' ? 'selected' : '' ?>>Belum selesai</option>
-                                                    <option value="Reviewed">Telah Disemak</option>
-                                                    <option value="Disapproved">Tidak Lulus</option>
+                                                    <option value="Pending" <?= $user['status'] === 'Pending' ? 'selected' : '' ?>>Belum selesai</option>
+                                                    <option value="Approved">Lulus</option>
+                                                    <option value="Rejected">Tidak Lulus</option>
                                                 </select>
                                         </td>
+
                                         <td>
                                             <button type="submit" class="btn btn-success w-100">
                                                 <i class="bi bi-save"></i> Kemas Kini 

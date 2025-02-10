@@ -102,6 +102,15 @@
                             Tambah Ahli Lembaga Koperasi
                         </a>
                     </div>
+
+                    <br><br><br>
+
+                    <div class="col-12">
+                        <a href="/listTermination" class="btn btn-primary btn-lg w-100 d-flex flex-column align-items-center">
+                            <i class="bi bi-person-fill-add" style="font-size: 19px;"></i>
+                            Senarai Permohonan Berhenti Ahli
+                        </a>
+                    </div>
                 </div>
 
                 
