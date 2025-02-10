@@ -339,6 +339,8 @@ else if(!isset($_SESSION['role'])){
         $controller->homepage();
     } elseif ($uri === 'homepage' && $method === 'GET') {
         $controller->homepage();
+    } elseif ($uri === 'nonActiveAcc' && $method === 'GET') {
+        $controller->nonActiveAcc();
     } elseif ($uri === 'buttonpage' && $method === 'GET') {
         $controller->buttonpage();
     } elseif ($uri === 'register' && $method === 'POST') {

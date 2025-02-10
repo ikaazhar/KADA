@@ -43,6 +43,11 @@ class UserController extends Controller
         $this->view('auth/login_alk');
     }
 
+    public function nonActiveAcc()
+    {
+        $this->view('auth/nonActiveMember');
+    }
+
     public function authenticateMember()
     {
         $member_id = $_POST['member_id'];
@@ -51,10 +56,15 @@ class UserController extends Controller
         $user = $this->user->findByMemberID($member_id);
     
         if ($user && password_verify($password, $user['password'])) {
-            session_start();
-            $_SESSION['user_id'] = $user['member_id'];
-            $_SESSION['role'] = $user['user_role'];
-            header('Location: /homepageMember');
+            if($user['memberStatus'] == "Active"){
+                session_start();
+                $_SESSION['user_id'] = $user['member_id'];
+                $_SESSION['role'] = $user['user_role'];
+                header('Location: /homepageMember');
+            }
+            else{
+                header('Location: /nonActiveAcc');
+            }
         } else {
             echo "<h3 style='color: red;'>Invalid email or password. Please try again.</h3>";
             echo "<a href='/login' style='color: blue; text-decoration: underline;'>Back to Login</a>";
@@ -110,34 +120,6 @@ class UserController extends Controller
         header("Location: /createFamilyDetails?applicant_id=$applicantId");
         exit;
     }
-
-    //utk form family detail
-    //public function createFamilyDetails()
-    //{
-    //    $applicantId = $_GET['applicant_id'] ?? null;
-    //    if (!$applicantId) {
-    //        die('Applicant ID is required');
-    //    }
-
-    //    $familyDetails = $this->user->getFamilyDetails($applicantId);
-    //    $this->view('users/family_details', ['applicant_id' => $applicantId, 'familyDetails' => $familyDetails]);
-    //}
-
-    //
-    //public function storeFamilyDetails()
-    //{
-    //    if (empty($_POST['applicant_id'])) {
-    //        die('Applicant ID is required');
-    //    }
-    //
-    //    $this->user->createFamilyDetails($_POST);
-    //
-    //    // Redirect to show the family details for the specific applicant_id
-    //    $applicantId = $_POST['applicant_id'];
-    //    header("Location: /createFamilyDetails?applicant_id=$applicantId");
-    //    exit;
-    //}
-
     
     public function createMembershipForm()
     {
