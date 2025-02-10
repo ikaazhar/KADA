@@ -89,10 +89,10 @@
                 <!-- Calendar Navigation -->
                 <div class="text-center mb-4">
                     <a href="/user/calendar?month=<?= $currentMonth > 1 ? $currentMonth - 1 : 12 ?>&year=<?= $currentMonth > 1 ? $currentYear : $currentYear - 1 ?>" class="btn btn-outline-primary me-2">
-                        <i class="bi bi-chevron-left"></i> Tahun Sebelumnya
+                        <i class="bi bi-chevron-left"></i> Bulan Sebelumnya
                     </a>
                     <a href="/user/calendar?month=<?= $currentMonth < 12 ? $currentMonth + 1 : 1 ?>&year=<?= $currentMonth < 12 ? $currentYear : $currentYear + 1 ?>" class="btn btn-outline-primary">
-                        Tahun Seterusnya <i class="bi bi-chevron-right"></i>
+                        Bulan Seterusnya <i class="bi bi-chevron-right"></i>
                     </a>
                     <div class="dropdown d-inline ms-2">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
@@ -228,6 +228,33 @@
                 </div>
             </div>
         </div>
+
+        <!-- Terminate Applications Summary -->
+        <div class="row justify-content-center">
+            <div class="col-md-6 offset-md-0.5 mb-4">
+                <div class="card">
+                    <h4 class="text-primary text-center">Laporan Permohanan Berhenti Keahlian </h4>
+                        
+                    <div class="card-body text-center">
+                        <canvas id="terminateApplicationsSummaryChart"></canvas>
+                    </div>
+
+                    <div class="card-body">
+                        <ul class="list-group">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Belum Selesai <span class="badge bg-warning"> <?= $terminateapplicationCounts['Pending'] ?> </span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Diluluskan <span class="badge bg-success"> <?= $terminateapplicationCounts['Approved'] ?> </span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Tidak Lulus <span class="badge bg-danger"> <?= $terminateapplicationCounts['Rejected'] ?> </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Back button -->
@@ -287,7 +314,7 @@
             }
         });
 
-        // Applications Summary Chart
+        // Loan Applications Summary Chart
         const loanapplicationsSummaryCtx = document.getElementById('loanapplicationsSummaryChart').getContext('2d');
         new Chart(loanapplicationsSummaryCtx, {
             type: 'pie',
@@ -295,6 +322,26 @@
                 labels: ['Belum Selesai', 'Telah Disemak', 'Diluluskan', 'Tidak Lulus'],
                 datasets: [{
                     data: [<?= $loanapplicationCounts['Pending'] ?>, <?= $loanapplicationCounts['Reviewed'] ?>, <?= $loanapplicationCounts['Approved'] ?>, <?= $loanapplicationCounts['Disapproved'] ?>],
+                    backgroundColor: ['#f39c12', '#17a2b8', '#28a745', '#dc3545']
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    }
+                }
+            }
+        });
+
+        // Terminate Applications Summary Chart
+        const terminateapplicationsSummaryCtx = document.getElementById('terminateApplicationsSummaryChart').getContext('2d');
+        new Chart(terminateapplicationsSummaryCtx, {
+            type: 'pie',
+            data: {
+                labels: ['Belum Selesai', 'Diluluskan', 'Tidak Lulus'],
+                datasets: [{
+                    data: [<?= $terminateapplicationCounts['Pending'] ?>, <?= $terminateapplicationCounts['Approved'] ?>, <?= $terminateapplicationCounts['Rejected'] ?>],
                     backgroundColor: ['#f39c12', '#17a2b8', '#28a745', '#dc3545']
                 }]
             },
