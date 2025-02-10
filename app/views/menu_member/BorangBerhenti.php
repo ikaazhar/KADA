@@ -7,6 +7,41 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="bg-light">
+    <!-- Navbar -->
+    <nav class="navbar navbar-light fixed-top" style="background-color: rgb(236, 215, 145); padding: 0.3rem 1rem;">
+        <div class="container-xxl">
+            <a class="navbar-brand" href="/homepageMember" style="font-family: 'Times New Roman', Times, serif; font-weight: bold;">
+                Koperasi Kakitangan KADA
+            </a>
+    
+            <!-- Profile, Dropdown, and Logout Button Group -->
+            <div class="d-flex align-items-center">
+                    <!-- Dropdown Menu -->
+                <div class="dropdown me-3">
+                    <button class="btn btn-secondary dropdown-toggle btn-sm" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false" style="background-color:#c8781cce; border-color:#a6801767; font-size: 20px; color: black;">
+                        Pilihan
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+                        <li><a class="dropdown-item" href="/viewLoanForm">Mohon Pinjaman</a></li>
+                            <li><a class="dropdown-item" href="/loanStatus">Semak Kelulusan Pinjaman</a></li>
+                            <li><a class="dropdown-item" href="/showSaving">Semak Simpanan</a></li>
+                            <li><a class="dropdown-item" href="/loanBalance">Baki Pinjaman</a></li>
+                            <li><a class="dropdown-item" href="/viewInvoice">Semak Penyata</a></li>
+                        </ul>
+                    </div>
+        
+                    <!-- Logout Button -->
+                    <a href="/logout" class="btn btn-info btn-sm text-dark" style="background-color:#c8781cce; border-color:#a6801767; font-weight: bold;">
+                        <i class="bi bi-box-arrow-right" style="font-size: 20px;"></i> DAFTAR KELUAR
+                    </a>
+        
+                    <!-- Profile Icon -->
+                    <a href="showProfile" class="nav-link text-dark ms-2">
+                        <i class="bi bi-person-circle" style="font-size: 30px;"></i>
+                    </a>
+                </div>
+            </div>
+        </nav>
     <div class="container mt-5">
         <div class="card shadow-lg p-4">
             <h2 class="text-center text-primary mb-4">Borang Permohonan Berhenti Keahlian</h2>
