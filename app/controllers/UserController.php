@@ -48,6 +48,11 @@ class UserController extends Controller
         $this->view('auth/nonActiveMember');
     }
 
+    public function viewInvalidLogin()
+    {
+        $this->view('auth/invalidPW');
+    }
+
     public function authenticateMember()
     {
         $member_id = $_POST['member_id'];
@@ -66,8 +71,7 @@ class UserController extends Controller
                 header('Location: /nonActiveAcc');
             }
         } else {
-            echo "<h3 style='color: red;'>Invalid email or password. Please try again.</h3>";
-            echo "<a href='/login' style='color: blue; text-decoration: underline;'>Back to Login</a>";
+            header('Location: /invalidLogin');
         }
     }
 
@@ -85,8 +89,7 @@ class UserController extends Controller
             //$_SESSION['user_name'] = $user['name'];
             header('Location: /homepageAdmin');
         } else {
-            echo "<h3 style='color: red;'>Invalid email or password. Please try again.</h3>";
-            echo "<a href='/login' style='color: blue; text-decoration: underline;'>Back to Login</a>";
+            header('Location: /invalidLogin');
         }
     }
 
@@ -104,8 +107,7 @@ class UserController extends Controller
             //$_SESSION['user_name'] = $user['name'];
             header('Location: /homepageALK');
         } else {
-            echo "<h3 style='color: red;'>Invalid email or password. Please try again.</h3>";
-            echo "<a href='/login' style='color: blue; text-decoration: underline;'>Back to Login</a>";
+            header('Location: /invalidLogin');
         }
     }
 

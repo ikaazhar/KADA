@@ -351,6 +351,8 @@ else if(!isset($_SESSION['role'])){
         $controller->loginStaff();
     } elseif ($uri === 'loginALK' && $method === 'GET') {
         $controller->loginALK();
+    } elseif ($uri === 'invalidLogin' && $method === 'GET') {
+        $controller->viewInvalidLogin();
     } elseif ($uri === 'createMember' && $method === 'GET') {
         $controller->createMember();
     } elseif ($uri === 'authenticateMember' && $method === 'POST') {
