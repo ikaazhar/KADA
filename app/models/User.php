@@ -283,6 +283,49 @@ class User extends Model
         ]);
     }
     
+    public function insertMemberTerminationRequest($data)
+    {
+        // SQL query for inserting membership termination request data
+        $sql = "INSERT INTO membership_termination_requests 
+                (Member_id, nama, no_kp, tarikh_lahir, umur, alamat_rumah, poskod_rumah, bandar_rumah, negeri, 
+                no_anggota, no_pf, jawatan, alamat_pejabat, poskod_pejabat, bandar_pejabat, no_tel_fax, no_tel_bimbit, 
+                jantina, agama, agama_lain, bangsa, bangsa_lain, sebab, uploaded_at) 
+                VALUES 
+                (:member_id, :nama, :no_kp, :tarikh_lahir, :umur, :alamat_rumah, :poskod_rumah, :bandar_rumah, :negeri, 
+                :no_anggota, :no_pf, :jawatan, :alamat_pejabat, :poskod_pejabat, :bandar_pejabat, :no_tel_fax, :no_tel_bimbit, 
+                :jantina, :agama, :agama_lain, :bangsa, :bangsa_lain, :sebab, :uploaded_at)";
+
+        // Prepare and execute the statement
+        $stmt = $this->db->prepare($sql);
+
+        return $stmt->execute([
+            ':member_id'      => $data['member_id'],
+            ':nama'           => $data['nama'],
+            ':no_kp'          => $data['no_kp'],
+            ':tarikh_lahir'   => $data['tarikh_lahir'],
+            ':umur'           => $data['umur'],
+            ':alamat_rumah'   => $data['alamat_rumah'],
+            ':poskod_rumah'   => $data['poskod_rumah'],
+            ':bandar_rumah'   => $data['bandar_rumah'],
+            ':negeri'         => $data['negeri'],
+            ':no_anggota'     => $data['no_anggota'],
+            ':no_pf'          => $data['no_pf'],
+            ':jawatan'        => $data['jawatan'],
+            ':alamat_pejabat' => $data['alamat_pejabat'],
+            ':poskod_pejabat' => $data['poskod_pejabat'],
+            ':bandar_pejabat' => $data['bandar_pejabat'],
+            ':no_tel_fax'     => $data['no_tel_fax'],
+            ':no_tel_bimbit'  => $data['no_tel_bimbit'],
+            ':jantina'        => $data['jantina'],
+            ':agama'          => $data['agama'],
+            ':agama_lain'     => $data['agama_lain'],
+            ':bangsa'         => $data['bangsa'],
+            ':bangsa_lain'    => $data['bangsa_lain'],
+            ':sebab'          => $data['sebab'],
+            ':uploaded_at'    => date('Y-m-d H:i:s'), // Automatically set the timestamp
+        ]);
+    }
+
     public function findLoanStatus($member_id) 
     {
         $stmt = $this->getConnection()->prepare("SELECT member_id, approval, LoanID FROM loan_application WHERE member_id = :member_id");

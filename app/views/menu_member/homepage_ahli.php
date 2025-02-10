@@ -92,6 +92,15 @@
                 Semak Penyata
             </a>
         </div>
+
+        <!-- Button 6 -->
+        <div class="col-md-4 mb-3">
+            <a href="/viewRetirement" class="btn btn-primary w-100 d-flex align-items-center justify-content-center text-uppercase" 
+                style="font-family: 'Times New Roman', Times, serif; font-size: 40px; height: 200px; border-radius: 40px; background-color: #c8781cce; border-color: #a6801767; 
+                box-shadow: 0 6px 12px rgba(168, 138, 80, 0.712); transition: all 0.3s ease;">
+                Mohon Berhenti Ahli
+            </a>
+        </div>
     </div>
 </div>
 

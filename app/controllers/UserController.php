@@ -244,6 +244,50 @@ class UserController extends Controller
         $this->view('menu_admin/successAddAdmin');
     }
 
+    public function viewRetirementForm()
+    {
+        $this->view('menu_member/BorangBerhenti');
+    }
+
+    public function submitTerminationForm($request)
+    {
+        // Prepare loan application data
+        $data = [
+            'member_id' => $_SESSION['user_id'], 
+            'uploaded_at' => date('Y-m-d H:i:s'),
+            'nama' => $request['nama'], 
+            'no_kp' => $request['no_kp'], 
+            'tarikh_lahir' => $request['tarikh_lahir'], 
+            'umur' => $request['umur'], 
+            'alamat_rumah' => $request['alamat_rumah'], 
+            'poskod_rumah' => $request['poskod_rumah'], 
+            'bandar_rumah' =>$request['bandar_rumah'], 
+            'negeri' =>$request['negeri'], 
+            'no_anggota' =>$request['no_anggota'], 
+            'no_pf' =>$request['no_pf'], 
+            'jawatan' =>$request['jawatan'], 
+            'alamat_pejabat' => $request['alamat_pejabat'], 
+            'poskod_pejabat' => $request['poskod_pejabat'], 
+            'bandar_pejabat' =>$request['bandar_pejabat'], 
+            'no_tel_fax' => $request['no_tel_fax'], 
+            'no_tel_bimbit' => $request['no_tel_bimbit'], 
+            'jantina' => $request['jantina'],
+            'agama' => $request['agama'],
+            'agama_lain' => $request['agama'] === 'Lain-Lain' ? $request['agama_lain']: null,
+            'bangsa' => $request['bangsa'], 
+            'bangsa_lain' =>$request['bangsa'] === 'Lain-Lain' ? $request['bangsa_lain']: null,
+            'sebab' => $request['sebab'],
+        ];
+
+        // Save loan application
+        if ($this->user->insertMemberTerminationRequest($data)) {
+            $this->view('menu_member/terminationAppSuccess');
+            exit;
+        } else {
+            echo "Error saving application.";
+        }
+    }
+
     public function createMember()
     {
         // Example data you might collect from a form or API request

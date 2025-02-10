@@ -203,6 +203,18 @@ else if (isset($_SESSION['role']) && $_SESSION['role'] == "MEMBER"){
         } else {
             $controller->homepage();
         }
+    } elseif ($uri == 'viewRetirement'&& $method === 'GET') {
+        if (isAuthenticated()) {
+            $controller->viewRetirementForm();
+        } else {
+            $controller->homepage();
+        }
+    } elseif ($uri == 'submitTermination'&& $method === 'POST') {
+        if (isAuthenticated()) {
+            $controller->submitTerminationForm($_POST);
+        } else {
+            $controller->homepage();
+        }
     } elseif ($uri === 'logout' && $method === 'GET') {
         $controller->logout();
     } else {
