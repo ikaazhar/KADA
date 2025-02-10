@@ -66,6 +66,7 @@
                         <li class="list-group-item"><strong>Email: </strong> <?= htmlspecialchars($memberDetails['email']) ?></li>
                         <li class="list-group-item"><strong>Taraf Perkahwinan: </strong> <?= htmlspecialchars($memberDetails['marital_status']) ?></li>
                         <li class="list-group-item"><strong>Jantina: </strong> <?= htmlspecialchars($memberDetails['gender']) ?></li>
+                        <li class="list-group-item"><strong>Umur: </strong> <?= htmlspecialchars($memberDetails['age']) ?></li>
                         <li class="list-group-item"><strong>Agama: </strong> <?= htmlspecialchars($memberDetails['religion']) ?></li>
                         <li class="list-group-item"><strong>Bangsa: </strong> <?= htmlspecialchars($memberDetails['ethnicity']) ?></li>
                         <li class="list-group-item"><strong>Alamat Rumah: </strong> <?= htmlspecialchars($memberDetails['home_address']) ?></li>
