@@ -602,6 +602,7 @@ class UserController extends Controller
         $year = isset($_GET['year']) ? (int)$_GET['year'] : date('Y');
         $selectedDay = isset($_GET['day']) ? (int)$_GET['day'] : null;
         $approval = isset($_GET['approval']) ? $_GET['approval'] : null;
+        $status = isset($_GET['status']) ? $_GET['status'] : null;
 
         // Get the calendar data from the model
         $calendar = $this->user->generateCalendar($month, $year);
@@ -616,6 +617,8 @@ class UserController extends Controller
         $applicationCounts = $this->user->getApplicationsCountByStatus($year, $month, $selectedDay);
         $loanapplications = $this->user->getLoanApplicationsByDate($year, $month, $selectedDay, $approval);
         $loanapplicationCounts = $this->user->getLoanApplicationsCountByStatus($year, $month, $selectedDay);
+        $terminateapplications = $this->user->getTerminateApplicationsByDate($year, $month, $selectedDay, $approval);
+        $terminateapplicationCounts = $this->user->getTerminateApplicationsCountByStatus($year, $month, $selectedDay);
 
         // Pass the data to the view
         $this->view('menu_alk/annual_report', [
@@ -630,7 +633,9 @@ class UserController extends Controller
             'applications' => $applications,
             'applicationCounts' => $applicationCounts,
             'loanapplications' => $loanapplications,
-            'loanapplicationCounts' => $loanapplicationCounts
+            'loanapplicationCounts' => $loanapplicationCounts,
+            'terminateapplications' => $terminateapplications,
+            'terminateapplicationCounts' => $terminateapplicationCounts
         ]);
     }
 
@@ -641,6 +646,7 @@ class UserController extends Controller
     $year = isset($_GET['year']) ? (int)$_GET['year'] : date('Y');
     $selectedDay = isset($_GET['day']) ? (int)$_GET['day'] : null;
     $approval = isset($_GET['approval']) ? $_GET['approval'] : null;
+    $status = isset($_GET['status']) ? $_GET['status'] : null;
 
     // Get the calendar data from the model
     $calendar = $this->user->generateCalendar($month, $year);
@@ -655,6 +661,9 @@ class UserController extends Controller
     $applicationCounts = $this->user->getApplicationsCountByStatus($year, $month, $selectedDay);
     $loanapplications = $this->user->getLoanApplicationsByDate($year, $month, $selectedDay, $approval);
     $loanapplicationCounts = $this->user->getLoanApplicationsCountByStatus($year, $month, $selectedDay);
+    $terminateapplications = $this->user->getTerminateApplicationsByDate($year, $month, $selectedDay, $approval);
+    $terminateapplicationCounts = $this->user->getTerminateApplicationsCountByStatus($year, $month, $selectedDay);
+
 
     // Pass the data to the view
     $this->view('menu_admin/annual_reportAdmin', [
@@ -669,7 +678,9 @@ class UserController extends Controller
         'applications' => $applications,
         'applicationCounts' => $applicationCounts,
         'loanapplications' => $loanapplications,
-        'loanapplicationCounts' => $loanapplicationCounts
+        'loanapplicationCounts' => $loanapplicationCounts,
+        'terminateapplications' => $terminateapplications,
+        'terminateapplicationCounts' => $terminateapplicationCounts
     ]);
     }
 

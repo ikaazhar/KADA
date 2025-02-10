@@ -759,6 +759,78 @@ class User extends Model
         return $counts;
     }
 
+    public function getTerminateApplicationsByDate($year, $month, $day = null, $approval = null)
+    {
+        $sql = "SELECT id, status, uploaded_at 
+                FROM  membership_termination_requests  
+                WHERE MONTH(uploaded_at) = :month AND YEAR(uploaded_at) = :year";
+    
+    //    // If a specific day is selected, add it to the query
+       if ($day !== null) {
+            $sql .= " AND DAY(uploaded_at) <= :day";
+        }
+    
+        if ($approval !== null) {
+            $sql .= " AND status = :status";
+        }
+
+        $stmt = $this->getConnection()->prepare($sql);
+    
+    //    // Bind parameters
+       $params = [
+            ':month' => $month,
+            ':year' => $year,
+        ];
+        if ($day !== null) {
+            $params[':day'] = $day;
+       }
+
+       if ($approval !== null) {
+        $params[':status'] = $status;
+    }
+    
+        $stmt->execute($params);
+        return $stmt->fetchAll();
+    }
+
+    public function getTerminateApplicationsCountByStatus($year, $month, $day = null)
+    {
+        $statuses = ['Pending', 'Approved', 'Rejected'];
+
+        $sql = "SELECT status, COUNT(*) AS count
+                FROM membership_termination_requests
+                WHERE MONTH(uploaded_at) = :month AND YEAR(uploaded_at) = :year";
+
+        if ($day !== null) {
+            $sql .= " AND DAY(uploaded_at) <= :day";
+        }
+
+        $sql .= " GROUP BY status";
+
+        $stmt = $this->getConnection()->prepare($sql);
+
+        // Bind parameters
+        $params = [
+            ':month' => $month,
+            ':year' => $year,
+        ];
+        if ($day !== null) {
+            $params[':day'] = $day;
+        }
+
+        $stmt->execute($params);
+        $result = $stmt->fetchAll();
+
+        // Format result into a more usable associative array
+        $counts = array_fill_keys($statuses, 0);
+
+        // Map query results to the counts array
+        foreach ($result as $row) {
+            $counts[$row['status']] = $row['count'];
+        }
+
+        return $counts;
+    }
 
     public function getMembershipListReport() 
     {
