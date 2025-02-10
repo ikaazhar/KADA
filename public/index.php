@@ -311,7 +311,7 @@ elseif (isset($_SESSION['role']) && $_SESSION['role'] == "ADMIN"){
         } else {
             $controller->homepage();
         }
-    } if ($uri === 'successAddAdmin' && $method === 'GET') {
+    } else if ($uri === 'successAddAdmin' && $method === 'GET') {
         if (isAuthenticated()) {
             $controller->viewSuccessAddAdmin();
         } else {

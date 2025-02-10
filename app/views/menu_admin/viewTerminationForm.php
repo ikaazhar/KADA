@@ -3,6 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary w-100">
+            <div class="container">
+                <a href="/homepageAdmin" class="navbar-brand">
+                    <span class="fw-bold text-white">
+                        Koperasi Kakitangan KADA         
+                    </span>
+                </a>
+
+                <!-- Toggle Button for Mobile Navigation -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav" 
+                        aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!--Navigation Bar Links-->
+                <div class="collapse navbar-collapse justify-content-end align-center" id = "main-nav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a href="/logout" class="btn btn-info btn-sm text-dark">
+                                <i class="bi bi-box-arrow-right" style="font-size: 19px;"></i>
+                                DAFTAR KELUAR 
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link text-dark ms-2">
+                                <i class="bi bi-person-circle" style="font-size: 20px;"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+
     <title>Borang Permohonan Berhenti Keahlian</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
