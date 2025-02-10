@@ -326,6 +326,12 @@ class User extends Model
         ]);
     }
 
+    public function getTerminationRequests() {
+        $stmt = $this->getConnection()->prepare("SELECT * FROM membership_termination_requests WHERE status = 'Pending'");
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+
     public function findLoanStatus($member_id) 
     {
         $stmt = $this->getConnection()->prepare("SELECT member_id, approval, LoanID FROM loan_application WHERE member_id = :member_id");
@@ -392,6 +398,21 @@ class User extends Model
         return $stmt->fetchAll();
     }
 
+    public function updateTerminationAppStatus($id, $newStatus) {
+        $stmt = $this->db->prepare("UPDATE membership_termination_requests SET status = :status WHERE id = :id");
+        $stmt->bindParam(':status', $newStatus);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+    }
+
+    public function updateMemberActiveStatus($member_id, $status) {
+        $stmt = $this->db->prepare("UPDATE memberlogin SET memberStatus = :status WHERE member_id = :member_id");
+        $stmt->bindParam(':status', $status);
+        $stmt->bindParam(':member_id', $member_id);
+        $stmt->execute();
+    }
+    
+
     // Update loan status
     public function updateLoanStatus($loanId, $newStatus) {
         $stmt = $this->db->prepare("UPDATE loan_application SET approval = :status WHERE LoanID = :loan_id");
@@ -411,6 +432,13 @@ class User extends Model
     public function getMemberAppForm($IdNum) {
         $stmt = $this->db->prepare("SELECT * FROM member_application WHERE id_number = :id_number");
         $stmt->bindParam(':id_number', $IdNum);
+        $stmt->execute();
+        return $stmt->fetch();
+    }
+    
+    public function getTerminationForm($IdNum) {
+        $stmt = $this->db->prepare("SELECT * FROM membership_termination_requests WHERE id = :id");
+        $stmt->bindParam(':id', $IdNum);
         $stmt->execute();
         return $stmt->fetch();
     }

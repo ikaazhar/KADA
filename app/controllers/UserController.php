@@ -273,9 +273,9 @@ class UserController extends Controller
             'no_tel_bimbit' => $request['no_tel_bimbit'], 
             'jantina' => $request['jantina'],
             'agama' => $request['agama'],
-            'agama_lain' => $request['agama'] === 'Lain-Lain' ? $request['agama_lain']: null,
+            'agama_lain' => $request['agama'] != 'Lain-Lain' ? $request['agama_lain']: null,
             'bangsa' => $request['bangsa'], 
-            'bangsa_lain' =>$request['bangsa'] === 'Lain-Lain' ? $request['bangsa_lain']: null,
+            'bangsa_lain' =>$request['bangsa'] != 'Lain-Lain' ? $request['bangsa_lain']: null,
             'sebab' => $request['sebab'],
         ];
 
@@ -449,6 +449,11 @@ class UserController extends Controller
         $this->view('menu_admin/viewLoanList', compact('users'));
     }
 
+    public function listPendingTermination() {
+        $users = $this->user->getTerminationRequests();
+        $this->view('menu_admin/terminateApp_list', compact('users'));
+    }
+
     // Update loan application status
     public function updateLoanStatus() {
         if (isset($_POST['loan_id'], $_POST['new_status'])) {
@@ -459,6 +464,36 @@ class UserController extends Controller
         // Redirect back to the list view
         header("Location: /listPendingForm");
     }
+
+    public function updateMemberTermination() {
+        if (isset($_POST['id'], $_POST['new_status'])) {
+            $id = intval($_POST['id']); // Ensure ID is an integer
+            $newStatus = $_POST['new_status'];
+            
+            // Update the termination request status
+            $this->user->updateTerminationAppStatus($id, $newStatus);
+            
+            if ($newStatus == "Approved") {
+                // Get the member ID associated with the termination request
+                $memberDetails = $this->user->getTerminationForm($id);
+                
+                if ($memberDetails && isset($memberDetails['member_id'])) {
+                    $memberID = $memberDetails['member_id']; 
+                    $status = "Non-active";
+    
+                    // Update the member's status in MemberLogin
+                    $this->user->updateMemberActiveStatus($memberID, $status);
+                } else{
+                    echo "TKDE MEMBER ID";
+                }
+            }
+        }
+    
+        // Redirect back to the list view
+        header("Location: /listTermination");
+        exit();
+    }
+    
 
     // View detailed application
     public function viewLoanApplication($loanId) {
@@ -496,6 +531,12 @@ class UserController extends Controller
     {
         $memberDetails = $this->user->getMemberAppForm($id_number);
         $this->view('menu_admin/viewMemberForm', compact('memberDetails'));
+    }
+
+    public function viewTerminationForm($id_number)
+    {
+        $memberDetails = $this->user->getTerminationForm($id_number);
+        $this->view('menu_admin/viewTerminationForm', compact('memberDetails'));
     }
   
     public function approveMembershipForm()
