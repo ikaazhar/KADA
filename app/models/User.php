@@ -54,7 +54,7 @@ class User extends Model
     {
         $stmt = $this->getConnection()->prepare(
             "INSERT INTO applicant (
-                name, id_number, marital_status, gender, religion, ethnicity, home_address, postcode, state,
+                name, id_number, marital_status, gender, age, religion, ethnicity, home_address, postcode, state,
                 staff_number, pf_number, position_grade, office_address, office_postcode, city, phone_office,
                 phone_mobile, phone_home, monthly_salary
             ) VALUES (
@@ -69,6 +69,7 @@ class User extends Model
             ':id_number' => $data['id_number'],
             ':marital_status' => $data['marital_status'],
             ':gender' => $data['gender'],
+            ':age' => $data['age'],
             ':religion' => $data['religion'],
             ':ethnicity' => $data['ethnicity'],
             ':home_address' => $data['home_address'],
@@ -114,13 +115,13 @@ class User extends Model
     {
         $stmt = $this->getConnection()->prepare(
             "INSERT INTO Member_Application (
-                name, id_number, email, marital_status, gender, religion, ethnicity, home_address, postcode, state, 
+                name, id_number, email, marital_status, gender, age, religion, ethnicity, home_address, postcode, state, 
                 membership_number, pf_number, position_grade, office_address, office_postcode, city, 
                 phone_office, phone_mobile, phone_home, monthly_salary, famName1, famRelationship1, famIC1, famName2, famRelationship2, famIC2,
                 yuran_masuk_value, modal_syer_value, modal_yuran_value, wang_deposit_value, 
                 sumbangan_kebajikan_value, simpanan_tetap_value, lain_lain_value, approval
             ) VALUES (
-                :name, :id_number, :email, :marital_status, :gender, :religion, :ethnicity, :home_address, :postcode, :state, 
+                :name, :id_number, :email, :marital_status, :gender, :age, :religion, :ethnicity, :home_address, :postcode, :state, 
                 :membership_number, :pf_number, :position_grade, :office_address, :office_postcode, :city, 
                 :phone_office, :phone_mobile, :phone_home, :monthly_salary, :famName1, :famRelationship1, :famIC1, :famName2, :famRelationship2, :famIC2,
                 :yuran_masuk_value, :modal_syer_value, :modal_yuran_value, :wang_deposit_value, 
@@ -134,6 +135,7 @@ class User extends Model
             ':email' => $data['email'],
             ':marital_status' => $data['marital_status'],
             ':gender' => $data['gender'],
+            ':age' => $data['age'],
             ':religion' => $data['religion'],
             ':ethnicity' => $data['ethnicity'],
             ':home_address' => $data['home_address'],
