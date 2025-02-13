@@ -113,7 +113,7 @@ class User extends Model
     public function createMembershipForm($data)
     {
         $stmt = $this->getConnection()->prepare(
-            "INSERT INTO Member_Application (
+            "INSERT INTO member_application (
                 name, id_number, email, marital_status, gender, religion, ethnicity, home_address, postcode, state, 
                 membership_number, pf_number, position_grade, office_address, office_postcode, city, 
                 phone_office, phone_mobile, phone_home, monthly_salary, famName1, famRelationship1, famIC1, famName2, famRelationship2, famIC2,
@@ -548,7 +548,7 @@ class User extends Model
     {
         // Prepare the SQL query for inserting into Member_Info
         $stmt = $this->getConnection()->prepare(
-            "INSERT INTO Member_Info (member_id, id_number) VALUES (:member_id, :id_number)"
+            "INSERT INTO member_info (member_id, id_number) VALUES (:member_id, :id_number)"
         );
 
         // Execute the query with the provided data
@@ -847,7 +847,7 @@ class User extends Model
     }
 
     public function getAccountDetails($memberId) {
-        $stmt = $this->db->prepare("SELECT * FROM MemberLogin WHERE member_id = :member_id");
+        $stmt = $this->db->prepare("SELECT * FROM memberlogin WHERE member_id = :member_id");
         $stmt->bindParam(':member_id', $memberId);
         $stmt->execute();
         return $stmt->fetch();
